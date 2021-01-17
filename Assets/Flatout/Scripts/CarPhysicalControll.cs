@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarControll : MonoBehaviour
+public class CarPhysicalControll : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] WheelCollider[] moveColliders;

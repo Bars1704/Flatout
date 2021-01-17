@@ -8,7 +8,7 @@ namespace Flatout
     public class TouchStickController : MonoBehaviour
     {
         private TouchStickControl movementStick;
-        [SerializeField] private CarControll carController;
+        [SerializeField] private CarPhysicalControll carController;
         void Start()
         {
             movementStick = GetComponent<TouchStickControl>();
