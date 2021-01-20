@@ -17,13 +17,17 @@ namespace Flatout
 
         public bool IsMoving { get; private set; }
 
+        public void Init(CarTier car) {
+            rotateSpeed = car.RotationSpeed;
+            boostForce = car.BoosterForce;
+            MoveSpeed = car.MovingSpeed;
+        }
+
         private void Awake()
         {
             carRigidbody = GetComponent<Rigidbody>();
             runStick = FindObjectOfType<TouchStickControl>();
             button = FindObjectOfType<TouchButtonControl>();
-
-            button.tag
         }
         private void Run()
         {
@@ -36,8 +40,6 @@ namespace Flatout
             Vector3 runDirection = new Vector3(runStick.Value.x, 0, runStick.Value.y);
             if (runDirection.magnitude > runStick.lowerDeadZone)
             {
-                runDirection.Normalize();
-
                 carRigidbody.velocity = MoveSpeed * runDirection;
                 carRigidbody.rotation =
                     Quaternion.Lerp(carRigidbody.rotation, Quaternion.LookRotation(runDirection),
