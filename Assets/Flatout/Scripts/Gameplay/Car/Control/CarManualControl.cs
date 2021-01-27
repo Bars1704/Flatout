@@ -1,23 +1,46 @@
 ﻿using InControl;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Flatout
 {
+    /// <summary>
+    /// Управление машинкой
+    /// </summary>
     [RequireComponent(typeof(Rigidbody))]
     public class CarManualControl : MonoBehaviour
     {
-        [SerializeField] private float rotateSpeed;
-        [SerializeField] private float boostForce = 100;
-        [SerializeField] private float MoveSpeed;
+        /// <summary>
+        /// Скорость поворота
+        /// </summary>
+        [SerializeField, Tooltip("Скорость поворота")] private float rotateSpeed;
+        /// <summary>
+        /// Сила ускорения
+        /// </summary>
+        [SerializeField, Tooltip("Сила ускорения")] private float boostForce = 100;
+        /// <summary>
+        /// Скорость движения
+        /// </summary>
+        [SerializeField, Tooltip("Скорость движения")] private float MoveSpeed;
+        /// <summary>
+        ///  <see cref="Rigidbody"/> компонент управляемой машинки
+        /// </summary>
         private Rigidbody carRigidbody;
+        /// <summary>
+        /// Джойстик управления
+        /// </summary>
         private TouchStickControl runStick;
-        private TouchButtonControl button;
 
+        /// <summary>
+        /// Движется ли машинка в данный момент
+        /// </summary>
         public bool IsMoving { get; private set; }
 
-        public void Init(CarTier car) {
+        /// <summary>
+        /// Инициализация компонента
+        /// </summary>
+        /// <param name="car">Конфиг, хранящий в себе параметры машинки</param>
+        public void Init(CarTier car)
+        {
             rotateSpeed = car.RotationSpeed;
             boostForce = car.BoosterForce;
             MoveSpeed = car.MovingSpeed;
@@ -27,8 +50,10 @@ namespace Flatout
         {
             carRigidbody = GetComponent<Rigidbody>();
             runStick = FindObjectOfType<TouchStickControl>();
-            button = FindObjectOfType<TouchButtonControl>();
         }
+        /// <summary>
+        /// Движение 
+        /// </summary>
         private void Run()
         {
             if (!runStick.IsActive)
@@ -38,20 +63,18 @@ namespace Flatout
             }
 
             Vector3 runDirection = new Vector3(runStick.Value.x, 0, runStick.Value.y);
-            if (runDirection.magnitude > runStick.lowerDeadZone)
-            {
-                carRigidbody.velocity = MoveSpeed * runDirection;
-                carRigidbody.rotation =
-                    Quaternion.Lerp(carRigidbody.rotation, Quaternion.LookRotation(runDirection),
-                        rotateSpeed);
 
-                IsMoving = true;
-            }
-            else
+            if (runDirection.magnitude <= runStick.lowerDeadZone)
             {
                 ResetVelocity();
+                return;
             }
 
+            carRigidbody.velocity = MoveSpeed * runDirection;
+            carRigidbody.rotation =
+                Quaternion.Lerp(carRigidbody.rotation, Quaternion.LookRotation(runDirection),
+                    rotateSpeed);
+            IsMoving = true;
         }
 
         private void FixedUpdate()
@@ -68,12 +91,17 @@ namespace Flatout
         }
 #endif
 
-
+        /// <summary>
+        /// Ускорение машинки
+        /// </summary>
         public void Boost()
         {
             carRigidbody.AddForce(transform.forward * boostForce);
         }
 
+        /// <summary>
+        /// "Откат" скорости машинки
+        /// </summary>
         private void ResetVelocity()
         {
             IsMoving = false;

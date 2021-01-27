@@ -4,14 +4,20 @@ using UnityEngine;
 
 namespace Flatout
 {
+    /// <summary>
+    /// UI-компонент кастомизации машинки
+    /// </summary>
     public class CarCastomization : MonoBehaviour
     {
         void Start()
         {
-            var actualCar = GlobalSettings.Instance.LevelsSettings.GetActualCar(PlayerAvatar.Instance.Level);
+            var actualCar = PlayerAvatar.Instance.ActualCar;
             SpawnCar(actualCar.CarPrefab);
         }
-
+        /// <summary>
+        /// Спавнит на сцене "пустышку" машинки
+        /// </summary>
+        /// <param name="carPrefab">префаб машинки</param>
         void SpawnCar(GameObject carPrefab)
         {
             var carInstance = Instantiate(carPrefab, transform);

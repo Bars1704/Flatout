@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Flatout
 {
+    /// <summary>
+    /// Хранит в себе точки спавна машинок
+    /// </summary>
     public class SpawnPoint : MonoBehaviour
     {
         private void OnDrawGizmos()

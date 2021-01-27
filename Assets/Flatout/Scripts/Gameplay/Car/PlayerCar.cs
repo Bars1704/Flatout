@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Flatout
 {
+    /// <summary>
+    /// Машинка игрока
+    /// </summary>
     public class PlayerCar : CarBase
     {
 

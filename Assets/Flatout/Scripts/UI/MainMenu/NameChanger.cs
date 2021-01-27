@@ -3,18 +3,26 @@ using UnityEngine.UI;
 
 namespace Flatout
 {
+    /// <summary>
+    /// Компонент смены никнейма игрока
+    /// </summary>
     [RequireComponent(typeof(InputField))]
     public class NameChanger : MonoBehaviour
     {
+        /// <summary>
+        /// Поле ввода имени
+        /// </summary>
         private InputField inputField;
-        private PlayerAvatar playerAvatar;
         private void Start()
         {
-            playerAvatar = PlayerAvatar.Instance;
             inputField = GetComponent<InputField>();
-            inputField.text = playerAvatar.Nickname;
+            inputField.text = PlayerAvatar.Instance.Nickname;
         }
+        /// <summary>
+        /// Смена никнейма
+        /// </summary>
+        /// <param name="newName">Новый никнейм</param>
         public void ChangeName(string newName)
-        => playerAvatar.SetNickName(newName);
+        => PlayerAvatar.Instance.SetNickName(newName);
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Flatout
 {
+    /// <summary>
+    /// Машинка-бот
+    /// </summary>
     public class BotCar : CarBase
     {
 
