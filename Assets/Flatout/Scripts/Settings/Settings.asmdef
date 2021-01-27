@@ -1,0 +1,16 @@
+{
+    "name": "Settings",
+    "references": [
+        "GUID:b2723fb65260714498a6237cc3a26f8b",
+        "GUID:50f62baf6a12ff24288dbd169135a507"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
