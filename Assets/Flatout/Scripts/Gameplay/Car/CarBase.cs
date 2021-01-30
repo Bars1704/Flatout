@@ -106,6 +106,8 @@ namespace Flatout
             var nickNameComponent = Instantiate(GlobalSettings.Instance.NickNamePrefab).GetComponent<NameBar>();
             nickNameComponent.Target = transform;
             nickNameComponent.NickName = GetCarNickName();
+            OnDeath += (x) => Destroy(nickNameComponent.gameObject);
+
         }
         /// <summary>
         /// Спавнит UI-хелсбар
@@ -115,6 +117,7 @@ namespace Flatout
             var healtBar = Instantiate(GlobalSettings.Instance.HealthBarPrefab).GetComponent<HealhBar>();
             healtBar.Target = transform;
             OnHealthChanged += healtBar.ShowHealth;
+            OnDeath += (x) => Destroy(healtBar.gameObject);
         }
         /// <summary>
         /// Возвращает никнейм машинки
@@ -129,7 +132,7 @@ namespace Flatout
             OnDeath?.Invoke(this);
             transform.rotation = Quaternion.identity;
             GetComponentInChildren<Animator>().SetTrigger("Death");
-           // GetComponentsInChildren<Collider>().ToList().ForEach(x => x.enabled = false);
+            GetComponentsInChildren<Collider>().ToList().ForEach(x => x.gameObject.layer = 9);
         }
         /// <summary>
         /// Пытается взять заданное количество заряда ускорения
