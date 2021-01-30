@@ -44,7 +44,7 @@ namespace Flatout
             transform.SetParent(canvas.transform);
             canvasRect = canvas.GetComponent<RectTransform>();
         }
-        void Update()
+        void LateUpdate()
         {
             SetPosition();
         }
