@@ -55,6 +55,7 @@ namespace Flatout
             {
                 damageZone.OnTriggered += DamageOtherCar;
             }
+            SpawnFloatingNickName();
         }
         /// <summary>
         /// Нанесение урона другой машинке
@@ -81,6 +82,20 @@ namespace Flatout
                 KillImmediately();
             }
         }
+        /// <summary>
+        /// Спавнит UI-обьект с ником
+        /// </summary>
+        private void SpawnFloatingNickName()
+        {
+            var x = Instantiate(GlobalSettings.Instance.NickNamePrefab).GetComponent<NameBar>();
+            x.Target = transform;
+            x.NickName = GetCarNickName();
+        }
+        /// <summary>
+        /// Возвращает никнейм машинки
+        /// </summary>
+        /// <returns>Никнейм</returns>
+        protected abstract string GetCarNickName();
         /// <summary>
         /// Смерть
         /// </summary>

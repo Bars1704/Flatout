@@ -9,6 +9,7 @@ namespace Flatout
     /// </summary>
     public class PlayerCar : CarBase
     {
-
+        protected override string GetCarNickName()
+        => PlayerAvatar.Instance.Nickname;
     }
 }

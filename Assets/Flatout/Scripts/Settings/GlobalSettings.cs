@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Gamebase.Miscellaneous;
 using Sirenix.OdinInspector;
 
@@ -12,5 +10,6 @@ namespace Flatout
         [ShowInInspector]
         public string DefaultNickName = "New Car";
         public LevelSettings LevelsSettings;
+        public GameObject NickNamePrefab;
     }
 }

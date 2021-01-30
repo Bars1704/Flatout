@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultNickName: New Car
   LevelsSettings: {fileID: 11400000, guid: 93322e47d69b0d846ba2dedc00bd0df1, type: 2}
+  NickNamePrefab: {fileID: 5161047627851521542, guid: 4ff8be33272d8e741af889553668fa8b,
+    type: 3}

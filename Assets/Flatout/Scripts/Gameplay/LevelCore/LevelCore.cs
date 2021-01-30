@@ -52,7 +52,7 @@ namespace Flatout
             var playerCarGameObj = Instantiate(PlayerCarTier.CarPrefab, spawnPoint);
             PlayerCar = playerCarGameObj.AddComponent<PlayerCar>();
             PlayerCar.Init(PlayerCarTier, playerCarGameObj);
-            PlayerCar.OnDeath += RegisterDeath;
+            PlayerCar.OnDeath += (x) => LoseMatch();
             var carController = playerCarGameObj.AddComponent<CarManualControl>();
             carController.Init(PlayerCarTier);
         }
@@ -68,13 +68,13 @@ namespace Flatout
         /// Отметка смерти машинки
         /// </summary>
         /// <param name="Car">Управляющий компонент машинки, которая умерла</param>
-        void RegisterDeath(CarBase Car)
+        void RegisterBotDeath(CarBase Car)
         {
             if (Car == PlayerCar)
                 LoseMatch();
             else
             {
-                BotCars.Remove(Car as BotCar);
+                BotCars.Remove(BotCars.Find(x=>x==Car));
                 if (BotCars.Count == 0)
                     WinMatch();
             }
@@ -90,6 +90,7 @@ namespace Flatout
                 var BotGO = Instantiate(PlayerCarTier.CarPrefab, spawnpoint);
                 var BotBase = BotGO.AddComponent<BotCar>();
                 BotBase.Init(PlayerCarTier, BotGO);
+                BotBase.OnDeath += RegisterBotDeath;
                 BotCars.Add(BotBase);
             }
         }

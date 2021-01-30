@@ -9,6 +9,9 @@ namespace Flatout
     /// </summary>
     public class BotCar : CarBase
     {
-
+        protected override string GetCarNickName()
+        {
+            return Random.value.ToString();
+        }
     }
 }
