@@ -16,7 +16,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 1e03553f5e66736408de4296d86ab78d, type: 2}
+    - {fileID: 11400000, guid: 39a7c39588be3ca40b228b080563d31a, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -24,8 +24,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: LevelForOpeningCar
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[CarTier,
-        Scripts]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[Flatout.CarTier,
+        Settings]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,

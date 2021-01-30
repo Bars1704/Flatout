@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80b854e5479354e459ed367cae77e2ed, type: 3}
-  m_Name: Tier1
+  m_Name: 2_Pickup
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -24,7 +24,7 @@ MonoBehaviour:
     - Name: CarColors
       Entry: 6
       Data: 
-  CarPrefab: {fileID: 7433085466949146921, guid: fdc4bca6ddebf2546bcaf4700236bf96,
+  CarPrefab: {fileID: 2351834167008189893, guid: c740228e8c5273a40828f83817191f37,
     type: 3}
   MovingSpeed: 10
   RotationSpeed: 0.5

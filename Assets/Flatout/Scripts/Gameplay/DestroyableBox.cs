@@ -15,7 +15,8 @@ namespace Flatout
         {
             if (collision.relativeVelocity.sqrMagnitude >= breakMinSpeed)
             {
-                Destroy(gameObject);
+                GetComponent<Animator>().SetTrigger("OnDestroy");
+                GetComponent<Collider>().enabled = false;
             }
         }
     }
