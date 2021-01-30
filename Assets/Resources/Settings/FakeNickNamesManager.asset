@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5697e9ec5e83e438f570fae27c846c, type: 3}
+  m_Name: FakeNickNamesManager
+  m_EditorClassIdentifier: 
+  NickNamesFile: {fileID: 4900000, guid: ee7ed18785398ff4694c0e9e147cbb4e, type: 3}

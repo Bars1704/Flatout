@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 using Gamebase.Miscellaneous;
-using UnityEngine.SceneManagement;
 
 namespace Flatout
 {
-    [CreateAssetMenu(fileName = "Level List", menuName = "Flatout/Static/Leve List")]
+    [CreateAssetMenu(fileName = "Level List", menuName = "Flatout/Static/Level List")]
     public class LevelList : StaticScriptableObject<LevelList>
     {
         [SerializeField] List<SceneReference> Levels;

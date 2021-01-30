@@ -18,3 +18,4 @@ MonoBehaviour:
     type: 3}
   HealthBarPrefab: {fileID: 5730715387617205864, guid: bc5a6696edaa4454ebdc4f845e3f9e28,
     type: 3}
+  NickNames: {fileID: 4900000, guid: ee7ed18785398ff4694c0e9e147cbb4e, type: 3}

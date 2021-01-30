@@ -11,7 +11,7 @@ namespace Flatout
     {
         protected override string GetCarNickName()
         {
-            return Random.value.ToString();
+            return FakeNicknamesManager.Instance.GetNickName();
         }
     }
 }

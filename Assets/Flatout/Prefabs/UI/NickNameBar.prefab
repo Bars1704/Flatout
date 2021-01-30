@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5161047627851521539}
   - component: {fileID: 5161047627851521540}
   m_Layer: 5
-  m_Name: NicnNameBar
+  m_Name: NickNameBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5161047627851521538
 CanvasRenderer:
@@ -72,7 +72,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -91,4 +91,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f86ecd007a4514daf5add0fb5d6c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NickName: 
+  Target: {fileID: 0}

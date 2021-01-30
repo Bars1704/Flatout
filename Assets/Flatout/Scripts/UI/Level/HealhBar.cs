@@ -11,6 +11,7 @@ namespace Flatout
         Image healtBarFillerSprite;
         private void Start()
         {
+            offset = new Vector2(0, 50);
             InitFollower();
             healtBarFillerSprite = transform.GetChild(0).GetComponent<Image>();
         }

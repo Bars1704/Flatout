@@ -12,7 +12,7 @@ namespace Flatout
         /// <summary>
         /// Точки спавна игроков
         /// </summary>
-        [SerializeField,Tooltip("Точки спавна игроков")] Transform SpawnpointsParent;
+        [SerializeField, Tooltip("Точки спавна игроков")] Transform SpawnpointsParent;
         /// <summary>
         /// Компонент машинки игрока
         /// </summary>
@@ -52,9 +52,10 @@ namespace Flatout
             var playerCarGameObj = Instantiate(PlayerCarTier.CarPrefab, spawnPoint);
             PlayerCar = playerCarGameObj.AddComponent<PlayerCar>();
             PlayerCar.Init(PlayerCarTier, playerCarGameObj);
-            PlayerCar.OnDeath += (x) => LoseMatch();
+            PlayerCar.OnDeath += x => LoseMatch();
             var carController = playerCarGameObj.AddComponent<CarManualControl>();
             carController.Init(PlayerCarTier);
+            PlayerCar.OnDeath += x => carController.enabled = false;
         }
         /// <summary>
         /// Победа игрока
@@ -74,7 +75,7 @@ namespace Flatout
                 LoseMatch();
             else
             {
-                BotCars.Remove(BotCars.Find(x=>x==Car));
+                BotCars.Remove(BotCars.Find(x => x == Car));
                 if (BotCars.Count == 0)
                     WinMatch();
             }
@@ -93,6 +94,7 @@ namespace Flatout
                 BotBase.OnDeath += RegisterBotDeath;
                 BotCars.Add(BotBase);
             }
+            FakeNicknamesManager.Instance.FLushMemory();
         }
     }
 }
