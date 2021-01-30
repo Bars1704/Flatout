@@ -21,10 +21,10 @@ namespace Flatout
         }
 
         Text thisText;
-        private new void Start()
+        private void Start()
         {
             thisText = GetComponent<Text>();
-            base.Start();
+            InitFollower();
         }
     }
 }

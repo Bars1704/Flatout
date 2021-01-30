@@ -30,7 +30,14 @@ namespace Flatout
         ///  <see cref="RectTransform"/> компонент основного канваса
         /// </summary>
         private RectTransform canvasRect;
-        protected void Start()
+        private void Start()
+        {
+            InitFollower();
+        }
+        /// <summary>
+        /// Инициализация
+        /// </summary>
+        protected void InitFollower()
         {
             mainCamera = Camera.main;
             canvas = UIFollowersCanvas.Instance.FollowersCancas;

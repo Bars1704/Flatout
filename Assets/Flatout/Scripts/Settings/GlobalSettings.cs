@@ -11,5 +11,6 @@ namespace Flatout
         public string DefaultNickName = "New Car";
         public LevelSettings LevelsSettings;
         public GameObject NickNamePrefab;
+        public GameObject HealthBarPrefab;
     }
 }

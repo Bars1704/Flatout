@@ -10,6 +10,7 @@ namespace Flatout
     /// </summary>
     public abstract class CarBase : MonoBehaviour
     {
+        private int _health;
         /// <summary>
         /// Максимальное количествово здоровья
         /// </summary>
@@ -17,7 +18,15 @@ namespace Flatout
         /// <summary>
         /// Текущее количествово здоровья
         /// </summary>
-        int Health;
+        public int Health
+        {
+            get => _health;
+            set
+            {
+                _health = value;
+                OnHealthChanged?.Invoke(Health, MaxHealth);
+            }
+        }
         /// <summary>
         /// Максимальное количество заряда бустера
         /// </summary>
@@ -39,6 +48,11 @@ namespace Flatout
         /// </summary>
         public Action<CarBase> OnDeath;
         /// <summary>
+        /// Событие изменения здоровья машинки
+        /// Первый параметр - количество здоровья, второй - максимальное здоровье
+        /// </summary>
+        public Action<int, int> OnHealthChanged;
+        /// <summary>
         /// Инициализация машинки
         /// </summary>
         /// <param name="carTier">Конфигурация машинки - отсюда берутся все ее стартовые характеристики</param>
@@ -56,6 +70,7 @@ namespace Flatout
                 damageZone.OnTriggered += DamageOtherCar;
             }
             SpawnFloatingNickName();
+            SpawnHealtBar();
         }
         /// <summary>
         /// Нанесение урона другой машинке
@@ -87,9 +102,18 @@ namespace Flatout
         /// </summary>
         private void SpawnFloatingNickName()
         {
-            var x = Instantiate(GlobalSettings.Instance.NickNamePrefab).GetComponent<NameBar>();
-            x.Target = transform;
-            x.NickName = GetCarNickName();
+            var nickNameComponent = Instantiate(GlobalSettings.Instance.NickNamePrefab).GetComponent<NameBar>();
+            nickNameComponent.Target = transform;
+            nickNameComponent.NickName = GetCarNickName();
+        }
+        /// <summary>
+        /// Спавнит UI-хелсбар
+        /// </summary>
+        private void SpawnHealtBar()
+        {
+            var healtBar = Instantiate(GlobalSettings.Instance.HealthBarPrefab).GetComponent<HealhBar>();
+            healtBar.Target = transform;
+            OnHealthChanged += healtBar.ShowHealth;
         }
         /// <summary>
         /// Возвращает никнейм машинки
