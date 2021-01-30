@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Flatout
@@ -126,7 +127,9 @@ namespace Flatout
         public void KillImmediately()
         {
             OnDeath?.Invoke(this);
+            transform.rotation = Quaternion.identity;
             GetComponentInChildren<Animator>().SetTrigger("Death");
+           // GetComponentsInChildren<Collider>().ToList().ForEach(x => x.enabled = false);
         }
         /// <summary>
         /// Пытается взять заданное количество заряда ускорения
