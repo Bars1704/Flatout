@@ -9,7 +9,7 @@ namespace Flatout
     /// </summary>
     public class BotCar : CarBase
     {
-        protected override string GetCarNickName()
+        public override string GetCarNickName()
         {
             return FakeNicknamesManager.Instance.GetNickName();
         }

@@ -54,8 +54,11 @@ namespace Flatout
             PlayerCar.Init(PlayerCarTier, playerCarGameObj);
             PlayerCar.OnDeath += x => LoseMatch();
             var carController = playerCarGameObj.AddComponent<CarManualControl>();
-            carController.Init(PlayerCarTier);
+            carController.Init(PlayerCarTier,PlayerCar);
             PlayerCar.OnDeath += x => carController.enabled = false;
+            SpawnFloatingNickName(PlayerCar);
+            SpawnHealthBar(PlayerCar);
+            FindObjectOfType<BoosterButton>().carControl = carController;
         }
         /// <summary>
         /// Победа игрока
@@ -69,6 +72,7 @@ namespace Flatout
         /// Отметка смерти машинки
         /// </summary>
         /// <param name="Car">Управляющий компонент машинки, которая умерла</param>
+        /// 
         void RegisterBotDeath(CarBase Car)
         {
             if (Car == PlayerCar)
@@ -80,6 +84,30 @@ namespace Flatout
                     WinMatch();
             }
         }
+
+
+        /// <summary>
+        /// Спавнит UI-обьект с ником
+        /// </summary>
+        private void SpawnFloatingNickName(CarBase car)
+        {
+            var nickNameComponent = Instantiate(GlobalSettings.Instance.NickNamePrefab).GetComponent<NameBar>();
+            nickNameComponent.Target = car.transform;
+            nickNameComponent.NickName = car.GetCarNickName();
+            car.OnDeath += (x) => Destroy(nickNameComponent.gameObject);
+
+        }
+        /// <summary>
+        /// Спавнит UI-хелсбар
+        /// </summary>
+        private void SpawnHealthBar(CarBase car)
+        {
+            var healtBar = Instantiate(GlobalSettings.Instance.HealthBarPrefab).GetComponent<HealhBar>();
+            healtBar.Target = car.transform;
+            car.OnHealthChanged += healtBar.ShowHealth;
+            car.OnDeath += (x) => Destroy(healtBar.gameObject);
+        }
+
         /// <summary>
         /// Спавнит машинок-ботов
         /// </summary>
@@ -93,6 +121,8 @@ namespace Flatout
                 BotBase.Init(PlayerCarTier, BotGO);
                 BotBase.OnDeath += RegisterBotDeath;
                 BotCars.Add(BotBase);
+                SpawnFloatingNickName(BotBase);
+                SpawnHealthBar(BotBase);
             }
             FakeNicknamesManager.Instance.FLushMemory();
         }

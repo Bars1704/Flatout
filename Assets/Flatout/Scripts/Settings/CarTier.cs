@@ -16,6 +16,7 @@ namespace Flatout
         public float RotationSpeed;
         public float BoosterAmount;
         public float BoosterForce;
+        public float BoosterTake;
         public int MaxHealth;
         public int Damage;
     }

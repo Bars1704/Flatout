@@ -9,18 +9,7 @@ namespace Flatout
     [RequireComponent(typeof(Rigidbody))]
     public class CarManualControl : MonoBehaviour
     {
-        /// <summary>
-        /// Скорость поворота
-        /// </summary>
-        [SerializeField, Tooltip("Скорость поворота")] private float rotateSpeed;
-        /// <summary>
-        /// Сила ускорения
-        /// </summary>
-        [SerializeField, Tooltip("Сила ускорения")] private float boostForce = 100;
-        /// <summary>
-        /// Скорость движения
-        /// </summary>
-        [SerializeField, Tooltip("Скорость движения")] private float MoveSpeed;
+        private CarTier controlCarTier;
         /// <summary>
         ///  <see cref="Rigidbody"/> компонент управляемой машинки
         /// </summary>
@@ -30,20 +19,22 @@ namespace Flatout
         /// </summary>
         private TouchStickControl runStick;
 
+        private CarBase car;
         /// <summary>
         /// Движется ли машинка в данный момент
         /// </summary>
         public bool IsMoving { get; private set; }
 
+        private CarBase carBase;
+
         /// <summary>
         /// Инициализация компонента
         /// </summary>
-        /// <param name="car">Конфиг, хранящий в себе параметры машинки</param>
-        public void Init(CarTier car)
+        /// <param name="carTier">Конфиг, хранящий в себе параметры машинки</param>
+        public void Init(CarTier carTier, CarBase carBase)
         {
-            rotateSpeed = car.RotationSpeed;
-            boostForce = car.BoosterForce;
-            MoveSpeed = car.MovingSpeed;
+            controlCarTier = carTier;
+            this.carBase = carBase;
         }
 
         private void Awake()
@@ -70,10 +61,10 @@ namespace Flatout
                 return;
             }
 
-            carRigidbody.velocity = MoveSpeed * runDirection;
+            carRigidbody.velocity = controlCarTier.MovingSpeed * runDirection;
             carRigidbody.rotation =
                 Quaternion.Lerp(carRigidbody.rotation, Quaternion.LookRotation(runDirection),
-                    rotateSpeed);
+                    controlCarTier.RotationSpeed);
             IsMoving = true;
         }
 
@@ -90,12 +81,13 @@ namespace Flatout
             }
         }
 #endif
-
         /// <summary>
         /// Ускорение машинки
         /// </summary>
         public void Boost()
         {
+            float availableBooster = carBase.TakeBooster(controlCarTier.BoosterTake) / controlCarTier.BoosterTake;
+            float boostForce = availableBooster * controlCarTier.BoosterForce;
             carRigidbody.AddForce(transform.forward * boostForce);
         }
 

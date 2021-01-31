@@ -16,7 +16,7 @@ namespace Flatout
             cineMachine.Follow = transform;
             cineMachine.LookAt = transform;
         }
-        protected override string GetCarNickName()
+        public override string GetCarNickName()
         => PlayerAvatar.Instance.Nickname;
     }
 }

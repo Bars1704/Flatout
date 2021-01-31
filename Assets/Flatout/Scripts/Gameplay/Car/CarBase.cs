@@ -70,8 +70,6 @@ namespace Flatout
             {
                 damageZone.OnTriggered += DamageOtherCar;
             }
-            SpawnFloatingNickName();
-            SpawnHealtBar();
         }
         /// <summary>
         /// Нанесение урона другой машинке
@@ -99,31 +97,10 @@ namespace Flatout
             }
         }
         /// <summary>
-        /// Спавнит UI-обьект с ником
-        /// </summary>
-        private void SpawnFloatingNickName()
-        {
-            var nickNameComponent = Instantiate(GlobalSettings.Instance.NickNamePrefab).GetComponent<NameBar>();
-            nickNameComponent.Target = transform;
-            nickNameComponent.NickName = GetCarNickName();
-            OnDeath += (x) => Destroy(nickNameComponent.gameObject);
-
-        }
-        /// <summary>
-        /// Спавнит UI-хелсбар
-        /// </summary>
-        private void SpawnHealtBar()
-        {
-            var healtBar = Instantiate(GlobalSettings.Instance.HealthBarPrefab).GetComponent<HealhBar>();
-            healtBar.Target = transform;
-            OnHealthChanged += healtBar.ShowHealth;
-            OnDeath += (x) => Destroy(healtBar.gameObject);
-        }
-        /// <summary>
         /// Возвращает никнейм машинки
         /// </summary>
         /// <returns>Никнейм</returns>
-        protected abstract string GetCarNickName();
+        public abstract string GetCarNickName();
         /// <summary>
         /// Смерть
         /// </summary>

@@ -29,6 +29,7 @@ MonoBehaviour:
   MovingSpeed: 10
   RotationSpeed: 0.5
   BoosterAmount: 100
-  BoosterForce: 100
+  BoosterForce: 10000
+  BoosterTake: 1
   MaxHealth: 30
   Damage: 10
