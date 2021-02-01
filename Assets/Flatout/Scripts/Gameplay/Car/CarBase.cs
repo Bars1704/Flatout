@@ -70,6 +70,7 @@ namespace Flatout
             {
                 damageZone.OnTriggered += DamageOtherCar;
             }
+            SetCarSkin(GetCarColor(carTier));
         }
         /// <summary>
         /// Нанесение урона другой машинке
@@ -101,6 +102,26 @@ namespace Flatout
         /// </summary>
         /// <returns>Никнейм</returns>
         public abstract string GetCarNickName();
+
+        /// <summary>
+        /// Возвращает текстуру-скин машинки
+        /// </summary>
+        /// <returns>Скин машинки</returns>
+        public abstract Texture GetCarColor(CarTier carTier);
+
+        /// <summary>
+        /// Красит машинку в нужный скин
+        /// </summary>
+        /// <param name="texture">Текстура скина</param>
+        void SetCarSkin(Texture texture)
+        {
+            foreach (var renderer in GameObj.GetComponentsInChildren<Renderer>())
+            {
+                if (renderer.gameObject.name.ToLower().Contains("wheel")) continue;
+                renderer.material.SetTexture(1, texture);
+            }
+        }
+
         /// <summary>
         /// Смерть
         /// </summary>

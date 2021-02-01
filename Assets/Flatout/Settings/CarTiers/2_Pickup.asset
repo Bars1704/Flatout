@@ -15,21 +15,122 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 2800000, guid: fd2d49fa960d017479d8bc7f547321b3, type: 3}
+    - {fileID: 21300000, guid: 275423b0de6772a4db43dd787e7f6175, type: 3}
+    - {fileID: 2800000, guid: f14a9f85acbda0f45afecc9cbc912d0c, type: 3}
+    - {fileID: 21300000, guid: 432f62eb8c434b941874cf02a094338f, type: 3}
+    - {fileID: 2800000, guid: 76d667a12c03c9941b5b5d1207ae8737, type: 3}
+    - {fileID: 21300000, guid: e04f7b6fefb01574ab4aa8e3c78643b9, type: 3}
+    - {fileID: 2800000, guid: 0e13822c24c439b4aae17889187630ba, type: 3}
+    - {fileID: 21300000, guid: bac772193aed7284da468ac13692429a, type: 3}
+    - {fileID: 2800000, guid: c20dce541af02d14f8bd88650072cf04, type: 3}
+    - {fileID: 21300000, guid: 275a7c49690a945468613b30e1a01896, type: 3}
+    - {fileID: 2800000, guid: 17551b21872aa4d4b90d0bb9481fdbe8, type: 3}
+    - {fileID: 21300000, guid: fde266cc42700f749be7c7f8495482fb, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: CarColors
-      Entry: 6
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Texture, UnityEngine.CoreModule],[UnityEngine.Sprite,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[UnityEngine.Texture,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 4
+    - Name: $v
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 6
+    - Name: $v
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 8
+    - Name: $v
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 10
+    - Name: $v
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
   CarPrefab: {fileID: 2351834167008189893, guid: c740228e8c5273a40828f83817191f37,
     type: 3}
   MovingSpeed: 10
   RotationSpeed: 0.5
   BoosterAmount: 100
-  BoosterForce: 10000
+  BoosterForce: 3000
   BoosterTake: 1
   MaxHealth: 100
   Damage: 10

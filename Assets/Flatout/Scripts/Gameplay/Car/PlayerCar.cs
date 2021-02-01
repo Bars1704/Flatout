@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using System.Linq;
+
 namespace Flatout
 {
     /// <summary>
@@ -18,5 +20,12 @@ namespace Flatout
         }
         public override string GetCarNickName()
         => PlayerAvatar.Instance.Nickname;
+
+        public override Texture GetCarColor(CarTier carTier)
+        {
+            var textureName = PlayerPrefs.GetString("CarColor");
+            var actualTexture = carTier.CarColors.FirstOrDefault(x => x.Key.name == textureName);
+            return actualTexture.Key ?? carTier.CarColors.First().Key;
+        }
     }
 }
