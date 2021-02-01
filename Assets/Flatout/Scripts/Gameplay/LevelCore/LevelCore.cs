@@ -65,11 +65,17 @@ namespace Flatout
         /// <summary>
         /// Победа игрока
         /// </summary>
-        void WinMatch() { Debug.Log("Win"); }
+        void WinMatch() {
+            DebriefingPanel.Instance.Show();
+            Debug.Log("Win");
+        }
         /// <summary>
         /// Поражение игрока
         /// </summary>
-        void LoseMatch() { Debug.Log("Lose"); }
+        void LoseMatch() {
+            DebriefingPanel.Instance.Show();
+            Debug.Log("Lose");
+        }
         /// <summary>
         /// Отметка смерти машинки
         /// </summary>

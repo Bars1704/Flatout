@@ -72,6 +72,10 @@ namespace Flatout
         /// </summary>
         /// <param name="carTier">Конфигурация машинки - отсюда берутся все ее стартовые характеристики</param>
         /// <param name="gameObj"><see cref="GameObject"/> компонент машинки</param>
+
+        public int BoxesCrashed { get; private set; }
+        public int CarsCrashed { get; private set; }
+        public int XP { get; private set; }
         public void Init(CarTier carTier, GameObject gameObj)
         {
             MaxHealth = carTier.MaxHealth;
@@ -97,18 +101,18 @@ namespace Flatout
         /// <param name="otherCar">Управляющий компонент машинки</param>
         void DamageOtherCar(CarBase otherCar)
         {
-            otherCar?.TakeDamage(collisionDamage);
+            otherCar?.TakeDamage(collisionDamage, GameObj);
         }
         /// <summary>
         /// Получение урона
         /// </summary>
         /// <param name="damage">Количество полученного урона</param>
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, GameObject damager)
         {
             Health = Mathf.Max(0, Health - damage);
             if (Health == 0)
             {
-                KillImmediately();
+                KillImmediately(damager);
             }
         }
         /// <summary>
@@ -139,13 +143,28 @@ namespace Flatout
         /// <summary>
         /// Смерть
         /// </summary>
-        public void KillImmediately()
+        public void KillImmediately(GameObject killer)
         {
             OnDeath?.Invoke(this);
             transform.rotation = Quaternion.identity;
             GetComponentInChildren<Animator>().SetTrigger("Death");
             GetComponentsInChildren<Collider>().ToList().ForEach(x => x.gameObject.layer = 9);
+            CarBase CarKiller;
+            if (killer.TryGetComponent<CarBase>(out CarKiller))
+            {
+                CarKiller.CarCrashed();
+            }
         }
+
+        public void CarCrashed()
+        {
+            CarsCrashed++;
+        }
+        public void BoxCrashed()
+        {
+            BoxesCrashed++;
+        }
+
         /// <summary>
         /// Пытается взять заданное количество заряда ускорения
         /// </summary>

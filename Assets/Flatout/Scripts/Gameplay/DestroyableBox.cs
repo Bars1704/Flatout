@@ -17,6 +17,11 @@ namespace Flatout
             {
                 GetComponent<Animator>().SetTrigger("OnDestroy");
                 GetComponent<Collider>().enabled = false;
+                CarBase car;
+                if(collision.gameObject.TryGetComponent<CarBase>(out car))
+                {
+                    car.BoxCrashed();
+                }
             }
         }
     }

@@ -11,9 +11,10 @@ namespace Flatout
     /// </summary>
     public class PlayerCar : CarBase
     {
-
+        public static PlayerCar Instance;
         private void Start()
         {
+            Instance = this;
             var cineMachine = FindObjectOfType<CinemachineVirtualCamera>();
             cineMachine.Follow = transform;
             cineMachine.LookAt = transform;
