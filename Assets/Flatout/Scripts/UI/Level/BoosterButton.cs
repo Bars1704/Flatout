@@ -17,6 +17,18 @@ namespace Flatout
             carControl.Boost();
             carControl.Boost();
             carControl.Boost();
+            carControl.Boost();
+            carControl.Boost();
+            carControl.Boost();
+            carControl.Boost();
+            carControl.Boost();
+            carControl.Boost(); 
+            carControl.Boost();
+            carControl.Boost();
+            carControl.Boost();
+            carControl.Boost();
+            carControl.Boost();
+            carControl.Boost();
         }
         private void FixedUpdate()
         {

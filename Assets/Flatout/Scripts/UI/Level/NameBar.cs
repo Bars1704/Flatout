@@ -23,7 +23,7 @@ namespace Flatout
         Text thisText;
         private void Start()
         {
-            offset = offset = new Vector2(0, 70);
+            offset = offset = new Vector2(0, 130);
             thisText = GetComponent<Text>();
             InitFollower();
         }

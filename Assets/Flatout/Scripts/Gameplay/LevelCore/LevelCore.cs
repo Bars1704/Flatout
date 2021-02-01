@@ -16,7 +16,7 @@ namespace Flatout
         /// <summary>
         /// Компонент машинки игрока
         /// </summary>
-        PlayerCar PlayerCar;
+        PlayerCar playerCar;
         /// <summary>
         /// Конфигурация машинки игрока
         /// </summary>
@@ -50,15 +50,17 @@ namespace Flatout
         void SpawnPlayer(Transform spawnPoint)
         {
             var playerCarGameObj = Instantiate(PlayerCarTier.CarPrefab, spawnPoint);
-            PlayerCar = playerCarGameObj.AddComponent<PlayerCar>();
-            PlayerCar.Init(PlayerCarTier, playerCarGameObj);
-            PlayerCar.OnDeath += x => LoseMatch();
+            playerCar = playerCarGameObj.AddComponent<PlayerCar>();
+            playerCar.Init(PlayerCarTier, playerCarGameObj);
+            playerCar.OnDeath += x => LoseMatch();
             var carController = playerCarGameObj.AddComponent<CarManualControl>();
-            carController.Init(PlayerCarTier,PlayerCar);
-            PlayerCar.OnDeath += x => carController.enabled = false;
-            SpawnFloatingNickName(PlayerCar);
-            SpawnHealthBar(PlayerCar);
+            carController.Init(PlayerCarTier, playerCar);
+            playerCar.OnDeath += x => carController.enabled = false;
+            SpawnFloatingNickName(playerCar);
+            SpawnHealthBar(playerCar);
             FindObjectOfType<BoosterButton>().carControl = carController;
+            var BoosterBar = FindObjectOfType<BoosterBar>();
+            playerCar.OnBoosterChanged += BoosterBar.ShowBooster;
         }
         /// <summary>
         /// Победа игрока
@@ -75,7 +77,7 @@ namespace Flatout
         /// 
         void RegisterBotDeath(CarBase Car)
         {
-            if (Car == PlayerCar)
+            if (Car == playerCar)
                 LoseMatch();
             else
             {

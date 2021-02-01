@@ -12,6 +12,7 @@ namespace Flatout
     public abstract class CarBase : MonoBehaviour
     {
         private int _health;
+        private float _booster;
         /// <summary>
         /// Максимальное количествово здоровья
         /// </summary>
@@ -19,12 +20,12 @@ namespace Flatout
         /// <summary>
         /// Текущее количествово здоровья
         /// </summary>
-        public int Health
+        int Health
         {
             get => _health;
             set
             {
-                _health = value;
+                _health = Mathf.Clamp(value, 0, MaxHealth);
                 OnHealthChanged?.Invoke(Health, MaxHealth);
             }
         }
@@ -35,7 +36,15 @@ namespace Flatout
         /// <summary>
         /// Текущий заряд бустера
         /// </summary>
-        float Booster;
+        float Booster
+        {
+            get => _booster;
+            set
+            {
+                _booster = Mathf.Clamp(value, 0, MaxBooster);
+                OnBoosterChanged?.Invoke(_booster, MaxBooster);
+            }
+        }
         /// <summary>
         /// Урон, наносимый при столкновении
         /// </summary>
@@ -53,6 +62,11 @@ namespace Flatout
         /// Первый параметр - количество здоровья, второй - максимальное здоровье
         /// </summary>
         public Action<int, int> OnHealthChanged;
+        /// <summary>
+        /// Событие изменения бустера машинки
+        /// Первый параметр - количество бустера, второй - максимальный бустер
+        /// </summary>
+        public Action<float, float> OnBoosterChanged;
         /// <summary>
         /// Инициализация машинки
         /// </summary>
@@ -139,13 +153,8 @@ namespace Flatout
         /// <returns>Количество реально взятого бустера (0 если заряд пустой)</returns>
         public float TakeBooster(float boosterAmount)
         {
-            Booster = Booster - boosterAmount;
-            var receivedBooster = boosterAmount;
-            if (Booster < 0)
-            {
-                receivedBooster += Booster;
-                Booster = 0;
-            }
+            var receivedBooster = Booster > boosterAmount ? boosterAmount : Booster;
+            Booster -= boosterAmount;
             return receivedBooster;
         }
     }
