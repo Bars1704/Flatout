@@ -33,6 +33,11 @@ namespace Flatout
         /// Никнейм
         /// </summary>
         public string Nickname { get; private set; }
+
+        /// <summary>
+        /// Текущий уровень сложности, выбранный игроком
+        /// </summary>
+        public HardnessLevel hardnessLevel { get; set; }
         /// <summary>
         /// Установка никнейма
         /// </summary>

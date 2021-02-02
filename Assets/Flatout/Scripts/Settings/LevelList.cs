@@ -7,6 +7,8 @@ namespace Flatout
     [CreateAssetMenu(fileName = "Level List", menuName = "Flatout/Static/Level List")]
     public class LevelList : StaticScriptableObject<LevelList>
     {
+        public SceneReference MainMenuScene;
+
         [SerializeField] List<SceneReference> Levels;
         public string GetRandomLevel()
         {

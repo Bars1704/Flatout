@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3a84161816a4b49886e9ff96380f17, type: 3}
   m_Name: LevelList
   m_EditorClassIdentifier: 
+  MainMenuScene:
+    sceneAsset: {fileID: 102900000, guid: 556d001f8318aba4c8bea15cae432034, type: 3}
+    scenePath: Assets/Flatout/Scenes/MainMenu.unity
   Levels:
   - sceneAsset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
     scenePath: Assets/Flatout/Scenes/SampleScene.unity

@@ -65,14 +65,17 @@ namespace Flatout
         /// <summary>
         /// Победа игрока
         /// </summary>
-        void WinMatch() {
+        void WinMatch()
+        {
             DebriefingPanel.Instance.Show();
+            playerCar.AddXP(PlayerAvatar.Instance.hardnessLevel.XPForWin);
             Debug.Log("Win");
         }
         /// <summary>
         /// Поражение игрока
         /// </summary>
-        void LoseMatch() {
+        void LoseMatch()
+        {
             DebriefingPanel.Instance.Show();
             Debug.Log("Lose");
         }

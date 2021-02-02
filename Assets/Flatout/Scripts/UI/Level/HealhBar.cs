@@ -17,6 +17,7 @@ namespace Flatout
         }
         public void ShowHealth(int health, int maxHealth)
         {
+            if(healtBarFillerSprite!=default)
             healtBarFillerSprite.fillAmount = (float)health / maxHealth;
         }
     }

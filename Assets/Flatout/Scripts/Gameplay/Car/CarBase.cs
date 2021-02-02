@@ -16,11 +16,11 @@ namespace Flatout
         /// <summary>
         /// Максимальное количествово здоровья
         /// </summary>
-        int MaxHealth;
+        protected int MaxHealth;
         /// <summary>
         /// Текущее количествово здоровья
         /// </summary>
-        int Health
+        protected int Health
         {
             get => _health;
             set
@@ -48,7 +48,12 @@ namespace Flatout
         /// <summary>
         /// Урон, наносимый при столкновении
         /// </summary>
-        int collisionDamage;
+        protected float speed;
+
+        /// <summary>
+        /// Урон, наносимый при столкновении
+        /// </summary>
+        protected int collisionDamage;
         /// <summary>
         /// <see cref="GameObject"/> компонент машинки
         /// </summary>
@@ -76,6 +81,8 @@ namespace Flatout
         public int BoxesCrashed { get; private set; }
         public int CarsCrashed { get; private set; }
         public int XP { get; private set; }
+
+        public void AddXP(int xp) => XP += xp;
         public void Init(CarTier carTier, GameObject gameObj)
         {
             MaxHealth = carTier.MaxHealth;
@@ -84,6 +91,7 @@ namespace Flatout
             Booster = MaxBooster;
             GameObj = gameObj;
             collisionDamage = carTier.Damage;
+            speed *= carTier.MovingSpeed;
             foreach (var damageZone in GetComponentsInChildren<TriggerCollider>())
             {
                 damageZone.OnTriggered += DamageOtherCar;
@@ -159,10 +167,12 @@ namespace Flatout
         public void CarCrashed()
         {
             CarsCrashed++;
+            AddXP(PlayerAvatar.Instance.hardnessLevel.XPForCarCrash);
         }
         public void BoxCrashed()
         {
             BoxesCrashed++;
+            AddXP(PlayerAvatar.Instance.hardnessLevel.XPForBoxCrash);
         }
 
         /// <summary>

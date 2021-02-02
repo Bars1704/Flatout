@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Gamebase.Miscellaneous;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 
 namespace Flatout
 {
@@ -12,5 +13,7 @@ namespace Flatout
         public LevelSettings LevelsSettings;
         public GameObject NickNamePrefab;
         public GameObject HealthBarPrefab;
+
+        public List<HardnessLevel> hardnessLevels;
     }
 }

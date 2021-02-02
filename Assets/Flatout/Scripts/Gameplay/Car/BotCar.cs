@@ -10,6 +10,15 @@ namespace Flatout
     /// </summary>
     public class BotCar : CarBase
     {
+        //TODO: вынести реализацию инициализации отдельно в каждый из классов (убрать донастройку в старте)
+        private void Start()
+        {
+            var hardnessLevel = PlayerAvatar.Instance.hardnessLevel;
+            Health = (int)(Health * hardnessLevel.BotHealthModifier);
+            MaxHealth = Health;
+            collisionDamage = (int)(collisionDamage * hardnessLevel.BotDamageModifier);
+            speed *= hardnessLevel.BotSpeedModifier;
+        }
         public override Texture GetCarColor(CarTier carTier)
         {
             return carTier.CarColors.Shuffle().First().Key;
