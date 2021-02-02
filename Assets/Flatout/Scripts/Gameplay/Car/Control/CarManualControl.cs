@@ -60,8 +60,10 @@ namespace Flatout
                 ResetVelocity();
                 return;
             }
-
-            carRigidbody.velocity = controlCarTier.MovingSpeed * runDirection;
+            //var carVelocity = controlCarTier.MovingSpeed * runDirection;
+            //carVelocity.y = carRigidbody.velocity.y;
+            //carRigidbody.velocity = carVelocity;
+            carRigidbody.AddForce(controlCarTier.MovingSpeed * transform.forward);
             carRigidbody.rotation =
                 Quaternion.Lerp(carRigidbody.rotation, Quaternion.LookRotation(runDirection),
                     controlCarTier.RotationSpeed);
