@@ -17,7 +17,6 @@ namespace Flatout
             Health = (int)(Health * hardnessLevel.BotHealthModifier);
             MaxHealth = Health;
             collisionDamage = (int)(collisionDamage * hardnessLevel.BotDamageModifier);
-            speed *= hardnessLevel.BotSpeedModifier;
         }
         public override Texture GetCarColor(CarTier carTier)
         {

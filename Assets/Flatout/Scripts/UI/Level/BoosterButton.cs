@@ -4,31 +4,16 @@ namespace Flatout
 {
     public class BoosterButton : MonoBehaviour
     {
-        public CarManualControl carControl;
+        //TODO: вынести в CarJoystickControl?
+        [HideInInspector]
+        public CarJoystickControl carControl;
 
         bool isBoosterEnabled;
         public void SetBooster(bool boosterStatus) 
             => isBoosterEnabled = boosterStatus;
         public void AddForcePuch()
         {
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost(); 
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
-            carControl.Boost();
+            carControl.DashBoost();
         }
         private void FixedUpdate()
         {

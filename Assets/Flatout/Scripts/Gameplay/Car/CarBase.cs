@@ -62,6 +62,11 @@ namespace Flatout
         /// Событие смерти машинки
         /// </summary>
         public Action<CarBase> OnDeath;
+
+        /// <summary>
+        /// Событие получения урона, аргумент - машинка, которая нанесла урон
+        /// </summary>
+        public Action<CarBase> OnGetDamaged;
         /// <summary>
         /// Событие изменения здоровья машинки
         /// Первый параметр - количество здоровья, второй - максимальное здоровье
@@ -91,7 +96,7 @@ namespace Flatout
             Booster = MaxBooster;
             GameObj = gameObj;
             collisionDamage = carTier.Damage;
-            speed *= carTier.MovingSpeed;
+            speed = carTier.MovingSpeed;
             foreach (var damageZone in GetComponentsInChildren<TriggerCollider>())
             {
                 damageZone.OnTriggered += DamageOtherCar;
@@ -119,9 +124,9 @@ namespace Flatout
         {
             Health = Mathf.Max(0, Health - damage);
             if (Health == 0)
-            {
                 KillImmediately(damager);
-            }
+            else
+                OnGetDamaged?.Invoke(damager.GetComponent<CarBase>());
         }
         /// <summary>
         /// Возвращает никнейм машинки
@@ -153,15 +158,17 @@ namespace Flatout
         /// </summary>
         public void KillImmediately(GameObject killer)
         {
-            OnDeath?.Invoke(this);
             transform.rotation = Quaternion.identity;
             GetComponentInChildren<Animator>().SetTrigger("Death");
             GetComponentsInChildren<Collider>().ToList().ForEach(x => x.gameObject.layer = 9);
+            var rb = GetComponent<Rigidbody>();
+            rb.angularVelocity = Vector3.zero;
             CarBase CarKiller;
             if (killer.TryGetComponent<CarBase>(out CarKiller))
             {
                 CarKiller.CarCrashed();
             }
+            OnDeath?.Invoke(this);
         }
 
         public void CarCrashed()

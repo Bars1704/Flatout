@@ -1,5 +1,6 @@
 ﻿using Gamebase.Miscellaneous;
 using System;
+using System.Linq;
 using UnityEngine;
 
 
@@ -81,6 +82,13 @@ namespace Flatout
             Experience = PlayerPrefs.GetInt(StringLiterals.ExperiencePref, 0);
             Level = PlayerPrefs.GetInt(StringLiterals.LevelPref, 0);
             Nickname = PlayerPrefs.GetString(StringLiterals.NickNamePref, GlobalSettings.Instance.DefaultNickName);
+
+
+            var hardnessLevelName = PlayerPrefs.GetString("HardnessLevel", string.Empty);
+
+            hardnessLevel = hardnessLevelName == string.Empty ?
+                GlobalSettings.Instance.hardnessLevels.First() :
+                GlobalSettings.Instance.hardnessLevels.FirstOrDefault(x => x.name == hardnessLevelName);
         }
     }
 }

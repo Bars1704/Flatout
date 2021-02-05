@@ -25,6 +25,10 @@ namespace Flatout
         /// Список машинок-ботов
         /// </summary>
         List<BotCar> BotCars = new List<BotCar>();
+        /// <summary>
+        /// Все машинки в сумме;
+        /// </summary>
+        List<CarBase> AllCars = new List<CarBase>();
         void Start()
         {
             SpawnCars();
@@ -40,8 +44,11 @@ namespace Flatout
                 .ToList();
             PlayerCarTier = PlayerAvatar.Instance.ActualCar;
             SpawnPlayer(spawnpoints.First());
+            AllCars.Add(playerCar);
+
             spawnpoints.RemoveAt(0);
             SpawnBots(spawnpoints);
+            AllCars.AddRange(BotCars);
         }
         /// <summary>
         /// Спавнит игрока
@@ -53,7 +60,7 @@ namespace Flatout
             playerCar = playerCarGameObj.AddComponent<PlayerCar>();
             playerCar.Init(PlayerCarTier, playerCarGameObj);
             playerCar.OnDeath += x => LoseMatch();
-            var carController = playerCarGameObj.AddComponent<CarManualControl>();
+            var carController = playerCarGameObj.AddComponent<CarJoystickControl>();
             carController.Init(PlayerCarTier, playerCar);
             playerCar.OnDeath += x => carController.enabled = false;
             SpawnFloatingNickName(playerCar);
@@ -86,14 +93,10 @@ namespace Flatout
         /// 
         void RegisterBotDeath(CarBase Car)
         {
-            if (Car == playerCar)
-                LoseMatch();
-            else
-            {
-                BotCars.Remove(BotCars.Find(x => x == Car));
-                if (BotCars.Count == 0)
-                    WinMatch();
-            }
+            BotCars.Remove(BotCars.Find(x => x == Car));
+            AllCars.Remove(Car);
+            if (BotCars.Count == 0)
+                WinMatch();
         }
 
 
@@ -129,6 +132,9 @@ namespace Flatout
             {
                 var BotGO = Instantiate(PlayerCarTier.CarPrefab, spawnpoint);
                 var BotBase = BotGO.AddComponent<BotCar>();
+                var BotAI = BotGO.AddComponent<CarAIControl>();
+                BotBase.OnDeath += x => BotAI.enabled = false;
+                BotAI.Init(PlayerCarTier, BotBase, AllCars);
                 BotBase.Init(PlayerCarTier, BotGO);
                 BotBase.OnDeath += RegisterBotDeath;
                 BotCars.Add(BotBase);

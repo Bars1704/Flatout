@@ -19,5 +19,6 @@ namespace Flatout
         public float BoosterTake;
         public int MaxHealth;
         public int Damage;
+        public int BoostDashMultiplier = 10;
     }
 }

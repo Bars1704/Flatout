@@ -12,6 +12,8 @@ namespace Flatout
             CarBase car = other.gameObject.GetComponentInParent<CarBase>();
             if (car != null)
                 car.KillImmediately(gameObject);
+            else
+                Destroy(other.gameObject);
         }
     }
 }
