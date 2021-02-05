@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Doozy.Engine.Soundy;
+
 namespace Flatout
 {
     /// <summary>
@@ -26,6 +26,7 @@ namespace Flatout
         CarTier actualCar;
         void Start()
         {
+            SoundyManager.Play("Flatout", "Musik");
             actualCar = PlayerAvatar.Instance.ActualCar;
             SpawnCar(actualCar.CarPrefab);
             SpawnColourButtons(); 

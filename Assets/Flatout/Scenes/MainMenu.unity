@@ -1267,8 +1267,8 @@ MonoBehaviour:
       GameEvents: []
       SoundData:
         SoundSource: 0
-        DatabaseName: General
-        SoundName: No Sound
+        DatabaseName: Flatout
+        SoundName: CarStartup
         AudioClip: {fileID: 0}
         OutputAudioMixerGroup: {fileID: 0}
     PresetCategory: Uncategorized

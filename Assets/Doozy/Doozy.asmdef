@@ -1,0 +1,16 @@
+{
+    "name": "Doozy",
+    "references": [
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:d0d1e514bf13ba64393b07c9e6a92aa1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Doozy.Engine.Soundy;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,6 +44,7 @@ namespace Flatout
             var direction = transform.forward;
             direction.y = 0;
             carRigidbody.AddForce(controlCarTier.MovingSpeed * direction * speed);
+            SoundyManager.Play("Flatout", "CarMove", transform);
         }
         /// <summary>
         /// Поворачивает машинку
