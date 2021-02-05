@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1b3dfa30cb93764a849abcdb626abfa, type: 3}
+  m_Name: CarAIConfig
+  m_EditorClassIdentifier: 
+  SlowDistanceEnable: 10
+  MinSpeed: 0.5
+  DashBoostAngle: 30
+  DashBoostChance: 0.01
+  ObstacleAvoidingAngle: 10
+  ObstacleDetectingDistance: 40
+  ChangeRotationChance: 0.3
+  ChangeTargetChance: 0.3
+  RandomCarInRangeTargetChance: 0.3
+  AgroRange: 50
+  RandomPointTargetChance: 1
+  RandomPointTargetMaxDistance: 40
+  NearestCarTargetChance: 0.1
+  RandomCarTargetChance: 0.1
+  RandomValuesUpdateTime: 2
+  InCycleTries: 100
+  AfterCollisionMoveDistance: 20

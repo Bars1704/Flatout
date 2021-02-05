@@ -7,27 +7,41 @@ using System.Collections;
 
 namespace Flatout
 {
+    /// <summary>
+    /// Управление машинкой-ботом
+    /// </summary>
     public class CarAIControl : CarControlBase
     {
-        const float SlowDistanceEnable = 10f;
-        const float MinSpeed = 0.5f;
-        const float AgroRange = 50f;
-        const float DashBoostAngle = 30;
-        const float DashBoostChance = 0.001f;
-        const float ChangeTargetChance = 0.3f;
-        const float ObstacleAvoidingAngle = 10f;
-        const float ObstacleDetectingDistance = 40f;
-        const float ChangeRotationChance = 0.3f;
-        const float RandomCarInRangeTargetChance = 0.3f;
-        const float RandomPointTargetChance = 0.3f;
-        const float RandomPointTargetMaxDistance = 40f;
-        const float AfterCollisionMoveDistance = 20f;
-        const float NearestCarTargetChance = 0.2f;
-        const float RandomCarTargetChance = 0.2f;
-        const float RandomValuesUpdateTime = 3f;
-        const int ObstacleAvoidRotateTries = 100;
-        
+        #region PrivateFields
         Transform _target;
+        /// <summary>
+        /// Настройки модуля
+        /// </summary>
+        CarAIConfig aiConfig;
+        /// <summary>
+        /// Событие, вызывающееся каждый <see cref="FixedUpdate"/>
+        /// </summary>
+        Action onFixedStep;
+        /// <summary>
+        /// Пустышка-обьект, нужен для отметки точки назначения в некоторых стратегиях
+        /// </summary>
+        Transform targetMarker;
+        /// <summary>
+        /// Список живых машинко
+        /// </summary>
+        List<CarBase> aliveCarsPool;
+        /// <summary>
+        /// true, если машинка делала рывок в погоне за этим игроком
+        /// </summary>
+        bool isDashed = false;
+
+        /// <summary>
+        /// Направление поворота при обьезде препядствий: 1 - направо, -1 налево
+        /// </summary>
+        int RotateDirection;
+        #endregion
+
+        #region PrivateFields
         /// <summary>
         /// Точка, которую преследует машинка
         /// </summary>
@@ -40,7 +54,7 @@ namespace Flatout
                 if (_target?.TryGetComponent(out carBaseComponent) ?? false)
                 {
                     carBaseComponent.OnDeath -= HandleTargetDeath;
-                    carBase.OnGetDamaged -= RegistreTargetGetDamaged;
+                    carBase.OnGetDamaged -= HandleTargetGetDamaged;
                 }
 
                 _target = value;
@@ -48,14 +62,45 @@ namespace Flatout
                 if (value.TryGetComponent(out carBaseComponent))
                 {
                     carBaseComponent.OnDeath += HandleTargetDeath;
-                    carBase.OnGetDamaged += RegistreTargetGetDamaged;
+                    carBase.OnGetDamaged += HandleTargetGetDamaged;
                 }
                 isDashed = false;
             }
         }
+        #endregion
+
+        #region LifeCycle
+        private void Start()
+        {
+            SetNewTarget();
+            targetMarker = Instantiate(new GameObject()).GetComponent<Transform>();
+            StartCoroutine(UpdateRandomValues());
+        }
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
+        private void FixedUpdate()
+        {
+            MoveForvard();
+            CheckDashBoost();
+            CalculateRotation();
+
+            if (carRigidbody.velocity.sqrMagnitude < 1e-4)
+                SetNewTarget();
+
+            onFixedStep?.Invoke();
+        }
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(targetMarker.position, 0.5f);
+        }
+        #endregion
+
+        #region PrivateMethods
 
         /// <summary>
-        /// Проверяет, можно ли машинка попасть в эту точку
+        /// Проверяет, можeт ли машинка попасть в эту точку
         /// </summary>
         /// <param name="point">Точка, которую нужно проверить</param>
         /// <returns>true если машинка может попасть в проверяемую точку</returns>
@@ -66,13 +111,41 @@ namespace Flatout
             return Physics.Raycast(rayCastPoint, Vector3.down, 1 << 0);
         }
 
-        Action onFixedStep;
+        /// <summary>
+        /// Обработка смерти цели
+        /// </summary>
+        /// <param name="deadCar">Машинка, которая умерла</param>
+        void HandleTargetDeath(CarBase deadCar) => SetNewTarget();
 
-        Transform targetMarker;
+        /// <summary>
+        /// Обработка получения целью урона
+        /// </summary>
+        /// <param name="attacker">Машинка, которая нанесла урон цели</param>
+        void HandleTargetGetDamaged(CarBase attacker)
+        {
+            if (DistanceToPoint(target) > 2) return;
+            MoveToRandomPoint(aiConfig.AfterCollisionMoveDistance);
+        }
 
-        List<CarBase> aliveCarsPool;
-        void HandleTargetDeath(CarBase x) => SetNewTarget();
+        /// <summary>
+        /// Проверка, достигла ли машинка поставленной точки
+        /// Работает только с теми стратегиями, где цель не привязана к той или иной машинке,
+        /// и задана через <see cref="targetMarker"/>
+        /// </summary>
+        void CheckTargetPointDistance()
+        {
+            if (DistanceToPoint(target) < 1)
+            {
+                SetNewTarget();
+                targetMarker.position = transform.position;
+                onFixedStep -= CheckTargetPointDistance;
+            }
+        }
 
+        /// <summary>
+        /// Стратегия передвижения в случайную точку
+        /// </summary>
+        /// <param name="radius">Максимальное растояние до точки-цели</param>
         void MoveToRandomPoint(float radius)
         {
             Vector3 direction;
@@ -81,7 +154,7 @@ namespace Flatout
             {
                 direction = (Random.insideUnitSphere * radius) + transform.position;
                 direction.y = 0;
-            } while (!IsValidPoint(direction) && counter++ < ObstacleAvoidRotateTries);
+            } while (!IsValidPoint(direction) && counter++ < aiConfig.InCycleTries);
 
             if (!IsValidPoint(direction))
             {
@@ -93,80 +166,103 @@ namespace Flatout
             target = targetMarker;
 
             onFixedStep += CheckTargetPointDistance;
-
-            void CheckTargetPointDistance()
-            {
-                if (DistanceToPoint(target) < 1)
-                {
-                    SetNewTarget();
-                    targetMarker.position = transform.position;
-                    onFixedStep -= CheckTargetPointDistance;
-                }
-            }
         }
-        float DistanceToPoint(Transform car)
-        => Vector3.SqrMagnitude(car.position - transform.position);
 
-        bool isDashed = false;
-        int RotateDirection;
+        /// <summary>
+        /// Расчитывает расстояние до точки
+        /// </summary>
+        /// <param name="point">точка, до которой считается расстояние</param>
+        /// <returns>Квадрат расстояния</returns>
+        /// <remarks>Так как везде внутри модуля расстояние считается одним и тем же образом, дорогой операцией вычисления квадратного корня можно пренебречь </remarks>
+        float DistanceToPoint(Transform point)
+        => Vector3.SqrMagnitude(point.position - transform.position);
+
+        /// <summary>
+        /// Производит поворот машинки с учетом обьезда препядствий
+        /// </summary>
+        void CalculateRotation()
+        {
+            var rotateVector = (target.transform.position - transform.position).normalized;
+            RaycastHit hit;
+            var isAvoidingObstacle = Physics.Raycast(transform.position, rotateVector, out hit, aiConfig.ObstacleDetectingDistance, 1 << 11);
+            rotateVector = isAvoidingObstacle ? CalculateAvoidRotate(hit.distance) : rotateVector;
+            Rotate(rotateVector);
+
+            #region SubMethods
+            /// <summary>
+            /// Расчитывает поворот, необходимый, чтобы обогнуть препядствие
+            /// </summary>
+            /// <param name="distanceToObstacle">расстояние до препядствия</param>
+            Vector3 CalculateAvoidRotate(float distanceToObstacle)
+            {
+                int rotateTries = 0;
+                Vector3 currentTarget = Vector3.zero;
+                do
+                {
+                    var rotateAngle = Mathf.Lerp(aiConfig.ObstacleAvoidingAngle, 0, distanceToObstacle / aiConfig.ObstacleDetectingDistance);
+                    rotateAngle *= RotateDirection;
+                    currentTarget = Quaternion.Euler(0, rotateAngle, 0) * transform.forward;
+                } while (rotateTries++ <= aiConfig.InCycleTries &&
+                    Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, aiConfig.ObstacleDetectingDistance, 1 << 11));
+                return currentTarget;
+            }
+            #endregion
+        }
+
+        /// <summary>
+        /// Стартовая инициализация 
+        /// </summary>
+        /// <param name="carTier">Параметры машинки</param>
+        /// <param name="carBase">Основной компонент машинки</param>
+        /// <param name="allCars">Список всех живых машинок</param>
         public void Init(CarTier carTier, CarBase carBase, List<CarBase> allCars)
         {
             base.Init(carTier, carBase);
             aliveCarsPool = allCars;
+            aiConfig = CarAIConfig.Instance;
             SetRandonRotateDirection();
         }
-        void SetRandonRotateDirection() =>
-            RotateDirection = Random.value > 0.5 ? 1 : -1;
 
-        void RegistreTargetGetDamaged(CarBase attacker)
-        {
-            if (DistanceToPoint(target) > 2) return;
-            MoveToRandomPoint(AfterCollisionMoveDistance);
-        }
-        private void Start()
-        {
-            SetNewTarget();
-            targetMarker = Instantiate(new GameObject()).GetComponent<Transform>();
-            StartCoroutine(UpdateRandomValues());
-        }
-        private void OnDestroy()
-        {
-            StopAllCoroutines();
-        }
-        IEnumerator UpdateRandomValues()
-        {
-            while (true)
-            {
-                if (Random.value <= ChangeTargetChance)
-                    SetNewTarget();
-                if (Random.value <= ChangeRotationChance)
-                    SetRandonRotateDirection();
-                yield return new WaitForSeconds(RandomValuesUpdateTime);
-            }
-        }
-        //TODO: вынести выбор цели в отдельный метод, в управлении оставить только преследование точки
+        /// <summary>
+        /// Устанавливает случайное направление поворота
+        /// </summary>
+        void SetRandonRotateDirection() =>
+    RotateDirection = Random.value > 0.5 ? 1 : -1;
+
+        /// <summary>
+        /// Случайным образом выбирает ту или иную стратегию поведения
+        /// </summary>
         void SetNewTarget()
         {
+            //TODO: вынести выбор цели в отдельный метод, в управлении оставить только преследование точки
             Dictionary<Action, float> probabilities = new Dictionary<Action, float>();
-            probabilities.Add(FollowCarInRange, RandomCarInRangeTargetChance);
-            probabilities.Add(() => MoveToRandomPoint(RandomPointTargetMaxDistance), RandomPointTargetChance);
-            probabilities.Add(FollowTheNearestCar, NearestCarTargetChance);
-            probabilities.Add(FollowRandomCar, RandomCarTargetChance);
+            probabilities.Add(FollowCarInRange, aiConfig.RandomCarInRangeTargetChance);
+            probabilities.Add(() => MoveToRandomPoint(aiConfig.RandomPointTargetMaxDistance), aiConfig.RandomPointTargetChance);
+            probabilities.Add(FollowTheNearestCar, aiConfig.NearestCarTargetChance);
+            probabilities.Add(FollowRandomCar, aiConfig.RandomCarTargetChance);
 
             probabilities.GetRandomWithProbabilities().Invoke();
 
             #region SubMethods
+
+            /// <summary>
+            /// Стратегия преследования случайной машинки из заданного радиуса
+            /// </summary>
             void FollowCarInRange()
             {
                 var carsInRange = aliveCarsPool
                     .Where(x => x.gameObject != gameObject)
-                    .Where(x => DistanceToPoint(x.transform) < AgroRange);
+                    .Where(x => DistanceToPoint(x.transform) < aiConfig.AgroRange);
 
                 if (carsInRange.Count() == 0)
                     FollowTheNearestCar();
                 else
                     target = carsInRange.GetRandomElement().transform;
             }
+
+            /// <summary>
+            /// Стратегия преследования ближайшей машинки
+            /// </summary>
             void FollowTheNearestCar()
             {
                 CarBase nearestCar = null;
@@ -184,6 +280,10 @@ namespace Flatout
                 }
                 target = nearestCar.transform;
             }
+
+            /// <summary>
+            /// Стратегия преследования случайно выбранной машинки
+            /// </summary>
             void FollowRandomCar()
             {
                 target = aliveCarsPool
@@ -192,70 +292,69 @@ namespace Flatout
             }
             #endregion
         }
+
+        /// <summary>
+        /// Движение вперед с расчитанной скоростью
+        /// </summary>
         void MoveForvard()
         {
             Run(CalculateSpeedModifier());
             #region SubMethods
+            /// <summary>
+            /// Расчитывает скорость движения вперед на основе настройки сложности и расстояния до цели (замедление перед столкновением)
+            /// </summary>
             float CalculateSpeedModifier()
             {
                 var hardnessLevelMultiplier = PlayerAvatar.Instance.hardnessLevel.BotSpeedModifier;
-                var closenessToTargetMultiplier = Mathf.InverseLerp(0, SlowDistanceEnable, DistanceToPoint(target));
-                closenessToTargetMultiplier = Mathf.Max(closenessToTargetMultiplier, MinSpeed);
+                var closenessToTargetMultiplier = Mathf.InverseLerp(0, aiConfig.SlowDistanceEnable, DistanceToPoint(target));
+                closenessToTargetMultiplier = Mathf.Max(closenessToTargetMultiplier, aiConfig.MinSpeed);
                 return hardnessLevelMultiplier * closenessToTargetMultiplier;
             }
             #endregion
         }
+
+        /// <summary>
+        /// Проверяет, можно ли выполнить ускорение-рывок, и, если можно, делает его с некой вероятностью
+        /// </summary>
         void CheckDashBoost()
         {
             if (isDashed) return;
-            if (AngleToTarget() > DashBoostAngle) return;
-            if (Random.value > DashBoostChance) return;
+            if (AngleToTarget() > aiConfig.DashBoostAngle) return;
+            if (Random.value > aiConfig.DashBoostChance) return;
 
             DashBoost();
             isDashed = true;
 
+            #region SubMethods
+            /// <summary>
+            /// Вычисляет угол между направлением езды машинки и целью
+            /// </summary>
             float AngleToTarget()
             {
                 var thisRotation = transform.rotation.eulerAngles;
                 var targetLookRotation = target.position - transform.position;
                 return Vector3.Angle(thisRotation, targetLookRotation);
             }
+            #endregion 
         }
-        void CalculateRotation()
-        {
-            var rotateVector = (target.transform.position - transform.position).normalized;
-            RaycastHit hit;
-            var isAvoidingObstacle = Physics.Raycast(transform.position, rotateVector, out hit, ObstacleDetectingDistance, 1 << 11);
-            rotateVector = isAvoidingObstacle ? CalculateAvoidRotate(hit.distance) : rotateVector;
-            Rotate(rotateVector);
+        #endregion
 
-            #region SubMethods
-            Vector3 CalculateAvoidRotate(float distanceToObstacle)
+        #region Corutines
+        /// <summary>
+        /// Корутина, которая раз в заданное количество времени делает попытку обновить часть случайных значений
+        /// </summary>
+        ///<remarks>Делая проверку раз в определенное время, а не каждый кадр решаются сразу две проблемы: производительность и возможность задать в конфиге более "понятные" значения вероятности смены того или иного значения</remarks>
+        IEnumerator UpdateRandomValues()
+        {
+            while (true)
             {
-                int rotateTries = 0;
-                Vector3 currentTarget = Vector3.zero;
-                do
-                {
-                    var rotateAngle = Mathf.Lerp(ObstacleAvoidingAngle, 0, distanceToObstacle / ObstacleDetectingDistance);
-                    rotateAngle *= RotateDirection;
-                    currentTarget = Quaternion.Euler(0, rotateAngle, 0) * transform.forward;
-                } while (rotateTries++ <= ObstacleAvoidRotateTries &&
-                    Physics.Raycast(transform.position, (target.transform.position - transform.position).normalized, ObstacleDetectingDistance, 1 << 11));
-                return currentTarget;
+                if (Random.value <= aiConfig.ChangeTargetChance)
+                    SetNewTarget();
+                if (Random.value <= aiConfig.ChangeRotationChance)
+                    SetRandonRotateDirection();
+                yield return new WaitForSeconds(aiConfig.RandomValuesUpdateTime);
             }
-            #endregion
         }
-        private void FixedUpdate()
-        {
-            MoveForvard();
-            CheckDashBoost();
-            CalculateRotation();
-
-            onFixedStep?.Invoke();
-        }
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawWireSphere(targetMarker.position, 0.5f);
-        }
+        #endregion
     }
 }
