@@ -9,7 +9,7 @@ namespace Flatout
     [CreateAssetMenu(fileName = "HardnessLevel", menuName = "Flatout/HardnessLevel")]
     public class HardnessLevel : SerializedScriptableObject
     {
-        public string Name;
+        public string LevelName;
         public string Deskription;
 
         [InfoBox("Key - смещение уровня относительно уровня игрока, Value - шанс выпадения того или иного смещения")]

@@ -1,4 +1,5 @@
 ﻿using Doozy.Engine.Soundy;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,26 @@ namespace Flatout
         protected CarTier controlCarTier;
         protected CarBase carBase;
 
+        public Action<float> OnCarRun; 
+        public Action<Vector3> OnCarRotate;
+        public Action OnCarBoost;
+        public Action OnCarBoostBegin;
+        public Action OnCarBoostEnd;
+
+
+        bool _isBoosted;
+        public bool IsBoosted
+        {
+            get => _isBoosted;
+            set
+            {
+                _isBoosted = value;
+                if (_isBoosted)
+                    OnCarBoostBegin?.Invoke();
+                else
+                    OnCarBoostEnd?.Invoke();
+            }
+        }
         /// <summary>
         ///  <see cref="Rigidbody"/> компонент управляемой машинки
         /// </summary>
@@ -18,12 +39,14 @@ namespace Flatout
         /// <summary>
         /// Ускорение машинки
         /// </summary>
-        public void Boost()
+        void Boost()
         {
             float availableBooster = carBase.TakeBooster(controlCarTier.BoosterTake) / controlCarTier.BoosterTake;
             float boostForce = availableBooster * controlCarTier.BoosterForce;
             carRigidbody.AddForce(transform.forward * boostForce);
+            OnCarBoost?.Invoke();
         }
+
         /// <summary>
         /// Инициализация компонента
         /// </summary>
@@ -44,7 +67,7 @@ namespace Flatout
             var direction = transform.forward;
             direction.y = 0;
             carRigidbody.AddForce(controlCarTier.MovingSpeed * direction * speed);
-            SoundyManager.Play("Flatout", "CarMove", transform);
+            OnCarRun?.Invoke(speed);
         }
         /// <summary>
         /// Поворачивает машинку
@@ -52,9 +75,12 @@ namespace Flatout
         /// <param name="direction">Направление поворота</param>
         public void Rotate(Vector3 direction)
         {
-            carRigidbody.rotation =
-    Quaternion.Lerp(carRigidbody.rotation, Quaternion.LookRotation(direction),
+            var rotateAngle = Quaternion.Lerp(carRigidbody.rotation, Quaternion.LookRotation(direction),
         controlCarTier.RotationSpeed);
+            carRigidbody.rotation = rotateAngle;
+
+
+            OnCarRotate?.Invoke(rotateAngle.eulerAngles);
         }
         /// <summary>
         /// Ускорение-рывок
@@ -63,6 +89,15 @@ namespace Flatout
         {
             for (int i = 0; i < controlCarTier.BoostDashMultiplier; i++)
                 Boost();
+        }
+
+
+        protected virtual void FixedUpdate()
+        {
+            if (IsBoosted)
+            {
+                Boost();
+            }
         }
     }
 

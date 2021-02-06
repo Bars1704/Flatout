@@ -88,7 +88,7 @@ namespace Flatout
 
             hardnessLevel = hardnessLevelName == string.Empty ?
                 GlobalSettings.Instance.hardnessLevels.First() :
-                GlobalSettings.Instance.hardnessLevels.FirstOrDefault(x => x.name == hardnessLevelName);
+                GlobalSettings.Instance.hardnessLevels.FirstOrDefault(x => x.LevelName == hardnessLevelName);
         }
     }
 }

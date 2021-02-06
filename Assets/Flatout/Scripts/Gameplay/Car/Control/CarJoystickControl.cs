@@ -18,8 +18,10 @@ namespace Flatout
         {
             runStick = FindObjectOfType<TouchStickControl>();
         }
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
+            base.FixedUpdate();
+
             if (runStick.IsActive)
             {
                 var speed = runStick.Value.magnitude;
@@ -37,7 +39,7 @@ namespace Flatout
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Boost();
+                DashBoost();
             }
         }
 #endif

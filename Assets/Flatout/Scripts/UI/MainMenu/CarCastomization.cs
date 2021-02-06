@@ -26,11 +26,11 @@ namespace Flatout
         CarTier actualCar;
         void Start()
         {
-            SoundyManager.Play("Flatout", "Musik");
             actualCar = PlayerAvatar.Instance.ActualCar;
             SpawnCar(actualCar.CarPrefab);
-            SpawnColourButtons(); 
+            SpawnColourButtons();
             SetCarDefaultColor();
+            SoundyManager.Play(CarVFXManager.Instance.music, null, Vector3.zero, 0.5f, 1, true, 0);
         }
         /// <summary>
         /// Устанавливает превью-машинке цвет по умолчанию
@@ -71,8 +71,13 @@ namespace Flatout
         void SpawnCar(GameObject carPrefab)
         {
             carDummy = Instantiate(carPrefab, carSpawnPoint);
-            carDummy.GetComponentInChildren<Animator>().enabled = false;
-            carDummy.GetComponentInChildren<Rigidbody>().useGravity = false;
+
+            var components = carDummy.GetComponents<Component>();
+            foreach (var component in components)
+            {
+                if (component is Transform) continue;
+                Destroy(component);
+            }
         }
     }
 }

@@ -77,7 +77,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  Name: Normal
+  LevelName: Normal
   Deskription: Normal Levels, normal bots
   XPForCarCrash: 10
   XPForBoxCrash: 5

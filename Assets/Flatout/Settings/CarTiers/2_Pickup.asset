@@ -128,9 +128,10 @@ MonoBehaviour:
   CarPrefab: {fileID: 2351834167008189893, guid: c740228e8c5273a40828f83817191f37,
     type: 3}
   MovingSpeed: 2000
-  RotationSpeed: 0.2
+  RotationSpeed: 0.13
   BoosterAmount: 100
   BoosterForce: 3000
   BoosterTake: 1
   MaxHealth: 100
   Damage: 10
+  BoostDashMultiplier: 10

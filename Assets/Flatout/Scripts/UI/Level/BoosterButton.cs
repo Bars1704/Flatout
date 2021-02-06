@@ -7,20 +7,11 @@ namespace Flatout
         //TODO: вынести в CarJoystickControl?
         [HideInInspector]
         public CarJoystickControl carControl;
-
-        bool isBoosterEnabled;
         public void SetBooster(bool boosterStatus) 
-            => isBoosterEnabled = boosterStatus;
+            => carControl.IsBoosted = boosterStatus;
         public void AddForcePuch()
         {
             carControl.DashBoost();
-        }
-        private void FixedUpdate()
-        {
-            if (isBoosterEnabled)
-            {
-                carControl.Boost();
-            }
         }
     }
 }

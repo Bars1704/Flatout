@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b0573c815752748a0114c4a9fefa8c, type: 3}
+  m_Name: CarVFXManager
+  m_EditorClassIdentifier: 
+  music: {fileID: 8300000, guid: ae1c8864684a92245aec1f23fe59f860, type: 3}
+  CarRunSound: {fileID: 8300000, guid: 563a59fb5d37a4b4fae831fab9b266f7, type: 3}
+  CarBoostSound: {fileID: 8300000, guid: cab8550d1efd2d64682c7490c6f24459, type: 3}
+  CarDriftSound: {fileID: 0}
+  BoxCrashSound: {fileID: 8300000, guid: 060838ed13846c9499f9c7a5e3579fd3, type: 3}
+  CarCrashSound: {fileID: 8300000, guid: dbe76f032078e58499634241a268c918, type: 3}

@@ -2,7 +2,8 @@
     "name": "Settings",
     "references": [
         "GUID:b2723fb65260714498a6237cc3a26f8b",
-        "GUID:50f62baf6a12ff24288dbd169135a507"
+        "GUID:50f62baf6a12ff24288dbd169135a507",
+        "GUID:4fa85aa4d80ff804bb13bc8943d94c6e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

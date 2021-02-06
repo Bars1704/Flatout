@@ -77,7 +77,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  Name: Hard
+  LevelName: Hard
   Deskription: Harder bots, but more XP
   XPForCarCrash: 20
   XPForBoxCrash: 10

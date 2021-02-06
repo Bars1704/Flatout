@@ -83,6 +83,9 @@ namespace Flatout
         /// <param name="carTier">Конфигурация машинки - отсюда берутся все ее стартовые характеристики</param>
         /// <param name="gameObj"><see cref="GameObject"/> компонент машинки</param>
 
+        public Action OnCarCrashed;
+        public Action OnBoxCrashed;
+
         public int BoxesCrashed { get; private set; }
         public int CarsCrashed { get; private set; }
         public int XP { get; private set; }
@@ -122,11 +125,10 @@ namespace Flatout
         /// <param name="damage">Количество полученного урона</param>
         public void TakeDamage(int damage, GameObject damager)
         {
+            OnGetDamaged?.Invoke(damager.GetComponent<CarBase>());
             Health = Mathf.Max(0, Health - damage);
             if (Health == 0)
                 KillImmediately(damager);
-            else
-                OnGetDamaged?.Invoke(damager.GetComponent<CarBase>());
         }
         /// <summary>
         /// Возвращает никнейм машинки
@@ -149,6 +151,7 @@ namespace Flatout
             foreach (var renderer in GameObj.GetComponentsInChildren<Renderer>())
             {
                 if (renderer.gameObject.name.ToLower().Contains("wheel")) continue;
+                if (renderer.gameObject.GetComponent<ParticleSystem>() != null) continue;
                 renderer.material.SetTexture(1, texture);
             }
         }
@@ -159,7 +162,6 @@ namespace Flatout
         public void KillImmediately(GameObject killer)
         {
             transform.rotation = Quaternion.identity;
-            GetComponentInChildren<Animator>().SetTrigger("Death");
             GetComponentsInChildren<Collider>().ToList().ForEach(x => x.gameObject.layer = 9);
             var rb = GetComponent<Rigidbody>();
             rb.angularVelocity = Vector3.zero;
@@ -174,11 +176,13 @@ namespace Flatout
         public void CarCrashed()
         {
             CarsCrashed++;
+            OnCarCrashed?.Invoke();
             AddXP(PlayerAvatar.Instance.hardnessLevel.XPForCarCrash);
         }
         public void BoxCrashed()
         {
             BoxesCrashed++;
+            OnBoxCrashed?.Invoke();
             AddXP(PlayerAvatar.Instance.hardnessLevel.XPForBoxCrash);
         }
 

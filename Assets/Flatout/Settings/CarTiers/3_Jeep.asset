@@ -16,17 +16,17 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 2800000, guid: fd2d49fa960d017479d8bc7f547321b3, type: 3}
+    - {fileID: 2800000, guid: 9a12d0b3d607a1a4d9c70bb52135911d, type: 3}
     - {fileID: 21300000, guid: 275423b0de6772a4db43dd787e7f6175, type: 3}
-    - {fileID: 2800000, guid: f14a9f85acbda0f45afecc9cbc912d0c, type: 3}
+    - {fileID: 2800000, guid: 4675e7b2d3d4d8c4e8f41f8fa7b9f4e2, type: 3}
     - {fileID: 21300000, guid: 432f62eb8c434b941874cf02a094338f, type: 3}
-    - {fileID: 2800000, guid: 76d667a12c03c9941b5b5d1207ae8737, type: 3}
+    - {fileID: 2800000, guid: 3e364f8b56924ee40a5d39899beeb43c, type: 3}
     - {fileID: 21300000, guid: e04f7b6fefb01574ab4aa8e3c78643b9, type: 3}
-    - {fileID: 2800000, guid: 0e13822c24c439b4aae17889187630ba, type: 3}
+    - {fileID: 2800000, guid: cda01fb42962bc249b35cee7f77e66e6, type: 3}
     - {fileID: 21300000, guid: bac772193aed7284da468ac13692429a, type: 3}
-    - {fileID: 2800000, guid: c20dce541af02d14f8bd88650072cf04, type: 3}
+    - {fileID: 2800000, guid: f327771da675d3a4c895c203349f5218, type: 3}
     - {fileID: 21300000, guid: 275a7c49690a945468613b30e1a01896, type: 3}
-    - {fileID: 2800000, guid: 17551b21872aa4d4b90d0bb9481fdbe8, type: 3}
+    - {fileID: 2800000, guid: 3f27a39cd7cd9ae4c80e17930b50ec26, type: 3}
     - {fileID: 21300000, guid: fde266cc42700f749be7c7f8495482fb, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -125,12 +125,13 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  CarPrefab: {fileID: 6676849834133283548, guid: bd8a5a24a706c9449ba13d01cb82b64c,
+  CarPrefab: {fileID: 2351834167008189893, guid: e5fdd4c6207ebd44682c9b88af04072b,
     type: 3}
   MovingSpeed: 10
-  RotationSpeed: 0.5
+  RotationSpeed: 0.13
   BoosterAmount: 100
   BoosterForce: 3000
   BoosterTake: 1
   MaxHealth: 30
   Damage: 10
+  BoostDashMultiplier: 10

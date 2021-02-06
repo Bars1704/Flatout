@@ -80,8 +80,9 @@ namespace Flatout
         {
             StopAllCoroutines();
         }
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
+            base.FixedUpdate();
             MoveForvard();
             CheckDashBoost();
             CalculateRotation();

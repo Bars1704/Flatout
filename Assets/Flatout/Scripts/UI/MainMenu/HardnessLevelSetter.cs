@@ -25,7 +25,7 @@ namespace Flatout
 
             hardnessLevels = GlobalSettings.Instance.hardnessLevels;
             SetDefaultHardnessLevel();
-            NameText.text = PlayerAvatar.Instance.hardnessLevel.Name;
+            NameText.text = PlayerAvatar.Instance.hardnessLevel.LevelName;
             DescriptionText.text = PlayerAvatar.Instance.hardnessLevel.Deskription;
         }
         void SetDefaultHardnessLevel()
@@ -33,7 +33,7 @@ namespace Flatout
             if (PlayerPrefs.HasKey("HardnessLevel"))
             {
                 var hardnessLevelName = PlayerPrefs.GetString("HardnessLevel");
-                var hardnessLevel = hardnessLevels.FirstOrDefault(x => x.Name == hardnessLevelName);
+                var hardnessLevel = hardnessLevels.FirstOrDefault(x => x.LevelName == hardnessLevelName);
                 if (hardnessLevel == null) hardnessLevel = hardnessLevels.First();
                 PlayerAvatar.Instance.hardnessLevel = hardnessLevel;
             }
@@ -41,7 +41,7 @@ namespace Flatout
             {
                 var defaultLevelName = hardnessLevels.First();
                 PlayerAvatar.Instance.hardnessLevel = defaultLevelName;
-                PlayerPrefs.SetString("HardnessLevel", defaultLevelName.Name);
+                PlayerPrefs.SetString("HardnessLevel", defaultLevelName.LevelName);
             }
         }
         void ChangeHardnessLevel()
@@ -52,9 +52,9 @@ namespace Flatout
                 nextLevelIndex -= hardnessLevels.Count;
             var newHardnessLevel = hardnessLevels[nextLevelIndex];
             PlayerAvatar.Instance.hardnessLevel = newHardnessLevel;
-            NameText.text = newHardnessLevel.Name;
+            NameText.text = newHardnessLevel.LevelName;
             DescriptionText.text = newHardnessLevel.Deskription;
-            PlayerPrefs.SetString("HardnessLevel", newHardnessLevel.Name);
+            PlayerPrefs.SetString("HardnessLevel", newHardnessLevel.LevelName);
 
         }
     }
