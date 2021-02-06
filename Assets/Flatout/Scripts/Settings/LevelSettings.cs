@@ -27,6 +27,8 @@ namespace Flatout
         }
         public CarTier GetActualCar(int playerLevel)
         {
+            playerLevel = Mathf.Max(0, playerLevel);
+
             CarTier resultCar;
             while (!LevelForOpeningCar.TryGetValue(playerLevel, out resultCar) && playerLevel >= 0)
                 playerLevel--;

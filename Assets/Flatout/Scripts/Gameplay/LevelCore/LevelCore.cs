@@ -130,7 +130,8 @@ namespace Flatout
         {
             foreach (var spawnpoint in spawnPoints)
             {
-                var botLevelBase = PlayerCarTier;//PlayerAvatar.Instance.hardnessLevel.GetBotCar(PlayerAvatar.Instance.Level);
+                int playerLevel = PlayerAvatar.Instance.Level;
+                var botLevelBase = PlayerAvatar.Instance.hardnessLevel.GetBotCar(playerLevel);
                 var botGameObject = Instantiate(botLevelBase.CarPrefab, spawnpoint);
                 var botBaseComponennt = botGameObject.AddComponent<BotCar>();
                 var botAIComponent = botGameObject.AddComponent<CarAIControl>();
