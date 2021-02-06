@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Flatout/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Flatout/Scenes/SampleScene 2.unity
+    guid: 1319f2ba4137da248b9f89d3a24eed4a
   m_configObjects: {}
