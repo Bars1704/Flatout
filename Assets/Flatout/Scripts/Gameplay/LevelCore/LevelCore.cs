@@ -130,16 +130,17 @@ namespace Flatout
         {
             foreach (var spawnpoint in spawnPoints)
             {
-                var BotGO = Instantiate(PlayerCarTier.CarPrefab, spawnpoint);
-                var BotBase = BotGO.AddComponent<BotCar>();
-                var BotAI = BotGO.AddComponent<CarAIControl>();
-                BotBase.OnDeath += x => BotAI.enabled = false;
-                BotAI.Init(PlayerCarTier, BotBase, AllCars);
-                BotBase.Init(PlayerCarTier, BotGO);
-                BotBase.OnDeath += RegisterBotDeath;
-                BotCars.Add(BotBase);
-                SpawnFloatingNickName(BotBase);
-                SpawnHealthBar(BotBase);
+                var botLevelBase = PlayerAvatar.Instance.hardnessLevel.GetBotCar(PlayerAvatar.Instance.Level);
+                var botGameObject = Instantiate(botLevelBase.CarPrefab, spawnpoint);
+                var botBaseComponennt = botGameObject.AddComponent<BotCar>();
+                var botAIComponent = botGameObject.AddComponent<CarAIControl>();
+                botBaseComponennt.OnDeath += x => botAIComponent.enabled = false;
+                botAIComponent.Init(PlayerCarTier, botBaseComponennt, AllCars);
+                botBaseComponennt.Init(PlayerCarTier, botGameObject);
+                botBaseComponennt.OnDeath += RegisterBotDeath;
+                BotCars.Add(botBaseComponennt);
+                SpawnFloatingNickName(botBaseComponennt);
+                SpawnHealthBar(botBaseComponennt);
             }
             FakeNicknamesManager.Instance.FLushMemory();
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,8 +24,7 @@ namespace Flatout
         Text thisText;
         private void Start()
         {
-            offset = offset = new Vector2(0, 130);
-            thisText = GetComponent<Text>();
+            offset = GlobalSettings.Instance.NameBarOffset;
             InitFollower();
         }
     }

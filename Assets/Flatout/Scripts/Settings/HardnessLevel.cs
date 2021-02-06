@@ -13,8 +13,9 @@ namespace Flatout
         public string Deskription;
 
         [InfoBox("Key - смещение уровня относительно уровня игрока, Value - шанс выпадения того или иного смещения")]
-        [InfoBox("Не забудьте нажать кнопку NormalizeRandomness после заполнения!")]
         public Dictionary<int, float> BotLevelOffsetChance;
+
+        private Dictionary<int, float> BotLevelOffsetLineSegment;
 
         [Header("Награды")]
         public int XPForCarCrash = 10;
@@ -26,17 +27,22 @@ namespace Flatout
         public float BotDamageModifier;
         public float BotHealthModifier;
 
-        [Button]
-        void NormalizeRandomness()
+        void InitLineSegment()
         {
-            BotLevelOffsetChance.OrderBy(x => x.Key);
-            float totalValue = BotLevelOffsetChance.Sum(x => x.Value);
-            for(int i = 0; i < BotLevelOffsetChance.Count; i++)
-            {
-                var currElement = BotLevelOffsetChance.ElementAt(i);
-                BotLevelOffsetChance[currElement.Key] = currElement.Value / totalValue;
-            }
+            BotLevelOffsetLineSegment = new Dictionary<int, float>(BotLevelOffsetChance);
+            BotLevelOffsetLineSegment.ConvertToRandomLineSegment();
         }
+
+        public int GetCarLevel(int playerLevel)
+        {
+            if (BotLevelOffsetLineSegment == default)
+                InitLineSegment();
+
+            return BotLevelOffsetLineSegment.GetRandomFromLineSegment();
+        }
+
+        public CarTier GetBotCar(int playerLevel)
+            => GlobalSettings.Instance.LevelsSettings.GetActualCar(GetCarLevel(playerLevel));
     }
 }
 

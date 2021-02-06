@@ -15,11 +15,11 @@ namespace Flatout
         {
             if (collision.relativeVelocity.sqrMagnitude >= breakMinSpeed)
             {
+                
                 GetComponent<Animator>().SetTrigger("OnDestroy");
                 GetComponent<Collider>().enabled = false;
-                //gameObject.layer = 9;
                 CarBase car;
-                if(collision.gameObject.TryGetComponent<CarBase>(out car))
+                if(collision.gameObject.TryGetComponent(out car))
                 {
                     car.BoxCrashed();
                 }

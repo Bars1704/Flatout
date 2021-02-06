@@ -18,6 +18,8 @@ MonoBehaviour:
     type: 3}
   HealthBarPrefab: {fileID: 5730715387617205864, guid: bc5a6696edaa4454ebdc4f845e3f9e28,
     type: 3}
+  HealtBarOffset: {x: 0, y: 50}
+  NameBarOffset: {x: 0, y: 70}
   hardnessLevels:
   - {fileID: 11400000, guid: d0833462b94345c4d9fcdaecc42269df, type: 2}
   - {fileID: 11400000, guid: 93313bd7ea1633c4b8f2af88880f0859, type: 2}
