@@ -15,5 +15,12 @@ namespace Flatout
         public AudioClip CarDriftSound;
         public AudioClip BoxCrashSound;
         public AudioClip CarCrashSound;
+
+        [Header("CarWheels")]
+        public float MaxRotationAngle = 45;
+        public float RotationSpeed = 33;
+        public float TorqueSpeed = 3;
+        [Range(0,1)]
+        public float RotateSmoothness = 0.1f;
     }
 }

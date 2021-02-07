@@ -5,6 +5,7 @@ namespace Flatout
 {
     public class CarControlEffextsManager : MonoBehaviour
     {
+        CarVFXManager settings;
         [SerializeField] ParticleSystem BoosterParticles;
         [SerializeField] Transform[] allWheels;
         [SerializeField] Transform[] rotatedWheels;
@@ -12,16 +13,19 @@ namespace Flatout
         void Torque(float speed)
         {
             foreach (var wheel in allWheels)
-                wheel.Rotate(0, 0, speed);
+                wheel.Rotate(0, 0, settings.TorqueSpeed * speed);
         }
 
         void RotateCar(Vector3 angle)
         {
-            angle *= 1.1f;
-            angle.y += 90;
-
+            var YAngle = (angle.y - transform.rotation.eulerAngles.y);
             foreach (var wheel in rotatedWheels)
-                wheel.rotation = Quaternion.Euler(angle) ;
+            {
+                var rot = wheel.rotation.eulerAngles;
+                var rotationAngle = Mathf.Lerp(0, YAngle, settings.RotateSmoothness) * settings.RotationSpeed;
+                rot.y = Mathf.Clamp(rotationAngle, -settings.MaxRotationAngle, settings.MaxRotationAngle);
+                wheel.localEulerAngles = rot;
+            }
         }
         void CarDeath()
         {
@@ -30,6 +34,8 @@ namespace Flatout
         }
         private void Start()
         {
+            settings = CarVFXManager.Instance;
+
             carAnimator = GetComponentInChildren<Animator>(true);
             carAnimator.enabled = false;
 

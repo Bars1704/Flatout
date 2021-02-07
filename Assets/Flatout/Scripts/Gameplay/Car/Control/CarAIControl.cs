@@ -155,11 +155,9 @@ namespace Flatout
 
             if (!IsValidPoint(direction))
             {
-                Debug.Log("BadMove" + direction);
                 SetNewTarget();
                 return;
             }
-            Debug.Log("MoveTo" + direction);
 
             targetMarker.position = direction;
             target = targetMarker;
