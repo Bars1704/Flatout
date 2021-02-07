@@ -127,6 +127,8 @@ MonoBehaviour:
       Data: 
   CarPrefab: {fileID: 2351834167008189893, guid: c740228e8c5273a40828f83817191f37,
     type: 3}
+  CarMenuViewPrefab: {fileID: 919132149155446097, guid: 090ac02277da4ab47bb3fe203e253f71,
+    type: 3}
   MovingSpeed: 2000
   RotationSpeed: 0.13
   BoosterAmount: 100

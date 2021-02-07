@@ -12,6 +12,7 @@ namespace Flatout
         [field: ShowInInspector]
         public Dictionary<Texture, Sprite> CarColors;
         public GameObject CarPrefab;
+        public GameObject CarMenuViewPrefab;
         public float MovingSpeed;
         public float RotationSpeed;
         public float BoosterAmount;

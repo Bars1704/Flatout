@@ -3,27 +3,50 @@ using UnityEngine;
 
 namespace Flatout
 {
+    [RequireComponent(typeof(AudioSource))]
     public class CarSoundsController : MonoBehaviour
     {
+        [SerializeField] AudioSource audioSource;
         void PlayCarBoostSound()
-      => SoundyManager.Play(CarVFXManager.Instance.CarBoostSound, null, transform.position, 1, 1, false, 1);
-
+        {
+            ResetAudioSourceSettings();
+            audioSource.clip = CarVFXManager.Instance.CarBoostSound;
+            audioSource.Play();
+        }
         void PlayBoxCrashedSound()
-            => SoundyManager.Play(CarVFXManager.Instance.BoxCrashSound, null, transform.position, 1, 1, false, 1);
-
-
+        {
+            ResetAudioSourceSettings();
+            audioSource.PlayOneShot(CarVFXManager.Instance.BoxCrashSound);
+        }
         void PlayCarRotateSound(Vector3 rotatingVector)
-        => SoundyManager.Play(CarVFXManager.Instance.CarDriftSound, null, transform.position, 1, (transform.rotation.eulerAngles - rotatingVector).magnitude, false, 1);
-
+        {
+            ResetAudioSourceSettings();
+            audioSource.clip = CarVFXManager.Instance.CarDriftSound;
+            audioSource.pitch = (transform.rotation.eulerAngles - rotatingVector).magnitude;
+            audioSource.Play();
+        }
         void PlayCarRunSound(float speed)
-        => SoundyManager.Play(CarVFXManager.Instance.CarRunSound, null, transform.position, speed, 1, false, 1);
+        {
+            ResetAudioSourceSettings();
+            audioSource.clip = CarVFXManager.Instance.CarRunSound;
+            audioSource.volume = speed;
+            audioSource.Play();
+        }
         void PlayCarCrashSound()
-       => SoundyManager.Play(CarVFXManager.Instance.CarCrashSound, null, transform.position, 1, 1, false, 1);
+        {
+            ResetAudioSourceSettings();
+            audioSource.PlayOneShot(CarVFXManager.Instance.CarCrashSound);
+        }
+
+        void ResetAudioSourceSettings()
+        {
+            audioSource.pitch = 1;
+            audioSource.volume = 1;
+        }
 
         public void Start()
         {
-            SoundyManager.StopAllSounds();
-           /// SoundyManager.Play(CarVFXManager.Instance.music, null, Vector3.zero, 0.05f, 1, true, 0);
+            audioSource = GetComponent<AudioSource>();
             CarControlBase carControl = GetComponent<CarControlBase>();
             carControl.OnCarBoost += PlayCarBoostSound;
             carControl.OnCarRotate += PlayCarRotateSound;
