@@ -55,10 +55,27 @@ namespace Flatout
         {
             Level++;
         }
+
+        /// <summary>
+        /// Максимально доступная машинка игрока
+        /// </summary>
+        public CarTier MaxAvailableCar => GlobalSettings.Instance.LevelsSettings.GetActualCar(Instance.Level);
         /// <summary>
         /// Текущая машинка игрока
         /// </summary>
-        public CarTier ActualCar => GlobalSettings.Instance.LevelsSettings.GetActualCar(Instance.Level);
+        public CarTier ActualCar
+            => GlobalSettings.Instance.LevelsSettings.LevelForOpeningCar
+                    .FirstOrDefault(x => x.Value.name == PlayerPrefs.GetString("CarTier")).Value
+            ?? MaxAvailableCar;
+
+        /// <summary>
+        /// Сохраняет выбор машинки
+        /// </summary>
+        /// <param name="car"></param>
+        public void SetSelectedCarTer(CarTier car)
+        {
+            PlayerPrefs.SetString("CarTier", car.name);
+        }
         /// <summary>
         /// Добавление опыта игроку
         /// </summary>

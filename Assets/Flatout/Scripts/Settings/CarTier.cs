@@ -21,5 +21,6 @@ namespace Flatout
         public int MaxHealth;
         public int Damage;
         public int BoostDashMultiplier = 10;
+        public Sprite ButtonSprite;
     }
 }

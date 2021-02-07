@@ -13,7 +13,7 @@ namespace Flatout
         [SerializeField]
         List<int> expToUnlockNewLevel;
         [ShowInInspector, OdinSerialize]
-        private Dictionary<int, CarTier> LevelForOpeningCar = new Dictionary<int, CarTier>();
+        public Dictionary<int, CarTier> LevelForOpeningCar = new Dictionary<int, CarTier>();
         //TODO: сделать возможность добавлять разные типы вознаграждений за уровень
 
         public int CheckLevel(int XpAmount)

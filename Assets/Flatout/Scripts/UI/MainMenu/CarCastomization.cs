@@ -68,8 +68,11 @@ namespace Flatout
         /// Спавнит на сцене "пустышку" машинки
         /// </summary>
         /// <param name="carPrefab">префаб машинки</param>
-        void SpawnCar(GameObject carPrefab)
+        public void SpawnCar(GameObject carPrefab)
         {
+            if (carDummy != null)
+                Destroy(carDummy);
+
             carDummy = Instantiate(carPrefab, carSpawnPoint);
         }
     }
