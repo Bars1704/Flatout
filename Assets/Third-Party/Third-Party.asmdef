@@ -1,10 +1,6 @@
 {
-    "name": "Settings",
-    "references": [
-        "GUID:b2723fb65260714498a6237cc3a26f8b",
-        "GUID:50f62baf6a12ff24288dbd169135a507",
-        "GUID:16b4494ded6028144b876844bd94435f"
-    ],
+    "name": "Third-Party",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
