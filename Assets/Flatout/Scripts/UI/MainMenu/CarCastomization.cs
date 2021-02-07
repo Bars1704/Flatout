@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Doozy.Engine.Soundy;
+using System.Collections.Generic;
 
 namespace Flatout
 {
@@ -24,11 +25,13 @@ namespace Flatout
         [SerializeField] Transform carSpawnPoint;
         GameObject carDummy;
         CarTier actualCar;
+
+        List<GameObject> buttons;
         void Start()
         {
+            buttons = new List<GameObject>();
             actualCar = PlayerAvatar.Instance.ActualCar;
             SpawnCar(actualCar.CarMenuViewPrefab);
-            SpawnColourButtons();
             SetCarDefaultColor();
             SoundyManager.Play(CarVFXManager.Instance.music, null, Vector3.zero, 0.5f, 1, true, 0);
         }
@@ -44,13 +47,20 @@ namespace Flatout
         /// <summary>
         /// Спавнит кнопки выбора цвета
         /// </summary>
-        void SpawnColourButtons()
+        public void SpawnColourButtons()
         {
+            while (buttons.Count != 0)
+            {
+                Destroy(buttons[0]);
+                buttons.RemoveAt(0);
+            }
+
             foreach (var color in actualCar.CarColors)
             {
                 var carButton = Instantiate(carColorSelecterButtonPrefab, colorSelecterPanel);
                 carButton.GetComponent<Image>().sprite = color.Value;
                 carButton.GetComponent<Button>().onClick.AddListener(() => SetColor(color.Key));
+                buttons.Add(carButton);
             }
         }
 
@@ -74,6 +84,7 @@ namespace Flatout
                 Destroy(carDummy);
 
             carDummy = Instantiate(carPrefab, carSpawnPoint);
+            SpawnColourButtons();
         }
     }
 }
