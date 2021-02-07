@@ -129,12 +129,12 @@ MonoBehaviour:
     type: 3}
   CarMenuViewPrefab: {fileID: 919132149155446097, guid: 090ac02277da4ab47bb3fe203e253f71,
     type: 3}
-  MovingSpeed: 2000
+  MovingSpeed: 1800
   RotationSpeed: 0.13
   BoosterAmount: 100
   BoosterForce: 3000
   BoosterTake: 1
-  MaxHealth: 100
-  Damage: 10
+  MaxHealth: 90
+  Damage: 15
   BoostDashMultiplier: 10
   ButtonSprite: {fileID: 21300000, guid: f956fa56638cbf343a646b83cf3449e1, type: 3}

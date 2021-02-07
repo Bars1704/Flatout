@@ -90,7 +90,10 @@ namespace Flatout
         public int CarsCrashed { get; private set; }
         public int XP { get; private set; }
 
-        public void AddXP(int xp) => XP += xp;
+        public void AddXP(int xp) {
+            PlayerAvatar.Instance.AddXP(xp);
+            XP += xp;
+            }
         public void Init(CarTier carTier, GameObject gameObj)
         {
             MaxHealth = carTier.MaxHealth;
