@@ -7,6 +7,7 @@ namespace Flatout
     {
         CarVFXManager settings;
         [SerializeField] ParticleSystem BoosterParticles;
+        [SerializeField] ParticleSystem BoosterBlastParticles;
         [SerializeField] Transform[] allWheels;
         [SerializeField] Transform[] rotatedWheels;
         Animator carAnimator;
@@ -44,6 +45,7 @@ namespace Flatout
             var controller = GetComponent<CarControlBase>();
             controller.OnCarBoostEnd += BoosterParticles.Stop;
             controller.OnCarBoostBegin += BoosterParticles.Play;
+            controller.OnCarBoostDash += BoosterBlastParticles.Play;
             controller.OnCarRotate += RotateCar;
             controller.OnCarRun += Torque;
             GetComponent<CarBase>().OnDeath += x => CarDeath();

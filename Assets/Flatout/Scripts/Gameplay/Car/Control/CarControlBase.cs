@@ -14,6 +14,7 @@ namespace Flatout
         public Action<float> OnCarRun; 
         public Action<Vector3> OnCarRotate;
         public Action OnCarBoost;
+        public Action OnCarBoostDash;
         public Action OnCarBoostBegin;
         public Action OnCarBoostEnd;
 
@@ -87,6 +88,7 @@ namespace Flatout
         /// </summary>
         public void DashBoost()
         {
+            OnCarBoostDash?.Invoke();
             for (int i = 0; i < controlCarTier.BoostDashMultiplier; i++)
                 Boost();
         }
