@@ -37,13 +37,11 @@ namespace Flatout
             ResetAudioSourceSettings();
             audioSource.PlayOneShot(CarVFXManager.Instance.CarCrashSound);
         }
-
         void ResetAudioSourceSettings()
         {
             audioSource.pitch = 1;
             audioSource.volume = 1;
         }
-
         public void Start()
         {
             audioSource = GetComponent<AudioSource>();

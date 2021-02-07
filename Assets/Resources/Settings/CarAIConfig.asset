@@ -22,10 +22,10 @@ MonoBehaviour:
   ChangeTargetChance: 0.3
   RandomCarInRangeTargetChance: 0.3
   AgroRange: 50
-  RandomPointTargetChance: 1
+  RandomPointTargetChance: 2
   RandomPointTargetMaxDistance: 40
   NearestCarTargetChance: 0.1
   RandomCarTargetChance: 0.1
   RandomValuesUpdateTime: 2
-  InCycleTries: 100
+  InCycleTries: 200
   AfterCollisionMoveDistance: 20

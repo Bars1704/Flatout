@@ -72,9 +72,9 @@ namespace Flatout
         #region LifeCycle
         private void Start()
         {
-            SetNewTarget();
             targetMarker = Instantiate(new GameObject()).GetComponent<Transform>();
             StartCoroutine(UpdateRandomValues());
+            SetNewTarget();
         }
         private void OnDestroy()
         {
@@ -86,9 +86,6 @@ namespace Flatout
             MoveForvard();
             CheckDashBoost();
             CalculateRotation();
-
-            if (carRigidbody.velocity.sqrMagnitude < 1e-4)
-                SetNewTarget();
 
             onFixedStep?.Invoke();
         }
@@ -109,7 +106,7 @@ namespace Flatout
         {
             var rayCastPoint = point;
             rayCastPoint.y += 10;
-            return Physics.Raycast(rayCastPoint, Vector3.down, 1 << 0);
+            return Physics.Raycast(rayCastPoint, Vector3.down, 10, 1 << 13);
         }
 
         /// <summary>
@@ -122,9 +119,8 @@ namespace Flatout
         /// Обработка получения целью урона
         /// </summary>
         /// <param name="attacker">Машинка, которая нанесла урон цели</param>
-        void HandleTargetGetDamaged(CarBase attacker)
+        void HandleTargetGetDamaged(CarBase carBase)
         {
-            if (DistanceToPoint(target) > 2) return;
             MoveToRandomPoint(aiConfig.AfterCollisionMoveDistance);
         }
 
@@ -159,9 +155,11 @@ namespace Flatout
 
             if (!IsValidPoint(direction))
             {
+                Debug.Log("BadMove" + direction);
                 SetNewTarget();
                 return;
             }
+            Debug.Log("MoveTo" + direction);
 
             targetMarker.position = direction;
             target = targetMarker;
