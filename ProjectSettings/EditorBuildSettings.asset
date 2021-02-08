@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Flatout/Scenes/MainMenu.unity
     guid: 556d001f8318aba4c8bea15cae432034
   - enabled: 1
-    path: Assets/Flatout/Scenes/SampleScene.unity
+    path: Assets/Flatout/Scenes/SampleScene1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Flatout/Scenes/SampleScene.unity
+    guid: d2f647f23b7a876408c43aee181975f7
   m_configObjects: {}

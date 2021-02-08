@@ -16,5 +16,7 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 556d001f8318aba4c8bea15cae432034, type: 3}
     scenePath: Assets/Flatout/Scenes/MainMenu.unity
   Levels:
-  - sceneAsset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  - sceneAsset: {fileID: 102900000, guid: d2f647f23b7a876408c43aee181975f7, type: 3}
     scenePath: Assets/Flatout/Scenes/SampleScene.unity
+  - sceneAsset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+    scenePath: Assets/Flatout/Scenes/SampleScene1.unity
