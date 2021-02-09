@@ -98,12 +98,12 @@ namespace Doozy.Engine.UI
             PopupQueue.Clear();
         }
 #endif
-        
+
         private void Awake()
         {
             if (s_instance != null && s_instance != this)
             {
-                DDebug.Log( "There cannot be two " + typeof(UIPopupManager) + "' active at the same time. Destroying this one!");
+                DDebug.Log("There cannot be two " + typeof(UIPopupManager) + "' active at the same time. Destroying this one!");
                 Destroy(gameObject);
                 return;
             }
@@ -204,7 +204,7 @@ namespace Doozy.Engine.UI
 
             return null;
         }
-        
+
         /// <summary>
         ///     Hides the currently visible UIPopup (that is also in the PopupQueue).
         ///     <para />
@@ -220,7 +220,7 @@ namespace Doozy.Engine.UI
             ShowNextInQueue();
             return true;
         }
-        
+
         /// <summary> Returns TRUE if at least one UIPopup with the given popup name is found in the PopupQueue </summary>
         /// <param name="popupName"> The popup name to search for </param>
         public static bool IsInQueue(string popupName)

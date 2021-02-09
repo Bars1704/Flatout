@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Editor.Nody.Utils;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Nody.Nodes;
+using System.Collections.Generic;
 using UnityEditor;
 
 // ReSharper disable MemberCanBePrivate.Global
@@ -30,9 +30,9 @@ namespace Doozy.Editor.Nody.Windows
                     break;
                 }
 
-//            int undoGroupIndex = Undo.GetCurrentGroup() - 1;
-//            if (undoGroupIndex < 0) undoGroupIndex = 0;
-//            Undo.CollapseUndoOperations(undoGroupIndex);
+            //            int undoGroupIndex = Undo.GetCurrentGroup() - 1;
+            //            if (undoGroupIndex < 0) undoGroupIndex = 0;
+            //            Undo.CollapseUndoOperations(undoGroupIndex);
 
             ResetZoom();
             ResetPanOffset();
@@ -89,7 +89,7 @@ namespace Doozy.Editor.Nody.Windows
                 return;
             }
         }
-        
+
         /// <summary> Loads the target graph.</summary>
         /// <param name="graph">Target graph.</param>
         public void LoadGraph(Graph graph)
@@ -115,8 +115,8 @@ namespace Doozy.Editor.Nody.Windows
             GraphUtils.CheckAndCreateAnyMissingSystemNodes(graph);
             ConstructGraphGUI();
             if (centerAllNodesInWindow) CenterAllNodesInWindow();
-//            Undo.IncrementCurrentGroup();
-//            Undo.SetCurrentGroupName(m_graphAssetName);
+            //            Undo.IncrementCurrentGroup();
+            //            Undo.SetCurrentGroupName(m_graphAssetName);
             SetView(View.Graph);
             Repaint();
             GraphEvent.Send(GraphEvent.EventType.EVENT_GRAPH_OPENED);
@@ -163,7 +163,7 @@ namespace Doozy.Editor.Nody.Windows
 
             return true;
         }
-        
+
         private static void SaveGraph()
         {
             AssetDatabase.SaveAssets();

@@ -2,14 +2,14 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Doozy.Editor.Nody.Windows;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -168,8 +168,8 @@ namespace Doozy.Editor.Nody.NodeGUI
             m_windowId = windowId;
             m_node = node;
             m_graph = graph;
-//            m_dynamicHeight = node.GetHeight();
-            m_ping = new AnimBool(false) {speed = NodySettings.Instance.PingColorChangeSpeed};
+            //            m_dynamicHeight = node.GetHeight();
+            m_ping = new AnimBool(false) { speed = NodySettings.Instance.PingColorChangeSpeed };
         }
 
         protected virtual void OnNodeGUI()
@@ -309,7 +309,7 @@ namespace Doozy.Editor.Nody.NodeGUI
 
             if (ZoomedBeyondSocketDrawThreshold) return socket.GetRect();
 
-//            DrawConnectionPoints(socket); //draw connection points -> has been moved so that they are drawn as an info overlay
+            //            DrawConnectionPoints(socket); //draw connection points -> has been moved so that they are drawn as an info overlay
 
             //set the socket color to white or black - depending on the current skin - (we assume it's not connected)
             Color socketColor = DGUI.Colors.DisabledTextDColor.Normal;
@@ -334,7 +334,7 @@ namespace Doozy.Editor.Nody.NodeGUI
             dividerColor.a = opacity * 0.8f;
 
             //check if we are in delete mode -> if true -> set the socket color to red (ONLY if the socket can be deleted)
-//            if (Event.current.alt)
+            //            if (Event.current.alt)
             if (NodyWindow.Instance.m_altKeyPressed)
             {
                 //since we're in delete mode and this socket can be deleted -> set its color to red
@@ -452,13 +452,13 @@ namespace Doozy.Editor.Nody.NodeGUI
 
         protected virtual void DrawConnectionPoints(Socket socket)
         {
-//            foreach (Vector2 position in socket.ConnectionPoints)
-//            {
-//                var rect = new Rect(position.x,
-//                                    position.y + DynamicHeight,
-//                                    NodySettings.Instance.ConnectionPointWidth,
-//                                    NodySettings.Instance.ConnectionPointHeight);
-//            }
+            //            foreach (Vector2 position in socket.ConnectionPoints)
+            //            {
+            //                var rect = new Rect(position.x,
+            //                                    position.y + DynamicHeight,
+            //                                    NodySettings.Instance.ConnectionPointWidth,
+            //                                    NodySettings.Instance.ConnectionPointHeight);
+            //            }
         }
 
         #endregion
@@ -496,29 +496,29 @@ namespace Doozy.Editor.Nody.NodeGUI
                 switch (Node.NodeType)
                 {
                     case NodeType.SubGraph:
-                    {
-                        accentColorName = DGUI.Colors.SubGraphNodeColorName;
-                        headerTextColorName = accentColorName;
-                        break;
-                    }
+                        {
+                            accentColorName = DGUI.Colors.SubGraphNodeColorName;
+                            headerTextColorName = accentColorName;
+                            break;
+                        }
                     case NodeType.Start:
-                    {
-                        accentColorName = DGUI.Colors.StartNodeColorName;
-                        headerTextColorName = accentColorName;
-                        break;
-                    }
+                        {
+                            accentColorName = DGUI.Colors.StartNodeColorName;
+                            headerTextColorName = accentColorName;
+                            break;
+                        }
                     case NodeType.Enter:
-                    {
-                        accentColorName = DGUI.Colors.EnterNodeColorName;
-                        headerTextColorName = accentColorName;
-                        break;
-                    }
+                        {
+                            accentColorName = DGUI.Colors.EnterNodeColorName;
+                            headerTextColorName = accentColorName;
+                            break;
+                        }
                     case NodeType.Exit:
-                    {
-                        accentColorName = DGUI.Colors.ExitNodeColorName;
-                        headerTextColorName = accentColorName;
-                        break;
-                    }
+                        {
+                            accentColorName = DGUI.Colors.ExitNodeColorName;
+                            headerTextColorName = accentColorName;
+                            break;
+                        }
                 }
             }
 
@@ -608,7 +608,7 @@ namespace Doozy.Editor.Nody.NodeGUI
         /// <summary>
         ///     Get a safe WindowId that does not collide with others in the list
         /// </summary>
-        public static int GetSafeWindowId(IEnumerable<BaseNodeGUI> list) { return list.Select(baseNodeGUI => baseNodeGUI.WindowId).Concat(new[] {-1}).Max() + 1; }
+        public static int GetSafeWindowId(IEnumerable<BaseNodeGUI> list) { return list.Select(baseNodeGUI => baseNodeGUI.WindowId).Concat(new[] { -1 }).Max() + 1; }
 
         [AttributeUsage(AttributeTargets.Class)]
         public class CustomNodeGUI : Attribute, INodeGUI

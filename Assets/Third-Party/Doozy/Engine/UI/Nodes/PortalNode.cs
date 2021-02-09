@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Nody.Attributes;
 using Doozy.Engine.Nody.Connections;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 namespace Doozy.Engine.UI.Nodes
@@ -69,9 +69,9 @@ namespace Doozy.Engine.UI.Nodes
                 switch (ListenFor)
                 {
                     case ListenerType.GameEvent: return UILabels.GameEvent;
-                    case ListenerType.UIView:    return "UIView " + UIViewTriggerAction;
-                    case ListenerType.UIButton:  return "UIButton " + UIButtonTriggerAction;
-                    case ListenerType.UIDrawer:  return "UIDrawer " + UIDrawerTriggerAction;
+                    case ListenerType.UIView: return "UIView " + UIViewTriggerAction;
+                    case ListenerType.UIButton: return "UIButton " + UIButtonTriggerAction;
+                    case ListenerType.UIDrawer: return "UIDrawer " + UIDrawerTriggerAction;
                 }
 
                 return "---";
@@ -91,7 +91,7 @@ namespace Doozy.Engine.UI.Nodes
                                    : string.IsNullOrEmpty(GameEventToListenFor)
                                        ? "---"
                                        : GameEventToListenFor;
-                    case ListenerType.UIView:   return AnyValue ? UILabels.AnyUIView : ViewCategory + " / " + ViewName;
+                    case ListenerType.UIView: return AnyValue ? UILabels.AnyUIView : ViewCategory + " / " + ViewName;
                     case ListenerType.UIButton: return AnyValue ? UILabels.AnyUIButton : ButtonCategory + " / " + ButtonName;
                     case ListenerType.UIDrawer: return AnyValue ? UILabels.AnyUIDrawer : DrawerName;
                 }
@@ -111,7 +111,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void AddDefaultSockets()
         {
             base.AddDefaultSockets();
-//            AddInputSocket(ConnectionMode.Multiple, typeof(PassthroughConnection), false, false);
+            //            AddInputSocket(ConnectionMode.Multiple, typeof(PassthroughConnection), false, false);
             AddOutputSocket(ConnectionMode.Override, typeof(PassthroughConnection), false, false);
         }
 
@@ -244,7 +244,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var node = (PortalNode) original;
+            var node = (PortalNode)original;
             m_gameEvent = node.m_gameEvent;
             ListenFor = node.ListenFor;
             AnyValue = node.AnyValue;

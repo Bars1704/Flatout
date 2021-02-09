@@ -2,10 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using Doozy.Engine;
 using Doozy.Engine.Utils;
-using Doozy.Engine.UI.Settings;
+using System;
 using UnityEngine;
 
 namespace Doozy.Engine.Touchy
@@ -37,7 +35,7 @@ namespace Doozy.Engine.Touchy
 
         /// <summary> Time duration, for a light touch on a touch-sensitive screen, to be considered a long tap (long press) </summary>
         public float LongTapDuration = LONG_TAP_DURATION_DEFAULT_VALUE;
-        
+
         /// <summary> Minimum travel distance, for a sliding a finger or a stylus pen across a touch-sensitive screen, to be considered a swipe </summary>
         [Range(SWIPE_LENGTH_MIN, SWIPE_LENGTH_MAX)]
         public float SwipeLength = SWIPE_LENGTH_DEFAULT_VALUE;
@@ -47,13 +45,13 @@ namespace Doozy.Engine.Touchy
             SwipeLength = SWIPE_LENGTH_DEFAULT_VALUE;
             LongTapDuration = LONG_TAP_DURATION_DEFAULT_VALUE;
         }
-        
+
         public void Reset(bool saveAssets)
         {
             Reset();
             SetDirty(saveAssets);
         }
-        
+
         /// <summary> [Editor Only] Marks target object as dirty. (Only suitable for non-scene objects) </summary>
         /// <param name="saveAssets"> Write all unsaved asset changes to disk? </param>
         public void SetDirty(bool saveAssets) { DoozyUtils.SetDirty(this, saveAssets); }

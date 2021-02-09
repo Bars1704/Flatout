@@ -20,7 +20,7 @@ namespace Doozy.Editor.Progress
             m_targetMixer,
             m_exposedParameterName,
             m_useLogarithmicConversion;
-        
+
         private bool HasReference { get { return m_targetMixer.objectReferenceValue != null; } }
 
         protected override void LoadSerializedProperty()
@@ -38,19 +38,19 @@ namespace Doozy.Editor.Progress
             serializedObject.Update();
             DrawHeader(Styles.GetStyle(Styles.StyleName.ComponentHeaderProgressTargetAudioMixer), MenuUtils.ProgressTargetAudioMixer_Manual, MenuUtils.ProgressTargetAudioMixer_YouTube);
             GUILayout.Space(DGUI.Properties.Space(2));
-            
+
             bool hasReference = HasReference;
             ColorName colorName = hasReference ? ComponentColorName : ColorName.Red;
-            
+
             DGUI.Property.Draw(m_targetMixer, UILabels.TargetMixer, colorName);
             GUILayout.Space(DGUI.Properties.Space());
-            
+
             GUI.enabled = hasReference;
             DGUI.Property.Draw(m_exposedParameterName, UILabels.ExposedParameterName, colorName);
             GUILayout.Space(DGUI.Properties.Space());
             DGUI.Toggle.Switch.Draw(m_useLogarithmicConversion, UILabels.UseLogarithmicConversion, colorName, true, false);
             GUI.enabled = true;
-            
+
             GUILayout.Space(DGUI.Properties.Space(4));
             serializedObject.ApplyModifiedProperties();
         }

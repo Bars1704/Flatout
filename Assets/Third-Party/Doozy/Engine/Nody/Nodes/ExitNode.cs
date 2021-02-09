@@ -22,7 +22,7 @@ namespace Doozy.Engine.Nody.Nodes
         public override bool HasErrors { get { return base.HasErrors || ErrorNodeIsNotConnected; } }
         public bool ErrorNodeIsNotConnected;
 #endif
-        
+
         public override void OnCreate()
         {
             base.OnCreate();
@@ -33,7 +33,7 @@ namespace Doozy.Engine.Nody.Nodes
         }
 
         public override float GetDefaultNodeWidth() { return NodySettings.Instance.ExitNodeWidth; }
-        
+
         public override void AddDefaultSockets()
         {
             base.AddDefaultSockets();

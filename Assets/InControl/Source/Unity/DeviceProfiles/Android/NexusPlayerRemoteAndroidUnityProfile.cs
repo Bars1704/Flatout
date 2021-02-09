@@ -4,51 +4,52 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.UnityDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve] [UnityInputDeviceProfile]
-	public class NexusPlayerRemoteAndroidUnityProfile : InputDeviceProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve]
+    [UnityInputDeviceProfile]
+    public class NexusPlayerRemoteAndroidUnityProfile : InputDeviceProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Nexus Player Remote";
-			DeviceNotes = "Nexus Player Remote";
+            DeviceName = "Nexus Player Remote";
+            DeviceNotes = "Nexus Player Remote";
 
-			DeviceClass = InputDeviceClass.Remote;
+            DeviceClass = InputDeviceClass.Remote;
 
-			IncludePlatforms = new[]
-			{
-				"Android"
-			};
+            IncludePlatforms = new[]
+            {
+                "Android"
+            };
 
-			Matchers = new[] { new InputDeviceMatcher { NameLiteral = "Google Nexus Remote" } };
+            Matchers = new[] { new InputDeviceMatcher { NameLiteral = "Google Nexus Remote" } };
 
-			ButtonMappings = new[]
-			{
-				new InputControlMapping
-				{
-					Name = "A",
-					Target = InputControlType.Action1,
-					Source = Button( 0 )
-				},
-				new InputControlMapping
-				{
-					Name = "Back",
-					Target = InputControlType.Back,
-					Source = EscapeKey
-				}
-			};
+            ButtonMappings = new[]
+            {
+                new InputControlMapping
+                {
+                    Name = "A",
+                    Target = InputControlType.Action1,
+                    Source = Button( 0 )
+                },
+                new InputControlMapping
+                {
+                    Name = "Back",
+                    Target = InputControlType.Back,
+                    Source = EscapeKey
+                }
+            };
 
-			AnalogMappings = new[]
-			{
-				DPadLeftMapping( 4 ),
-				DPadRightMapping( 4 ),
-				DPadUpMapping( 5 ),
-				DPadDownMapping( 5 )
-			};
-		}
-	}
+            AnalogMappings = new[]
+            {
+                DPadLeftMapping( 4 ),
+                DPadRightMapping( 4 ),
+                DPadUpMapping( 5 ),
+                DPadDownMapping( 5 )
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

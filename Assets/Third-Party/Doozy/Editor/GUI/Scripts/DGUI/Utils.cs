@@ -7,7 +7,6 @@ using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Doozy.Engine;
 using UnityEditor;
 using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
@@ -38,7 +37,7 @@ namespace Doozy.Editor
 
                 var result = new T[al.Count];
                 for (int i = 0; i < al.Count; i++)
-                    result[i] = (T) al[i];
+                    result[i] = (T)al[i];
 
                 return result;
             }

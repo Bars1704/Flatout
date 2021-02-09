@@ -92,7 +92,7 @@ namespace Doozy.Engine.UI.Base
         {
             if (!Contains(GENERAL))
             {
-//                CreateCategory(GENERAL, new List<string>(), false, false);
+                //                CreateCategory(GENERAL, new List<string>(), false, false);
 #if UNITY_EDITOR
                 var listOfNames = AssetUtils.CreateAsset<ListOfNames>(GetPath(DatabaseType), GetDatabaseFileName(DatabaseType, GENERAL));
 #else
@@ -552,9 +552,9 @@ namespace Doozy.Engine.UI.Base
             {
                 case NamesDatabaseType.UIButton: return DoozyPath.ComponentName.UIButton;
                 case NamesDatabaseType.UICanvas: return DoozyPath.ComponentName.UICanvas;
-                case NamesDatabaseType.UIView:   return DoozyPath.ComponentName.UIView;
+                case NamesDatabaseType.UIView: return DoozyPath.ComponentName.UIView;
                 case NamesDatabaseType.UIDrawer: return DoozyPath.ComponentName.UIDrawer;
-                default:                         throw new ArgumentOutOfRangeException();
+                default: throw new ArgumentOutOfRangeException();
             }
         }
 

@@ -8,12 +8,12 @@ using UnityEngine.Rendering;
 
 namespace Doozy.Editor.Nody.Utils
 {
-// Implementation from UnityEditor.Graphs.GraphGUI
+    // Implementation from UnityEditor.Graphs.GraphGUI
     public static class GraphBackground
     {
         private const float MINOR_GRID_SIZE = 12f;
         private const float MAJOR_GRID_SIZE = 120f;
-        
+
         private static readonly Color GridMinorColorDark = new Color(0f, 0f, 0f, 0.18f);
         private static readonly Color GridMajorColorDark = new Color(0f, 0f, 0f, 0.28f);
         private static readonly Color GridMinorColorLight = new Color(0f, 0f, 0f, 0.1f);
@@ -25,10 +25,10 @@ namespace Doozy.Editor.Nody.Utils
         public static void DrawGrid(Rect gridRect, float zoomLevel, Vector2 panOffset)
         {
             if (Event.current.type != EventType.Repaint) return;
-            
+
             //draw background
             UnityEditor.Graphs.Styles.graphBackground.Draw(gridRect, false, false, false, false);
-            
+
             HandleUtility.ApplyWireMaterial();
             GL.PushMatrix();
             GL.Begin(1);
@@ -45,7 +45,7 @@ namespace Doozy.Editor.Nody.Utils
             GL.Color(gridColor);
             float scaledOffsetX = -panOffset.x + panOffset.x % gridSize;
             float x = gridRect.xMin - gridRect.xMin % gridSize + scaledOffsetX;
-            while (x < (double) gridRect.xMax + scaledOffsetX)
+            while (x < (double)gridRect.xMax + scaledOffsetX)
             {
                 DrawLine(new Vector2(x + panOffset.x, gridRect.yMin), new Vector2(x + panOffset.x, gridRect.yMax));
                 x += gridSize;
@@ -55,7 +55,7 @@ namespace Doozy.Editor.Nody.Utils
             GL.Color(gridColor);
             float scaledOffsetY = -panOffset.y + panOffset.y % gridSize;
             float y = gridRect.yMin - gridRect.yMin % gridSize + scaledOffsetY;
-            while (y < (double) gridRect.yMax + scaledOffsetY)
+            while (y < (double)gridRect.yMax + scaledOffsetY)
             {
                 DrawLine(new Vector2(gridRect.xMin, y + panOffset.y), new Vector2(gridRect.xMax, y + panOffset.y));
                 y += gridSize;
@@ -77,7 +77,7 @@ namespace Doozy.Editor.Nody.Utils
             internal static void ApplyWireMaterial(CompareFunction zTest = CompareFunction.Always)
             {
                 Material handleWireMaterial = HandleWireMaterial;
-                handleWireMaterial.SetInt("_HandleZTest", (int) zTest);
+                handleWireMaterial.SetInt("_HandleZTest", (int)zTest);
                 handleWireMaterial.SetPass(0);
             }
 
@@ -93,8 +93,8 @@ namespace Doozy.Editor.Nody.Utils
             private static void InitHandleMaterials()
             {
                 if (s_handleWireMaterial) return;
-                s_handleWireMaterial = (Material) EditorGUIUtility.LoadRequired("SceneView/HandleLines.mat");
-                s_handleWireMaterial2D = (Material) EditorGUIUtility.LoadRequired("SceneView/2DHandleLines.mat");
+                s_handleWireMaterial = (Material)EditorGUIUtility.LoadRequired("SceneView/HandleLines.mat");
+                s_handleWireMaterial2D = (Material)EditorGUIUtility.LoadRequired("SceneView/2DHandleLines.mat");
             }
         }
     }

@@ -83,12 +83,12 @@ namespace Doozy.Engine
             ApplicationIsQuitting = false;
         }
 #endif
-        
+
         private void Awake()
         {
             if (s_instance != null && s_instance != this)
             {
-                DDebug.Log( "There cannot be two " + typeof(GameEventManager) + "' active at the same time. Destroying this one!");
+                DDebug.Log("There cannot be two " + typeof(GameEventManager) + "' active at the same time. Destroying this one!");
                 Destroy(gameObject);
                 return;
             }
@@ -120,7 +120,7 @@ namespace Doozy.Engine
             if (message == null) return;
             if (Instance.DebugComponent || debug && !message.IsSystemEvent) DDebug.Log("Received '" + message.EventName + "' game event.", Instance);
             if (!message.IsSystemEvent) return;
-            var @event = (SystemGameEvent) Enum.Parse(typeof(SystemGameEvent), message.EventName);
+            var @event = (SystemGameEvent)Enum.Parse(typeof(SystemGameEvent), message.EventName);
             if (Instance.DebugComponent || debug) DDebug.Log("Received '" + @event + "' system game event.", Instance);
 
             switch (@event)

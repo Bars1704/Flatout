@@ -28,14 +28,14 @@ namespace Doozy.Engine.Themes
 #endif
 
         #endregion
-        
+
         #region Public Variables
 
         /// <summary> Target SpriteRenderer component </summary>
         public SpriteRenderer SpriteRenderer;
 
         #endregion
-        
+
         #region Public Methods
 
         /// <summary> Method used by the ThemeManager when the active variant or selected theme have changed </summary>

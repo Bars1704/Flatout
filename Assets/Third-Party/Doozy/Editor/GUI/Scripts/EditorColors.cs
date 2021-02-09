@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
-using System.IO;
 using Doozy.Editor.Internal;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Utils;
+using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,12 +28,13 @@ namespace Doozy.Editor
                 return s_instance;
             }
         }
-        
+
         public void SetDirty(bool saveAssets) { DoozyUtils.SetDirty(this, saveAssets); }
 
         private static DColor UnknownColor { get { return new DColor("Unknown Color", Color.magenta, Color.magenta, Color.magenta); } }
 
-        [Header("Base Colors")] public DColor Red = new DColor("Red",
+        [Header("Base Colors")]
+        public DColor Red = new DColor("Red",
                                                                new Color().ColorFrom256(255, 162, 180),
                                                                new Color().ColorFrom256(255, 23, 68),
                                                                new Color().ColorFrom256(128, 12, 34));

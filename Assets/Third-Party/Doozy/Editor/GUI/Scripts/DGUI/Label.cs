@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 namespace Doozy.Editor
@@ -28,36 +28,36 @@ namespace Doozy.Editor
                     case Size.S:
                         switch (textAlign)
                         {
-                            case TextAlign.Left:   return Styles.GetStyle(Styles.StyleName.LabelSLeft);
+                            case TextAlign.Left: return Styles.GetStyle(Styles.StyleName.LabelSLeft);
                             case TextAlign.Center: return Styles.GetStyle(Styles.StyleName.LabelSCenter);
-                            case TextAlign.Right:  return Styles.GetStyle(Styles.StyleName.LabelSRight);
-                            default:               throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
+                            case TextAlign.Right: return Styles.GetStyle(Styles.StyleName.LabelSRight);
+                            default: throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
                         }
 
                     case Size.M:
                         switch (textAlign)
                         {
-                            case TextAlign.Left:   return Styles.GetStyle(Styles.StyleName.LabelMLeft);
+                            case TextAlign.Left: return Styles.GetStyle(Styles.StyleName.LabelMLeft);
                             case TextAlign.Center: return Styles.GetStyle(Styles.StyleName.LabelMCenter);
-                            case TextAlign.Right:  return Styles.GetStyle(Styles.StyleName.LabelMRight);
-                            default:               throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
+                            case TextAlign.Right: return Styles.GetStyle(Styles.StyleName.LabelMRight);
+                            default: throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
                         }
                     case Size.L:
                         switch (textAlign)
                         {
-                            case TextAlign.Left:   return Styles.GetStyle(Styles.StyleName.LabelLLeft);
+                            case TextAlign.Left: return Styles.GetStyle(Styles.StyleName.LabelLLeft);
                             case TextAlign.Center: return Styles.GetStyle(Styles.StyleName.LabelLCenter);
-                            case TextAlign.Right:  return Styles.GetStyle(Styles.StyleName.LabelLRight);
-                            default:               throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
+                            case TextAlign.Right: return Styles.GetStyle(Styles.StyleName.LabelLRight);
+                            default: throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
                         }
 
                     case Size.XL:
                         switch (textAlign)
                         {
-                            case TextAlign.Left:   return Styles.GetStyle(Styles.StyleName.LabelXLLeft);
+                            case TextAlign.Left: return Styles.GetStyle(Styles.StyleName.LabelXLLeft);
                             case TextAlign.Center: return Styles.GetStyle(Styles.StyleName.LabelXLCenter);
-                            case TextAlign.Right:  return Styles.GetStyle(Styles.StyleName.LabelXLRight);
-                            default:               throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
+                            case TextAlign.Right: return Styles.GetStyle(Styles.StyleName.LabelXLRight);
+                            default: throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
                         }
 
                     default: throw new ArgumentOutOfRangeException("size", size, null);

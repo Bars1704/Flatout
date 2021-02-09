@@ -5,7 +5,6 @@
 
 using System;
 using Doozy.Engine.Utils;
-using UnityEngine.UI;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -35,7 +34,7 @@ namespace Doozy.Engine.Themes
 #endif
 
         #endregion
-        
+
         #region Public Variables
 
 #if dUI_TextMeshPro

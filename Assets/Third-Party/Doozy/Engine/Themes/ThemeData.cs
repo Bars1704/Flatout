@@ -43,7 +43,7 @@ namespace Doozy.Engine.Themes
         /// <summary> Theme name </summary>
         [SerializeField]
         private string m_themeName = UNNAMED_THEME_NAME;
-        
+
         /// <summary> Vector array describing a System.Guid </summary>
         [SerializeField]
         private byte[] SerializedGuid;
@@ -91,13 +91,13 @@ namespace Doozy.Engine.Themes
                 return m_activeVariant;
             }
         }
-        
+
         /// <summary> Id of this theme </summary>
         public Guid Id { get { return m_id; } }
-        
+
         /// <summary> Name of this theme </summary>
         public string ThemeName { get { return m_themeName; } set { m_themeName = value; } }
-        
+
         /// <summary> Returns TRUE if this theme's name is 'General'. This is a special theme name as it considered the default theme (it will always exist) </summary>
         public bool IsGeneralTheme { get { return ThemeName.Equals(ThemesDatabase.GENERAL_THEME_NAME); } }
 
@@ -232,19 +232,19 @@ namespace Doozy.Engine.Themes
         /// <summary> Returns TRUE if a Color property, with the given Id, exists in this theme </summary>
         /// <param name="propertyId"> Guid to search for </param>
         public bool ContainsColorProperty(Guid propertyId) { return ColorLabels != null && ColorLabels.Any(colorLabel => colorLabel.Id.Equals(propertyId)); }
-        
+
         /// <summary> Returns TRUE if a Sprite property, with the given Id, exists in this theme </summary>
         /// <param name="propertyId"> Guid to search for </param>
         public bool ContainsSpriteProperty(Guid propertyId) { return SpriteLabels != null && SpriteLabels.Any(spriteLabel => spriteLabel.Id.Equals(propertyId)); }
-        
+
         /// <summary> Returns TRUE if a Texture property, with the given Id, exists in this theme </summary>
         /// <param name="propertyId"> Guid to search for </param>
         public bool ContainsTextureProperty(Guid propertyId) { return TextureLabels != null && TextureLabels.Any(textureLabel => textureLabel.Id.Equals(propertyId)); }
-        
+
         /// <summary> Returns TRUE if a Font property, with the given Id, exists in this theme </summary>
         /// <param name="propertyId"> Guid to search for </param>
         public bool ContainsFontProperty(Guid propertyId) { return FontLabels != null && FontLabels.Any(fontLabel => fontLabel.Id.Equals(propertyId)); }
-        
+
         /// <summary> Returns TRUE if a FontAsset property, with the given Id, exists in this theme </summary>
         /// <param name="propertyId"> Guid to search for </param>
         public bool ContainsFontAssetProperty(Guid propertyId) { return FontAssetLabels != null && FontAssetLabels.Any(fontAssetLabel => fontAssetLabel.Id.Equals(propertyId)); }
@@ -268,19 +268,19 @@ namespace Doozy.Engine.Themes
         /// <summary> Get the color property index by searching for the given Guid </summary>
         /// <param name="id"> Guid value to search for </param>
         public int GetColorPropertyIndex(Guid id) { return GetPropertyIndex(id, ColorLabels); }
-        
+
         /// <summary> Get the sprite property index by searching for the given Guid </summary>
         /// <param name="id"> Guid value to search for </param>
         public int GetSpritePropertyIndex(Guid id) { return GetPropertyIndex(id, SpriteLabels); }
-        
+
         /// <summary> Get the texture property index by searching for the given Guid </summary>
         /// <param name="id"> Guid value to search for </param>
         public int GetTexturePropertyIndex(Guid id) { return GetPropertyIndex(id, TextureLabels); }
-        
+
         /// <summary> Get the font property index by searching for the given Guid </summary>
         /// <param name="id"> Guid value to search for </param>
         public int GetFontPropertyIndex(Guid id) { return GetPropertyIndex(id, FontLabels); }
-        
+
         /// <summary> Get the font asset property index by searching for the given Guid </summary>
         /// <param name="id"> Guid value to search for </param>
         public int GetFontAssetPropertyIndex(Guid id) { return GetPropertyIndex(id, FontAssetLabels); }
@@ -319,7 +319,7 @@ namespace Doozy.Engine.Themes
         {
             if (performUndo) UndoRecord(UILabels.RemoveItem);
             RemoveProperty(deleteGuid, ColorLabels);
-            
+
             foreach (ThemeVariantData variant in Variants)
             {
                 foreach (ColorId c in variant.Colors)
@@ -332,7 +332,7 @@ namespace Doozy.Engine.Themes
 
             SetDirty(saveAssets);
         }
-        
+
         /// <summary> Remove a sprite property </summary>
         /// <param name="deleteGuid"> Guid to search for </param>
         /// <param name="performUndo"> Record changes? </param>
@@ -341,7 +341,7 @@ namespace Doozy.Engine.Themes
         {
             if (performUndo) UndoRecord(UILabels.RemoveItem);
             RemoveProperty(deleteGuid, SpriteLabels);
-            
+
             foreach (ThemeVariantData variant in Variants)
             {
                 foreach (SpriteId s in variant.Sprites)
@@ -354,7 +354,7 @@ namespace Doozy.Engine.Themes
 
             SetDirty(saveAssets);
         }
-        
+
         /// <summary> Remove a texture property </summary>
         /// <param name="deleteGuid"> Guid to search for </param>
         /// <param name="performUndo"> Record changes? </param>
@@ -363,7 +363,7 @@ namespace Doozy.Engine.Themes
         {
             if (performUndo) UndoRecord(UILabels.RemoveItem);
             RemoveProperty(deleteGuid, TextureLabels);
-            
+
             foreach (ThemeVariantData variant in Variants)
             {
                 foreach (TextureId t in variant.Textures)
@@ -432,7 +432,7 @@ namespace Doozy.Engine.Themes
             if (performUndo) UndoRecord(UILabels.RefreshDatabase);
             if (showProgress) DoozyUtils.DisplayProgressBar(UILabels.ThemeName + ": " + ThemeName, UILabels.RefreshDatabase, 0.2f);
             bool addedDefaultColorLabels = ColorLabels.Count == 0; //if the color properties list is empty -> add the default color labels
-            if(addedDefaultColorLabels) AddDefaultColorLabels();
+            if (addedDefaultColorLabels) AddDefaultColorLabels();
             if (showProgress) DoozyUtils.DisplayProgressBar(UILabels.ThemeName + ": " + ThemeName, UILabels.RefreshDatabase, 0.3f);
             bool addedDefaultVariant = AddDefaultVariant();
             if (showProgress) DoozyUtils.DisplayProgressBar(UILabels.ThemeName + ": " + ThemeName, UILabels.RefreshDatabase, 0.6f);
@@ -545,7 +545,7 @@ namespace Doozy.Engine.Themes
             return true;
         }
 
-       
+
 
         #endregion
 

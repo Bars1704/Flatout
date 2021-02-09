@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Doozy.Engine.Events;
 using Doozy.Engine.UI.Animation;
 using Doozy.Engine.UI.Base;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -69,8 +69,8 @@ namespace Doozy.Engine.UI
             {
                 switch (ButtonAnimationType)
                 {
-                    case ButtonAnimationType.Punch:    return HasPunchAnimation;
-                    case ButtonAnimationType.State:    return HasStateAnimation;
+                    case ButtonAnimationType.Punch: return HasPunchAnimation;
+                    case ButtonAnimationType.State: return HasStateAnimation;
                     case ButtonAnimationType.Animator: return HasAnimators;
                 }
 
@@ -184,7 +184,7 @@ namespace Doozy.Engine.UI
             {
                 case ButtonAnimationType.Punch: return PunchAnimation.TotalDuration;
                 case ButtonAnimationType.State: return StateAnimation.TotalDuration;
-                default:                        return 0f;
+                default: return 0f;
             }
         }
 
@@ -359,7 +359,7 @@ namespace Doozy.Engine.UI
             {
                 case ButtonAnimationType.Punch: return AnimationType.Punch;
                 case ButtonAnimationType.State: return AnimationType.State;
-                default:                        return AnimationType.Undefined;
+                default: return AnimationType.Undefined;
             }
         }
 
@@ -369,12 +369,12 @@ namespace Doozy.Engine.UI
         {
             switch (type)
             {
-                case UIToggleBehaviorType.OnClick:        return ON_CLICK_DISABLE_INTERVAL;
+                case UIToggleBehaviorType.OnClick: return ON_CLICK_DISABLE_INTERVAL;
                 case UIToggleBehaviorType.OnPointerEnter: return ON_POINTER_ENTER_DISABLE_INTERVAL;
-                case UIToggleBehaviorType.OnPointerExit:  return ON_POINTER_EXIT_DISABLE_INTERVAL;
-                case UIToggleBehaviorType.OnSelected:     return ON_BUTTON_SELECTED_DISABLE_INTERVAL;
-                case UIToggleBehaviorType.OnDeselected:   return ON_BUTTON_DESELECTED_DISABLE_INTERVAL;
-                default:                                  return 0f;
+                case UIToggleBehaviorType.OnPointerExit: return ON_POINTER_EXIT_DISABLE_INTERVAL;
+                case UIToggleBehaviorType.OnSelected: return ON_BUTTON_SELECTED_DISABLE_INTERVAL;
+                case UIToggleBehaviorType.OnDeselected: return ON_BUTTON_DESELECTED_DISABLE_INTERVAL;
+                default: return 0f;
             }
         }
 

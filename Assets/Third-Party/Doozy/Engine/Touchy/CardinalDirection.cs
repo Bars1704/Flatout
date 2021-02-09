@@ -46,16 +46,16 @@ namespace Doozy.Engine.Touchy
         {
             switch (swipe)
             {
-                case Swipe.None:      return None;
-                case Swipe.UpLeft:    return UpLeft;
-                case Swipe.Up:        return Up;
-                case Swipe.UpRight:   return UpRight;
-                case Swipe.Left:      return Left;
-                case Swipe.Right:     return Right;
-                case Swipe.DownLeft:  return DownLeft;
-                case Swipe.Down:      return Down;
+                case Swipe.None: return None;
+                case Swipe.UpLeft: return UpLeft;
+                case Swipe.Up: return Up;
+                case Swipe.UpRight: return UpRight;
+                case Swipe.Left: return Left;
+                case Swipe.Right: return Right;
+                case Swipe.DownLeft: return DownLeft;
+                case Swipe.Down: return Down;
                 case Swipe.DownRight: return DownRight;
-                default:              return None;
+                default: return None;
             }
         }
     }

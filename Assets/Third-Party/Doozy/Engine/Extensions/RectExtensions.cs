@@ -58,8 +58,8 @@ namespace Doozy.Engine.Extensions
             result.y += pivotPoint.y;
             return result;
         }
-        
-         public static Rect Below(this Rect source, Rect belowSource)
+
+        public static Rect Below(this Rect source, Rect belowSource)
         {
             return new Rect(source.x, belowSource.y + belowSource.height, source.width, source.height);
         }

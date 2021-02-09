@@ -19,8 +19,8 @@ namespace Doozy.Editor.UI.Nodes
         private static GUIStyle s_iconStyle;
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconRandomNode)); } }
         protected override GUIStyle GetIconStyle() { return IconStyle; }
-        
-        private RandomNode TargetNode { get { return (RandomNode) Node; } }
+
+        private RandomNode TargetNode { get { return (RandomNode)Node; } }
 
         private Rect
             m_areaRect,
@@ -66,7 +66,7 @@ namespace Doozy.Editor.UI.Nodes
             Color iconAndTextColor = (DGUI.Utility.IsProSkin ? Color.white.Darker() : Color.black.Lighter()).WithAlpha(socketOpacity);
 
             float chance = socket.IsConnected && TargetNode.MaxChance > 0
-                               ? (float) socketValue.Weight / TargetNode.MaxChance
+                               ? (float)socketValue.Weight / TargetNode.MaxChance
                                : 0f;
 
             string weightLabel = socketValue.Weight.ToString();

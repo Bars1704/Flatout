@@ -1,8 +1,8 @@
 namespace InControl
 {
-	public enum InputDeviceProfileType
-	{
-		Unity,
-		Native
-	}
+    public enum InputDeviceProfileType
+    {
+        Unity,
+        Native
+    }
 }

@@ -146,7 +146,7 @@ namespace Doozy.Editor.Windows
                     GUILayout.FlexibleSpace();
                     if (DGUI.Button.Draw(linkButtonLabel, Size.S, DGUI.Colors.DarkOrLightColorName, DGUI.Colors.LightOrDarkColorName, true, LINK_BOX_ICON_SIZE, 80))
                     {
-//                        DDebug.Log(linkUrl);
+                        //                        DDebug.Log(linkUrl);
                         Application.OpenURL(linkUrl);
                     }
 

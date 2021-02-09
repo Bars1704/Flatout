@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 #if dUI_TextMeshPro
@@ -40,7 +40,7 @@ namespace Doozy.Engine.Themes
 
         /// <summary> Id of this struct </summary>
         public Guid Id { get { return m_id; } set { m_id = value; } }
-        
+
 #if dUI_TextMeshPro
         /// <summary> FontAsset reference of this struct </summary>
         public TMP_FontAsset FontAsset { get { return m_fontAsset; } set { m_fontAsset = value; } }

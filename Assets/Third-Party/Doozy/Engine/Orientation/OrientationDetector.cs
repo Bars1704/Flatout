@@ -121,7 +121,7 @@ namespace Doozy.Engine.Orientation
             ApplicationIsQuitting = false;
         }
 #endif
-        
+
         private void Reset() { Canvas.renderMode = RenderMode.ScreenSpaceOverlay; }
 
         private void OnValidate() { Canvas.renderMode = RenderMode.ScreenSpaceOverlay; }
@@ -148,15 +148,15 @@ namespace Doozy.Engine.Orientation
         private void OnEnable()
         {
             CheckDeviceOrientation();
-            
+
         }
 
         private void Update()
         {
             if (m_currentOrientation == DetectedOrientation.Unknown) CheckDeviceOrientation();
-//#if UNITY_2018_1_OR_NEWER
-//CheckDeviceOrientation();
-//#endif
+            //#if UNITY_2018_1_OR_NEWER
+            //CheckDeviceOrientation();
+            //#endif
         }
 
         private void OnRectTransformDimensionsChange() { CheckDeviceOrientation(); }

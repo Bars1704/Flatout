@@ -53,7 +53,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var node = (UIDrawerNode) original;
+            var node = (UIDrawerNode)original;
             DrawerName = node.DrawerName;
             CustomDrawerName = node.CustomDrawerName;
             Action = node.Action;

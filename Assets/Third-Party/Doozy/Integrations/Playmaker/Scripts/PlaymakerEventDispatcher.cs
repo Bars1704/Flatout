@@ -3,14 +3,9 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 
-using System.Collections;
-using Doozy.Engine;
-using Doozy.Engine.UI;
-using Doozy.Engine.Utils;
 using UnityEngine;
 
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
 // ReSharper disable MemberCanBePrivate.Global

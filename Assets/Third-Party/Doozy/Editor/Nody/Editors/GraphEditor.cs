@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Globalization;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Nody.Utils;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Utils;
+using System.Globalization;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace Doozy.Editor.Nody.Editors
     [CustomEditor(typeof(Graph))]
     public class GraphEditor : BaseEditor
     {
-        private Graph Graph { get { return (Graph) target; } }
+        private Graph Graph { get { return (Graph)target; } }
 
         protected override ColorName ComponentColorName { get { return Graph.IsSubGraph ? DGUI.Colors.UISubGraphColorName : DGUI.Colors.UIGraphColorName; } }
         public override bool RequiresConstantRepaint() { return true; }

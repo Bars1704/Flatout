@@ -143,10 +143,10 @@ namespace Doozy.Editor
                                     p.objectReferenceValue = default(Object);
                                     break;
                                 case SerializedPropertyType.FixedBufferSize: break;
-                                case SerializedPropertyType.Vector2Int:      break;
-                                case SerializedPropertyType.Vector3Int:      break;
-                                case SerializedPropertyType.RectInt:         break;
-                                case SerializedPropertyType.BoundsInt:       break;
+                                case SerializedPropertyType.Vector2Int: break;
+                                case SerializedPropertyType.Vector3Int: break;
+                                case SerializedPropertyType.RectInt: break;
+                                case SerializedPropertyType.BoundsInt: break;
                             }
                         }
                     }

@@ -2,14 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using Doozy.Editor;
 using Doozy.Editor.Internal;
-using Doozy.Engine.Nody;
 using Doozy.Editor.Nody.Windows;
+using Doozy.Engine.Nody;
 using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEngine;
-using PropertyName = Doozy.Editor.PropertyName;
 
 namespace Doozy.Editor.Nody.Editors
 {
@@ -24,7 +22,7 @@ namespace Doozy.Editor.Nody.Editors
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (GraphController) target;
+                m_target = (GraphController)target;
                 return m_target;
             }
         }
@@ -101,9 +99,9 @@ namespace Doozy.Editor.Nody.Editors
                 DGUI.Property.Draw(GetProperty(PropertyName.m_graphModel), UILabels.GraphModel,
                                    HasErrors ? ColorName.Red : ColorName.White,
                                    HasErrors ? ColorName.Red : DGUI.Colors.DisabledTextColorName);
-                
+
                 GUILayout.Space(DGUI.Properties.Space());
-                
+
                 if (!HasErrors)
                 {
                     if (DGUI.Button.Dynamic.DrawIconButton(Doozy.Editor.Styles.GetStyle(Doozy.Editor.Styles.StyleName.IconNody), UILabels.OpenGraph, Size.S, TextAlign.Left, ComponentColorName, ComponentColorName, DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2), false))

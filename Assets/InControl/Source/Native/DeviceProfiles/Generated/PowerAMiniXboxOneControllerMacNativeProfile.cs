@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class PowerAMiniXboxOneControllerMacNativeProfile : XboxOneDriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class PowerAMiniXboxOneControllerMacNativeProfile : XboxOneDriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Power A Mini Xbox One Controller";
-			DeviceNotes = "Power A Mini Xbox One Controller on Mac";
+            DeviceName = "Power A Mini Xbox One Controller";
+            DeviceNotes = "Power A Mini Xbox One Controller on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x24c6,
-					ProductID = 0x543a,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x24c6,
+                    ProductID = 0x543a,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

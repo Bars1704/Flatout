@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
+using System;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 
@@ -43,7 +43,7 @@ namespace Doozy.Editor.Nody.Windows
             /// <summary> Holds the last calculated value of the InputSocket Tangent in order to draw the connection curve (huge performance boost as we won't need to recalculate it on every frame) </summary>
             public Vector2 InputTangent = Vector2.zero;
 
-            public AnimBool Ping = new AnimBool {speed = NodySettings.Instance.PingColorChangeSpeed};
+            public AnimBool Ping = new AnimBool { speed = NodySettings.Instance.PingColorChangeSpeed };
         }
 
         /// <summary> Lightweight handles material </summary>
@@ -56,7 +56,7 @@ namespace Doozy.Editor.Nody.Windows
             {
                 if (s_handleMaterial != null) return s_handleMaterial;
                 Shader shader = Shader.Find("Hidden/Nody/LineDraw");
-                var m = new Material(shader) {hideFlags = HideFlags.HideAndDontSave};
+                var m = new Material(shader) { hideFlags = HideFlags.HideAndDontSave };
                 s_handleMaterial = m;
                 return s_handleMaterial;
             }

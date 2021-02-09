@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Nody.NodeGUI;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.SceneManagement;
 using Doozy.Engine.UI.Nodes;
+using System;
 using UnityEngine;
 
 namespace Doozy.Editor.UI.Nodes
@@ -18,8 +18,8 @@ namespace Doozy.Editor.UI.Nodes
         private static GUIStyle s_iconStyle;
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconLoadSceneNode)); } }
         protected override GUIStyle GetIconStyle() { return IconStyle; }
-        
-        private LoadSceneNode TargetNode { get { return (LoadSceneNode) Node; } }
+
+        private LoadSceneNode TargetNode { get { return (LoadSceneNode)Node; } }
 
         protected override void OnNodeGUI()
         {

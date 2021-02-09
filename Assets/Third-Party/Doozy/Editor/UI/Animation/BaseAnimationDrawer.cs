@@ -2,13 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Internal;
 using Doozy.Engine.UI.Animation;
 using Doozy.Engine.Utils;
+using System;
 using UnityEditor;
 using UnityEngine;
-using PropertyName = Doozy.Editor.PropertyName;
 
 namespace Doozy.Editor.UI.Animation
 {
@@ -18,7 +17,7 @@ namespace Doozy.Editor.UI.Animation
 
         protected void DrawSelector(Rect position, SerializedProperty property, DColor dColor)
         {
-            m_animationType = (AnimationType) Properties.Get(PropertyName.AnimationType, property).enumValueIndex;
+            m_animationType = (AnimationType)Properties.Get(PropertyName.AnimationType, property).enumValueIndex;
             switch (m_animationType)
             {
                 case AnimationType.Show:
@@ -67,7 +66,7 @@ namespace Doozy.Editor.UI.Animation
 
         protected void DrawLineEaseTypeEaseAnimationCurve(Rect drawRect, SerializedProperty property)
         {
-            if ((EaseType) Properties.Get(PropertyName.EaseType, property).enumValueIndex == EaseType.Ease)
+            if ((EaseType)Properties.Get(PropertyName.EaseType, property).enumValueIndex == EaseType.Ease)
                 Elements.DrawLine(drawRect,
                                   Elements.GetLayout(Properties.Get(PropertyName.EaseType, property), 0.3f, DGUIElement.DrawMode.Field),
                                   Elements.GetLayout(Properties.Get(PropertyName.Ease, property), 0.7f, DGUIElement.DrawMode.Field));
@@ -81,7 +80,7 @@ namespace Doozy.Editor.UI.Animation
         {
             SerializedProperty easeType = Properties.Get(PropertyName.EaseType, property);
 
-            if ((EaseType) easeType.enumValueIndex == EaseType.Ease)
+            if ((EaseType)easeType.enumValueIndex == EaseType.Ease)
                 Elements.DrawLine(drawRect,
                                   Elements.GetLayout(easeType, 0.2f, DGUIElement.DrawMode.Field),
                                   Elements.GetLayout(Properties.Get(PropertyName.Ease, property), 0.5f, DGUIElement.DrawMode.Field),

@@ -45,7 +45,7 @@ namespace Doozy.Engine.Themes
         /// <summary> System.Guid unique id for the variant property </summary>
         public Guid SelectedSpritePropertyId = Guid.Empty;
 #endif
-        
+
         /// <summary> System.Guid unique id for the variant property </summary>
         public Guid DisabledSpritePropertyId = Guid.Empty;
 
@@ -66,7 +66,7 @@ namespace Doozy.Engine.Themes
         /// <summary> Vector array describing the System.Guid for the variant property </summary>
         [SerializeField] private byte[] SelectedPropertyIdSerializedGuid;
 #endif
-        
+
         /// <summary> Vector array describing the System.Guid for the variant property </summary>
         [SerializeField] private byte[] DisabledPropertyIdSerializedGuid;
 
@@ -85,7 +85,7 @@ namespace Doozy.Engine.Themes
             if (DisabledSpritePropertyId == Guid.Empty) return;
             UpdateTarget(ThemeManager.Database.GetThemeData(ThemeId));
         }
-        
+
         public override void OnBeforeSerialize()
         {
             base.OnBeforeSerialize();
@@ -109,7 +109,7 @@ namespace Doozy.Engine.Themes
         }
 
         #endregion
-        
+
         #region Public Methods
 
         /// <summary> Method used by the ThemeManager when the active variant or selected theme have changed </summary>
@@ -139,7 +139,7 @@ namespace Doozy.Engine.Themes
                     ? theme.ActiveVariant.GetSprite(SelectedSpritePropertyId)
                     : spriteState.selectedSprite,
 #endif
-                
+
                 disabledSprite = DisabledSpritePropertyId != Guid.Empty
                     ? theme.ActiveVariant.GetSprite(DisabledSpritePropertyId)
                     : spriteState.disabledSprite

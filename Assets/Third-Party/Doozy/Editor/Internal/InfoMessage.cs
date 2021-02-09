@@ -2,10 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Utils;
-using UnityEditor;
+using System;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 using UnityEngine.Events;
@@ -110,14 +109,14 @@ namespace Doozy.Editor.Internal
             {
                 if (s_titleStyle != null) return s_titleStyle;
                 s_titleStyle = new GUIStyle
-                               {
-                                   fontSize = 12,
-                                   alignment = TextAnchor.MiddleLeft,
-                                   clipping = TextClipping.Clip,
-                                   wordWrap = false,
-                                   richText = true,
-                                   stretchWidth = true
-                               };
+                {
+                    fontSize = 12,
+                    alignment = TextAnchor.MiddleLeft,
+                    clipping = TextClipping.Clip,
+                    wordWrap = false,
+                    richText = true,
+                    stretchWidth = true
+                };
                 return s_titleStyle;
             }
         }
@@ -128,14 +127,14 @@ namespace Doozy.Editor.Internal
             {
                 if (s_messageStyle != null) return s_messageStyle;
                 s_messageStyle = new GUIStyle
-                                 {
-                                     fontSize = 10,
-                                     padding = new RectOffset(ICON_PADDING, ICON_PADDING, ICON_PADDING, ICON_PADDING),
-                                     alignment = TextAnchor.UpperLeft,
-                                     wordWrap = true,
-                                     richText = true,
-                                     stretchWidth = true
-                                 };
+                {
+                    fontSize = 10,
+                    padding = new RectOffset(ICON_PADDING, ICON_PADDING, ICON_PADDING, ICON_PADDING),
+                    alignment = TextAnchor.UpperLeft,
+                    wordWrap = true,
+                    richText = true,
+                    stretchWidth = true
+                };
                 return s_messageStyle;
             }
         }
@@ -150,12 +149,12 @@ namespace Doozy.Editor.Internal
         {
             switch (type)
             {
-                case MessageType.Help:    return DGUI.Colors.DarkOrLightColorName;
-                case MessageType.Info:    return ColorName.Blue;
+                case MessageType.Help: return DGUI.Colors.DarkOrLightColorName;
+                case MessageType.Info: return ColorName.Blue;
                 case MessageType.Warning: return ColorName.Amber;
-                case MessageType.Error:   return ColorName.Red;
-                case MessageType.Ok:      return ColorName.LightGreen;
-                default:                  return DGUI.Colors.DarkOrLightColorName;
+                case MessageType.Error: return ColorName.Red;
+                case MessageType.Ok: return ColorName.LightGreen;
+                default: return DGUI.Colors.DarkOrLightColorName;
             }
         }
 
@@ -163,12 +162,12 @@ namespace Doozy.Editor.Internal
         {
             switch (type)
             {
-                case MessageType.Help:    return DGUI.Colors.LightOrDarkColorName;
-                case MessageType.Info:    return ColorName.Blue;
+                case MessageType.Help: return DGUI.Colors.LightOrDarkColorName;
+                case MessageType.Info: return ColorName.Blue;
                 case MessageType.Warning: return ColorName.Amber;
-                case MessageType.Error:   return ColorName.Red;
-                case MessageType.Ok:      return ColorName.LightGreen;
-                default:                  return DGUI.Colors.LightOrDarkColorName;
+                case MessageType.Error: return ColorName.Red;
+                case MessageType.Ok: return ColorName.LightGreen;
+                default: return DGUI.Colors.LightOrDarkColorName;
             }
         }
 
@@ -202,12 +201,12 @@ namespace Doozy.Editor.Internal
         {
             switch (type)
             {
-                case MessageType.Ok:      return IconOk;
-                case MessageType.Help:    return IconHelp;
-                case MessageType.Info:    return IconInfo;
+                case MessageType.Ok: return IconOk;
+                case MessageType.Help: return IconHelp;
+                case MessageType.Info: return IconInfo;
                 case MessageType.Warning: return IconWarning;
-                case MessageType.Error:   return IconError;
-                default:                  return UILabels.Error;
+                case MessageType.Error: return IconError;
+                default: return UILabels.Error;
             }
         }
 
@@ -215,12 +214,12 @@ namespace Doozy.Editor.Internal
         {
             switch (type)
             {
-                case MessageType.Help:    return UILabels.Help;
-                case MessageType.Info:    return UILabels.Info;
+                case MessageType.Help: return UILabels.Help;
+                case MessageType.Info: return UILabels.Info;
                 case MessageType.Warning: return UILabels.Warning;
-                case MessageType.Error:   return UILabels.Error;
-                case MessageType.Ok:      return UILabels.Ok;
-                default:                  return UILabels.Custom;
+                case MessageType.Error: return UILabels.Error;
+                case MessageType.Ok: return UILabels.Ok;
+                default: return UILabels.Custom;
             }
         }
 

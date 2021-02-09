@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Events;
+using Doozy.Engine.Soundy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Doozy.Engine.Events;
-using Doozy.Engine.Soundy;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -62,10 +62,10 @@ namespace Doozy.Engine.UI.Base
             {
                 switch (SoundData.SoundSource)
                 {
-                    case SoundSource.Soundy:      return SoundData.SoundName != SoundyManager.NO_SOUND && !string.IsNullOrEmpty(SoundData.SoundName);
-                    case SoundSource.AudioClip:   return SoundData.AudioClip != null;
+                    case SoundSource.Soundy: return SoundData.SoundName != SoundyManager.NO_SOUND && !string.IsNullOrEmpty(SoundData.SoundName);
+                    case SoundSource.AudioClip: return SoundData.AudioClip != null;
                     case SoundSource.MasterAudio: return !string.IsNullOrEmpty(SoundData.SoundName);
-                    default:                      return false;
+                    default: return false;
                 }
             }
         }
@@ -132,7 +132,7 @@ namespace Doozy.Engine.UI.Base
             AnimatorEvents.Add(animatorEvent);
             return this;
         }
-        
+
         /// <summary> Add a list of AnimatorEvent that will get invoked when this UIAction is invoked </summary>
         /// <param name="animatorEvents"> List of AnimatorEvents </param>
         public UIAction AddAnimatorEvents(List<AnimatorEvent> animatorEvents)
@@ -140,8 +140,8 @@ namespace Doozy.Engine.UI.Base
             if (animatorEvents == null) return this;
             animatorEvents = animatorEvents.Where(x => x != null).ToList();
             foreach (AnimatorEvent animatorEvent in animatorEvents)
-               if(!AnimatorEvents.Contains(animatorEvent))
-                   AnimatorEvents.Add(animatorEvent);
+                if (!AnimatorEvents.Contains(animatorEvent))
+                    AnimatorEvents.Add(animatorEvent);
             return this;
         }
 
@@ -152,7 +152,7 @@ namespace Doozy.Engine.UI.Base
         {
             gameEvent = gameEvent.Trim();
             if (string.IsNullOrEmpty(gameEvent)) return this;
-            if(clearGameEventsList) GameEvents.Clear();
+            if (clearGameEventsList) GameEvents.Clear();
             if (GameEvents.Contains(gameEvent)) return this;
             GameEvents.Add(gameEvent);
             return this;
@@ -167,9 +167,9 @@ namespace Doozy.Engine.UI.Base
             for (int i = 0; i < gameEvents.Count; i++)
                 gameEvents[i] = gameEvents[i].Trim();
             gameEvents = gameEvents.Where(s => !string.IsNullOrEmpty(s)).ToList();
-            if(clearGameEventsList) GameEvents.Clear();
+            if (clearGameEventsList) GameEvents.Clear();
             foreach (string gameEvent in gameEvents)
-                if(!GameEvents.Contains(gameEvent))
+                if (!GameEvents.Contains(gameEvent))
                     GameEvents.Add(gameEvent);
             return this;
         }
@@ -259,7 +259,7 @@ namespace Doozy.Engine.UI.Base
             if (!HasSound) return;
             SoundyManager.Play(SoundData);
         }
-        
+
         /// <summary> Resets this instance to the default values </summary>
         public void Reset()
         {
@@ -277,7 +277,7 @@ namespace Doozy.Engine.UI.Base
             if (!HasGameEvents) return;
             GameEventMessage.SendEvents(GameEvents, source.gameObject);
         }
-        
+
         /// <summary> Set the Action callback executed when this UIAction is invoked </summary>
         /// <param name="action"> Callback executed when this UIAction is invoked </param>
         public UIAction SetAction(Action<GameObject> action)
@@ -285,7 +285,7 @@ namespace Doozy.Engine.UI.Base
             Action = action;
             return this;
         }
-        
+
         /// <summary> Set and UIEffect that will get invoked when this UIAction is invoked </summary>
         /// <param name="effect"> Target UIEffect </param>
         public UIAction SetEffect(UIEffect effect)
@@ -294,7 +294,7 @@ namespace Doozy.Engine.UI.Base
             Effect = effect;
             return this;
         }
-        
+
         /// <summary> Set a new SoundyData that will be used by Soundy to play a sound when this UIAction is invoked </summary>
         /// <param name="soundyData"> SoundyData used by Soundy to play a sound when this UIAction is invoked </param>
         public UIAction SetSoundyData(SoundyData soundyData)

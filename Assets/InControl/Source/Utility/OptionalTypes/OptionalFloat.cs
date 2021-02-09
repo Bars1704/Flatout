@@ -1,205 +1,205 @@
 // ReSharper disable UnusedMember.Global
 namespace InControl
 {
-	using System;
-	using System.Globalization;
-	using UnityEngine;
+    using System;
+    using System.Globalization;
+    using UnityEngine;
 
 
-	public class OptionalTypeHasNoValueException : SystemException
-	{
-		public OptionalTypeHasNoValueException( string message )
-			: base( message ) {}
-	}
+    public class OptionalTypeHasNoValueException : SystemException
+    {
+        public OptionalTypeHasNoValueException(string message)
+            : base(message) { }
+    }
 
 
-	[Serializable]
-	public struct OptionalFloat
-	{
-		[SerializeField]
-		// ReSharper disable once InconsistentNaming
-		bool hasValue;
+    [Serializable]
+    public struct OptionalFloat
+    {
+        [SerializeField]
+        // ReSharper disable once InconsistentNaming
+        bool hasValue;
 
-		[SerializeField]
-		// ReSharper disable once InconsistentNaming
-		float value;
-
-
-		public OptionalFloat( float value )
-		{
-			this.value = value;
-			hasValue = true;
-		}
+        [SerializeField]
+        // ReSharper disable once InconsistentNaming
+        float value;
 
 
-		public bool HasValue
-		{
-			get
-			{
-				return hasValue;
-			}
-		}
+        public OptionalFloat(float value)
+        {
+            this.value = value;
+            hasValue = true;
+        }
 
 
-		public bool HasNoValue
-		{
-			get
-			{
-				return !hasValue;
-			}
-		}
+        public bool HasValue
+        {
+            get
+            {
+                return hasValue;
+            }
+        }
 
 
-		public float Value
-		{
-			get
-			{
-				if (!hasValue)
-				{
-					throw new OptionalTypeHasNoValueException( "Trying to get a value from an OptionalFloat that has no value." );
-				}
-
-				return value;
-			}
-
-			set
-			{
-				this.value = value;
-				hasValue = true;
-			}
-		}
+        public bool HasNoValue
+        {
+            get
+            {
+                return !hasValue;
+            }
+        }
 
 
-		public void Clear()
-		{
-			value = 0.0f;
-			hasValue = false;
-		}
+        public float Value
+        {
+            get
+            {
+                if (!hasValue)
+                {
+                    throw new OptionalTypeHasNoValueException("Trying to get a value from an OptionalFloat that has no value.");
+                }
+
+                return value;
+            }
+
+            set
+            {
+                this.value = value;
+                hasValue = true;
+            }
+        }
 
 
-		public float GetValueOrDefault( float defaultValue )
-		{
-			return hasValue ? value : defaultValue;
-		}
+        public void Clear()
+        {
+            value = 0.0f;
+            hasValue = false;
+        }
 
 
-		public float GetValueOrZero()
-		{
-			return hasValue ? value : 0.0f;
-		}
+        public float GetValueOrDefault(float defaultValue)
+        {
+            return hasValue ? value : defaultValue;
+        }
 
 
-		public void SetValue( float value )
-		{
-			this.value = value;
-			hasValue = true;
-		}
+        public float GetValueOrZero()
+        {
+            return hasValue ? value : 0.0f;
+        }
 
 
-		public override bool Equals( object other )
-		{
-			return ReferenceEquals( other, null ) && !hasValue ||
-			       value.Equals( other );
-		}
+        public void SetValue(float value)
+        {
+            this.value = value;
+            hasValue = true;
+        }
 
 
-		public bool Equals( OptionalFloat other )
-		{
-			return hasValue &&
-			       other.hasValue &&
-			       IsApproximatelyEqual( value, other.value );
-		}
+        public override bool Equals(object other)
+        {
+            return ReferenceEquals(other, null) && !hasValue ||
+                   value.Equals(other);
+        }
 
 
-		public bool Equals( float other )
-		{
-			return hasValue &&
-			       IsApproximatelyEqual( value, other );
-		}
+        public bool Equals(OptionalFloat other)
+        {
+            return hasValue &&
+                   other.hasValue &&
+                   IsApproximatelyEqual(value, other.value);
+        }
 
 
-		public static bool operator ==( OptionalFloat a, OptionalFloat b )
-		{
-			return a.hasValue &&
-			       b.hasValue &&
-			       IsApproximatelyEqual( a.value, b.value );
-		}
+        public bool Equals(float other)
+        {
+            return hasValue &&
+                   IsApproximatelyEqual(value, other);
+        }
 
 
-		public static bool operator !=( OptionalFloat a, OptionalFloat b )
-		{
-			return !(a == b);
-		}
+        public static bool operator ==(OptionalFloat a, OptionalFloat b)
+        {
+            return a.hasValue &&
+                   b.hasValue &&
+                   IsApproximatelyEqual(a.value, b.value);
+        }
 
 
-		public static bool operator ==( OptionalFloat a, float b )
-		{
-			return a.hasValue && IsApproximatelyEqual( a.value, b );
-		}
+        public static bool operator !=(OptionalFloat a, OptionalFloat b)
+        {
+            return !(a == b);
+        }
 
 
-		public static bool operator !=( OptionalFloat a, float b )
-		{
-			return !(a.hasValue && IsApproximatelyEqual( a.value, b ));
-		}
+        public static bool operator ==(OptionalFloat a, float b)
+        {
+            return a.hasValue && IsApproximatelyEqual(a.value, b);
+        }
 
 
-		static int CombineHashCodes( int h1, int h2 )
-		{
-			unchecked
-			{
-				return ((h1 << 5) + h1) ^ h2;
-			}
-		}
+        public static bool operator !=(OptionalFloat a, float b)
+        {
+            return !(a.hasValue && IsApproximatelyEqual(a.value, b));
+        }
 
 
-		public override int GetHashCode()
-		{
-			// ReSharper disable NonReadonlyMemberInGetHashCode
-			return CombineHashCodes( hasValue.GetHashCode(), value.GetHashCode() );
-			// ReSharper restore NonReadonlyMemberInGetHashCode
-		}
+        static int CombineHashCodes(int h1, int h2)
+        {
+            unchecked
+            {
+                return ((h1 << 5) + h1) ^ h2;
+            }
+        }
 
 
-		public override string ToString()
-		{
-			return hasValue ? value.ToString( CultureInfo.InvariantCulture ) : "";
-		}
+        public override int GetHashCode()
+        {
+            // ReSharper disable NonReadonlyMemberInGetHashCode
+            return CombineHashCodes(hasValue.GetHashCode(), value.GetHashCode());
+            // ReSharper restore NonReadonlyMemberInGetHashCode
+        }
 
 
-		public static implicit operator OptionalFloat( float value )
-		{
-			return new OptionalFloat( value );
-		}
+        public override string ToString()
+        {
+            return hasValue ? value.ToString(CultureInfo.InvariantCulture) : "";
+        }
 
 
-		public static explicit operator float( OptionalFloat optional )
-		{
-			return optional.Value;
-		}
+        public static implicit operator OptionalFloat(float value)
+        {
+            return new OptionalFloat(value);
+        }
 
 
-		const float epsilon = 1.0e-7f;
+        public static explicit operator float(OptionalFloat optional)
+        {
+            return optional.Value;
+        }
 
 
-		static bool IsApproximatelyEqual( float a, float b )
-		{
-			var delta = a - b;
-			return delta >= -epsilon &&
-			       delta <= +epsilon;
-		}
+        const float epsilon = 1.0e-7f;
 
 
-		public bool ApproximatelyEquals( float other )
-		{
-			if (!hasValue)
-			{
-				return false;
-			}
+        static bool IsApproximatelyEqual(float a, float b)
+        {
+            var delta = a - b;
+            return delta >= -epsilon &&
+                   delta <= +epsilon;
+        }
 
-			var delta = value - other;
-			return delta >= -epsilon &&
-			       delta <= +epsilon;
-		}
-	}
+
+        public bool ApproximatelyEquals(float other)
+        {
+            if (!hasValue)
+            {
+                return false;
+            }
+
+            var delta = value - other;
+            return delta >= -epsilon &&
+                   delta <= +epsilon;
+        }
+    }
 }

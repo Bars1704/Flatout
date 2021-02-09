@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Extensions;
+using System;
 using UnityEngine;
 
 namespace Doozy.Editor
@@ -24,7 +24,7 @@ namespace Doozy.Editor
                 {
                     case Type.One: return Styles.GetStyle(Styles.StyleName.DividerOne);
                     case Type.Two: return Styles.GetStyle(Styles.StyleName.DividerTwo);
-                    default:       throw new ArgumentOutOfRangeException("type", type, null);
+                    default: throw new ArgumentOutOfRangeException("type", type, null);
                 }
             }
 

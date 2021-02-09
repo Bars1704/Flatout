@@ -4,7 +4,6 @@
 
 using Doozy.Engine.UI.Base;
 using Doozy.Engine.UI.Settings;
-using UnityEngine;
 
 namespace Doozy.Editor.Windows
 {
@@ -18,7 +17,7 @@ namespace Doozy.Editor.Windows
         {
             if (CurrentView != View.Drawers) return;
             DrawItemsDatabase(UIDrawerDatabase, true, View.Drawers);
-            
+
             DrawDynamicViewVerticalSpace(2);
         }
     }

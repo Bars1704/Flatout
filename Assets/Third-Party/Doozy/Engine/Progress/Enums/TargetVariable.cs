@@ -13,22 +13,22 @@ namespace Doozy.Engine.Progress
         /// Current value (float between MinValue and MaxValue)
         /// </summary>
         Value,
-        
+
         /// <summary>
         /// The minimum value that the current Value can have
         /// </summary>
         MinValue,
-        
+
         /// <summary>
         /// The maximum value that the current Value can have
         /// </summary>
         MaxValue,
-        
+
         /// <summary>
         /// Progress value (float between 0 and 1)
         /// </summary>
         Progress,
-        
+
         /// <summary>
         /// InverseProgress value (float between 1 and 0)
         /// </summary>

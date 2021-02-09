@@ -73,13 +73,13 @@ namespace Doozy.Engine.UI
         private void RegisterListener()
         {
             Message.AddListener<UIDrawerMessage>(OnMessage);
-            if (DebugMode) DDebug.Log( "[" + name + "] Started listening for UIDrawer actions", this);
+            if (DebugMode) DDebug.Log("[" + name + "] Started listening for UIDrawer actions", this);
         }
 
         private void UnregisterListener()
         {
             Message.RemoveListener<UIDrawerMessage>(OnMessage);
-            if (DebugMode) DDebug.Log( "[" + name + "] Stopped listening for UIDrawer actions", this);
+            if (DebugMode) DDebug.Log("[" + name + "] Stopped listening for UIDrawer actions", this);
         }
 
         private void OnMessage(UIDrawerMessage message)
@@ -94,7 +94,7 @@ namespace Doozy.Engine.UI
             if (Event == null) return;
             if (TriggerAction != message.Type) return;
             Event.Invoke(message.Drawer);
-            if (DebugMode) DDebug.Log( "[" + name + "] Triggered Event: " + "[" + message.Type + "] " + message.Drawer.DrawerName, this);
+            if (DebugMode) DDebug.Log("[" + name + "] Triggered Event: " + "[" + message.Type + "] " + message.Drawer.DrawerName, this);
         }
 
         #endregion

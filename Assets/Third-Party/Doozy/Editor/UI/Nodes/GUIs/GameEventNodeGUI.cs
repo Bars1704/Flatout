@@ -16,8 +16,8 @@ namespace Doozy.Editor.UI.Nodes
         private static GUIStyle s_iconStyle;
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconGameEventNode)); } }
         protected override GUIStyle GetIconStyle() { return IconStyle; }
-        
-        private GameEventNode TargetNode { get { return (GameEventNode) Node; } }
+
+        private GameEventNode TargetNode { get { return (GameEventNode)Node; } }
 
         private readonly GUIStyle m_actionIcon = Styles.GetStyle(Styles.StyleName.IconGameEvent);
         private string m_title;

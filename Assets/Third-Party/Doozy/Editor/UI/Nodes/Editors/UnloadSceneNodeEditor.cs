@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Nody.Editors;
 using Doozy.Engine.SceneManagement;
 using Doozy.Engine.UI.Nodes;
 using Doozy.Engine.Utils;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ namespace Doozy.Editor.UI.Nodes
         private const string ERROR_NO_SCENE_NAME = "ErrorNoSceneName";
         private const string ERROR_BAD_BUILD_INDEX = "ErrorBadBuildIndex";
 
-        private UnloadSceneNode TargetNode { get { return (UnloadSceneNode) target; } }
+        private UnloadSceneNode TargetNode { get { return (UnloadSceneNode)target; } }
 
         private SerializedProperty
             m_sceneName,
@@ -98,7 +98,7 @@ namespace Doozy.Editor.UI.Nodes
             {
                 DGUI.Property.Draw(m_getSceneBy, UILabels.GetSceneBy, DGUI.Colors.ActionColorName, 80);
                 GUILayout.Space(DGUI.Properties.Space());
-                switch ((GetSceneBy) m_getSceneBy.enumValueIndex)
+                switch ((GetSceneBy)m_getSceneBy.enumValueIndex)
                 {
                     case GetSceneBy.Name:
                         DGUI.Property.Draw(m_sceneName, UILabels.SceneName, DGUI.Colors.ActionColorName, string.IsNullOrEmpty(m_sceneName.stringValue.Trim()));

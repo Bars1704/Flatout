@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Windows;
 using Doozy.Engine.Settings;
 using Doozy.Engine.Soundy;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -59,12 +59,12 @@ namespace Doozy.Editor.Soundy
             if (SoundyDataDatabase.ContainsKey(property.propertyPath)) SoundyDataDatabase.Remove(property.propertyPath);
 
             var soundyData = new SoundyData
-                             {
-                                 DatabaseName = Properties.Get(PropertyName.DatabaseName, property).stringValue,
-                                 SoundName = Properties.Get(PropertyName.SoundName, property).stringValue,
-                                 AudioClip = (AudioClip) Properties.Get(PropertyName.AudioClip, property).objectReferenceValue,
-                                 OutputAudioMixerGroup = (AudioMixerGroup) Properties.Get(PropertyName.OutputAudioMixerGroup, property).objectReferenceValue
-                             };
+            {
+                DatabaseName = Properties.Get(PropertyName.DatabaseName, property).stringValue,
+                SoundName = Properties.Get(PropertyName.SoundName, property).stringValue,
+                AudioClip = (AudioClip)Properties.Get(PropertyName.AudioClip, property).objectReferenceValue,
+                OutputAudioMixerGroup = (AudioMixerGroup)Properties.Get(PropertyName.OutputAudioMixerGroup, property).objectReferenceValue
+            };
 
             SoundyDataDatabase.Add(property.propertyPath, soundyData);
         }
@@ -104,7 +104,7 @@ namespace Doozy.Editor.Soundy
             bool hasMissingAudioClips = false;
             GUIStyle icon;
 
-            var soundSource = (SoundSource) Properties.Get(PropertyName.SoundSource, property).intValue;
+            var soundSource = (SoundSource)Properties.Get(PropertyName.SoundSource, property).intValue;
             switch (soundSource)
             {
                 case SoundSource.Soundy:
@@ -122,8 +122,8 @@ namespace Doozy.Editor.Soundy
                     break;
                 case SoundSource.AudioClip:
                     NumberOfLines[property.propertyPath] = 4;
-                    player = SoundyAudioPlayer.GetPlayer((AudioClip) Properties.Get(PropertyName.AudioClip, property).objectReferenceValue,
-                                                         (AudioMixerGroup) Properties.Get(PropertyName.OutputAudioMixerGroup, property).objectReferenceValue);
+                    player = SoundyAudioPlayer.GetPlayer((AudioClip)Properties.Get(PropertyName.AudioClip, property).objectReferenceValue,
+                                                         (AudioMixerGroup)Properties.Get(PropertyName.OutputAudioMixerGroup, property).objectReferenceValue);
                     hasSound = player != null && player.AudioClip != null;
                     icon = Styles.GetStyle(Styles.StyleName.IconSound);
                     break;

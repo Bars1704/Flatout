@@ -2,15 +2,15 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Doozy.Editor.UI.Animation;
 using Doozy.Editor.Windows;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.UI;
 using Doozy.Engine.UI.Animation;
 using Doozy.Engine.UI.Base;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -31,7 +31,7 @@ namespace Doozy.Editor
                 useCustomStartPositionExpanded.target = useCustomStartPosition.boolValue;
 
                 ColorName backgroundColorName = Colors.GetBackgroundColorName(useCustomStartPosition.boolValue, componentColorName);
-//                ColorName textColorName = DGUI.Colors.GetTextColorName(useCustomStartPosition.boolValue, componentColorName);
+                //                ColorName textColorName = DGUI.Colors.GetTextColorName(useCustomStartPosition.boolValue, componentColorName);
 
                 float backgroundHeight = Properties.SingleLineHeight + Properties.Space(2) + (Sizes.BarHeight(Size.S) + Properties.Space(3)) * useCustomStartPositionExpanded.faded;
                 Background.Draw(backgroundColorName, GUILayout.Height(backgroundHeight));
@@ -168,7 +168,7 @@ namespace Doozy.Editor
                                           Undo.RecordObjects(serializedObject.targetObjects, "Reset Animation");
                                           foreach (Object targetObject in serializedObject.targetObjects)
                                           {
-                                              var targetView = (UIView) targetObject;
+                                              var targetView = (UIView)targetObject;
                                               switch (viewBehavior.Animation.AnimationType)
                                               {
                                                   case AnimationType.Show:
@@ -236,7 +236,7 @@ namespace Doozy.Editor
                                           Undo.RecordObjects(serializedObject.targetObjects, "Reset Animation");
                                           foreach (Object targetObject in serializedObject.targetObjects)
                                           {
-                                              var targetPopup = (UIPopup) targetObject;
+                                              var targetPopup = (UIPopup)targetObject;
                                               switch (popupBehavior.Animation.AnimationType)
                                               {
                                                   case AnimationType.Show:
@@ -309,7 +309,7 @@ namespace Doozy.Editor
                                           Undo.RecordObjects(serializedObject.targetObjects, "Reset Animation");
                                           foreach (Object targetObject in serializedObject.targetObjects)
                                           {
-                                              var targetButton = (UIButton) targetObject;
+                                              var targetButton = (UIButton)targetObject;
                                               switch (buttonBehavior.BehaviorType)
                                               {
                                                   case UIButtonBehaviorType.OnClick:
@@ -392,7 +392,7 @@ namespace Doozy.Editor
                                           Undo.RecordObjects(serializedObject.targetObjects, "Reset Animation");
                                           foreach (Object targetObject in serializedObject.targetObjects)
                                           {
-                                              var targetButton = (UIButton) targetObject;
+                                              var targetButton = (UIButton)targetObject;
                                               switch (buttonLoopAnimation.LoopAnimationType)
                                               {
                                                   case ButtonLoopAnimationType.Normal:
@@ -465,7 +465,7 @@ namespace Doozy.Editor
                                           Undo.RecordObjects(serializedObject.targetObjects, "Reset Animation");
                                           foreach (Object targetObject in serializedObject.targetObjects)
                                           {
-                                              var targetButton = (UIButton) targetObject;
+                                              var targetButton = (UIButton)targetObject;
                                               switch (toggleBehavior.BehaviorType)
                                               {
                                                   case UIToggleBehaviorType.OnClick:
@@ -534,15 +534,15 @@ namespace Doozy.Editor
                 Color backgroundColor = Colors.BarColor(color, enabled);
                 Color textColor = Colors.TextColor(enabled ? color : Colors.DisabledTextColorName).WithAlpha(Properties.TextIconAlphaValue(enabled));
                 Color iconColor = Colors.TextColor(enabled ? color : Colors.DisabledTextColorName).WithAlpha(Properties.TextIconAlphaValue(enabled));
-                var customButtonStyle = new GUIStyle(buttonStyle) {fixedHeight = SectionButtonHeight};
+                var customButtonStyle = new GUIStyle(buttonStyle) { fixedHeight = SectionButtonHeight };
                 var customLabelStyle = new GUIStyle
-                                       {
-                                           normal = {textColor = textColor},
-                                           padding = new RectOffset((int) SectionTextLeftPadding, (int) Properties.Space(2), (int) Properties.Space(2), 0),
-                                           fontSize = 14,
-                                           alignment = TextAnchor.UpperLeft,
-                                           fixedHeight = SectionButtonHeight
-                                       };
+                {
+                    normal = { textColor = textColor },
+                    padding = new RectOffset((int)SectionTextLeftPadding, (int)Properties.Space(2), (int)Properties.Space(2), 0),
+                    fontSize = 14,
+                    alignment = TextAnchor.UpperLeft,
+                    fixedHeight = SectionButtonHeight
+                };
 
                 GUILayout.BeginVertical();
                 {
@@ -610,15 +610,15 @@ namespace Doozy.Editor
                 Color initialColor = GUI.color;
                 Color backgroundColor = Colors.BarColor(color, enabled);
                 Color textColor = Colors.TextColor(enabled ? color : Colors.DisabledTextColorName).WithAlpha(Properties.TextIconAlphaValue(enabled));
-                var customButtonStyle = new GUIStyle(buttonStyle) {fixedHeight = SubSectionButtonHeight};
+                var customButtonStyle = new GUIStyle(buttonStyle) { fixedHeight = SubSectionButtonHeight };
                 var customLabelStyle = new GUIStyle
-                                       {
-                                           normal = {textColor = textColor},
-                                           padding = new RectOffset((int) (SubSectionButtonPadding * 2), (int) SubSectionButtonPadding * 2, 0, 0),
-                                           fontSize = 12,
-                                           alignment = TextAnchor.MiddleLeft,
-                                           fixedHeight = SubSectionButtonHeight
-                                       };
+                {
+                    normal = { textColor = textColor },
+                    padding = new RectOffset((int)(SubSectionButtonPadding * 2), (int)SubSectionButtonPadding * 2, 0, 0),
+                    fontSize = 12,
+                    alignment = TextAnchor.MiddleLeft,
+                    fixedHeight = SubSectionButtonHeight
+                };
 
                 var content = new GUIContent(label);
                 Vector2 contentSize = customLabelStyle.CalcSize(content);
@@ -703,12 +703,12 @@ namespace Doozy.Editor
                 switch (animationType)
                 {
                     case AnimationType.Undefined: return "Undefined Animation";
-                    case AnimationType.Show:      return animationName + " In";
-                    case AnimationType.Hide:      return animationName + " Out";
-                    case AnimationType.Loop:      return animationName + " Loop";
-                    case AnimationType.Punch:     return "Punch " + animationName;
-                    case AnimationType.State:     return "State " + animationName;
-                    default:                      throw new ArgumentOutOfRangeException();
+                    case AnimationType.Show: return animationName + " In";
+                    case AnimationType.Hide: return animationName + " Out";
+                    case AnimationType.Loop: return animationName + " Loop";
+                    case AnimationType.Punch: return "Punch " + animationName;
+                    case AnimationType.State: return "State " + animationName;
+                    default: throw new ArgumentOutOfRangeException();
                 }
             }
 
@@ -740,10 +740,10 @@ namespace Doozy.Editor
                         }
                         GUILayout.EndHorizontal();
                         GUILayout.Space(Properties.Space());
-                        if ((UIEffectBehavior) effectBehavior.enumValueIndex == UIEffectBehavior.Stop)
+                        if ((UIEffectBehavior)effectBehavior.enumValueIndex == UIEffectBehavior.Stop)
                             Property.Draw(stopBehavior, Properties.Labels.StopBehavior, color);
                         else
-                            switch ((DynamicSorting) autoSort.enumValueIndex)
+                            switch ((DynamicSorting)autoSort.enumValueIndex)
                             {
                                 case DynamicSorting.Disabled:
                                     Property.Draw(autoSort, Properties.Labels.AutoSort, color);
@@ -751,52 +751,52 @@ namespace Doozy.Editor
                                 case DynamicSorting.InFront:
                                 case DynamicSorting.Behind:
                                     GUILayout.BeginHorizontal();
-                                {
-                                    Property.Draw(autoSort, Properties.Labels.AutoSort, color);
-                                    GUILayout.Space(Properties.Space());
-                                    Property.Draw(sortingSteps, Properties.Labels.SortingSteps, color);
-                                    GUILayout.Space(Properties.Space());
-                                    if (Button.Dynamic.DrawIconButton(Icon.Reset, Properties.Labels.UpdateEffect, Size.M, TextAlign.Left, color, color, Properties.SingleLineHeight + Properties.Space(2), false))
-                                        if (effect != null && effect.ParticleSystem != null)
-                                        {
-                                            Canvas canvasForEffect = null;
-                                            Canvas[] canvases = source.GetComponentsInParent<Canvas>();
-                                            if (canvases != null && canvases.Length != 0)
-                                                foreach (Canvas canvas in canvases)
-                                                {
-                                                    if (!canvas.isRootCanvas && !canvas.overrideSorting) continue;
-                                                    canvasForEffect = canvas;
-                                                    break;
-                                                }
+                                    {
+                                        Property.Draw(autoSort, Properties.Labels.AutoSort, color);
+                                        GUILayout.Space(Properties.Space());
+                                        Property.Draw(sortingSteps, Properties.Labels.SortingSteps, color);
+                                        GUILayout.Space(Properties.Space());
+                                        if (Button.Dynamic.DrawIconButton(Icon.Reset, Properties.Labels.UpdateEffect, Size.M, TextAlign.Left, color, color, Properties.SingleLineHeight + Properties.Space(2), false))
+                                            if (effect != null && effect.ParticleSystem != null)
+                                            {
+                                                Canvas canvasForEffect = null;
+                                                Canvas[] canvases = source.GetComponentsInParent<Canvas>();
+                                                if (canvases != null && canvases.Length != 0)
+                                                    foreach (Canvas canvas in canvases)
+                                                    {
+                                                        if (!canvas.isRootCanvas && !canvas.overrideSorting) continue;
+                                                        canvasForEffect = canvas;
+                                                        break;
+                                                    }
 
-                                            if (canvasForEffect != null)
-                                                effect.UpdateSorting(canvasForEffect.sortingLayerName, canvasForEffect.sortingOrder);
-                                        }
-                                }
+                                                if (canvasForEffect != null)
+                                                    effect.UpdateSorting(canvasForEffect.sortingLayerName, canvasForEffect.sortingOrder);
+                                            }
+                                    }
                                     GUILayout.EndHorizontal();
                                     break;
                                 case DynamicSorting.Custom:
                                     GUILayout.BeginHorizontal();
-                                {
-                                    Property.Draw(autoSort, Properties.Labels.AutoSort, color);
-                                    GUILayout.Space(Properties.Space());
-                                    if (Button.Dynamic.DrawIconButton(Icon.Reset, Properties.Labels.UpdateEffect, Size.M, TextAlign.Left, color, color, Properties.SingleLineHeight + Properties.Space(2), false))
-                                        if (effect != null && effect.ParticleSystem != null)
-                                        {
-                                            Canvas canvasForEffect = null;
-                                            Canvas[] canvases = source.GetComponentsInParent<Canvas>();
-                                            if (canvases != null && canvases.Length != 0)
-                                                foreach (Canvas canvas in canvases)
-                                                {
-                                                    if (!canvas.isRootCanvas && !canvas.overrideSorting) continue;
-                                                    canvasForEffect = canvas;
-                                                    break;
-                                                }
+                                    {
+                                        Property.Draw(autoSort, Properties.Labels.AutoSort, color);
+                                        GUILayout.Space(Properties.Space());
+                                        if (Button.Dynamic.DrawIconButton(Icon.Reset, Properties.Labels.UpdateEffect, Size.M, TextAlign.Left, color, color, Properties.SingleLineHeight + Properties.Space(2), false))
+                                            if (effect != null && effect.ParticleSystem != null)
+                                            {
+                                                Canvas canvasForEffect = null;
+                                                Canvas[] canvases = source.GetComponentsInParent<Canvas>();
+                                                if (canvases != null && canvases.Length != 0)
+                                                    foreach (Canvas canvas in canvases)
+                                                    {
+                                                        if (!canvas.isRootCanvas && !canvas.overrideSorting) continue;
+                                                        canvasForEffect = canvas;
+                                                        break;
+                                                    }
 
-                                            if (canvasForEffect != null)
-                                                effect.UpdateSorting(canvasForEffect.sortingLayerName, canvasForEffect.sortingOrder);
-                                        }
-                                }
+                                                if (canvasForEffect != null)
+                                                    effect.UpdateSorting(canvasForEffect.sortingLayerName, canvasForEffect.sortingOrder);
+                                            }
+                                    }
                                     GUILayout.EndHorizontal();
                                     GUILayout.Space(Properties.Space());
                                     Line.Draw(false, color,
@@ -1058,17 +1058,17 @@ namespace Doozy.Editor
 
             public static void DrawDropZone(Rect dropRect, bool containsMouse)
             {
-//                float iconSize = dropRect.height * 0.6f;
-//                var iconRect = new Rect(dropRect.x + dropRect.width / 2 - iconSize / 2, dropRect.y + (dropRect.height - iconSize) / 2, iconSize, iconSize);
+                //                float iconSize = dropRect.height * 0.6f;
+                //                var iconRect = new Rect(dropRect.x + dropRect.width / 2 - iconSize / 2, dropRect.y + (dropRect.height - iconSize) / 2, iconSize, iconSize);
 
                 Color color = GUI.color;
                 GUI.color = GUI.color.WithAlpha(containsMouse ? 0.8f : 0.4f);
-//                Background.Draw(dropRect, Colors.DisabledBackgroundColorName);
-                GUI.Box(dropRect, Properties.Labels.DropAudioClipsHere, new GUIStyle(GUI.skin.box) {fontSize = Label.Style(Size.S).fontSize});
-//                if (containsMouse)
-//                    Icon.Draw(iconRect, Styles.GetStyle(Styles.StyleName.IconPlus), Colors.DisabledTextColorName);
-//                else
-//                    Label.Draw(dropRect, Properties.Labels.DropAudioClipsHere, Size.S, TextAlign.Right, Colors.DisabledTextColorName);
+                //                Background.Draw(dropRect, Colors.DisabledBackgroundColorName);
+                GUI.Box(dropRect, Properties.Labels.DropAudioClipsHere, new GUIStyle(GUI.skin.box) { fontSize = Label.Style(Size.S).fontSize });
+                //                if (containsMouse)
+                //                    Icon.Draw(iconRect, Styles.GetStyle(Styles.StyleName.IconPlus), Colors.DisabledTextColorName);
+                //                else
+                //                    Label.Draw(dropRect, Properties.Labels.DropAudioClipsHere, Size.S, TextAlign.Right, Colors.DisabledTextColorName);
                 GUI.color = color;
             }
         }

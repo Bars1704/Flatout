@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Nody.Settings;
 using Doozy.Editor.Nody.Windows;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -36,7 +36,7 @@ namespace Doozy.Editor.Windows
                 GUILayout.EndVertical();
             }
             GUILayout.EndHorizontal();
-            
+
             DrawDynamicViewVerticalSpace(2);
         }
 
@@ -92,7 +92,7 @@ namespace Doozy.Editor.Windows
                 zoom = EditorGUILayout.Slider(zoom, NodyWindowSettings.ZOOM_MIN, NodyWindowSettings.ZOOM_MAX);
                 if (EditorGUI.EndChangeCheck())
                 {
-                    NodyWindowSettings.Instance.DefaultZoom = (float) Math.Round(zoom, 1);
+                    NodyWindowSettings.Instance.DefaultZoom = (float)Math.Round(zoom, 1);
                     NodyWindowSettings.Instance.SetDirty(false);
                 }
 
@@ -125,7 +125,7 @@ namespace Doozy.Editor.Windows
                 dotAnimationSpeed = EditorGUILayout.Slider(dotAnimationSpeed, NodyWindowSettings.DOT_ANIMATION_SPEED_MIN, NodyWindowSettings.DOT_ANIMATION_SPEED_MAX);
                 if (EditorGUI.EndChangeCheck())
                 {
-                    NodyWindowSettings.Instance.DefaultDotAnimationSpeed = (float) Math.Round(dotAnimationSpeed, 1);
+                    NodyWindowSettings.Instance.DefaultDotAnimationSpeed = (float)Math.Round(dotAnimationSpeed, 1);
                     NodyWindowSettings.Instance.CurrentDotAnimationSpeed = NodyWindowSettings.Instance.DefaultDotAnimationSpeed;
                     NodyWindowSettings.Instance.SetDirty(false);
                 }
@@ -148,7 +148,7 @@ namespace Doozy.Editor.Windows
             GUILayout.Space(DGUI.Properties.Space());
             DGUI.WindowUtils.DrawSettingDescription(UILabels.DefaultDotAnimationSpeedDescription);
         }
-        
+
         private void DrawNodyShowNodeNotes()
         {
             GUILayout.BeginHorizontal();

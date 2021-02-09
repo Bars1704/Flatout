@@ -703,7 +703,7 @@ namespace Doozy.Engine.UI
             UpdateChildUIButtonsStartValues();
 
             InstantHide();
-//            Hide(true);
+            //            Hide(true);
 
             if (DebugComponent) DDebug.Log("Initialize", this);
         }
@@ -821,7 +821,7 @@ namespace Doozy.Engine.UI
             float startTime = Time.realtimeSinceStartup;
             if (!instantAction) //wait for the animation to finish
             {
-//                yield return new WaitForSecondsRealtime(ShowBehavior.Animation.TotalDuration);
+                //                yield return new WaitForSecondsRealtime(ShowBehavior.Animation.TotalDuration);
 
                 float totalDuration = ShowBehavior.Animation.TotalDuration;
                 float elapsedTime = startTime - Time.realtimeSinceStartup;
@@ -873,7 +873,7 @@ namespace Doozy.Engine.UI
             RectTransform.FullScreen(true);
             Overlay.FullScreen(true);
 
-//            yield return null; //skip a frame
+            //            yield return null; //skip a frame
             if (Settings.AutoDisableUIInteractions) DisableUIInteractions();
 
             UIAnimator.StopAnimations(Container.RectTransform, HideBehavior.Animation.AnimationType); //stop any HIDE animations
@@ -914,7 +914,7 @@ namespace Doozy.Engine.UI
             float startTime = Time.realtimeSinceStartup;
             if (!instantAction) //wait for the animation to finish
             {
-//                    yield return new WaitForSecondsRealtime(HideBehavior.Animation.TotalDuration + UIViewSettings.DISABLE_WHEN_HIDDEN_TIME_BUFFER); //wait for seconds realtime (ignore Unity's Time.Timescale)
+                //                    yield return new WaitForSecondsRealtime(HideBehavior.Animation.TotalDuration + UIViewSettings.DISABLE_WHEN_HIDDEN_TIME_BUFFER); //wait for seconds realtime (ignore Unity's Time.Timescale)
 
                 float totalDuration = HideBehavior.Animation.TotalDuration;
                 float elapsedTime = startTime - Time.realtimeSinceStartup;

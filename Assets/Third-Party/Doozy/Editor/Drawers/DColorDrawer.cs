@@ -47,9 +47,9 @@ namespace Doozy.Editor.Drawers
                 EditorGUI.PropertyField(lightColorRect, m_light, GUIContent.none, true);
                 EditorGUI.PropertyField(normalColorRect, m_normal, GUIContent.none, true);
                 EditorGUI.PropertyField(darkColorRect, m_dark, GUIContent.none, true);
-                GUI.Label(lightColorRect, "LIGHT", new GUIStyle(LabelStyle) {alignment = TextAnchor.UpperLeft, padding = new RectOffset(2, 0, 2, 0), fontSize = LabelStyle.fontSize - 2, normal = {textColor = m_dark.colorValue}});
-                GUI.Label(normalColorRect, "NORMAL", new GUIStyle(LabelStyle) {alignment = TextAnchor.UpperLeft, padding = new RectOffset(2, 0, 2, 0), fontSize = LabelStyle.fontSize - 2, normal = {textColor = m_dark.colorValue}});
-                GUI.Label(darkColorRect, "DARK", new GUIStyle(LabelStyle) {alignment = TextAnchor.UpperLeft, padding = new RectOffset(2, 0, 2, 0), fontSize = LabelStyle.fontSize - 2, normal = {textColor = m_light.colorValue}});
+                GUI.Label(lightColorRect, "LIGHT", new GUIStyle(LabelStyle) { alignment = TextAnchor.UpperLeft, padding = new RectOffset(2, 0, 2, 0), fontSize = LabelStyle.fontSize - 2, normal = { textColor = m_dark.colorValue } });
+                GUI.Label(normalColorRect, "NORMAL", new GUIStyle(LabelStyle) { alignment = TextAnchor.UpperLeft, padding = new RectOffset(2, 0, 2, 0), fontSize = LabelStyle.fontSize - 2, normal = { textColor = m_dark.colorValue } });
+                GUI.Label(darkColorRect, "DARK", new GUIStyle(LabelStyle) { alignment = TextAnchor.UpperLeft, padding = new RectOffset(2, 0, 2, 0), fontSize = LabelStyle.fontSize - 2, normal = { textColor = m_light.colorValue } });
 
                 // set indent back to what it was
                 EditorGUI.indentLevel = indent;

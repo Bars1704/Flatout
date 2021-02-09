@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class LogitechG920RacingWheelMacNativeProfile : Xbox360DriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class LogitechG920RacingWheelMacNativeProfile : Xbox360DriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Logitech G920 Racing Wheel";
-			DeviceNotes = "Logitech G920 Racing Wheel on Mac";
+            DeviceName = "Logitech G920 Racing Wheel";
+            DeviceNotes = "Logitech G920 Racing Wheel on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x046d,
-					ProductID = 0xc261,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x046d,
+                    ProductID = 0xc261,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

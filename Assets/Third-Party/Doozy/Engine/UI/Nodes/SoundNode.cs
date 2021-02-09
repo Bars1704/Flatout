@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Nody.Attributes;
 using Doozy.Engine.Nody.Connections;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Soundy;
 using Doozy.Engine.Utils;
+using System;
 
 namespace Doozy.Engine.UI.Nodes
 {
@@ -43,10 +43,10 @@ namespace Doozy.Engine.UI.Nodes
             {
                 switch (SoundData.SoundSource)
                 {
-                    case SoundSource.Soundy:      return SoundData.SoundName != SoundyManager.NO_SOUND && !string.IsNullOrEmpty(SoundData.SoundName);
-                    case SoundSource.AudioClip:   return SoundData.AudioClip != null;
+                    case SoundSource.Soundy: return SoundData.SoundName != SoundyManager.NO_SOUND && !string.IsNullOrEmpty(SoundData.SoundName);
+                    case SoundSource.AudioClip: return SoundData.AudioClip != null;
                     case SoundSource.MasterAudio: return !string.IsNullOrEmpty(SoundData.SoundName);
-                    default:                      return false;
+                    default: return false;
                 }
             }
         }
@@ -73,15 +73,15 @@ namespace Doozy.Engine.UI.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var node = (SoundNode) original;
+            var node = (SoundNode)original;
             SoundData = new SoundyData
-                        {
-                            AudioClip = node.SoundData.AudioClip,
-                            DatabaseName = node.SoundData.DatabaseName,
-                            OutputAudioMixerGroup = node.SoundData.OutputAudioMixerGroup,
-                            SoundName = node.SoundData.SoundName,
-                            SoundSource = node.SoundData.SoundSource
-                        };
+            {
+                AudioClip = node.SoundData.AudioClip,
+                DatabaseName = node.SoundData.DatabaseName,
+                OutputAudioMixerGroup = node.SoundData.OutputAudioMixerGroup,
+                SoundName = node.SoundData.SoundName,
+                SoundSource = node.SoundData.SoundSource
+            };
             SoundAction = node.SoundAction;
         }
 

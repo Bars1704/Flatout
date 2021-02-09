@@ -26,7 +26,7 @@ namespace Doozy.Editor.Internal
 
         private bool m_hasLabel;
         private Rect m_labelRect;
-//        private float m_labelWidth;
+        //        private float m_labelWidth;
 
         private bool m_hasField;
         private Rect m_fieldRect;
@@ -63,7 +63,7 @@ namespace Doozy.Editor.Internal
         {
             m_label = label;
             m_hasLabel = m_label != null;
-//            m_labelWidth = m_hasLabel ? DefaultLabelStyle.CalcSize(m_label).x : 0;
+            //            m_labelWidth = m_hasLabel ? DefaultLabelStyle.CalcSize(m_label).x : 0;
             m_property = null;
             m_hasField = m_property != null;
             m_fieldWeight = 1;
@@ -75,7 +75,7 @@ namespace Doozy.Editor.Internal
         {
             m_label = label;
             m_hasLabel = m_label != null;
-//            m_labelWidth = m_hasLabel ? DefaultLabelStyle.CalcSize(m_label).x : 0;
+            //            m_labelWidth = m_hasLabel ? DefaultLabelStyle.CalcSize(m_label).x : 0;
             m_property = property;
             m_hasField = m_property != null;
             m_fieldWeight = 1;
@@ -87,7 +87,7 @@ namespace Doozy.Editor.Internal
         {
             m_label = null;
             m_hasLabel = m_label != null;
-//            m_labelWidth = m_hasLabel ? DefaultLabelStyle.CalcSize(m_label).x : 0;
+            //            m_labelWidth = m_hasLabel ? DefaultLabelStyle.CalcSize(m_label).x : 0;
             m_property = property;
             m_hasField = m_property != null;
             m_fieldWeight = 1;

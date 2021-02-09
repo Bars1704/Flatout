@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Extensions;
 using System;
 using System.Collections.Generic;
-using Doozy.Engine.Extensions;
 using UnityEngine;
 
 namespace Doozy.Editor
@@ -47,20 +47,20 @@ namespace Doozy.Editor
             {
                 Color initialColor = GUI.color;
                 var buttonStyle = new GUIStyle(Button.ButtonStyle(tabPosition, isSelected))
-                                  {
-                                      fixedHeight = toolbarHeight >= 0 ? toolbarHeight : Button.ButtonStyle(tabPosition, isSelected).fixedHeight
-                                  };
+                {
+                    fixedHeight = toolbarHeight >= 0 ? toolbarHeight : Button.ButtonStyle(tabPosition, isSelected).fixedHeight
+                };
                 float iconPadding = Mathf.Max(buttonStyle.fixedHeight * 0.2f, Properties.Space(2));
 
                 if (button.IconStyle != null)
                 {
                     GUILayout.BeginVertical();
                     buttonStyle.alignment = TextAnchor.MiddleLeft;
-                    buttonStyle.padding.left = (int) (buttonStyle.fixedHeight);
-                    buttonStyle.padding.right = (int) iconPadding;
+                    buttonStyle.padding.left = (int)(buttonStyle.fixedHeight);
+                    buttonStyle.padding.right = (int)iconPadding;
                 }
 
-                buttonStyle.padding.right = (int) Properties.Space(3);
+                buttonStyle.padding.right = (int)Properties.Space(3);
 
                 GUI.color = Colors.GetDColor(isSelected ? button.SelectedColorName : button.NormalColorName).Normal.WithAlpha(GUI.color.a * 0.8f);
                 bool result = GUILayout.Button(new GUIContent(button.Name), buttonStyle);

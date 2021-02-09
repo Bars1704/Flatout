@@ -2,13 +2,13 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Editor.Nody;
 using Doozy.Editor.Nody.Editors;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.UI.Connections;
 using Doozy.Engine.UI.Nodes;
 using Doozy.Engine.Utils;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ namespace Doozy.Editor.UI.Nodes
     [CustomEditor(typeof(RandomNode))]
     public class RandomNodeEditor : BaseNodeEditor
     {
-        private RandomNode TargetNode { get { return (RandomNode) target; } }
+        private RandomNode TargetNode { get { return (RandomNode)target; } }
 
         private List<WeightedConnection> m_outputValues;
 
@@ -89,13 +89,13 @@ namespace Doozy.Editor.UI.Nodes
             {
                 Socket socket = sockets[i];
 
-//                string socketName = socket.SocketName;
+                //                string socketName = socket.SocketName;
                 float curveModifier = socket.CurveModifier;
                 int connectionsCount = socket.Connections.Count;
 
                 int weight = values[i].Weight;
 
-//                ColorName colorName = socket.IsConnected ? directionColorName : ColorName.White;
+                //                ColorName colorName = socket.IsConnected ? directionColorName : ColorName.White;
 
                 GUILayout.Space(DGUI.Properties.Space());
                 GUILayout.BeginHorizontal(GUILayout.Height(kNodeLineHeight));
@@ -132,7 +132,7 @@ namespace Doozy.Editor.UI.Nodes
                             GUI.color = initialColor;
 
 
-//                            DGUI.Icon.Draw(OutputSocketIconStyle, kConnectionTypeIconSize, kNodeLineHeight, connectionsCount > 0 ? TriggerTypeIconColor(directionColorName) : NotConnectedIconColor());
+                            //                            DGUI.Icon.Draw(OutputSocketIconStyle, kConnectionTypeIconSize, kNodeLineHeight, connectionsCount > 0 ? TriggerTypeIconColor(directionColorName) : NotConnectedIconColor());
 
                             if (valueUpdated)
                             {

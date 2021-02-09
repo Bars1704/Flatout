@@ -34,7 +34,7 @@ namespace Doozy.Engine.UI.Input
         public bool HasGameEvent { get { return string.IsNullOrEmpty(GameEvent.Trim()) == false; } }
 
         private bool DebugComponent { get { return DebugMode || DoozySettings.Instance.DebugKeyToGameEvent; } }
-        
+
         #endregion
 
         #region Public Variables

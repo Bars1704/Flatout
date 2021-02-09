@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Doozy.Engine.Utils;
-using UnityEngine;
 using Object = UnityEngine.Object;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -109,12 +108,12 @@ namespace Doozy.Engine.UI.Animation
                 UpdateDatabaseNames();
                 return;
             }
-            
+
             UIAnimationDatabase database = AssetUtils.CreateAsset<UIAnimationDatabase>(Path.Combine(DoozyPath.UIANIMATIONS_RESOURCES_PATH, DatabaseType.ToString()), UIAnimations.DEFAULT_DATABASE_NAME);
 #else
             UIAnimationDatabase database = ScriptableObject.CreateInstance<UIAnimationDatabase>();
 #endif
-            if(database == null) return;
+            if (database == null) return;
             database.DatabaseName = UIAnimations.DEFAULT_DATABASE_NAME;
             database.name = database.DatabaseName;
             database.DataType = DatabaseType;
@@ -170,13 +169,13 @@ namespace Doozy.Engine.UI.Animation
             for (int i = Databases.Count - 1; i >= 0; i--)
             {
                 UIAnimationDatabase database = Databases[i];
-                
+
                 if (database == null)
                 {
                     Databases.RemoveAt(i);
                     continue;
                 }
-                
+
                 if (database != null && database.Database.Count > 0) continue;
 #if UNITY_EDITOR
                 AssetDatabase.MoveAssetToTrash(AssetDatabase.GetAssetPath(database));

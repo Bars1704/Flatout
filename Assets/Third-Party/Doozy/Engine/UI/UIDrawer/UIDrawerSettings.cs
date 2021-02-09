@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Touchy;
 using Doozy.Engine.UI.Base;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 // ReSharper disable InconsistentNaming
@@ -32,7 +32,7 @@ namespace Doozy.Engine.UI.Settings
         }
 
         [SerializeField] private NamesDatabase database;
-        
+
         public static NamesDatabase Database
         {
             get
@@ -42,7 +42,7 @@ namespace Doozy.Engine.UI.Settings
                 return Instance.database;
             }
         }
-        
+
         public static void UpdateDatabase()
         {
             Instance.database = NamesDatabase.GetDatabase(DoozyPath.UIDRAWER_DATABASE, NamesDatabase.GetPath(NamesDatabaseType.UIDrawer));
@@ -54,7 +54,7 @@ namespace Doozy.Engine.UI.Settings
             Instance.SetDirty(true);
 #endif
         }
-        
+
         public const bool BLOCK_BACK_BUTTON_DEFAULT_VALUE = true;
         public const bool DETECT_GESTURES_DEFAULT_VALUE = true;
         public const bool HIDE_ON_BACK_BUTTON_DEFAULT_VALUE = true;
@@ -65,7 +65,7 @@ namespace Doozy.Engine.UI.Settings
         public const string RENAME_PREFIX_DEFAULT_VALUE = "Drawer - ";
         public const string RENAME_SUFFIX_DEFAULT_VALUE = "";
         public static Vector3 CUSTOM_START_ANCHORED_POSITION_DEFAULT_VALUE = Vector3.zero;
-        
+
         public SimpleSwipe CloseDirection = CLOSE_DIRECTION_DEFAULT_VALUE;
         public Vector3 CustomStartAnchoredPosition = CUSTOM_START_ANCHORED_POSITION_DEFAULT_VALUE;
         public bool BlockBackButton = BLOCK_BACK_BUTTON_DEFAULT_VALUE;
@@ -76,7 +76,7 @@ namespace Doozy.Engine.UI.Settings
         public float OpenSpeed = OPEN_SPEED_DEFAULT_VALUE;
         public string RenamePrefix = RENAME_PREFIX_DEFAULT_VALUE;
         public string RenameSuffix = RENAME_SUFFIX_DEFAULT_VALUE;
-        
+
         private void Reset()
         {
             CloseDirection = CLOSE_DIRECTION_DEFAULT_VALUE;
@@ -108,7 +108,7 @@ namespace Doozy.Engine.UI.Settings
             drawer.OpenSpeed = OpenSpeed;
             drawer.UseCustomStartAnchoredPosition = UseCustomStartAnchoredPosition;
         }
-        
+
         /// <summary> [Editor Only] Marks target object as dirty. (Only suitable for non-scene objects) </summary>
         /// <param name="saveAssets"> Write all unsaved asset changes to disk? </param>
         public void SetDirty(bool saveAssets) { DoozyUtils.SetDirty(this, saveAssets); }

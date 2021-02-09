@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 namespace Doozy.Editor
@@ -34,28 +34,28 @@ namespace Doozy.Editor
             {
                 switch (colorName)
                 {
-                    case ColorName.Black:      return kBlack;
-                    case ColorName.White:      return kWhite;
-                    case ColorName.Red:        return EditorColors.Instance.Red;
-                    case ColorName.Pink:       return EditorColors.Instance.Pink;
-                    case ColorName.Purple:     return EditorColors.Instance.Purple;
+                    case ColorName.Black: return kBlack;
+                    case ColorName.White: return kWhite;
+                    case ColorName.Red: return EditorColors.Instance.Red;
+                    case ColorName.Pink: return EditorColors.Instance.Pink;
+                    case ColorName.Purple: return EditorColors.Instance.Purple;
                     case ColorName.DeepPurple: return EditorColors.Instance.DeepPurple;
-                    case ColorName.Indigo:     return EditorColors.Instance.Indigo;
-                    case ColorName.Blue:       return EditorColors.Instance.Blue;
-                    case ColorName.LightBlue:  return EditorColors.Instance.LightBlue;
-                    case ColorName.Cyan:       return EditorColors.Instance.Cyan;
-                    case ColorName.Teal:       return EditorColors.Instance.Teal;
-                    case ColorName.Green:      return EditorColors.Instance.Green;
+                    case ColorName.Indigo: return EditorColors.Instance.Indigo;
+                    case ColorName.Blue: return EditorColors.Instance.Blue;
+                    case ColorName.LightBlue: return EditorColors.Instance.LightBlue;
+                    case ColorName.Cyan: return EditorColors.Instance.Cyan;
+                    case ColorName.Teal: return EditorColors.Instance.Teal;
+                    case ColorName.Green: return EditorColors.Instance.Green;
                     case ColorName.LightGreen: return EditorColors.Instance.LightGreen;
-                    case ColorName.Lime:       return EditorColors.Instance.Lime;
-                    case ColorName.Yellow:     return EditorColors.Instance.Yellow;
-                    case ColorName.Amber:      return EditorColors.Instance.Amber;
-                    case ColorName.Orange:     return EditorColors.Instance.Orange;
+                    case ColorName.Lime: return EditorColors.Instance.Lime;
+                    case ColorName.Yellow: return EditorColors.Instance.Yellow;
+                    case ColorName.Amber: return EditorColors.Instance.Amber;
+                    case ColorName.Orange: return EditorColors.Instance.Orange;
                     case ColorName.DeepOrange: return EditorColors.Instance.DeepOrange;
                     case ColorName.UnityLight: return EditorColors.Instance.UnityLight;
-                    case ColorName.Gray:       return EditorColors.Instance.Gray;
-                    case ColorName.UnityDark:  return EditorColors.Instance.UnityDark;
-                    default:                   throw new ArgumentOutOfRangeException("colorName", colorName, null);
+                    case ColorName.Gray: return EditorColors.Instance.Gray;
+                    case ColorName.UnityDark: return EditorColors.Instance.UnityDark;
+                    default: throw new ArgumentOutOfRangeException("colorName", colorName, null);
                 }
             }
 
@@ -84,13 +84,13 @@ namespace Doozy.Editor
 
             /// <summary>IsProSkin ? ColorName.UnityDark : ColorName.White </summary>
             public static ColorName DarkOrWhiteColorName { get { return Utility.IsProSkin ? ColorName.UnityDark : ColorName.White; } }
-            
+
             /// <summary>IsProSkin ? ColorName.UnityDark : ColorName.UnityLight </summary>
             public static ColorName DarkOrLightColorName { get { return Utility.IsProSkin ? ColorName.UnityDark : ColorName.UnityLight; } }
 
             /// <summary>IsProSkin ? ColorName.UnityDark : ColorName.Gray </summary>
             public static ColorName DarkOrGrayColorName { get { return Utility.IsProSkin ? ColorName.UnityDark : ColorName.Gray; } }
-            
+
             public static Color PropertyColor(ColorName colorName, bool ignoreAlpha = false) { return PropertyColor(GetDColor(colorName), ignoreAlpha); }
             public static Color PropertyColor(DColor dColor, bool ignoreAlpha = false) { return dColor.Light.WithAlpha(ignoreAlpha ? 1f : GUI.color.a); }
 
@@ -130,11 +130,11 @@ namespace Doozy.Editor
             {
                 switch (styleState)
                 {
-                    case StyleState.Normal:  return (skin == Skin.Dark ? DarkBaseColor : LightBaseColor).WithAlpha(0.8f);
-                    case StyleState.Hover:   return skin == Skin.Dark ? DarkBaseColor : LightBaseColor;
-                    case StyleState.Active:  return (skin == Skin.Dark ? DarkBaseColor : LightBaseColor).WithAlpha(0.6f);
+                    case StyleState.Normal: return (skin == Skin.Dark ? DarkBaseColor : LightBaseColor).WithAlpha(0.8f);
+                    case StyleState.Hover: return skin == Skin.Dark ? DarkBaseColor : LightBaseColor;
+                    case StyleState.Active: return (skin == Skin.Dark ? DarkBaseColor : LightBaseColor).WithAlpha(0.6f);
                     case StyleState.Focused: return skin == Skin.Dark ? DarkBaseColor : LightBaseColor;
-                    default:                 throw new ArgumentOutOfRangeException("styleState", styleState, null);
+                    default: throw new ArgumentOutOfRangeException("styleState", styleState, null);
                 }
             }
 
@@ -169,7 +169,7 @@ namespace Doozy.Editor
             public static ColorName ScaleColorName { get { return ColorName.Red; } }
             public static ColorName SceneDirectorColorName { get { return ColorName.Orange; } }
             public static ColorName SceneLoaderColorName { get { return ColorName.Orange; } }
-            public static ColorName SettingsColorName { get { return Utility.IsProSkin ? ColorName.UnityLight : ColorName.Gray; } } 
+            public static ColorName SettingsColorName { get { return Utility.IsProSkin ? ColorName.UnityLight : ColorName.Gray; } }
             public static ColorName SoundGroupDataColorName { get { return ColorName.DeepOrange; } }
             public static ColorName SoundyColorName { get { return ColorName.Orange; } }
             public static ColorName SoundyControllerColorName { get { return ColorName.Orange; } }
@@ -200,7 +200,7 @@ namespace Doozy.Editor
 
             public static GUIStyle ColorTextOfGUIStyle(GUIStyle style, ColorName textColorName, bool ignoreAlpha = false) { return ColorTextOfGUIStyle(style, TextColor(textColorName, ignoreAlpha)); }
             public static GUIStyle ColorTextOfGUIStyle(GUIStyle style, DColor textDColor, bool ignoreAlpha = false) { return ColorTextOfGUIStyle(style, TextColor(textDColor, ignoreAlpha)); }
-            public static GUIStyle ColorTextOfGUIStyle(GUIStyle style, Color textColor) { return new GUIStyle(style) {normal = {textColor = textColor}}; }
+            public static GUIStyle ColorTextOfGUIStyle(GUIStyle style, Color textColor) { return new GUIStyle(style) { normal = { textColor = textColor } }; }
         }
     }
 }

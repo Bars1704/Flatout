@@ -2,13 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-using System.Linq;
 using Doozy.Editor.Utils;
 using Doozy.Engine.Settings;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEditor.Callbacks;
 
@@ -19,9 +18,9 @@ namespace Doozy.Editor.Internal
     {
         /// <summary> Define Symbol for Doozy UI Manager </summary>
         public const string DEFINE_DOOZY_MANAGER = "dUI_MANAGER";
-        
+
         /// <summary> Define Symbol for Doozy UI Designer </summary>
-        public const string DEFINE_DOOZY_DESIGNER = "dUI_DESIGNER";            
+        public const string DEFINE_DOOZY_DESIGNER = "dUI_DESIGNER";
 
         /// <summary> Define Symbol for Master Audio </summary>
         public const string DEFINE_MASTER_AUDIO = "dUI_MasterAudio";
@@ -208,7 +207,7 @@ namespace Doozy.Editor.Internal
         public static void UpdateScriptingDefineSymbols()
         {
             DefineSymbolsUtils.AddGlobalDefine(DEFINE_DOOZY_MANAGER);
-            
+
             if (Settings.UsePlaymaker) DefineSymbolsUtils.AddGlobalDefine(DEFINE_PLAYMAKER);
             else DefineSymbolsUtils.RemoveGlobalDefine(DEFINE_PLAYMAKER);
 

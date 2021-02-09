@@ -2,17 +2,17 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.IO;
 using Doozy.Engine.Utils;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
 namespace Doozy.Editor.Settings
 {
-    public class DoozyWindowSettings :  ScriptableObject
+    public class DoozyWindowSettings : ScriptableObject
     {
         private static string AssetPath { get { return Path.Combine(DoozyPath.EDITOR_SETTINGS_PATH, "DoozyWindowSettings.asset"); } }
-        
+
         private static DoozyWindowSettings s_instance;
         public static DoozyWindowSettings Instance
         {
@@ -27,7 +27,7 @@ namespace Doozy.Editor.Settings
                 return s_instance;
             }
         }
-        
+
         public bool DynamicToolbarExpanded = true;
         public float DynamicToolbarButtonHeight = 48f;
         public float DynamicToolbarButtonIconSize = 16f;

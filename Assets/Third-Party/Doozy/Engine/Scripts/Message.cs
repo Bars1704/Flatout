@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 // ReSharper disable UnusedMember.Global
 
@@ -16,12 +15,12 @@ namespace Doozy.Engine
     public class Message
     {
         protected Message() { }
-        
+
         #region Constants
-        
+
         /// <summary> Prefix added to typeless message names internally to distinct them from the typed messages </summary>
         private const string TYPELESS_MESSAGE_PREFIX = "typeless ";
-        
+
         #endregion
 
         #region Static Properties
@@ -33,7 +32,7 @@ namespace Doozy.Engine
         // ReSharper disable once MemberCanBePrivate.Global
         /// <summary> [Editor Only] Called when a message is sent and handled (works only in the Unity Editor) </summary>
         public static OnMessageHandleDelegate OnMessageHandle;
-        
+
         /// <summary> [Editor Only] A delegation type used to callback when messages are sent and received </summary>
         /// <param name="callerType"> The caller type of the message </param>
         /// <param name="handlerType"> The handler type of the message </param>
@@ -41,7 +40,7 @@ namespace Doozy.Engine
         /// <param name="messageName"> The name of the sent message </param>
         /// <param name="handlerMethodName"> The name of the method handling the sent message </param>
         public delegate void OnMessageHandleDelegate(Type callerType, Type handlerType, Type messageType, string messageName, string handlerMethodName);
-        
+
         #endregion
 
         #region Static Methods
@@ -141,12 +140,12 @@ namespace Doozy.Engine
 
                 if (typeof(T) == typeof(Message))
                 {
-                    var action = (Action) messageHandler;
+                    var action = (Action)messageHandler;
                     action();
                 }
                 else
                 {
-                    var action = (Action<T>) messageHandler;
+                    var action = (Action<T>)messageHandler;
                     action(e);
                 }
             }

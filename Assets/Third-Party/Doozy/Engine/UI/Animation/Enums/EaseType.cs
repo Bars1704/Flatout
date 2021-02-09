@@ -11,7 +11,7 @@ namespace Doozy.Engine.UI.Animation
         /// Use a predefined ease curve to specify the rate of change of a parameter over time (also see: https://easings.net/)
         /// </summary>
         Ease = 0,
-        
+
         /// <summary>
         /// Use a custom AnimationCurve to specify the rate of change of a parameter over time
         /// </summary>

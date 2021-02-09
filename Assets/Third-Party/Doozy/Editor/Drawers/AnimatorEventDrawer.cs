@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Doozy.Editor.Internal;
 using Doozy.Engine.Events;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -59,7 +59,7 @@ namespace Doozy.Editor.Drawers
                 animator.objectReferenceValue == null) //or if no animator has been referenced
                 return;                                //stop here
 
-            var anim = (Animator) animator.objectReferenceValue;
+            var anim = (Animator)animator.objectReferenceValue;
             if (!anim.gameObject.activeSelf) return;
 
             AnimatorControllerParameter[] parameters = anim.parameters; //get the parameters from the animator
@@ -87,16 +87,16 @@ namespace Doozy.Editor.Drawers
                 switch (parameter.type)
                 {
                     case AnimatorControllerParameterType.Float:
-                        parameterType.enumValueIndex = (int) AnimatorEvent.ParameterType.Float;
+                        parameterType.enumValueIndex = (int)AnimatorEvent.ParameterType.Float;
                         break;
                     case AnimatorControllerParameterType.Int:
-                        parameterType.enumValueIndex = (int) AnimatorEvent.ParameterType.Int;
+                        parameterType.enumValueIndex = (int)AnimatorEvent.ParameterType.Int;
                         break;
                     case AnimatorControllerParameterType.Bool:
-                        parameterType.enumValueIndex = (int) AnimatorEvent.ParameterType.Bool;
+                        parameterType.enumValueIndex = (int)AnimatorEvent.ParameterType.Bool;
                         break;
                     case AnimatorControllerParameterType.Trigger:
-                        parameterType.enumValueIndex = (int) AnimatorEvent.ParameterType.Trigger;
+                        parameterType.enumValueIndex = (int)AnimatorEvent.ParameterType.Trigger;
                         break;
                     default: throw new ArgumentOutOfRangeException();
                 }
@@ -132,7 +132,7 @@ namespace Doozy.Editor.Drawers
 
             string key = property.propertyPath;
             SerializedProperty animatorProperty = Properties.Get(PropertyName.Animator, property);
-            var animator = (Animator) animatorProperty.objectReferenceValue;
+            var animator = (Animator)animatorProperty.objectReferenceValue;
             var parameterNames = new List<string>();
             AnimatorControllerParameter[] parameters = null;
             bool hasAnimator = animatorProperty.objectReferenceValue != null;
@@ -181,7 +181,7 @@ namespace Doozy.Editor.Drawers
                     //LINE 3
                     drawRect.y += DGUI.Properties.SingleLineHeight + DGUI.Properties.StandardVerticalSpacing;
 
-                    switch ((AnimatorEvent.ParameterType) Properties.Get(PropertyName.TargetParameterType, property).enumValueIndex)
+                    switch ((AnimatorEvent.ParameterType)Properties.Get(PropertyName.TargetParameterType, property).enumValueIndex)
                     {
                         case AnimatorEvent.ParameterType.Float:
                             Elements.DrawLine(drawRect,
@@ -213,7 +213,7 @@ namespace Doozy.Editor.Drawers
             {
                 SerializedProperty parameterName = Properties.Get(PropertyName.ParameterName, property);
 
-                string parameterTypeName = ("(" + (AnimatorEvent.ParameterType) Properties.Get(PropertyName.TargetParameterType, property).enumValueIndex + ") ").ToLower();
+                string parameterTypeName = ("(" + (AnimatorEvent.ParameterType)Properties.Get(PropertyName.TargetParameterType, property).enumValueIndex + ") ").ToLower();
                 float parameterTypeNameLabelWidth = DGUI.Label.Style().CalcSize(new GUIContent(parameterTypeName)).x;
                 var parameterTypeNameRect = new Rect(drawRect.x + DGUI.Properties.StandardVerticalSpacing, drawRect.y, parameterTypeNameLabelWidth, DGUI.Properties.SingleLineHeight);
                 DGUI.Label.Draw(parameterTypeNameRect, parameterTypeName, Size.M);

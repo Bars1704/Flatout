@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
 using Doozy.Engine.Nody.Attributes;
 using Doozy.Engine.Nody.Connections;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
 
 namespace Doozy.Engine.Nody.Nodes
 {
@@ -125,7 +125,7 @@ namespace Doozy.Engine.Nody.Nodes
         {
             base.CopyNode(original);
 
-            var switchBackNode = (SwitchBackNode) original;
+            var switchBackNode = (SwitchBackNode)original;
             Sources = new List<SourceInfo>();
             for (int i = 0; i < switchBackNode.Sources.Count; i++)
                 Sources.Add(new SourceInfo(switchBackNode.Sources[i].SourceName, InputSockets[i + 1].Id, OutputSockets[i + 1].Id));

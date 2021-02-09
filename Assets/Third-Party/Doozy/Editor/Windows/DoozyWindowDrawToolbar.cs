@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Settings;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 namespace Doozy.Editor.Windows
@@ -37,13 +37,13 @@ namespace Doozy.Editor.Windows
                 DrawToolbarButton(View.Touchy, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonTouchy), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonTouchySelected));
                 DrawToolbarButton(View.Nody, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonNody), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonNodySelected));
                 GUILayout.Space(DGUI.Properties.Space(8));
-//                DrawToolbarButton(View.Animations, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonAnimations), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonAnimationsSelected));
-//                DrawToolbarButton(View.Templates, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonTemplates), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonTemplatesSelected));
+                //                DrawToolbarButton(View.Animations, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonAnimations), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonAnimationsSelected));
+                //                DrawToolbarButton(View.Templates, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonTemplates), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonTemplatesSelected));
                 DrawToolbarButton(View.Themes, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonThemes), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonThemesSelected));
                 GUILayout.Space(LeftToolbarVerticalSectionSpacing);
                 DrawToolbarButton(View.Settings, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonSettings), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonSettingsSelected));
                 DrawToolbarButton(View.Debug, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonDebug), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonDebugSelected));
-//                DrawToolbarButton(View.Keys, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonKeys), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonKeysSelected));
+                //                DrawToolbarButton(View.Keys, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonKeys), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonKeysSelected));
                 GUILayout.Space(LeftToolbarVerticalSectionSpacing);
                 DrawToolbarButton(View.Help, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonHelp), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonHelpSelected));
                 DrawToolbarButton(View.About, Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonAbout), Styles.GetStyle(Styles.StyleName.DoozyWindowToolbarButtonAboutSelected));

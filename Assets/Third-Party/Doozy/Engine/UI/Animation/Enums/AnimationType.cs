@@ -11,27 +11,27 @@ namespace Doozy.Engine.UI.Animation
         /// Unknown animation
         /// </summary>
         Undefined,
-        
+
         /// <summary>
         /// Show animation (enter screen view)
         /// </summary>
         Show,
-        
+
         /// <summary>
         /// Hide animation (exit screen view)
         /// </summary>
         Hide,
-        
+
         /// <summary>
         /// Loop animation (repeats/restarts itself)
         /// </summary>
         Loop,
-        
+
         /// <summary>
         /// Punch animation (fast animation that returns to the start values when finished)
         /// </summary>
         Punch,
-        
+
         /// <summary>
         /// State animation (changes the state of the target by setting new values for position, rotation, scale and/or alpha)
         /// </summary>

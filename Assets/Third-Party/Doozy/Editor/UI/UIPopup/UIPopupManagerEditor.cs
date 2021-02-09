@@ -22,7 +22,7 @@ namespace Doozy.Editor.UI
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (UIPopupManager) target;
+                m_target = (UIPopupManager)target;
                 return m_target;
             }
         }
@@ -35,7 +35,7 @@ namespace Doozy.Editor.UI
             serializedObject.Update();
             DrawHeader(Styles.GetStyle(Styles.StyleName.ComponentHeaderUIPopupManager), MenuUtils.UIPopupManager_Manual, MenuUtils.UIPopupManager_YouTube);
             DrawUIPopupDatabaseButton();
-//            DrawPopupTesterOptions();
+            //            DrawPopupTesterOptions();
             GUILayout.Space(DGUI.Properties.Space(4));
             serializedObject.ApplyModifiedProperties();
         }
@@ -65,12 +65,12 @@ namespace Doozy.Editor.UI
         private bool m_hideOnClickContainer;
         private bool m_hideOnBackButton;
         private Sprite m_exampleSprite;
-        
+
         private void DrawPopupTesterOptions()
         {
             GUILayout.Space(DGUI.Properties.Space(4));
 
-            m_exampleSprite = (Sprite) EditorGUILayout.ObjectField(m_exampleSprite, typeof(Sprite), false);
+            m_exampleSprite = (Sprite)EditorGUILayout.ObjectField(m_exampleSprite, typeof(Sprite), false);
             GUILayout.Space(DGUI.Properties.Space(4));
 
             GUILayout.BeginHorizontal();
@@ -123,6 +123,6 @@ namespace Doozy.Editor.UI
         }
 
         #endregion
-        
+
     }
 }

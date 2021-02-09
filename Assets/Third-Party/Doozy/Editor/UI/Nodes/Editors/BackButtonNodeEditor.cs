@@ -13,7 +13,7 @@ namespace Doozy.Editor.UI.Nodes
     [CustomEditor(typeof(BackButtonNode))]
     public class BackButtonNodeEditor : BaseNodeEditor
     {
-        private BackButtonNode TargetNode { get { return (BackButtonNode) target; } }
+        private BackButtonNode TargetNode { get { return (BackButtonNode)target; } }
 
         private SerializedProperty
             m_backButtonAction;

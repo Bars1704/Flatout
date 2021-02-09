@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.UI.Animation;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -120,7 +120,7 @@ namespace Doozy.Engine.UI.Base
         public virtual void Init()
         {
             if (RectTransform == null) return;
-            
+
             if (Canvas == null)
             {
                 Canvas = RectTransform.gameObject.GetComponent<Canvas>();
@@ -138,10 +138,10 @@ namespace Doozy.Engine.UI.Base
             if (CanvasGroup == null)
             {
                 CanvasGroup = RectTransform.gameObject.GetComponent<CanvasGroup>();
-                if(CanvasGroup == null)
+                if (CanvasGroup == null)
                     CanvasGroup = RectTransform.gameObject.AddComponent<CanvasGroup>();
             }
-            
+
             if (Canvas.enabled && DisableCanvas) Canvas.enabled = false;
             if (GraphicRaycaster.enabled & DisableGraphicRaycaster) GraphicRaycaster.enabled = false;
 

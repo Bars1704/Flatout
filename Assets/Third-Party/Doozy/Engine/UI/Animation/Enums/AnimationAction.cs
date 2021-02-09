@@ -11,17 +11,17 @@ namespace Doozy.Engine.UI.Animation
         /// Move Animation
         /// </summary>
         Move,
-        
+
         /// <summary>
         /// Rotate Animation
         /// </summary>
         Rotate,
-        
+
         /// <summary>
         /// Scale Animation
         /// </summary>
         Scale,
-        
+
         /// <summary>
         /// Fade Animation
         /// </summary>

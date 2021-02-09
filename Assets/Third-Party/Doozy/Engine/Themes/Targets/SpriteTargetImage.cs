@@ -29,14 +29,14 @@ namespace Doozy.Engine.Themes
 #endif
 
         #endregion
-        
+
         #region Public Variables
 
         /// <summary> Target Image component </summary>
         public Image Image;
 
         #endregion
-        
+
         #region Public Methods
 
         /// <summary> Method used by the ThemeManager when the active variant or selected theme have changed </summary>

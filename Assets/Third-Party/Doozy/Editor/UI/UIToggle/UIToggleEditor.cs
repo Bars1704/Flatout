@@ -2,8 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Soundy;
 using Doozy.Editor.UI.Animation;
@@ -14,6 +12,8 @@ using Doozy.Engine.UI.Base;
 using Doozy.Engine.UI.Input;
 using Doozy.Engine.UI.Settings;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -33,7 +33,7 @@ namespace Doozy.Editor.UI
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (UIToggle) target;
+                m_target = (UIToggle)target;
                 return m_target;
             }
         }
@@ -119,7 +119,7 @@ namespace Doozy.Editor.UI
         protected override void OnEnable()
         {
             base.OnEnable();
-            m_target = (UIToggle) target;
+            m_target = (UIToggle)target;
 
             AdjustPositionRotationAndScaleToRoundValues(Target.RectTransform);
 
@@ -219,10 +219,10 @@ namespace Doozy.Editor.UI
 
             var toggles = new Object[targets.Length];
             for (int i = 0; i < targets.Length; i++)
-                toggles[i] = ((UIToggle) targets[i]).Toggle;
+                toggles[i] = ((UIToggle)targets[i]).Toggle;
 
             Undo.RecordObjects(toggles, "Toggle " + (isOn ? "On" : "Off"));
-            foreach (Object t in targets) ((UIToggle) t).IsOn = isOn;
+            foreach (Object t in targets) ((UIToggle)t).IsOn = isOn;
         }
 
         private void DrawAllowMultipleClicks()
@@ -261,7 +261,7 @@ namespace Doozy.Editor.UI
         private void DrawInputData()
         {
             SerializedProperty inputModeProperty = GetProperty(PropertyName.InputMode, m_inputData);
-            var inputMode = (InputMode) inputModeProperty.enumValueIndex;
+            var inputMode = (InputMode)inputModeProperty.enumValueIndex;
             SerializedProperty enableAlternateInputsProperty = GetProperty(PropertyName.EnableAlternateInputs, m_inputData);
             SerializedProperty keyCodeProperty = GetProperty(PropertyName.KeyCode, m_inputData);
             SerializedProperty keyCodeAltProperty = GetProperty(PropertyName.KeyCodeAlt, m_inputData);
@@ -399,7 +399,7 @@ namespace Doozy.Editor.UI
             SerializedProperty onToggleOnProperty = GetProperty(PropertyName.OnToggleOn, behaviorProperty);
             SerializedProperty onToggleOffProperty = GetProperty(PropertyName.OnToggleOff, behaviorProperty);
             SerializedProperty buttonAnimationTypeProperty = GetProperty(PropertyName.ButtonAnimationType, behaviorProperty);
-            var buttonAnimationType = (ButtonAnimationType) buttonAnimationTypeProperty.enumValueIndex;
+            var buttonAnimationType = (ButtonAnimationType)buttonAnimationTypeProperty.enumValueIndex;
 
             AnimBool animationTypeExpanded = GetAnimBool(buttonAnimationTypeProperty.propertyPath, buttonAnimationTypeProperty.isExpanded);
             AnimBool onToggleOnExpanded = GetAnimBool(onToggleOnProperty.propertyPath, onToggleOnProperty.isExpanded);
@@ -493,7 +493,7 @@ namespace Doozy.Editor.UI
                                                 if (serializedObject.isEditingMultipleObjects)
                                                     foreach (Object targetObject in serializedObject.targetObjects)
                                                     {
-                                                        var targetButton = (UIToggle) targetObject;
+                                                        var targetButton = (UIToggle)targetObject;
                                                         switch (toggleBehavior.BehaviorType)
                                                         {
                                                             case UIToggleBehaviorType.OnClick:
@@ -543,7 +543,7 @@ namespace Doozy.Editor.UI
                                                 if (serializedObject.isEditingMultipleObjects)
                                                     foreach (Object targetObject in serializedObject.targetObjects)
                                                     {
-                                                        var targetButton = (UIToggle) targetObject;
+                                                        var targetButton = (UIToggle)targetObject;
                                                         switch (toggleBehavior.BehaviorType)
                                                         {
                                                             case UIToggleBehaviorType.OnClick:
@@ -755,7 +755,7 @@ namespace Doozy.Editor.UI
         {
             SerializedProperty buttonAnimationType = GetProperty(PropertyName.ButtonAnimationType, behaviorProperty);
             AnimBool animationTypeExpanded = GetAnimBool(buttonAnimationType.propertyPath);
-            var selectedAnimationType = (ButtonAnimationType) buttonAnimationType.enumValueIndex;
+            var selectedAnimationType = (ButtonAnimationType)buttonAnimationType.enumValueIndex;
 
             if (DGUI.FadeOut.Begin(animationTypeExpanded, false))
             {

@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Nody.NodeGUI;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.SceneManagement;
 using Doozy.Engine.UI;
 using Doozy.Engine.UI.Nodes;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -21,7 +21,7 @@ namespace Doozy.Editor.UI.Nodes
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconWaitNode)); } }
         protected override GUIStyle GetIconStyle() { return IconStyle; }
 
-        private WaitNode TargetNode { get { return (WaitNode) Node; } }
+        private WaitNode TargetNode { get { return (WaitNode)Node; } }
 
         private GUIStyle m_actionIcon;
         private string m_title;
@@ -33,15 +33,15 @@ namespace Doozy.Editor.UI.Nodes
             {
                 switch (TargetNode.WaitFor)
                 {
-                    case WaitNode.WaitType.Time:              return Styles.StyleName.IconTime;
-                    case WaitNode.WaitType.GameEvent:         return Styles.StyleName.IconGameEventListener;
-                    case WaitNode.WaitType.SceneLoad:         return Styles.StyleName.NodeIconLoadSceneNode;
-                    case WaitNode.WaitType.SceneUnload:       return Styles.StyleName.NodeIconUnloadSceneNode;
+                    case WaitNode.WaitType.Time: return Styles.StyleName.IconTime;
+                    case WaitNode.WaitType.GameEvent: return Styles.StyleName.IconGameEventListener;
+                    case WaitNode.WaitType.SceneLoad: return Styles.StyleName.NodeIconLoadSceneNode;
+                    case WaitNode.WaitType.SceneUnload: return Styles.StyleName.NodeIconUnloadSceneNode;
                     case WaitNode.WaitType.ActiveSceneChange: return Styles.StyleName.NodeIconActivateLoadedScenesNode;
-                    case WaitNode.WaitType.UIView:            return Styles.StyleName.IconUIViewListener;
-                    case WaitNode.WaitType.UIButton:          return Styles.StyleName.IconUIButtonListener;
-                    case WaitNode.WaitType.UIDrawer:          return Styles.StyleName.IconUIDrawerListener;
-                    default:                                  throw new ArgumentOutOfRangeException();
+                    case WaitNode.WaitType.UIView: return Styles.StyleName.IconUIViewListener;
+                    case WaitNode.WaitType.UIButton: return Styles.StyleName.IconUIButtonListener;
+                    case WaitNode.WaitType.UIDrawer: return Styles.StyleName.IconUIDrawerListener;
+                    default: throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -83,8 +83,8 @@ namespace Doozy.Editor.UI.Nodes
                                     ? "[" + TargetNode.CurrentDuration + "] " + UILabels.Seconds
                                     : TargetNode.WaitForInfoTitle);
                     break;
-                case WaitNode.WaitType.GameEvent:   break;
-                case WaitNode.WaitType.SceneLoad:   break;
+                case WaitNode.WaitType.GameEvent: break;
+                case WaitNode.WaitType.SceneLoad: break;
                 case WaitNode.WaitType.SceneUnload: break;
                 case WaitNode.WaitType.ActiveSceneChange:
                     m_title += TargetNode.WaitForInfoTitle;

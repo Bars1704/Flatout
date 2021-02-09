@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Utils;
 using System;
 using System.Collections.Generic;
-using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -147,17 +147,17 @@ namespace Doozy.Editor.Internal
                 case EventType.MouseUp:
                 case EventType.MouseMove:
                 case EventType.MouseDrag:
-//                case EventType.KeyDown:
-//                case EventType.KeyUp:
+                //                case EventType.KeyDown:
+                //                case EventType.KeyUp:
                 case EventType.ScrollWheel:
-//                case EventType.DragUpdated:
-//                case EventType.DragPerform:
-//                case EventType.DragExited:
-//                case EventType.Ignore:
+                //                case EventType.DragUpdated:
+                //                case EventType.DragPerform:
+                //                case EventType.DragExited:
+                //                case EventType.Ignore:
                 case EventType.Used:
-//                case EventType.ValidateCommand:
-//                case EventType.ExecuteCommand:
-//                case EventType.ContextClick:
+                //                case EventType.ValidateCommand:
+                //                case EventType.ExecuteCommand:
+                //                case EventType.ContextClick:
                 case EventType.MouseEnterWindow:
                 case EventType.MouseLeaveWindow:
                     Repaint();

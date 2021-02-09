@@ -69,7 +69,7 @@ namespace Doozy.Editor.Drawers
             float rangeMin = 0;
             float rangeMax = 1;
 
-            var ranges = (MinMaxRangeAttribute[]) fieldInfo.GetCustomAttributes(typeof(MinMaxRangeAttribute), true);
+            var ranges = (MinMaxRangeAttribute[])fieldInfo.GetCustomAttributes(typeof(MinMaxRangeAttribute), true);
             if (ranges.Length > 0)
             {
                 rangeMin = ranges[0].Min;
@@ -80,10 +80,10 @@ namespace Doozy.Editor.Drawers
 
             var minValueContent = new GUIContent("min " + minValue.ToString("F2"));
             var maxValueContent = new GUIContent(maxValue.ToString("F2") + " max");
-            
+
             Vector2 minValueContentSize = labelStyle.CalcSize(minValueContent);
             Vector2 maxValueContentSize = labelStyle.CalcSize(maxValueContent);
-            
+
             var minValueLabelRect = new Rect(position.xMin, position.y + (DGUI.Properties.SingleLineHeight - minValueContentSize.y) / 2, minValueContentSize.x, minValueContentSize.y);
             var maxValueLabelRect = new Rect(position.xMax - maxValueContentSize.x, position.y + (DGUI.Properties.SingleLineHeight - maxValueContentSize.y) / 2, maxValueContentSize.x, maxValueContentSize.y);
             var sliderRect = new Rect(position.xMin + minValueContentSize.x + DGUI.Properties.Space(2),
@@ -93,7 +93,7 @@ namespace Doozy.Editor.Drawers
 
             GUI.Label(minValueLabelRect, minValueContent, labelStyle);
             GUI.Label(maxValueLabelRect, maxValueContent, labelStyle);
-            
+
             EditorGUI.BeginChangeCheck();
             EditorGUI.MinMaxSlider(sliderRect, ref minValue, ref maxValue, rangeMin, rangeMax);
             if (EditorGUI.EndChangeCheck())

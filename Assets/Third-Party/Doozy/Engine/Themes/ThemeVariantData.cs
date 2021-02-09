@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Doozy.Engine.Utils;
 using UnityEngine;
 
 #if dUI_TextMeshPro
@@ -137,7 +137,7 @@ namespace Doozy.Engine.Themes
         /// <param name="guid"> Property id </param>
         /// <param name="color"> Color value </param>
         public void AddColorProperty(Guid guid, Color color) { Colors.Add(new ColorId(guid, color)); }
-        
+
         /// <summary> Returns true if this theme contains a Color property with the given Id </summary>
         /// <param name="propertyId"> Property Id </param>
         public bool ContainsColor(Guid propertyId) { return Colors.Any(p => p.Id.Equals(propertyId)); }
@@ -158,12 +158,12 @@ namespace Doozy.Engine.Themes
         /// <summary> Add a new Sprite property with the given Id </summary>
         /// <param name="guid"> Property id </param>
         public void AddSpriteProperty(Guid guid) { Sprites.Add(new SpriteId(guid, null)); }
-        
+
         /// <summary> Add a new Sprite property with a given value and Id </summary>
         /// <param name="guid"> Property id </param>
         /// <param name="sprite"> Sprite reference </param>
         public void AddSpriteProperty(Guid guid, Sprite sprite) { Sprites.Add(new SpriteId(guid, sprite)); }
-        
+
         /// <summary> Returns true if this theme contains a Sprite property with the given Id </summary>
         /// <param name="propertyId"> Property Id </param>
         public bool ContainsSprite(Guid propertyId) { return Sprites.Any(p => p.Id.Equals(propertyId)); }
@@ -184,12 +184,12 @@ namespace Doozy.Engine.Themes
         /// <summary> Add a new Texture property with the given Id </summary>
         /// <param name="guid"> Property id </param>
         public void AddTextureProperty(Guid guid) { Textures.Add(new TextureId(guid, null)); }
-        
+
         /// <summary> Add a new Texture property with a given value and Id </summary>
         /// <param name="guid"> Property id </param>
         /// <param name="texture"> Texture reference </param>
         public void AddTextureProperty(Guid guid, Texture texture) { Textures.Add(new TextureId(guid, texture)); }
-        
+
         /// <summary> Returns true if this theme contains a Texture property with the given Id </summary>
         /// <param name="propertyId"> Property Id </param>
         public bool ContainsTexture(Guid propertyId) { return Textures.Any(p => p.Id.Equals(propertyId)); }
@@ -210,12 +210,12 @@ namespace Doozy.Engine.Themes
         /// <summary> Add a new Font property with the given Id </summary>
         /// <param name="guid"> Property id </param>
         public void AddFontProperty(Guid guid) { Fonts.Add(new FontId(guid, DefaultFont)); }
-        
+
         /// <summary> Add a new Font property with a given value and Id </summary>
         /// <param name="guid"> Property id </param>
         /// <param name="font"> Font reference </param>
         public void AddFontProperty(Guid guid, Font font) { Fonts.Add(new FontId(guid, font)); }
-        
+
         /// <summary> Returns true if this theme contains a Font property with the given Id </summary>
         /// <param name="propertyId"> Property Id </param>
         public bool ContainsFont(Guid propertyId) { return Fonts.Any(p => p.Id.Equals(propertyId)); }

@@ -29,7 +29,7 @@ namespace Doozy.Engine.Themes
 #endif
 
         #endregion
-        
+
         #region Public Variables
 
         /// <summary> Target Text component </summary>

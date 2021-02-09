@@ -33,7 +33,7 @@ namespace Doozy.Engine.Nody.Models
 
 #if UNITY_EDITOR
         private AnimBool m_showHover;
-        public AnimBool IsHovered { get { return m_showHover ?? (m_showHover = new AnimBool(false) {speed = 2f}); } }
+        public AnimBool IsHovered { get { return m_showHover ?? (m_showHover = new AnimBool(false) { speed = 2f }); } }
 
         public virtual bool HasErrors { get { return ErrorNodeNameIsEmpty || ErrorDuplicateNameFoundInGraph; } }
 
@@ -507,7 +507,7 @@ namespace Doozy.Engine.Nody.Models
         }
 
         /// <summary> [Editor Only] Returns a list of three connection points positions to the left of, the center of and right of the socket </summary>
-        private List<Vector2> GetLeftAndCenterAndRightConnectionPoints() { return new List<Vector2> {GetLeftConnectionPointPosition(), GetCenterConnectionPointPosition(), GetRightConnectionPointPosition()}; }
+        private List<Vector2> GetLeftAndCenterAndRightConnectionPoints() { return new List<Vector2> { GetLeftConnectionPointPosition(), GetCenterConnectionPointPosition(), GetRightConnectionPointPosition() }; }
 
         /// <summary> [Editor Only] Returns the default left connection point position for a socket </summary>
         public Vector2 GetLeftConnectionPointPosition()
@@ -517,7 +517,7 @@ namespace Doozy.Engine.Nody.Models
         }
 
         /// <summary> [Editor Only] Returns a list of two connection points positions to the left of and the right of the socket </summary>
-        public List<Vector2> GetLeftAndRightConnectionPoints() { return new List<Vector2> {GetLeftConnectionPointPosition(), GetRightConnectionPointPosition()}; }
+        public List<Vector2> GetLeftAndRightConnectionPoints() { return new List<Vector2> { GetLeftConnectionPointPosition(), GetRightConnectionPointPosition() }; }
 
         /// <summary> [Editor Only] Returns the position of this node </summary>
         public Vector2 GetPosition() { return new Vector2(m_x, m_y); }

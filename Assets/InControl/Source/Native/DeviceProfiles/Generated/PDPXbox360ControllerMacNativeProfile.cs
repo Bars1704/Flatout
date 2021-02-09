@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class PDPXbox360ControllerMacNativeProfile : Xbox360DriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class PDPXbox360ControllerMacNativeProfile : Xbox360DriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "PDP Xbox 360 Controller";
-			DeviceNotes = "PDP Xbox 360 Controller on Mac";
+            DeviceName = "PDP Xbox 360 Controller";
+            DeviceNotes = "PDP Xbox 360 Controller on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x0e6f,
-					ProductID = 0x0501,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x0e6f,
+                    ProductID = 0x0501,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

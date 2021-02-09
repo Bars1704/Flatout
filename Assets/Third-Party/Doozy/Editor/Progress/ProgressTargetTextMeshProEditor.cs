@@ -2,13 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using Doozy.Editor;
 using Doozy.Editor.Internal;
 using Doozy.Engine.Progress;
 using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEngine;
-using PropertyName = Doozy.Editor.PropertyName;
 
 namespace Doozy.Editor.Progress
 {
@@ -19,7 +17,7 @@ namespace Doozy.Editor.Progress
         protected override ColorName ComponentColorName { get { return DGUI.Colors.ProgressorColorName; } }
 
         private const string SUPPORT_FOR_TEXT_MESH_PRO_NOT_ENABLED = "SupportForTextMeshProNotEnabled";
-        
+
 #if dUI_TextMeshPro
         private SerializedProperty
             m_textMeshPro,
@@ -51,7 +49,7 @@ namespace Doozy.Editor.Progress
         protected override void OnEnable()
         {
             base.OnEnable();
-            
+
             AddInfoMessage(SUPPORT_FOR_TEXT_MESH_PRO_NOT_ENABLED, new InfoMessage(InfoMessage.MessageType.Warning, UILabels.SupportForTextMeshProNotEnabled, false, Repaint));
         }
 

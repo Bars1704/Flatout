@@ -2,13 +2,13 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Doozy.Editor.Settings;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Themes;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -123,9 +123,9 @@ namespace Doozy.Editor.Windows
             {
                 if (m_themeNameStyle != null) return m_themeNameStyle;
                 m_themeNameStyle = new GUIStyle(Styles.GetStyle(Styles.StyleName.LabelXLCenter))
-                                   {
-                                       fontSize = 18
-                                   };
+                {
+                    fontSize = 18
+                };
                 return m_themeNameStyle;
             }
         }
@@ -312,8 +312,8 @@ namespace Doozy.Editor.Windows
                                 DrawDefaultViewHorizontalSpacing();
                                 if (ButtonAutoSave(ThemesSettings.Instance.AutoSave))
                                 {
-                                    if (DoozyUtils.DisplayDialog(UILabels.AutoSave, 
-                                                                 (!ThemesSettings.Instance.AutoSave 
+                                    if (DoozyUtils.DisplayDialog(UILabels.AutoSave,
+                                                                 (!ThemesSettings.Instance.AutoSave
                                                                       ? UILabels.ThemesEnableAutoSave
                                                                       : UILabels.ThemesDisableAutoSave),
                                                                   UILabels.Ok,
@@ -367,7 +367,7 @@ namespace Doozy.Editor.Windows
                             if (theme == null) continue;
                             bool isSelected = GUI.enabled && CurrentThemeId == theme.Id;
                             string themeName = theme.ThemeName;
-                            int maxLength = 14 + (int) (3 * (1 - EditMode.faded));
+                            int maxLength = 14 + (int)(3 * (1 - EditMode.faded));
                             if (themeName.Length > maxLength) themeName = themeName.Substring(0, maxLength - 1) + "...";
                             GUILayout.BeginHorizontal();
                             {
@@ -538,10 +538,10 @@ namespace Doozy.Editor.Windows
         {
             switch (selectedThemeTabIndex)
             {
-                case COLOR_TAB_INDEX:   return DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2);
-                case SPRITE_TAB_INDEX:  return ThemeVariantImageSize;
+                case COLOR_TAB_INDEX: return DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2);
+                case SPRITE_TAB_INDEX: return ThemeVariantImageSize;
                 case TEXTURE_TAB_INDEX: return ThemeVariantImageSize;
-                case FONT_TAB_INDEX:    return DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2);
+                case FONT_TAB_INDEX: return DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2);
 #if dUI_TextMeshPro
                 case FONT_ASSET_TAB_INDEX: return DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2);
 #endif
@@ -865,7 +865,7 @@ namespace Doozy.Editor.Windows
                             {
                                 GUILayout.FlexibleSpace();
                                 EditorGUI.BeginChangeCheck();
-                                var sprite = (Sprite) EditorGUILayout.ObjectField(GUIContent.none, variant.Sprites[propertyIndex].Sprite, typeof(Sprite), false,
+                                var sprite = (Sprite)EditorGUILayout.ObjectField(GUIContent.none, variant.Sprites[propertyIndex].Sprite, typeof(Sprite), false,
                                                                                   GUILayout.Width(rowHeight),
                                                                                   GUILayout.Height(rowHeight));
                                 if (EditorGUI.EndChangeCheck())
@@ -923,7 +923,7 @@ namespace Doozy.Editor.Windows
                             {
                                 GUILayout.FlexibleSpace();
                                 EditorGUI.BeginChangeCheck();
-                                var texture = (Texture) EditorGUILayout.ObjectField(GUIContent.none, variant.Textures[propertyIndex].Texture, typeof(Texture), false,
+                                var texture = (Texture)EditorGUILayout.ObjectField(GUIContent.none, variant.Textures[propertyIndex].Texture, typeof(Texture), false,
                                                                                     GUILayout.Width(rowHeight),
                                                                                     GUILayout.Height(rowHeight));
                                 if (EditorGUI.EndChangeCheck())
@@ -979,7 +979,7 @@ namespace Doozy.Editor.Windows
                             {
                                 GUILayout.FlexibleSpace();
                                 EditorGUI.BeginChangeCheck();
-                                var font = (Font) EditorGUILayout.ObjectField(GUIContent.none, variant.Fonts[propertyIndex].Font, typeof(Font), false, GUILayout.Width(m_themeVariantColumnWidth));
+                                var font = (Font)EditorGUILayout.ObjectField(GUIContent.none, variant.Fonts[propertyIndex].Font, typeof(Font), false, GUILayout.Width(m_themeVariantColumnWidth));
                                 if (EditorGUI.EndChangeCheck())
                                 {
                                     themeData.UndoRecord(UILabels.UpdateValue);

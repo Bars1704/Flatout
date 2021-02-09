@@ -43,7 +43,7 @@ namespace Doozy.Engine.UI.Nodes
         [NonSerialized] private float m_timeDelay;
         [NonSerialized] private Socket m_activeSocketAfterTimeDelay;
 
-        public float TimerProgress { get { return Mathf.Clamp01(m_timerIsActive ? (float) (Time.realtimeSinceStartup - m_timerStart) / m_timeDelay : 0f); } }
+        public float TimerProgress { get { return Mathf.Clamp01(m_timerIsActive ? (float)(Time.realtimeSinceStartup - m_timerStart) / m_timeDelay : 0f); } }
 
         public enum NodeState
         {
@@ -61,7 +61,7 @@ namespace Doozy.Engine.UI.Nodes
         {
             base.CopyNode(original);
 
-            var node = (UINode) original;
+            var node = (UINode)original;
             m_onEnterShowViews = UIViewCategoryNameListCopy(node.OnEnterShowViews);
             m_onEnterHideViews = UIViewCategoryNameListCopy(node.OnEnterHideViews);
             m_onExitShowViews = UIViewCategoryNameListCopy(node.OnExitShowViews);
@@ -269,7 +269,7 @@ namespace Doozy.Engine.UI.Nodes
             {
                 if (DebugMode) DDebug.Log("Show UIView: " + view.Category + " / " + view.Name);
                 Coroutiner.Start(UIView.ShowViewNextFrame(view.Category, view.Name, view.InstantAction));
-//                UIView.ShowView(view.Category, view.Name, view.InstantAction);
+                //                UIView.ShowView(view.Category, view.Name, view.InstantAction);
             }
         }
 
@@ -279,7 +279,7 @@ namespace Doozy.Engine.UI.Nodes
             {
                 if (DebugMode) DDebug.Log("Hide UIView: " + view.Category + " / " + view.Name);
                 Coroutiner.Start(UIView.HideViewNextFrame(view.Category, view.Name, view.InstantAction));
-//                UIView.HideView(view.Category, view.Name, view.InstantAction);
+                //                UIView.HideView(view.Category, view.Name, view.InstantAction);
             }
         }
 

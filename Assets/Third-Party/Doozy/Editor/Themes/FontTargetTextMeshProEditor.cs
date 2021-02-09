@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Internal;
 using Doozy.Engine.Themes;
 using Doozy.Engine.Utils;
@@ -18,7 +17,7 @@ namespace Doozy.Editor.Themes
         protected override ColorName ComponentColorName { get { return DGUI.Colors.ThemesColorName; } }
 
         private const string SUPPORT_FOR_TEXT_MESH_PRO_NOT_ENABLED = "SupportForTextMeshProNotEnabled";
-        
+
         private FontTargetTextMeshPro m_target;
 
         private FontTargetTextMeshPro Target
@@ -26,7 +25,7 @@ namespace Doozy.Editor.Themes
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (FontTargetTextMeshPro) target;
+                m_target = (FontTargetTextMeshPro)target;
                 return m_target;
             }
         }
@@ -48,23 +47,23 @@ namespace Doozy.Editor.Themes
 
         private bool HasReference { get { return m_textMeshPro.objectReferenceValue != null; } }
 #endif
-        
-         protected override void LoadSerializedProperty()
+
+        protected override void LoadSerializedProperty()
         {
             base.LoadSerializedProperty();
-            
+
 #if dUI_TextMeshPro
             m_textMeshPro = GetProperty(PropertyName.TextMeshPro);
 #endif
         }
 
-         protected override void OnEnable()
-         {
-             base.OnEnable();
+        protected override void OnEnable()
+        {
+            base.OnEnable();
 
-             AddInfoMessage(SUPPORT_FOR_TEXT_MESH_PRO_NOT_ENABLED, new InfoMessage(InfoMessage.MessageType.Warning, UILabels.SupportForTextMeshProNotEnabled, false, Repaint));
-         }
-         
+            AddInfoMessage(SUPPORT_FOR_TEXT_MESH_PRO_NOT_ENABLED, new InfoMessage(InfoMessage.MessageType.Warning, UILabels.SupportForTextMeshProNotEnabled, false, Repaint));
+        }
+
         public override void OnInspectorGUI()
         {
             UpdateIds();
@@ -73,7 +72,7 @@ namespace Doozy.Editor.Themes
             serializedObject.Update();
             DrawHeader(Styles.GetStyle(Styles.StyleName.ComponentHeaderFontTargetTextMeshPro), MenuUtils.FontTargetTextMeshPro_Manual, MenuUtils.FontTargetTextMeshPro_YouTube);
             GUILayout.Space(DGUI.Properties.Space(2));
-            
+
 #if dUI_TextMeshPro
             DGUI.Property.Draw(m_textMeshPro, UILabels.TextMeshPro, HasReference ? ComponentColorName : ColorName.Red);
             GUILayout.Space(DGUI.Properties.Space(4));

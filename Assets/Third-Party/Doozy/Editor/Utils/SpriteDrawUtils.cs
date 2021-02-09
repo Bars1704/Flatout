@@ -33,17 +33,17 @@ namespace Doozy.Editor.Utils
             texture2D.name = "[Generated] Checker Texture";
             texture2D.hideFlags = HideFlags.DontSave;
             for (int y = 0; y < 8; ++y)
-            for (int x = 0; x < 8; ++x)
-                texture2D.SetPixel(x, y, c1);
+                for (int x = 0; x < 8; ++x)
+                    texture2D.SetPixel(x, y, c1);
             for (int y = 8; y < 16; ++y)
-            for (int x = 0; x < 8; ++x)
-                texture2D.SetPixel(x, y, c0);
+                for (int x = 0; x < 8; ++x)
+                    texture2D.SetPixel(x, y, c0);
             for (int y = 0; y < 8; ++y)
-            for (int x = 8; x < 16; ++x)
-                texture2D.SetPixel(x, y, c0);
+                for (int x = 8; x < 16; ++x)
+                    texture2D.SetPixel(x, y, c0);
             for (int y = 8; y < 16; ++y)
-            for (int x = 8; x < 16; ++x)
-                texture2D.SetPixel(x, y, c1);
+                for (int x = 8; x < 16; ++x)
+                    texture2D.SetPixel(x, y, c1);
             texture2D.Apply();
             texture2D.filterMode = FilterMode.Point;
             return texture2D;
@@ -58,7 +58,7 @@ namespace Doozy.Editor.Utils
             var b = new Color(1f, 1f, 1f, 0.4f);
             for (int y = 0; y < 16; ++y)
             {
-                float num = Mathf.Abs((float) (y / 15.0 * 2.0 - 1.0));
+                float num = Mathf.Abs((float)(y / 15.0 * 2.0 - 1.0));
                 float t = num * num;
                 texture2D.SetPixel(0, y, Color.Lerp(a, b, t));
             }
@@ -122,19 +122,19 @@ namespace Doozy.Editor.Utils
                 position1.height *= num;
             }
 
-            if (drawArea.height > (double) position1.height)
+            if (drawArea.height > (double)position1.height)
             {
-                position1.y += (float) ((drawArea.height - (double) position1.height) * 0.5);
+                position1.y += (float)((drawArea.height - (double)position1.height) * 0.5);
             }
-            else if (position1.height > (double) drawArea.height)
+            else if (position1.height > (double)drawArea.height)
             {
                 float num = drawArea.height / position1.height;
                 position1.width *= num;
                 position1.height *= num;
             }
 
-            if (drawArea.width > (double) position1.width)
-                position1.x += (float) ((drawArea.width - (double) position1.width) * 0.5);
+            if (drawArea.width > (double)position1.width)
+                position1.x += (float)((drawArea.width - (double)position1.width) * 0.5);
             EditorGUI.DrawTextureTransparent(position1, null, ScaleMode.ScaleToFit, outer.width / outer.height);
             GUI.color = color;
             var position2 = new Rect(position1.x + position1.width * padding.x, position1.y + position1.height * padding.w, position1.width - position1.width * (padding.z + padding.x), position1.height - position1.height * (padding.w + padding.y));
@@ -145,19 +145,19 @@ namespace Doozy.Editor.Utils
             GUI.BeginGroup(position1);
             tex = contrastTexture;
             GUI.color = Color.white;
-            if (inner.xMin != (double) outer.xMin)
-                DrawTiledTexture(new Rect((float) ((inner.xMin - (double) outer.xMin) / outer.width * position1.width - 1.0), 0.0f, 1f, position1.height), tex);
-            if (inner.xMax != (double) outer.xMax)
-                DrawTiledTexture(new Rect((float) ((inner.xMax - (double) outer.xMin) / outer.width * position1.width - 1.0), 0.0f, 1f, position1.height), tex);
-            if (inner.yMin != (double) outer.yMin)
+            if (inner.xMin != (double)outer.xMin)
+                DrawTiledTexture(new Rect((float)((inner.xMin - (double)outer.xMin) / outer.width * position1.width - 1.0), 0.0f, 1f, position1.height), tex);
+            if (inner.xMax != (double)outer.xMax)
+                DrawTiledTexture(new Rect((float)((inner.xMax - (double)outer.xMin) / outer.width * position1.width - 1.0), 0.0f, 1f, position1.height), tex);
+            if (inner.yMin != (double)outer.yMin)
             {
-                float num = (float) ((inner.yMin - (double) outer.yMin) / outer.height * position1.height - 1.0);
+                float num = (float)((inner.yMin - (double)outer.yMin) / outer.height * position1.height - 1.0);
                 DrawTiledTexture(new Rect(0.0f, position1.height - num, position1.width, 1f), tex);
             }
 
-            if (inner.yMax != (double) outer.yMax)
+            if (inner.yMax != (double)outer.yMax)
             {
-                float num = (float) ((inner.yMax - (double) outer.yMin) / outer.height * position1.height - 1.0);
+                float num = (float)((inner.yMax - (double)outer.yMin) / outer.height * position1.height - 1.0);
                 DrawTiledTexture(new Rect(0.0f, position1.height - num, position1.width, 1f), tex);
             }
 

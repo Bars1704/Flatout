@@ -2,14 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
 using Doozy.Editor.Nody.NodeGUI;
 using Doozy.Editor.Nody.Settings;
-using Doozy.Editor.Nody.Utils;
-using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.UI.Nodes;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,9 +38,9 @@ namespace Doozy.Editor.Nody.Windows
         private Socket m_previousHoveredSocket;
         private Socket m_currentHoveredSocket;
 
-//#pragma warning disable 0414 //The private field is assigned but its value is never used
-//        private VirtualPoint m_previousHoveredVirtualPoint;
-//#pragma warning restore 0414
+        //#pragma warning disable 0414 //The private field is assigned but its value is never used
+        //        private VirtualPoint m_previousHoveredVirtualPoint;
+        //#pragma warning restore 0414
 
         private VirtualPoint m_currentHoveredVirtualPoint;
 
@@ -50,11 +48,11 @@ namespace Doozy.Editor.Nody.Windows
 
         private void HandleOnGraphEvent(GraphEvent graphEvent)
         {
-//            DDebug.Log("GraphEvent: " + graphEvent.eventType);
+            //            DDebug.Log("GraphEvent: " + graphEvent.eventType);
 
             switch (graphEvent.eventType)
             {
-                case GraphEvent.EventType.EVENT_NONE:             break;
+                case GraphEvent.EventType.EVENT_NONE: break;
                 case GraphEvent.EventType.EVENT_CONNECTING_BEGIN: break;
                 case GraphEvent.EventType.EVENT_CONNECTING_END:
                     ConstructGraphGUI();
@@ -78,17 +76,17 @@ namespace Doozy.Editor.Nody.Windows
                     ConstructGraphGUI();
                     RecalculateAllPointRects();
                     break;
-                case GraphEvent.EventType.EVENT_SOCKET_ADDED:   break;
+                case GraphEvent.EventType.EVENT_SOCKET_ADDED: break;
                 case GraphEvent.EventType.EVENT_SOCKET_REMOVED: break;
                 case GraphEvent.EventType.EVENT_SOCKET_CLEARED_CONNECTIONS:
                     ConstructGraphGUI();
                     break;
                 case GraphEvent.EventType.EVENT_CONNECTION_CREATED: break;
-                case GraphEvent.EventType.EVENT_CONNECTION_TAPPED:  break;
+                case GraphEvent.EventType.EVENT_CONNECTION_TAPPED: break;
                 case GraphEvent.EventType.EVENT_CONNECTION_DELETED:
                     ConstructGraphGUI();
                     break;
-                case GraphEvent.EventType.EVENT_RECORD_UNDO:  break;
+                case GraphEvent.EventType.EVENT_RECORD_UNDO: break;
                 case GraphEvent.EventType.EVENT_SAVED_ASSETS: break;
 
                 case GraphEvent.EventType.EVENT_NODE_DISCONNECTED:
@@ -134,9 +132,9 @@ namespace Doozy.Editor.Nody.Windows
                     m_currentHoveredSocket = null;
                     m_currentHoveredVirtualPoint = null;
                     return;
-                case GraphMode.None:    break;
+                case GraphMode.None: break;
                 case GraphMode.Connect: break;
-                case GraphMode.Delete:  break;
+                case GraphMode.Delete: break;
             }
 
 
@@ -182,9 +180,9 @@ namespace Doozy.Editor.Nody.Windows
 
             m_previousHoveredNode = m_currentHoveredNode;
             m_previousHoveredSocket = m_currentHoveredSocket;
-//            m_previousHoveredVirtualPoint = m_currentHoveredVirtualPoint;
+            //            m_previousHoveredVirtualPoint = m_currentHoveredVirtualPoint;
 
-//            if (m_currentHoveredSocket != null) DDebug.Log("m_currentHoveredSocket: " + m_currentHoveredSocket.Id);
+            //            if (m_currentHoveredSocket != null) DDebug.Log("m_currentHoveredSocket: " + m_currentHoveredSocket.Id);
         }
 
         private void HandleMouseLeftClicks()
@@ -219,7 +217,7 @@ namespace Doozy.Editor.Nody.Windows
                 {
                     if (m_currentHoveredVirtualPoint != null)
                     {
-//                        if (current.alt)
+                        //                        if (current.alt)
                         if (m_altKeyPressed)
                         {
                             //pressed left mouse button over a socket virtual point while holding down Alt -> Disconnect Virtual Point
@@ -239,7 +237,7 @@ namespace Doozy.Editor.Nody.Windows
                     Socket socket = GetSocketAtWorldPositionFromHoverRect(CurrentMousePosition);
                     if (socket != null)
                     {
-//                        if (current.alt)
+                        //                        if (current.alt)
                         if (m_altKeyPressed)
                         {
                             //pressed left mouse button over a socket while holding down Alt -> Remove Socket
@@ -265,9 +263,9 @@ namespace Doozy.Editor.Nody.Windows
                     {
                         //pressed left mouse button over a node -> select/deselect it
                         if (current.shift || current.control || current.command)               //if using modifiers -> create custom selection
-                            SelectNodes(new List<Node> {m_currentHoveredNode}, true, true);    //add/remove the node to/from selection
+                            SelectNodes(new List<Node> { m_currentHoveredNode }, true, true);    //add/remove the node to/from selection
                         else if (!WindowSettings.SelectedNodes.Contains(m_currentHoveredNode)) //we may have a selection and we do not want to override it in order to be able to start dragging
-                            SelectNodes(new List<Node> {m_currentHoveredNode}, false, true);   //select this node only
+                            SelectNodes(new List<Node> { m_currentHoveredNode }, false, true);   //select this node only
 
                         //allow dragging ONLY IF the mouse is over a selected node
                         //in the previous lines we only checked if it's over a node, but not if the node we are hovering over is currently selected
@@ -478,7 +476,7 @@ namespace Doozy.Editor.Nody.Windows
             {
                 //right click performed over a node
                 //if the node has not been added to the ActiveSelection -> deselect all the selected nodes and select this one
-                if (!WindowSettings.SelectedNodes.Contains(node)) SelectNodes(new List<Node> {node}, false, true);
+                if (!WindowSettings.SelectedNodes.Contains(node)) SelectNodes(new List<Node> { node }, false, true);
                 ShowNodeContextMenu(node);
                 current.Use();
                 return;
@@ -635,8 +633,8 @@ namespace Doozy.Editor.Nody.Windows
                 //perform pan to zoom out from mouse position
                 CurrentPanOffset = new Vector2(CurrentPanOffset.x + (mousePosition.x - position.width / 2 + WorldToGridPosition(mousePosition).x) * NodyWindowSettings.ZOOM_STEP,
                                                CurrentPanOffset.y + (mousePosition.y - position.height / 2 + WorldToGridPosition(mousePosition).y) * NodyWindowSettings.ZOOM_STEP);
-//                m_panOffsetX += (mousePosition.x - position.width / 2 + WorldToGridPosition(mousePosition).x) * NodySettings.Instance.CurrentZoomStep;
-//                m_panOffsetY += (mousePosition.y - position.height / 2 + WorldToGridPosition(mousePosition).y) * NodySettings.Instance.CurrentZoomStep;
+                //                m_panOffsetX += (mousePosition.x - position.width / 2 + WorldToGridPosition(mousePosition).x) * NodySettings.Instance.CurrentZoomStep;
+                //                m_panOffsetY += (mousePosition.y - position.height / 2 + WorldToGridPosition(mousePosition).y) * NodySettings.Instance.CurrentZoomStep;
             }
 
             //zoom in
@@ -647,14 +645,14 @@ namespace Doozy.Editor.Nody.Windows
                 //perform pan to zoom in to mouse position
                 CurrentPanOffset = new Vector2(CurrentPanOffset.x - (mousePosition.x - position.width / 2 + WorldToGridPosition(mousePosition).x) * NodyWindowSettings.ZOOM_STEP,
                                                CurrentPanOffset.y - (mousePosition.y - position.height / 2 + WorldToGridPosition(mousePosition).y) * NodyWindowSettings.ZOOM_STEP);
-//                m_panOffsetX -= (mousePosition.x - position.width / 2 + WorldToGridPosition(mousePosition).x) * NodySettings.Instance.CurrentZoomStep;
-//                m_panOffsetY -= (mousePosition.y - position.height / 2 + WorldToGridPosition(mousePosition).y) * NodySettings.Instance.CurrentZoomStep;
+                //                m_panOffsetX -= (mousePosition.x - position.width / 2 + WorldToGridPosition(mousePosition).x) * NodySettings.Instance.CurrentZoomStep;
+                //                m_panOffsetY -= (mousePosition.y - position.height / 2 + WorldToGridPosition(mousePosition).y) * NodySettings.Instance.CurrentZoomStep;
             }
 
             //clamp the zoom value between min and max zoom targets
             CurrentZoom = Mathf.Clamp(CurrentZoom, NodyWindowSettings.ZOOM_MIN, NodyWindowSettings.ZOOM_MAX);
             //set the max number of decimals
-            CurrentZoom = (float) Math.Round(CurrentZoom, 2);
+            CurrentZoom = (float)Math.Round(CurrentZoom, 2);
             //use this event
             current.Use();
             //recalculate all the points and curves to reflect the new values/positions

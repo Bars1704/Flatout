@@ -135,9 +135,9 @@ namespace Doozy.Editor.Windows
                     #endregion
 
                     GUILayout.Space(m_debugVerticalButtonSpacing);
-                    
+
                     #region UIPopup, UIPopupManager
-                      GUILayout.BeginHorizontal();
+                    GUILayout.BeginHorizontal();
                     {
                         bool debugUIPopup = DoozySettings.Instance.DebugUIPopup;
                         EditorGUI.BeginChangeCheck();
@@ -167,7 +167,7 @@ namespace Doozy.Editor.Windows
                     }
                     GUILayout.EndHorizontal();
                     #endregion
-                    
+
                     GUILayout.Space(m_debugVerticalButtonSpacing);
 
                     #region UIButton Listener, UIDrawer Listener, UIView Listener
@@ -252,9 +252,9 @@ namespace Doozy.Editor.Windows
                     GUILayout.EndHorizontal();
 
                     #endregion
-                    
+
                     GUILayout.Space(m_debugVerticalButtonSpacing);
-                    
+
                     #region Scene Director, Scene Loader
 
                     GUILayout.BeginHorizontal();
@@ -269,7 +269,7 @@ namespace Doozy.Editor.Windows
                             DoozySettings.Instance.SetDirty(false);
                             m_needsSave = true;
                         }
-                        
+
                         GUILayout.Space(m_debugHorizontalButtonSpacing);
 
                         bool debugSceneLoader = DoozySettings.Instance.DebugSceneLoader;
@@ -290,7 +290,7 @@ namespace Doozy.Editor.Windows
                     #endregion
 
                     GUILayout.Space(m_debugVerticalButtonSpacing);
-                    
+
                     #region Progressor, Progressor Group
 
                     GUILayout.BeginHorizontal();
@@ -382,7 +382,7 @@ namespace Doozy.Editor.Windows
                             m_needsSave = true;
                         }
 
-                        
+
                         GUILayout.Space(m_debugHorizontalButtonSpacing);
 
                         bool debugKeyToGameEvent = DoozySettings.Instance.DebugKeyToGameEvent;
@@ -396,7 +396,7 @@ namespace Doozy.Editor.Windows
                             m_needsSave = true;
                         }
 
-                        
+
                         GUILayout.Space(m_debugHorizontalButtonSpacing);
 
                         GUILayout.FlexibleSpace();
@@ -562,7 +562,7 @@ namespace Doozy.Editor.Windows
             GUILayout.EndHorizontal();
 
             #endregion
-            
+
             DrawDynamicViewVerticalSpace(2);
         }
 

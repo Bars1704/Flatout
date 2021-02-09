@@ -83,12 +83,12 @@ namespace Doozy.Editor.Windows
                 }
 
                 DrawDefaultViewHorizontalSpacing();
-                
+
                 if (ButtonSaveDatabase())
                 {
                     Save();
                 }
-                
+
                 DrawDefaultViewHorizontalSpacing();
 
                 if (ButtonSearchFor(UILabels.SearchForUIPopupLinks))
@@ -132,7 +132,7 @@ namespace Doozy.Editor.Windows
                             Instance.Focus();
                         }
                     }
-                    
+
                     if (DGUI.Button.IconButton.Cancel() ||
                         current.keyCode == KeyCode.Escape && current.type == EventType.KeyUp)
                         ResetCreateNewCategory();
@@ -231,7 +231,7 @@ namespace Doozy.Editor.Windows
                         GameObject prefab = link.Prefab;
                         GUI.color = DGUI.Colors.PropertyColor(prefabInvalid ? ColorName.Red : viewColorName);
                         EditorGUI.BeginChangeCheck();
-                        prefab = (GameObject) EditorGUILayout.ObjectField(GUIContent.none, prefab, typeof(GameObject), false, GUILayout.Width(DGUI.Properties.DefaultFieldWidth * 6));
+                        prefab = (GameObject)EditorGUILayout.ObjectField(GUIContent.none, prefab, typeof(GameObject), false, GUILayout.Width(DGUI.Properties.DefaultFieldWidth * 6));
                         if (EditorGUI.EndChangeCheck())
                         {
                             database.UndoRecord(UILabels.UpdatePopupPrefab);

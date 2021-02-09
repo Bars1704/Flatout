@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,16 +11,16 @@ namespace Flatout
         void Start()
         {
             carCastomization = FindObjectOfType<CarCastomization>();
-            foreach (var currentCarTier in 
+            foreach (var currentCarTier in
                 GlobalSettings.Instance.LevelsSettings.LevelForOpeningCar.Select(x => x.Value))
             {
-               var buttonGO = Instantiate(CarButtonSelectPrefab, transform);
+                var buttonGO = Instantiate(CarButtonSelectPrefab, transform);
                 buttonGO.GetComponent<Image>().sprite = currentCarTier.ButtonSprite;
-                buttonGO.GetComponent<Button>().onClick.AddListener(()=>OnCarSelect(currentCarTier));
+                buttonGO.GetComponent<Button>().onClick.AddListener(() => OnCarSelect(currentCarTier));
             }
-    }
+        }
 
-       void OnCarSelect(CarTier car)
+        void OnCarSelect(CarTier car)
         {
             carCastomization.SpawnCar(car.CarMenuViewPrefab);
             PlayerAvatar.Instance.SetSelectedCarTer(car);

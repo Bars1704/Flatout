@@ -65,7 +65,7 @@ namespace Doozy.Editor.Windows
         private float m_windowHeaderHeight = 96f;
         private float m_viewTopMenuHeight = 48f;
         private float m_viewLeftMenuWidth = 160f;
-        
+
         private Vector2 m_viewLeftMenuScrollPosition;
         private Vector2 m_viewScrollPosition;
 
@@ -103,11 +103,11 @@ namespace Doozy.Editor.Windows
         }
 
         #endregion
-        
+
         #region Functionality
-        
+
         private string m_newDatabaseName;
-        
+
         private AnimBool m_editMode;
         public AnimBool EditMode
         {
@@ -129,7 +129,7 @@ namespace Doozy.Editor.Windows
                 return m_newDatabase;
             }
         }
-        
+
         #endregion
 
         #region Area Draw Methods
@@ -137,10 +137,10 @@ namespace Doozy.Editor.Windows
         private Rect BeginDrawViewTopMenuArea()
         {
             Rect viewTopMenuRect = ViewTopMenuRect;
-            
+
             //Draw Background
             EditorGUI.DrawRect(viewTopMenuRect, EditorGUIUtility.isProSkin ? new Color(0.05f, 0.05f, 0.05f) : new Color(0.95f, 0.95f, 095f));
-            
+
             GUILayout.BeginArea(viewTopMenuRect);
             return viewTopMenuRect;
         }
@@ -151,13 +151,13 @@ namespace Doozy.Editor.Windows
         private Rect BeginDrawViewLeftMenuArea()
         {
             Rect viewLeftMenuRect = ViewLeftMenuRect;
-            
+
             //Draw Background
             Color leftMenuBackgroundColor = EditorGUIUtility.isProSkin ? EditorColors.Instance.UnityDark.Dark : EditorColors.Instance.UnityLight.Light;
             float colorStep = 0.05f;
             leftMenuBackgroundColor = new Color(leftMenuBackgroundColor.r - colorStep, leftMenuBackgroundColor.g - colorStep, leftMenuBackgroundColor.b - colorStep);
             EditorGUI.DrawRect(viewLeftMenuRect, leftMenuBackgroundColor);
-            
+
             GUILayout.BeginArea(viewLeftMenuRect);
             m_viewLeftMenuScrollPosition = GUILayout.BeginScrollView(m_viewLeftMenuScrollPosition);
             return viewLeftMenuRect;
@@ -172,7 +172,7 @@ namespace Doozy.Editor.Windows
             GUI.color = Color.black.WithAlpha(EditorGUIUtility.isProSkin ? 0.4f : 0.3f);
             {
                 Rect viewLeftMenuRect = ViewLeftMenuRect;
-                
+
                 //Top Shadow
                 GUI.Label(new Rect(viewLeftMenuRect.x,
                                    viewLeftMenuRect.y,

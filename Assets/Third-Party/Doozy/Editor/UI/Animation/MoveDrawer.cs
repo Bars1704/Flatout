@@ -2,13 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using Doozy.Editor;
 using Doozy.Editor.Internal;
 using Doozy.Engine.UI.Animation;
 using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEngine;
-using PropertyName = Doozy.Editor.PropertyName;
 
 namespace Doozy.Editor.UI.Animation
 {
@@ -94,7 +92,7 @@ namespace Doozy.Editor.UI.Animation
                 Elements.DrawLine(drawRect,
                                   Elements.GetLayout(Properties.Get(PropertyName.From, property), 0.5f),
                                   Elements.GetLayout(Properties.Get(PropertyName.To, property), 0.5f));
-            else if ((Engine.UI.Animation.Direction) Properties.Get(PropertyName.Direction, property).enumValueIndex == Engine.UI.Animation.Direction.CustomPosition)
+            else if ((Engine.UI.Animation.Direction)Properties.Get(PropertyName.Direction, property).enumValueIndex == Engine.UI.Animation.Direction.CustomPosition)
                 Elements.DrawLine(drawRect,
                                   Elements.GetLayout(Properties.Get(PropertyName.From, property), 0, DGUIElement.DrawMode.Label),
                                   Elements.GetLayout(Properties.Get(PropertyName.Direction, property), 0.5f, DGUIElement.DrawMode.Field),
@@ -130,7 +128,7 @@ namespace Doozy.Editor.UI.Animation
                                   Elements.GetLayout(Properties.Get(PropertyName.To, property), 0.5f),
                                   Elements.GetLayout(Properties.Get(PropertyName.From, property), 0.5f));
             }
-            else if ((Engine.UI.Animation.Direction) Properties.Get(PropertyName.Direction, property).enumValueIndex == Engine.UI.Animation.Direction.CustomPosition)
+            else if ((Engine.UI.Animation.Direction)Properties.Get(PropertyName.Direction, property).enumValueIndex == Engine.UI.Animation.Direction.CustomPosition)
             {
                 Elements.DrawLine(drawRect,
                                   Elements.GetLayout(Properties.Get(PropertyName.To, property), 0, DGUIElement.DrawMode.Label),

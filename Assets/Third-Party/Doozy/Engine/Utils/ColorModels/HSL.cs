@@ -61,7 +61,7 @@ namespace Doozy.Engine.Utils.ColorModels
             };
         }
 
-        private int FactorizeColor(float value, float min, float max, float f) { return (int) Mathf.Max(min * f, Mathf.Min(max * f, Mathf.Round(value * f))); }
+        private int FactorizeColor(float value, float min, float max, float f) { return (int)Mathf.Max(min * f, Mathf.Min(max * f, Mathf.Round(value * f))); }
 
         public string ToString(bool factorize = false) { return factorize ? "hsl(" + Factorize().x + ", " + Factorize().y + "%, " + Factorize().z + "%)" : "hsl(" + h + ", " + s + "%, " + l + "%)"; }
 

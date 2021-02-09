@@ -15,7 +15,7 @@ namespace Doozy.Editor.UI.Nodes
     [CustomEditor(typeof(GameEventNode))]
     public class GameEventNodeEditor : BaseNodeEditor
     {
-        private GameEventNode TargetNode { get { return (GameEventNode) target; } }
+        private GameEventNode TargetNode { get { return (GameEventNode)target; } }
 
         private InfoMessage m_infoMessageUnnamedNodeName,
                             m_infoMessageDuplicateNodeName,

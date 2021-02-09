@@ -1,142 +1,142 @@
 ﻿#if UNITY_IOS || UNITY_TVOS || UNITY_EDITOR
 namespace InControl
 {
-	using System.Collections.Generic;
-	using System.Threading;
-	using UnityEngine;
-	using Internal;
+    using Internal;
+    using System.Collections.Generic;
+    using System.Threading;
+    using UnityEngine;
 
 
-	public class ICadeDeviceManager : InputDeviceManager
-	{
-		readonly InputDevice device;
-		readonly RingBuffer<ICadeState> state;
-		readonly int timeStep;
-		bool active;
-		Thread thread;
+    public class ICadeDeviceManager : InputDeviceManager
+    {
+        readonly InputDevice device;
+        readonly RingBuffer<ICadeState> state;
+        readonly int timeStep;
+        bool active;
+        Thread thread;
 
 
-		public ICadeDeviceManager()
-		{
-			timeStep = Mathf.FloorToInt( Time.fixedDeltaTime * 1000.0f );
-			state = new RingBuffer<ICadeState>( 1 );
-			device = new ICadeDevice( this );
-			devices.Add( device );
-		}
+        public ICadeDeviceManager()
+        {
+            timeStep = Mathf.FloorToInt(Time.fixedDeltaTime * 1000.0f);
+            state = new RingBuffer<ICadeState>(1);
+            device = new ICadeDevice(this);
+            devices.Add(device);
+        }
 
 
-		void SetActive( bool value )
-		{
-			if (active != value)
-			{
-				active = value;
+        void SetActive(bool value)
+        {
+            if (active != value)
+            {
+                active = value;
 
-				ICadeNative.SetActive( active );
+                ICadeNative.SetActive(active);
 
-				if (active)
-				{
-					StartWorker();
-					InputManager.AttachDevice( device );
-				}
-				else
-				{
-					StopWorker();
-					InputManager.DetachDevice( device );
-				}
-			}
-		}
-
-
-		public static bool Active
-		{
-			get
-			{
-				var deviceManager = InputManager.GetDeviceManager<ICadeDeviceManager>();
-				return deviceManager != null && deviceManager.active;
-			}
-
-			set
-			{
-				var deviceManager = InputManager.GetDeviceManager<ICadeDeviceManager>();
-				if (deviceManager != null)
-				{
-					deviceManager.SetActive( value );
-				}
-			}
-		}
+                if (active)
+                {
+                    StartWorker();
+                    InputManager.AttachDevice(device);
+                }
+                else
+                {
+                    StopWorker();
+                    InputManager.DetachDevice(device);
+                }
+            }
+        }
 
 
-		void StartWorker()
-		{
-			if (thread == null)
-			{
-				thread = new Thread( Worker )
-				{
-					IsBackground = true
-				};
-				thread.Start();
-			}
-		}
+        public static bool Active
+        {
+            get
+            {
+                var deviceManager = InputManager.GetDeviceManager<ICadeDeviceManager>();
+                return deviceManager != null && deviceManager.active;
+            }
+
+            set
+            {
+                var deviceManager = InputManager.GetDeviceManager<ICadeDeviceManager>();
+                if (deviceManager != null)
+                {
+                    deviceManager.SetActive(value);
+                }
+            }
+        }
 
 
-		void StopWorker()
-		{
-			if (thread != null)
-			{
-				thread.Abort();
-				thread.Join();
-				thread = null;
-			}
-		}
+        void StartWorker()
+        {
+            if (thread == null)
+            {
+                thread = new Thread(Worker)
+                {
+                    IsBackground = true
+                };
+                thread.Start();
+            }
+        }
 
 
-		void Worker()
-		{
-			while (true)
-			{
-				state.Enqueue( ICadeNative.GetState() );
-				Thread.Sleep( timeStep );
-			}
-		}
+        void StopWorker()
+        {
+            if (thread != null)
+            {
+                thread.Abort();
+                thread.Join();
+                thread = null;
+            }
+        }
 
 
-		internal ICadeState GetState()
-		{
-			return state.Dequeue();
-		}
+        void Worker()
+        {
+            while (true)
+            {
+                state.Enqueue(ICadeNative.GetState());
+                Thread.Sleep(timeStep);
+            }
+        }
 
 
-		public override void Update( ulong updateTick, float deltaTime ) {}
+        internal ICadeState GetState()
+        {
+            return state.Dequeue();
+        }
 
 
-		public override void Destroy()
-		{
-			StopWorker();
-		}
+        public override void Update(ulong updateTick, float deltaTime) { }
 
 
-		public static bool CheckPlatformSupport( ICollection<string> errors )
-		{
-			return Application.platform == RuntimePlatform.IPhonePlayer ||
-			       Application.platform == RuntimePlatform.tvOS;
-		}
+        public override void Destroy()
+        {
+            StopWorker();
+        }
 
 
-		internal static void Enable()
-		{
-			var errors = new List<string>();
-			if (CheckPlatformSupport( errors ))
-			{
-				InputManager.AddDeviceManager<ICadeDeviceManager>();
-			}
-			else
-			{
-				foreach (var error in errors)
-				{
-					Logger.LogError( error );
-				}
-			}
-		}
-	}
+        public static bool CheckPlatformSupport(ICollection<string> errors)
+        {
+            return Application.platform == RuntimePlatform.IPhonePlayer ||
+                   Application.platform == RuntimePlatform.tvOS;
+        }
+
+
+        internal static void Enable()
+        {
+            var errors = new List<string>();
+            if (CheckPlatformSupport(errors))
+            {
+                InputManager.AddDeviceManager<ICadeDeviceManager>();
+            }
+            else
+            {
+                foreach (var error in errors)
+                {
+                    Logger.LogError(error);
+                }
+            }
+        }
+    }
 }
 #endif

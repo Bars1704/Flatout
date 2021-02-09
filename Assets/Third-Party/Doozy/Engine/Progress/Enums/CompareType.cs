@@ -13,37 +13,37 @@ namespace Doozy.Engine.Progress
         /// Inside a range defined by a min value and a max value
         /// </summary>
         Between,
-        
+
         /// <summary>
         /// Outside of a range defined by a min value and a max value
         /// </summary>
         NotBetween,
-        
+
         /// <summary>
         /// Equal to a set value 
         /// </summary>
         EqualTo,
-        
+
         /// <summary>
         /// Not equal to a set value
         /// </summary>
         NotEqualTo,
-        
+
         /// <summary>
         /// Greater than a set value
         /// </summary>
         GreaterThan,
-        
+
         /// <summary>
         /// Less than a set value
         /// </summary>
         LessThan,
-        
+
         /// <summary>
         /// Greater than or equal to a set value
         /// </summary>
         GreaterThanOrEqualTo,
-        
+
         /// <summary>
         /// Less than or equal to a set value
         /// </summary>

@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class MadCatzFightStickTE2MacNativeProfile : Xbox360DriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class MadCatzFightStickTE2MacNativeProfile : Xbox360DriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Mad Catz Fight Stick TE2";
-			DeviceNotes = "Mad Catz Fight Stick TE2 on Mac";
+            DeviceName = "Mad Catz Fight Stick TE2";
+            DeviceNotes = "Mad Catz Fight Stick TE2 on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x1bad,
-					ProductID = 0xf080,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x1bad,
+                    ProductID = 0xf080,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

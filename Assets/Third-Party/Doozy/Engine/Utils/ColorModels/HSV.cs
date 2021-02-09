@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Doozy.Engine.Utils.ColorModels
 {
-   /// <summary>
+    /// <summary>
     /// HSV stands for hue, saturation, and value, and is also often called HSB (B for brightness).
     /// <para/> In each cylinder, the angle around the central vertical axis corresponds to "hue", the distance from the axis corresponds to "saturation", and the distance along the axis corresponds to "lightness", "value" or "brightness".
     /// <para/> Note that while "hue" in HSL and HSV refers to the same attribute, their definitions of "saturation" differ dramatically.

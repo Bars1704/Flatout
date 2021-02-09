@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Utils;
+using System;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 
@@ -23,11 +23,11 @@ namespace Doozy.Editor
             {
                 switch (size)
                 {
-                    case Size.S:  return Styles.GetStyle(enabled ? Styles.StyleName.BarSEnabled : Styles.StyleName.BarSDisabled);
-                    case Size.M:  return Styles.GetStyle(enabled ? Styles.StyleName.BarMEnabled : Styles.StyleName.BarMDisabled);
-                    case Size.L:  return Styles.GetStyle(enabled ? Styles.StyleName.BarLEnabled : Styles.StyleName.BarLDisabled);
+                    case Size.S: return Styles.GetStyle(enabled ? Styles.StyleName.BarSEnabled : Styles.StyleName.BarSDisabled);
+                    case Size.M: return Styles.GetStyle(enabled ? Styles.StyleName.BarMEnabled : Styles.StyleName.BarMDisabled);
+                    case Size.L: return Styles.GetStyle(enabled ? Styles.StyleName.BarLEnabled : Styles.StyleName.BarLDisabled);
                     case Size.XL: return Styles.GetStyle(enabled ? Styles.StyleName.BarXLEnabled : Styles.StyleName.BarXLDisabled);
-                    default:      throw new ArgumentOutOfRangeException("size", size, null);
+                    default: throw new ArgumentOutOfRangeException("size", size, null);
                 }
             }
 
@@ -35,11 +35,11 @@ namespace Doozy.Editor
             {
                 switch (size)
                 {
-                    case Size.S:  return Styles.GetStyle(enabled ? Styles.StyleName.BarSEnabledLabel : Styles.StyleName.BarSDisabledLabel);
-                    case Size.M:  return Styles.GetStyle(enabled ? Styles.StyleName.BarMEnabledLabel : Styles.StyleName.BarMDisabledLabel);
-                    case Size.L:  return Styles.GetStyle(enabled ? Styles.StyleName.BarLEnabledLabel : Styles.StyleName.BarLDisabledLabel);
+                    case Size.S: return Styles.GetStyle(enabled ? Styles.StyleName.BarSEnabledLabel : Styles.StyleName.BarSDisabledLabel);
+                    case Size.M: return Styles.GetStyle(enabled ? Styles.StyleName.BarMEnabledLabel : Styles.StyleName.BarMDisabledLabel);
+                    case Size.L: return Styles.GetStyle(enabled ? Styles.StyleName.BarLEnabledLabel : Styles.StyleName.BarLDisabledLabel);
                     case Size.XL: return Styles.GetStyle(enabled ? Styles.StyleName.BarXLEnabledLabel : Styles.StyleName.BarXLDisabledLabel);
-                    default:      throw new ArgumentOutOfRangeException("size", size, null);
+                    default: throw new ArgumentOutOfRangeException("size", size, null);
                 }
             }
 
@@ -49,7 +49,7 @@ namespace Doozy.Editor
                 bool result = false;
 
                 GUIStyle barStyle = BarStyle(size, expanded.target);
-                var labelStyle = new GUIStyle(LabelStyle(size, expanded.target)) {normal = {textColor = Colors.TextColor(barColorName)}};
+                var labelStyle = new GUIStyle(LabelStyle(size, expanded.target)) { normal = { textColor = Colors.TextColor(barColorName) } };
 
                 float barHeight = barStyle.fixedHeight;
                 float caretSize = barHeight * CARET_SIZE_RATIO;

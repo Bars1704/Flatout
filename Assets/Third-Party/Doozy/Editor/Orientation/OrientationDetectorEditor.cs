@@ -22,7 +22,7 @@ namespace Doozy.Editor.Orientation
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (OrientationDetector) target;
+                m_target = (OrientationDetector)target;
                 return m_target;
             }
         }
@@ -32,7 +32,7 @@ namespace Doozy.Editor.Orientation
         protected override void LoadSerializedProperty()
         {
             base.LoadSerializedProperty();
-            
+
             m_onOrientationEventProperty = GetProperty(PropertyName.OnOrientationEvent);
         }
 
@@ -47,7 +47,7 @@ namespace Doozy.Editor.Orientation
             GUILayout.Space(DGUI.Properties.Space(2));
             serializedObject.ApplyModifiedProperties();
         }
-        
+
         private void DrawGeneralSettings()
         {
             GUILayout.BeginHorizontal();

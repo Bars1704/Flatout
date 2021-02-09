@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Doozy.Engine.Utils.ColorModels
 {
-   /// <summary>
+    /// <summary>
     /// The CIE XYZ color space encompasses all color sensations that an average person can experience.
     /// <para/> That is why CIE XYZ (Tristimulus values) is a device invariant color representation.
     /// <para/> It serves as a standard reference against which many other color spaces are defined.
@@ -110,6 +110,6 @@ namespace Doozy.Engine.Utils.ColorModels
             public const float MAX = 1.08883f;
             public const int F = 100;
         }
-        
+
     }
 }

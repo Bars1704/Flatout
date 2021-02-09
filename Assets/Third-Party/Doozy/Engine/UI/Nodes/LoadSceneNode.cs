@@ -49,7 +49,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var node = (LoadSceneNode) original;
+            var node = (LoadSceneNode)original;
             AllowSceneActivation = node.AllowSceneActivation;
             GetSceneBy = node.GetSceneBy;
             LoadSceneMode = node.LoadSceneMode;

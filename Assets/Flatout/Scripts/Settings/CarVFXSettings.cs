@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Gamebase.Miscellaneous;
 using UnityEngine;
-using Gamebase.Miscellaneous;
-using Doozy.Engine.Soundy;
 namespace Flatout
 {
     [CreateAssetMenu(fileName = "CarVFXSettings", menuName = "Flatout/Static/CarVFXSettings")]
@@ -20,7 +17,7 @@ namespace Flatout
         public float MaxRotationAngle = 45;
         public float RotationSpeed = 33;
         public float TorqueSpeed = 3;
-        [Range(0,1)]
+        [Range(0, 1)]
         public float RotateSmoothness = 0.1f;
     }
 }

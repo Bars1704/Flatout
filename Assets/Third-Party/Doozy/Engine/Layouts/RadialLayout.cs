@@ -3,10 +3,7 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System.Collections.Generic;
-using Doozy.Engine.Extensions;
 using Doozy.Engine.UI;
-using Doozy.Engine.UI.Base;
-using Doozy.Engine.UI.Settings;
 using Doozy.Engine.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,7 +32,7 @@ namespace Doozy.Engine.Layouts
 #if UNITY_EDITOR
         [MenuItem(MenuUtils.RadialLayout_MenuItem_ItemName, false, MenuUtils.RadialLayout_MenuItem_Priority)]
         private static void CreateComponent(MenuCommand menuCommand) { CreateRadialLayout(GetParent(menuCommand.context as GameObject)); }
-        
+
         /// <summary> (EDITOR ONLY) Creates a RadialLayout and returns a reference to it </summary>
         public static RadialLayout CreateRadialLayout(GameObject parent)
         {
@@ -45,7 +42,7 @@ namespace Doozy.Engine.Layouts
             Selection.activeObject = go; //select the newly created gameObject
             return go.GetComponent<RadialLayout>();
         }
-        
+
         /// <summary>
         ///     Method used when creating an UIComponent.
         ///     It looks if the selected object has a RectTransform (and returns it as the parent).
@@ -394,15 +391,15 @@ namespace Doozy.Engine.Layouts
 
         public override void CalculateLayoutInputHorizontal() { CalculateRadial(); }
 
-//#if UNITY_EDITOR
-//
-//        protected override void OnValidate()
-//        {
-//            base.OnValidate();
-//            CalculateRadial();
-//        }
-//
-//#endif
+        //#if UNITY_EDITOR
+        //
+        //        protected override void OnValidate()
+        //        {
+        //            base.OnValidate();
+        //            CalculateRadial();
+        //        }
+        //
+        //#endif
 
         #endregion
 

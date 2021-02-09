@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -90,10 +88,11 @@ namespace Flatout
         public int CarsCrashed { get; private set; }
         public int XP { get; private set; }
 
-        public void AddXP(int xp) {
+        public void AddXP(int xp)
+        {
             PlayerAvatar.Instance.AddXP(xp);
             XP += xp;
-            }
+        }
         public virtual void Init(CarTier carTier, GameObject gameObj)
         {
             MaxHealth = carTier.MaxHealth;
@@ -120,7 +119,7 @@ namespace Flatout
         /// <param name="otherCar">Управляющий компонент машинки</param>
         void DamageOtherCar(CarBase otherCar)
         {
-            otherCar.TakeDamage(collisionDamage, GameObj);
+            otherCar?.TakeDamage(collisionDamage, GameObj);
         }
         /// <summary>
         /// Получение урона

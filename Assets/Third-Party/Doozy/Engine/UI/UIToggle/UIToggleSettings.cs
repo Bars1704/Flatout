@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.UI.Input;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 // ReSharper disable MemberCanBePrivate.Global
@@ -75,14 +75,14 @@ namespace Doozy.Engine.UI.Settings
             toggle.DeselectButtonAfterClick = DeselectButtonAfterClick;
             toggle.DisableButtonBetweenClicksInterval = DisableButtonBetweenClicksInterval;
             toggle.InputData = new InputData
-                               {
-                                   InputMode = InputMode,
-                                   EnableAlternateInputs = EnableAlternateInputs,
-                                   KeyCode = KeyCode,
-                                   KeyCodeAlt = KeyCodeAlt,
-                                   VirtualButtonName = VirtualButtonName,
-                                   VirtualButtonNameAlt = VirtualButtonNameAlt
-                               };
+            {
+                InputMode = InputMode,
+                EnableAlternateInputs = EnableAlternateInputs,
+                KeyCode = KeyCode,
+                KeyCodeAlt = KeyCodeAlt,
+                VirtualButtonName = VirtualButtonName,
+                VirtualButtonNameAlt = VirtualButtonNameAlt
+            };
             toggle.OnClick = new UIToggleBehavior(UIToggleBehaviorType.OnClick, true);
             toggle.OnDeselected = new UIToggleBehavior(UIToggleBehaviorType.OnDeselected);
             toggle.OnPointerEnter = new UIToggleBehavior(UIToggleBehaviorType.OnPointerEnter);

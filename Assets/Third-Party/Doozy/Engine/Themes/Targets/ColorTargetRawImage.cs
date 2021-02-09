@@ -29,7 +29,7 @@ namespace Doozy.Engine.Themes
 #endif
 
         #endregion
-        
+
         #region Public Variables
 
         /// <summary> Target RawImage component </summary>
@@ -46,14 +46,14 @@ namespace Doozy.Engine.Themes
         #region Private Variables
 
         private float m_previousAlphaValue = -1;
-        
+
         #endregion
-        
+
         #region Unity Methods
 
         private void Update()
         {
-            if(!OverrideAlpha) return;
+            if (!OverrideAlpha) return;
             // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (Alpha == m_previousAlphaValue) return;
             SetAlpha(Alpha);
@@ -61,7 +61,7 @@ namespace Doozy.Engine.Themes
         }
 
         #endregion
-        
+
         #region Public Methods
 
         /// <summary> Method used by the ThemeManager when the active variant or selected theme have changed </summary>
@@ -87,12 +87,12 @@ namespace Doozy.Engine.Themes
             Alpha = value;
             Color color = Image.color;
             Image.color = new Color()
-                          {
-                              r = color.r,
-                              g = color.g,
-                              b = color.b,
-                              a = Alpha
-                          };
+            {
+                r = color.r,
+                g = color.g,
+                b = color.b,
+                a = Alpha
+            };
         }
 
         #endregion

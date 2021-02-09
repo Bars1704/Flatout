@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Nody.Editors;
 using Doozy.Editor.Themes;
 using Doozy.Engine.Themes;
 using Doozy.Engine.UI.Nodes;
 using Doozy.Engine.Utils;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +18,7 @@ namespace Doozy.Editor.UI.Nodes
     [CustomEditor(typeof(ThemeNode))]
     public class ThemeNodeEditor : BaseNodeEditor
     {
-        private ThemeNode TargetNode { get { return (ThemeNode) target; } }
+        private ThemeNode TargetNode { get { return (ThemeNode)target; } }
 
         private static ThemesDatabase Database { get { return ThemesSettings.Database; } }
         private string[] ThemesNames;
@@ -54,7 +54,7 @@ namespace Doozy.Editor.UI.Nodes
             {
                 DrawVariantPopup(m_theme, VariantsNames, variantIndex, DGUI.Colors.ActionColorName, UpdateIds, UpdateLists);
             }
-            
+
 
             GUILayout.Space(DGUI.Properties.Space(2));
             serializedObject.ApplyModifiedProperties();

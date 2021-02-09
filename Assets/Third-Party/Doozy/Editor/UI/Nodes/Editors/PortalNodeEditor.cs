@@ -5,7 +5,6 @@
 using Doozy.Editor.Internal;
 using Doozy.Editor.Nody;
 using Doozy.Editor.Nody.Editors;
-using Doozy.Engine.Extensions;
 using Doozy.Engine.Nody.Connections;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.UI;
@@ -25,7 +24,7 @@ namespace Doozy.Editor.UI.Nodes
         private static NamesDatabase UIButtonDatabase { get { return UIButtonSettings.Database; } }
         private static NamesDatabase UIDrawerDatabase { get { return UIDrawerSettings.Database; } }
 
-        private PortalNode TargetNode { get { return (PortalNode) target; } }
+        private PortalNode TargetNode { get { return (PortalNode)target; } }
 
         private InfoMessage m_infoMessageUnnamedNodeName,
                             m_infoMessageDuplicateNodeName,
@@ -113,13 +112,13 @@ namespace Doozy.Editor.UI.Nodes
         {
             if (value)
             {
-                if (TargetNode.InputSockets == null || 
+                if (TargetNode.InputSockets == null ||
                     TargetNode.InputSockets.Count == 0)
                     TargetNode.AddInputSocket(ConnectionMode.Multiple, typeof(PassthroughConnection), false, false);
             }
             else
             {
-                if (TargetNode.InputSockets != null && 
+                if (TargetNode.InputSockets != null &&
                     TargetNode.InputSockets.Count > 0)
                 {
                     if (TargetNode.FirstInputSocket != null &&
@@ -210,8 +209,8 @@ namespace Doozy.Editor.UI.Nodes
                     case PortalNode.ListenerType.UIView:
                         DGUI.Property.Draw(m_uiViewTriggerAction, UILabels.TriggerAction, backgroundColorName, textColorName);
                         GUILayout.Space(DGUI.Properties.Space());
-                        if ((UIViewBehaviorType) m_uiViewTriggerAction.enumValueIndex == UIViewBehaviorType.Unknown)
-                            m_uiViewTriggerAction.enumValueIndex = (int) UIViewBehaviorType.Show;
+                        if ((UIViewBehaviorType)m_uiViewTriggerAction.enumValueIndex == UIViewBehaviorType.Unknown)
+                            m_uiViewTriggerAction.enumValueIndex = (int)UIViewBehaviorType.Show;
                         DGUI.Toggle.Switch.Draw(m_anyValue, UILabels.AnyUIView, textColorName, true, false);
                         if (m_anyValue.boolValue)
                         {
@@ -253,9 +252,9 @@ namespace Doozy.Editor.UI.Nodes
                 {
                     case PortalNode.ListenerType.GameEvent:
                         DrawGameEvent(m_gameEvent, Styles.GetStyle(Styles.StyleName.IconGameEvent), UILabels.GameEvent);
-//                        GUI.enabled = !TargetNode.AnyValue;
-//                        DGUI.Property.Draw(m_gameEvent, UILabels.GameEvent, backgroundColorName, textColorName, TargetNode.ErrorNoGameEvent);
-//                        GUI.enabled = true;
+                        //                        GUI.enabled = !TargetNode.AnyValue;
+                        //                        DGUI.Property.Draw(m_gameEvent, UILabels.GameEvent, backgroundColorName, textColorName, TargetNode.ErrorNoGameEvent);
+                        //                        GUI.enabled = true;
                         break;
                     case PortalNode.ListenerType.UIView:
                         GUI.enabled = !TargetNode.AnyValue;

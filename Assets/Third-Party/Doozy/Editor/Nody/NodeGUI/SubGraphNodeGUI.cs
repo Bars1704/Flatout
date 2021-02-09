@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using Doozy.Editor;
 using Doozy.Editor.Nody.Windows;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Nody.Nodes;
@@ -16,7 +15,7 @@ namespace Doozy.Editor.Nody.NodeGUI
     [CustomNodeGUI(typeof(SubGraphNode))]
     public class SubGraphNodeGUI : BaseNodeGUI
     {
-        private SubGraphNode SubGraphNode { get { return (SubGraphNode) Node; } }
+        private SubGraphNode SubGraphNode { get { return (SubGraphNode)Node; } }
 
         private static GUIStyle s_iconStyle;
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconSubGraphNode)); } }

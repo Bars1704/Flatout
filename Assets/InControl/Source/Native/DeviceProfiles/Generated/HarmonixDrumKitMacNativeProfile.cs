@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class HarmonixDrumKitMacNativeProfile : Xbox360DriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class HarmonixDrumKitMacNativeProfile : Xbox360DriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Harmonix Drum Kit";
-			DeviceNotes = "Harmonix Drum Kit on Mac";
+            DeviceName = "Harmonix Drum Kit";
+            DeviceNotes = "Harmonix Drum Kit on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x1bad,
-					ProductID = 0x1138,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x1bad,
+                    ProductID = 0x1138,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

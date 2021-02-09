@@ -20,7 +20,7 @@ namespace Doozy.Engine.Utils
             get
             {
                 if (s_currentLanguage != Engine.Language.Unknown) return s_currentLanguage;
-                CurrentLanguage = (Engine.Language) PlayerPrefs.GetInt(CURRENT_LANGUAGE_PREFS_KEY, (int) DEFAULT_LANGUAGE);
+                CurrentLanguage = (Engine.Language)PlayerPrefs.GetInt(CURRENT_LANGUAGE_PREFS_KEY, (int)DEFAULT_LANGUAGE);
                 return s_currentLanguage;
             }
             set
@@ -34,7 +34,7 @@ namespace Doozy.Engine.Utils
 
         private static void SaveLanguagePreference(string prefsKey, Engine.Language language)
         {
-            PlayerPrefs.SetInt(prefsKey, (int) language);
+            PlayerPrefs.SetInt(prefsKey, (int)language);
             PlayerPrefs.Save();
         }
     }

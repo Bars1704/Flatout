@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Doozy.Engine.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -202,7 +202,7 @@ namespace Doozy.Engine.UI.Animation
             if (data == null) return;
             newAnimationName = newAnimationName.Trim();
             if (Contains(newAnimationName)) return;
-            DoozyUtils.UndoRecordObjects(new Object[] {data, this}, UILabels.Rename);
+            DoozyUtils.UndoRecordObjects(new Object[] { data, this }, UILabels.Rename);
             data.Name = newAnimationName;
             data.name = data.Name;
             data.SetDirty(false);

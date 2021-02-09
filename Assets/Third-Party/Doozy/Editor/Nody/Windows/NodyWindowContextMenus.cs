@@ -5,14 +5,13 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Editor.Windows;
+using Doozy.Engine.Nody.Attributes;
+using Doozy.Engine.Nody.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Doozy.Editor.Nody.Utils;
-using Doozy.Editor.Windows;
-using Doozy.Engine.Nody.Attributes;
-using Doozy.Engine.Nody.Models;
 using UnityEditor;
 using UnityEngine;
 
@@ -37,7 +36,7 @@ namespace Doozy.Editor.Nody.Windows
             menu.AddItem(new GUIContent(UILabels.Disconnect), false, () =>
                                                                      {
                                                                          if (WindowSettings.SelectedNodes.Count > 0)
-//                if (ActiveSelection.Nodes.Count > 0)
+                                                                             //                if (ActiveSelection.Nodes.Count > 0)
                                                                              ClearNodesConnections(WindowSettings.SelectedNodes, true); //Disconnect all selected nodes
                                                                          else
                                                                              ClearNodeConnections(node, true); //Disconnect Node
@@ -129,14 +128,14 @@ namespace Doozy.Editor.Nody.Windows
             }
 
 
-//            foreach (Type type in NodeTypes)
-//            {
-//                NodeMenu nodeMenu;
-//                string path = GetNodeMenuName(type, out nodeMenu); //Get node context menu path
-//                if (string.IsNullOrEmpty(path)) continue; //empty entry means that the node will be hidden from the menu
-//                Type nodeType = type;
-//                menu.AddItem(new GUIContent(UILabels.Create + "/" + path), false, () => ExecuteGraphAction(GraphAction.CreateNode, nodeType.AssemblyQualifiedName)); //Create Node
-//            }
+            //            foreach (Type type in NodeTypes)
+            //            {
+            //                NodeMenu nodeMenu;
+            //                string path = GetNodeMenuName(type, out nodeMenu); //Get node context menu path
+            //                if (string.IsNullOrEmpty(path)) continue; //empty entry means that the node will be hidden from the menu
+            //                Type nodeType = type;
+            //                menu.AddItem(new GUIContent(UILabels.Create + "/" + path), false, () => ExecuteGraphAction(GraphAction.CreateNode, nodeType.AssemblyQualifiedName)); //Create Node
+            //            }
 
             menu.AddSeparator("");
             var pasteNode = new GUIContent(UILabels.Paste);

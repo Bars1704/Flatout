@@ -28,30 +28,30 @@ namespace Doozy.Engine.Progress
 #endif
 
         #endregion
-        
+
         #region Public Variables
-        
+
         /// <summary> Target Image component </summary>
         public Image Image;
-        
+
         /// <summary> Progress direction to be used (Progress or InverseProgress) </summary>
         public TargetProgress TargetProgress;
-        
+
         #endregion
-        
+
         #region Public Methods
-        
+
         /// <inheritdoc />
         /// <summary> Method used by a Progressor to when the current Value has changed </summary>
         /// <param name="progressor"> The Progressor that triggered this update </param>
         public override void UpdateTarget(Progressor progressor)
         {
             base.UpdateTarget(progressor);
-            
-            if(Image == null) return;
+
+            if (Image == null) return;
             Image.fillAmount = TargetProgress == TargetProgress.Progress ? progressor.Progress : progressor.InverseProgress;
         }
-        
+
         #endregion
 
         #region Private Methods
@@ -63,7 +63,7 @@ namespace Doozy.Engine.Progress
             if (Image == null)
                 Image = GetComponent<Image>();
         }
-        
+
         #endregion
     }
 }

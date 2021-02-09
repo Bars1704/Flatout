@@ -32,7 +32,7 @@ namespace Doozy.Engine.Themes
 #endif
 
         #endregion
-        
+
         #region Public Variables
 
 #if dUI_TextMeshPro
@@ -51,22 +51,22 @@ namespace Doozy.Engine.Themes
         #region Private Variables
 
         private float m_previousAlphaValue = -1;
-        
+
         #endregion
-        
+
         #region Unity Methods
 
         private void Update()
         {
-                if(!OverrideAlpha) return;
-                // ReSharper disable once CompareOfFloatsByEqualityOperator
-                if (Alpha == m_previousAlphaValue) return;
-                SetAlpha(Alpha);
-                m_previousAlphaValue = Alpha;
+            if (!OverrideAlpha) return;
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (Alpha == m_previousAlphaValue) return;
+            SetAlpha(Alpha);
+            m_previousAlphaValue = Alpha;
         }
 
         #endregion
-        
+
         #region Public Methods
 
         /// <summary> Method used by the ThemeManager when the active variant or selected theme have changed </summary>

@@ -38,7 +38,7 @@ namespace Doozy.Editor
             public static void DrawSettingDescription(string description)
             {
                 GUI.color = GUI.color.WithAlpha(Utility.IsProSkin ? 0.6f : 0.8f);
-                var textStyle = new GUIStyle(Label.Style(Size.S, TextAlign.Left, Colors.DisabledTextColorName));Label.Style(Size.S, TextAlign.Left, Colors.DisabledTextColorName);
+                var textStyle = new GUIStyle(Label.Style(Size.S, TextAlign.Left, Colors.DisabledTextColorName)); Label.Style(Size.S, TextAlign.Left, Colors.DisabledTextColorName);
                 textStyle.wordWrap = true;
                 textStyle.padding = new RectOffset(0, 0, 0, 8);
                 EditorGUILayout.LabelField(description, textStyle);

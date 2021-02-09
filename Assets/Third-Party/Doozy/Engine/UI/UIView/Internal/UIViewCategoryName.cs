@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.UI.Base;
+using System;
 
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -72,13 +72,13 @@ namespace Doozy.Engine.UI.Internal
         public UIViewCategoryName Copy()
         {
             return new UIViewCategoryName
-                   {
-                       Category = Category,
-                       Name = Name,
-                       InstantAction = InstantAction
-                   };
+            {
+                Category = Category,
+                Name = Name,
+                InstantAction = InstantAction
+            };
         }
-        
+
         /// <summary> Resets this instance to the default values </summary>
         public void Reset()
         {

@@ -23,7 +23,7 @@ namespace Doozy.Editor.UI.Input
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (KeyToAction) target;
+                m_target = (KeyToAction)target;
                 return m_target;
             }
         }
@@ -63,7 +63,7 @@ namespace Doozy.Editor.UI.Input
         {
             base.InitAnimBool();
 
-            m_alternateExpanded = GetAnimBool(m_enableAlternateInputs.propertyPath, (InputMode) m_inputMode.enumValueIndex != InputMode.None);
+            m_alternateExpanded = GetAnimBool(m_enableAlternateInputs.propertyPath, (InputMode)m_inputMode.enumValueIndex != InputMode.None);
             m_soundDataExpanded = GetAnimBool("SOUND");
             m_effectExpanded = GetAnimBool("EFFECT");
             m_animatorEventsExpanded = GetAnimBool("ANIMATOR_EVENTS");
@@ -99,7 +99,7 @@ namespace Doozy.Editor.UI.Input
                                                       ComponentColorName);
             GUILayout.Space(DGUI.Properties.Space());
 
-            var inputMode = (InputMode) m_inputMode.enumValueIndex;
+            var inputMode = (InputMode)m_inputMode.enumValueIndex;
             ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName(inputMode != InputMode.None, ComponentColorName);
             ColorName textColorName = DGUI.Colors.GetTextColorName(inputMode != InputMode.None, ComponentColorName);
 

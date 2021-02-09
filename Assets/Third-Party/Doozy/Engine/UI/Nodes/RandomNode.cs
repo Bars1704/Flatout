@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Engine.Nody.Attributes;
 using Doozy.Engine.Nody.Connections;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.UI.Connections;
 using Doozy.Engine.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Doozy.Engine.UI.Nodes

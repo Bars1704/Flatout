@@ -2,11 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.UI.Base;
-using Doozy.Engine.Utils;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -112,14 +111,14 @@ namespace Doozy.Editor.Windows
                     ResetRenameCategory();
                     database.ResetDatabase();
                 }
-                
+
                 DrawDefaultViewHorizontalSpacing();
 
                 if (ButtonSaveDatabase())
                 {
                     Save();
                 }
-                
+
                 DrawDefaultViewHorizontalSpacing();
 
                 if (!showOnlyGeneralCategory)
@@ -441,7 +440,7 @@ namespace Doozy.Editor.Windows
                                                 category.Names[index] = newName;
                                                 category.SetDirty(false);
                                                 m_needsSave = true;
-//                                                break;
+                                                //                                                break;
                                             }
 
                                             if (DGUI.Button.IconButton.Minus()) //remove entry
@@ -454,7 +453,7 @@ namespace Doozy.Editor.Windows
                                                     m_needsSave = true;
                                                 }
 
-//                                                break;
+                                                //                                                break;
                                             }
 
                                             GUI.enabled = guiEnabled;

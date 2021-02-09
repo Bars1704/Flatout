@@ -2,11 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
-using Doozy.Editor;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Soundy;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -103,9 +102,9 @@ namespace Doozy.Editor.Soundy
 
             public bool IsPlaying { get { return m_audioSource != null && m_audioSource.isPlaying; } }
             public bool IsPaused { get; set; }
-            
-            
-            public float Progress { get { return m_audioSource != null && (IsPlaying || IsPaused) ? (float) Math.Round(m_audioSource.time / m_audioSource.clip.length, 3) : 0; } }
+
+
+            public float Progress { get { return m_audioSource != null && (IsPlaying || IsPaused) ? (float)Math.Round(m_audioSource.time / m_audioSource.clip.length, 3) : 0; } }
 
 
             public float PlaybackTimeMinutes { get { return m_audioSource != null && (IsPlaying || IsPaused) ? GetMinutes(m_audioSource.time) : 0; } }
@@ -165,7 +164,7 @@ namespace Doozy.Editor.Soundy
                         IsPaused = false;
                         break;
                     case SoundSource.MasterAudio: break;
-                    default:                 throw new ArgumentOutOfRangeException();
+                    default: throw new ArgumentOutOfRangeException();
                 }
             }
 
@@ -182,7 +181,7 @@ namespace Doozy.Editor.Soundy
                         IsPaused = false;
                         break;
                     case SoundSource.MasterAudio: break;
-                    default:                 throw new ArgumentOutOfRangeException();
+                    default: throw new ArgumentOutOfRangeException();
                 }
             }
 
@@ -201,7 +200,7 @@ namespace Doozy.Editor.Soundy
                                                           rect.height);
 
                 bool mouseInsideScrubber = progressMouseDetectionArea.Contains(Event.current.mousePosition);
-                
+
                 string audioName = "";
                 switch (m_soundSource)
                 {
@@ -236,9 +235,9 @@ namespace Doozy.Editor.Soundy
                                                  durationContentSize.x,
                                                  durationContentSize.y);
 
-//                float barHeight = mouseInsideScrubber ? DGUI.Properties.Space(2) : DGUI.Properties.Space();
+                //                float barHeight = mouseInsideScrubber ? DGUI.Properties.Space(2) : DGUI.Properties.Space();
                 float barHeight = DGUI.Properties.Space();
-                
+
                 var barBackgroundRect = new Rect(rect.x + DGUI.Properties.Space(),
                                                  durationLabelRect.y + durationLabelRect.height + DGUI.Properties.Space(),
                                                  rect.width - DGUI.Properties.Space(7) - DGUI.Button.IconButton.Width * 2,
@@ -271,8 +270,8 @@ namespace Doozy.Editor.Soundy
                 GUI.color = initialColor;
 
                 Color textColor = IsPlaying || IsPaused ? DGUI.Colors.TextColor(colorName) : contentColor.WithAlpha(0.4f);
-                GUI.Label(audioNameLabelRect, audioNameContent, new GUIStyle(DGUI.Label.Style(Size.S)) {normal = {textColor = textColor}}); //draw audio clip name label -- to the left
-                GUI.Label(durationLabelRect, durationContent, new GUIStyle(DGUI.Label.Style(Size.S)) {normal = {textColor = textColor}}); //draw duration (current time/total time) -- to the right
+                GUI.Label(audioNameLabelRect, audioNameContent, new GUIStyle(DGUI.Label.Style(Size.S)) { normal = { textColor = textColor } }); //draw audio clip name label -- to the left
+                GUI.Label(durationLabelRect, durationContent, new GUIStyle(DGUI.Label.Style(Size.S)) { normal = { textColor = textColor } }); //draw duration (current time/total time) -- to the right
 
                 GUI.color = DGUI.Colors.TextColor(colorName);
                 DrawPlayButton(playButtonRect); //draw play button
@@ -281,9 +280,9 @@ namespace Doozy.Editor.Soundy
 
                 //keep this here -- quick visualize the mouse detection area for the scrubber (it's bigger than needed to make it more user friendly)
                 {
-//                GUI.color = Color.yellow.WithAlpha(0.5f);
-//                GUI.Label(progressMouseDetectionArea, GUIContent.none, DGUI.Properties.White);
-//                GUI.color = initialColor;
+                    //                GUI.color = Color.yellow.WithAlpha(0.5f);
+                    //                GUI.Label(progressMouseDetectionArea, GUIContent.none, DGUI.Properties.White);
+                    //                GUI.color = initialColor;
                 }
 
                 if (!mouseInsideScrubber || !GUI.enabled) return;
@@ -321,7 +320,7 @@ namespace Doozy.Editor.Soundy
                     GUI.Label(scrubberTimeBackgroundRect, GUIContent.none, DGUI.Properties.White); //draw the time label background
                     GUI.color = initialColor;
 
-                    GUI.Label(scrubberTimeLabelRect, scrubberTimeContent, new GUIStyle(DGUI.Label.Style(Size.S)) {normal = {textColor = DGUI.Colors.TextColor(colorName).WithAlpha(0.8f)}}); //draw the time label text
+                    GUI.Label(scrubberTimeLabelRect, scrubberTimeContent, new GUIStyle(DGUI.Label.Style(Size.S)) { normal = { textColor = DGUI.Colors.TextColor(colorName).WithAlpha(0.8f) } }); //draw the time label text
                 }
 
                 if (Event.current.type == EventType.MouseDown && Event.current.button == 0) //user left clicked on the progress bar
@@ -333,7 +332,7 @@ namespace Doozy.Editor.Soundy
                         IsPaused = false;
                     }
                     else if (!IsPlaying) //if the player is not playing -> start playing the sound
-                        Play(); 
+                        Play();
                     else //else scrub to the pointer position on the progress bar
                         AudioSource.time = AudioSource.clip.length * progressMousePosition; //set the AudioSource play time at the scrubber position (it's magic!!!) :))
                 }
@@ -373,14 +372,14 @@ namespace Doozy.Editor.Soundy
 
             public bool DrawStopButton()
             {
-                if (!DGUI.Button.IconButton.Stop(IsPlaying ? Color.red :  DGUI.Colors.IconColor(DGUI.Colors.DisabledTextColorName))) return false;
+                if (!DGUI.Button.IconButton.Stop(IsPlaying ? Color.red : DGUI.Colors.IconColor(DGUI.Colors.DisabledTextColorName))) return false;
                 Stop();
                 return true;
             }
 
             public bool DrawStopButton(Rect rect)
             {
-                if (!DGUI.Button.IconButton.Stop(rect, IsPlaying ? Color.red :  DGUI.Colors.IconColor(DGUI.Colors.DisabledTextColorName))) return false;
+                if (!DGUI.Button.IconButton.Stop(rect, IsPlaying ? Color.red : DGUI.Colors.IconColor(DGUI.Colors.DisabledTextColorName))) return false;
                 Stop();
                 return true;
             }
@@ -402,8 +401,8 @@ namespace Doozy.Editor.Soundy
                 GUILayout.BeginVertical();
                 {
                     if (AudioSource.isPlaying) repaintCallback.Invoke();
-//                    GUILayout.Label(GUIContent.none, GUILayout.ExpandWidth(true), GUILayout.Height(0));
-//                    if (Event.current.type == EventType.Repaint) m_progressBarWidth = GUILayoutUtility.GetLastRect().width;
+                    //                    GUILayout.Label(GUIContent.none, GUILayout.ExpandWidth(true), GUILayout.Height(0));
+                    //                    if (Event.current.type == EventType.Repaint) m_progressBarWidth = GUILayoutUtility.GetLastRect().width;
                     GUI.color = initialColor.WithAlpha(ProgressBarAlpha);
                     GUILayout.Label(GUIContent.none, DGUI.Button.ButtonStyle(), GUILayout.Height(height), GUILayout.Width(currentProgressBarWidth));
                     GUILayout.Space(-height);

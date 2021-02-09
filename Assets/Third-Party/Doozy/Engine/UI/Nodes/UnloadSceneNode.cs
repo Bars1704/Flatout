@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Nody.Attributes;
 using Doozy.Engine.Nody.Connections;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.SceneManagement;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine.SceneManagement;
 
 namespace Doozy.Engine.UI.Nodes
@@ -53,7 +53,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var node = (UnloadSceneNode) original;
+            var node = (UnloadSceneNode)original;
             GetSceneBy = node.GetSceneBy;
             SceneBuildIndex = node.SceneBuildIndex;
             SceneName = node.SceneName;

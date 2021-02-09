@@ -18,7 +18,7 @@ namespace Doozy.Editor.Nody.Editors
     {
         private static float SourceVerticalSpacing { get { return DGUI.Properties.Space(8); } }
 
-        private SwitchBackNode Node { get { return (SwitchBackNode) target; } }
+        private SwitchBackNode Node { get { return (SwitchBackNode)target; } }
 
         private InfoMessage
             m_infoMessageUnnamedNodeName,
@@ -39,7 +39,7 @@ namespace Doozy.Editor.Nody.Editors
 
             m_window = NodyWindow.Instance;
 
-            m_switchBackNode = (SwitchBackNode) target;
+            m_switchBackNode = (SwitchBackNode)target;
 
             m_infoMessageUnnamedNodeName = new InfoMessage(InfoMessage.MessageType.Error, UILabels.UnnamedNodeTitle, UILabels.UnnamedNodeMessage);
             m_infoMessageDuplicateNodeName = new InfoMessage(InfoMessage.MessageType.Error, UILabels.DuplicateNodeTitle, UILabels.DuplicateNodeMessage);
@@ -148,7 +148,7 @@ namespace Doozy.Editor.Nody.Editors
                                        GUILayout.Space(DGUI.Properties.Space());
                                    }
 
-//                                   DGUI.Label.Draw(UILabels.SourceName, Size.M, DGUI.Properties.SingleLineHeight, textColorName);
+                                   //                                   DGUI.Label.Draw(UILabels.SourceName, Size.M, DGUI.Properties.SingleLineHeight, textColorName);
                                    string sourceName = source.SourceName;
                                    EditorGUI.BeginChangeCheck();
                                    GUILayout.BeginVertical(GUILayout.Height(DGUI.Properties.SingleLineHeight - DGUI.Properties.Space()));

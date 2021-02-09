@@ -5,8 +5,8 @@
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Touchy;
 using Doozy.Engine.UI;
-using Doozy.Engine.UI.Settings;
 using Doozy.Engine.UI.Input;
+using Doozy.Engine.UI.Settings;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -39,7 +39,7 @@ namespace Doozy.Editor.Windows
                 DrawViewHorizontalPadding();
             }
             GUILayout.EndHorizontal();
-            
+
             DrawDynamicViewVerticalSpace(2);
         }
 
@@ -172,7 +172,7 @@ namespace Doozy.Editor.Windows
                                                               DGUI.Label.Draw(UILabels.InputMode, Size.S, inputModeTextColor, DGUI.Properties.SingleLineHeight);
                                                               GUILayout.BeginVertical();
                                                               GUILayout.Space(0);
-                                                              settings.InputMode = (InputMode) EditorGUILayout.EnumPopup(settings.InputMode);
+                                                              settings.InputMode = (InputMode)EditorGUILayout.EnumPopup(settings.InputMode);
                                                               GUILayout.EndVertical();
                                                               GUILayout.Space(generalSpacing);
                                                           });
@@ -190,7 +190,7 @@ namespace Doozy.Editor.Windows
                                                                       DGUI.Label.Draw(UILabels.KeyCode, Size.S, componentColorName, DGUI.Properties.SingleLineHeight);
                                                                       GUILayout.BeginVertical();
                                                                       GUILayout.Space(0);
-                                                                      settings.KeyCode = (KeyCode) EditorGUILayout.EnumPopup(settings.KeyCode);
+                                                                      settings.KeyCode = (KeyCode)EditorGUILayout.EnumPopup(settings.KeyCode);
                                                                       GUILayout.EndVertical();
                                                                       GUILayout.Space(generalSpacing);
                                                                   });
@@ -239,7 +239,7 @@ namespace Doozy.Editor.Windows
                                                                           DGUI.Label.Draw(UILabels.AlternateKeyCode, Size.S, inputModeTextColor, DGUI.Properties.SingleLineHeight);
                                                                           GUILayout.BeginVertical();
                                                                           GUILayout.Space(0);
-                                                                          settings.KeyCodeAlt = (KeyCode) EditorGUILayout.EnumPopup(settings.KeyCodeAlt);
+                                                                          settings.KeyCodeAlt = (KeyCode)EditorGUILayout.EnumPopup(settings.KeyCodeAlt);
                                                                           GUILayout.EndVertical();
                                                                           GUILayout.Space(generalSpacing);
                                                                       });
@@ -476,7 +476,7 @@ namespace Doozy.Editor.Windows
                                                DGUI.Label.Draw(UILabels.CloseDirection, Size.S, componentColorName, DGUI.Properties.SingleLineHeight);
                                                GUILayout.BeginVertical();
                                                GUILayout.Space(0);
-                                               settings.CloseDirection = (SimpleSwipe) EditorGUILayout.EnumPopup(settings.CloseDirection);
+                                               settings.CloseDirection = (SimpleSwipe)EditorGUILayout.EnumPopup(settings.CloseDirection);
                                                GUILayout.EndVertical();
                                                GUILayout.Space(generalSpacing);
                                            });
@@ -554,7 +554,7 @@ namespace Doozy.Editor.Windows
                 DGUI.WindowUtils.DrawIconTitle(Styles.StyleName.IconUIToggle, componentName + " - " + UILabels.DefaultValues, UILabels.DefaultValuesDescription, componentColorName);
                 GUILayout.Space(DGUI.Properties.Space(4) * expanded.faded);
 
-                 #region UIButton - Default Values
+                #region UIButton - Default Values
 
                 GUILayout.BeginHorizontal();
                 {
@@ -627,7 +627,7 @@ namespace Doozy.Editor.Windows
                                                               DGUI.Label.Draw(UILabels.InputMode, Size.S, inputModeTextColor, DGUI.Properties.SingleLineHeight);
                                                               GUILayout.BeginVertical();
                                                               GUILayout.Space(0);
-                                                              settings.InputMode = (InputMode) EditorGUILayout.EnumPopup(settings.InputMode);
+                                                              settings.InputMode = (InputMode)EditorGUILayout.EnumPopup(settings.InputMode);
                                                               GUILayout.EndVertical();
                                                               GUILayout.Space(generalSpacing);
                                                           });
@@ -645,7 +645,7 @@ namespace Doozy.Editor.Windows
                                                                       DGUI.Label.Draw(UILabels.KeyCode, Size.S, componentColorName, DGUI.Properties.SingleLineHeight);
                                                                       GUILayout.BeginVertical();
                                                                       GUILayout.Space(0);
-                                                                      settings.KeyCode = (KeyCode) EditorGUILayout.EnumPopup(settings.KeyCode);
+                                                                      settings.KeyCode = (KeyCode)EditorGUILayout.EnumPopup(settings.KeyCode);
                                                                       GUILayout.EndVertical();
                                                                       GUILayout.Space(generalSpacing);
                                                                   });
@@ -694,7 +694,7 @@ namespace Doozy.Editor.Windows
                                                                           DGUI.Label.Draw(UILabels.AlternateKeyCode, Size.S, inputModeTextColor, DGUI.Properties.SingleLineHeight);
                                                                           GUILayout.BeginVertical();
                                                                           GUILayout.Space(0);
-                                                                          settings.KeyCodeAlt = (KeyCode) EditorGUILayout.EnumPopup(settings.KeyCodeAlt);
+                                                                          settings.KeyCodeAlt = (KeyCode)EditorGUILayout.EnumPopup(settings.KeyCodeAlt);
                                                                           GUILayout.EndVertical();
                                                                           GUILayout.Space(generalSpacing);
                                                                       });
@@ -883,7 +883,7 @@ namespace Doozy.Editor.Windows
                                        {
                                            GUILayout.BeginVertical();
                                            GUILayout.Space(0);
-                                           settings.TargetOrientation = (TargetOrientation) EditorGUILayout.EnumPopup(settings.TargetOrientation, GUILayout.Width(DGUI.Properties.DefaultFieldWidth * 2));
+                                           settings.TargetOrientation = (TargetOrientation)EditorGUILayout.EnumPopup(settings.TargetOrientation, GUILayout.Width(DGUI.Properties.DefaultFieldWidth * 2));
                                            GUILayout.EndVertical();
                                        });
                         GUILayout.FlexibleSpace();
@@ -901,7 +901,7 @@ namespace Doozy.Editor.Windows
                                            GUI.color = GUI.color.WithAlpha(alpha);
                                            GUILayout.BeginVertical();
                                            GUILayout.Space(0);
-                                           settings.BehaviorAtStart = (UIViewStartBehavior) EditorGUILayout.EnumPopup(settings.BehaviorAtStart);
+                                           settings.BehaviorAtStart = (UIViewStartBehavior)EditorGUILayout.EnumPopup(settings.BehaviorAtStart);
                                            GUILayout.EndVertical();
                                        });
                         GUILayout.Space(generalSpacing);

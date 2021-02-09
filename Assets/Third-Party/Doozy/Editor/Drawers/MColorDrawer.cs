@@ -89,7 +89,7 @@ namespace Doozy.Editor.Drawers
             float x = position.x;
             float y = position.y;
             float height = DGUI.Properties.SingleLineHeight;
-            GUI.Label(new Rect(x, y, nameLabelWidth, height), Name.stringValue, new GUIStyle(DGUI.Label.Style(Size.S)) {alignment = TextAnchor.MiddleRight});
+            GUI.Label(new Rect(x, y, nameLabelWidth, height), Name.stringValue, new GUIStyle(DGUI.Label.Style(Size.S)) { alignment = TextAnchor.MiddleRight });
             x += nameLabelWidth + DGUI.Properties.Space();
             DrawColorField(M50, x, y, colorWidth, height);
             x += colorWidth;

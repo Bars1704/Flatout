@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
-using System.Linq;
 using Doozy.Engine.Settings;
 using Doozy.Engine.Utils;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -32,7 +32,7 @@ namespace Doozy.Engine.Soundy
 
         /// <summary> Global variable that keeps track if all controllers are paused or not </summary>
         private static bool s_pauseAllControllers;
-        
+
         /// <summary> Global toggle to pause / unpause all controllers </summary>
         public static bool PauseAllControllers
         {
@@ -52,7 +52,7 @@ namespace Doozy.Engine.Soundy
 
         /// <summary> Global variable that keeps track if all controllers are muted or not </summary>
         private static bool s_muteAllControllers;
-        
+
         /// <summary> Global toggle to mute / unmute all controllers </summary>
         public static bool MuteAllControllers
         {
@@ -150,7 +150,7 @@ namespace Doozy.Engine.Soundy
         private void Update()
         {
             if (IsMuted || IsPaused || AudioSource.isPlaying) UpdateLastPlayedTime();
-            
+
             if (IsMuted != m_muted)
             {
                 AudioSource.mute = IsMuted;
@@ -173,7 +173,7 @@ namespace Doozy.Engine.Soundy
                 return;
             }
 
-//            if (DebugComponent) DDebug.Log("InUse: " + InUse + " / AudioSource.isPlaying: " + AudioSource.isPlaying + " / IsPaused: " + IsPaused + " / IsMuted: " + IsMuted);
+            //            if (DebugComponent) DDebug.Log("InUse: " + InUse + " / AudioSource.isPlaying: " + AudioSource.isPlaying + " / IsPaused: " + IsPaused + " / IsMuted: " + IsMuted);
 
             m_autoPaused = InUse && m_isPlaying && !AudioSource.isPlaying && PlayProgress > 0;
 
@@ -359,7 +359,7 @@ namespace Doozy.Engine.Soundy
             RemoveNullControllersFromDatabase();
             foreach (SoundyController controller in s_database)
             {
-//                if (!controller.AudioSource.isPlaying) return;
+                //                if (!controller.AudioSource.isPlaying) return;
                 controller.Stop();
             }
         }

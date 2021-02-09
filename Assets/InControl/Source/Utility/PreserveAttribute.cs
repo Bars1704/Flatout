@@ -1,7 +1,7 @@
 namespace InControl
 {
-	using System;
+    using System;
 
-	public class PreserveAttribute : Attribute {}
+    public class PreserveAttribute : Attribute { }
 }
 

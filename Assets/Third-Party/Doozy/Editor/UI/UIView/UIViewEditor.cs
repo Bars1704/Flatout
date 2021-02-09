@@ -2,8 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Soundy;
 using Doozy.Editor.UI.Animation;
@@ -15,6 +13,8 @@ using Doozy.Engine.UI.Animation;
 using Doozy.Engine.UI.Base;
 using Doozy.Engine.UI.Settings;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -34,7 +34,7 @@ namespace Doozy.Editor.UI
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (UIView) target;
+                m_target = (UIView)target;
                 return m_target;
             }
         }
@@ -183,7 +183,7 @@ namespace Doozy.Editor.UI
             base.OnEnable();
             AdjustPositionRotationAndScaleToRoundValues(Target.RectTransform);
 
-//            if (HasChildUIViews && Target.DisableGameObjectWhenHidden) Target.DisableGameObjectWhenHidden = false;
+            //            if (HasChildUIViews && Target.DisableGameObjectWhenHidden) Target.DisableGameObjectWhenHidden = false;
 
             m_showDatabase = Animations.Get(AnimationType.Show);
             m_hideDatabase = Animations.Get(AnimationType.Hide);
@@ -351,7 +351,7 @@ namespace Doozy.Editor.UI
                                Color color = GUI.color;
                                GUI.color = DGUI.Colors.TextColor(ComponentColorName).WithAlpha(0.8f);
 
-                               switch ((TargetOrientation) m_targetOrientation.intValue)
+                               switch ((TargetOrientation)m_targetOrientation.intValue)
                                {
                                    case TargetOrientation.Portrait:
                                        GUILayout.Space(DGUI.Properties.Space());
@@ -395,7 +395,7 @@ namespace Doozy.Editor.UI
 
         private void DrawBehaviourAtStart()
         {
-            bool enabled = (UIViewStartBehavior) m_behaviorAtStart.intValue != (int) UIViewStartBehavior.DoNothing;
+            bool enabled = (UIViewStartBehavior)m_behaviorAtStart.intValue != (int)UIViewStartBehavior.DoNothing;
 
             ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName(enabled, ComponentColorName);
             ColorName textColorName = DGUI.Colors.GetTextColorName(enabled, ComponentColorName);
@@ -537,7 +537,7 @@ namespace Doozy.Editor.UI
         private void DrawBehavior(string behaviorName, UIViewBehavior behavior, SerializedProperty behaviorProperty, UIAnimationsDatabase database, GUIStyle animationIcon, AnimBool behaviorExpanded)
         {
             SerializedProperty animationProperty = GetProperty(PropertyName.Animation, behaviorProperty);
-            var animationType = (AnimationType) GetProperty(PropertyName.AnimationType, animationProperty).enumValueIndex;
+            var animationType = (AnimationType)GetProperty(PropertyName.AnimationType, animationProperty).enumValueIndex;
             SerializedProperty startProperty = GetProperty(PropertyName.OnStart, behaviorProperty);
             SerializedProperty finishedProperty = GetProperty(PropertyName.OnFinished, behaviorProperty);
             SerializedProperty instantAnimationProperty = null;
@@ -725,7 +725,7 @@ namespace Doozy.Editor.UI
                     if (serializedObject.isEditingMultipleObjects)
                         foreach (Object targetObject in serializedObject.targetObjects)
                         {
-                            var targetView = (UIView) targetObject;
+                            var targetView = (UIView)targetObject;
                             switch (behavior.Animation.AnimationType)
                             {
                                 case AnimationType.Show:
@@ -837,7 +837,7 @@ namespace Doozy.Editor.UI
 
                     GUILayout.BeginHorizontal();
                     {
-                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Move, (AnimationType) move.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
+                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Move, (AnimationType)move.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
                                           barSize,
                                           DGUI.Bar.Caret.CaretType.Move,
                                           moveExpanded.target ? DGUI.Colors.MoveColorName : DGUI.Colors.DisabledTextColorName,
@@ -846,7 +846,7 @@ namespace Doozy.Editor.UI
 
                         GUILayout.Space(DGUI.Properties.Space());
 
-                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Rotate, (AnimationType) rotate.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
+                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Rotate, (AnimationType)rotate.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
                                           barSize,
                                           DGUI.Bar.Caret.CaretType.Rotate,
                                           rotateExpanded.target ? DGUI.Colors.RotateColorName : DGUI.Colors.DisabledTextColorName,
@@ -855,7 +855,7 @@ namespace Doozy.Editor.UI
 
                         GUILayout.Space(DGUI.Properties.Space());
 
-                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Scale, (AnimationType) scale.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
+                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Scale, (AnimationType)scale.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
                                           barSize,
                                           DGUI.Bar.Caret.CaretType.Scale,
                                           scaleExpanded.target ? DGUI.Colors.ScaleColorName : DGUI.Colors.DisabledTextColorName,
@@ -864,7 +864,7 @@ namespace Doozy.Editor.UI
 
                         GUILayout.Space(DGUI.Properties.Space());
 
-                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Fade, (AnimationType) fade.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
+                        if (DGUI.Bar.Draw(DGUI.Doozy.GetAnimationTypeName(UILabels.Fade, (AnimationType)fade.FindPropertyRelative(PropertyName.AnimationType.ToString()).enumValueIndex),
                                           barSize,
                                           DGUI.Bar.Caret.CaretType.Fade,
                                           fadeExpanded.target ? DGUI.Colors.FadeColorName : DGUI.Colors.DisabledTextColorName,

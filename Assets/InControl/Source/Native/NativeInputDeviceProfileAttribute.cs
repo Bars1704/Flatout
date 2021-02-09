@@ -1,6 +1,6 @@
 namespace InControl
 {
-	using System;
+    using System;
 
-	public class NativeInputDeviceProfileAttribute : Attribute {}
+    public class NativeInputDeviceProfileAttribute : Attribute { }
 }

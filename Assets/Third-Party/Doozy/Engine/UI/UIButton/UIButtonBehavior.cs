@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Doozy.Engine.Events;
 using Doozy.Engine.UI.Animation;
 using Doozy.Engine.UI.Base;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -73,8 +73,8 @@ namespace Doozy.Engine.UI
             {
                 switch (ButtonAnimationType)
                 {
-                    case ButtonAnimationType.Punch:    return HasPunchAnimation;
-                    case ButtonAnimationType.State:    return HasStateAnimation;
+                    case ButtonAnimationType.Punch: return HasPunchAnimation;
+                    case ButtonAnimationType.State: return HasStateAnimation;
                     case ButtonAnimationType.Animator: return HasAnimators;
                 }
 
@@ -185,7 +185,7 @@ namespace Doozy.Engine.UI
             {
                 case ButtonAnimationType.Punch: return PunchAnimation.TotalDuration;
                 case ButtonAnimationType.State: return StateAnimation.TotalDuration;
-                default:                        return 0f;
+                default: return 0f;
             }
         }
 
@@ -314,16 +314,16 @@ namespace Doozy.Engine.UI
         {
             switch (type)
             {
-                case UIButtonBehaviorType.OnClick:        return ON_CLICK_DISABLE_INTERVAL;
-                case UIButtonBehaviorType.OnDoubleClick:  return ON_DOUBLE_CLICK_DISABLE_INTERVAL;
-                case UIButtonBehaviorType.OnLongClick:    return ON_LONG_CLICK_DISABLE_INTERVAL;
+                case UIButtonBehaviorType.OnClick: return ON_CLICK_DISABLE_INTERVAL;
+                case UIButtonBehaviorType.OnDoubleClick: return ON_DOUBLE_CLICK_DISABLE_INTERVAL;
+                case UIButtonBehaviorType.OnLongClick: return ON_LONG_CLICK_DISABLE_INTERVAL;
                 case UIButtonBehaviorType.OnPointerEnter: return ON_POINTER_ENTER_DISABLE_INTERVAL;
-                case UIButtonBehaviorType.OnPointerExit:  return ON_POINTER_EXIT_DISABLE_INTERVAL;
-                case UIButtonBehaviorType.OnPointerDown:  return ON_POINTER_DOWN_DISABLE_INTERVAL;
-                case UIButtonBehaviorType.OnPointerUp:    return ON_POINTER_UP_DISABLE_INTERVAL;
-                case UIButtonBehaviorType.OnSelected:     return ON_BUTTON_SELECTED_DISABLE_INTERVAL;
-                case UIButtonBehaviorType.OnDeselected:   return ON_BUTTON_DESELECTED_DISABLE_INTERVAL;
-                default:                                  return 0f;
+                case UIButtonBehaviorType.OnPointerExit: return ON_POINTER_EXIT_DISABLE_INTERVAL;
+                case UIButtonBehaviorType.OnPointerDown: return ON_POINTER_DOWN_DISABLE_INTERVAL;
+                case UIButtonBehaviorType.OnPointerUp: return ON_POINTER_UP_DISABLE_INTERVAL;
+                case UIButtonBehaviorType.OnSelected: return ON_BUTTON_SELECTED_DISABLE_INTERVAL;
+                case UIButtonBehaviorType.OnDeselected: return ON_BUTTON_DESELECTED_DISABLE_INTERVAL;
+                default: return 0f;
             }
         }
 

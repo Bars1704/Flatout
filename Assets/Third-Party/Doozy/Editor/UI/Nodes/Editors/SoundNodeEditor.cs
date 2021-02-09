@@ -2,13 +2,13 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Nody.Editors;
 using Doozy.Editor.Soundy;
 using Doozy.Engine.Soundy;
 using Doozy.Engine.UI.Nodes;
 using Doozy.Engine.Utils;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ namespace Doozy.Editor.UI.Nodes
         private const string NO_SOUND = "NoSound";
         private const string SOUND_ACTION = "SoundAction";
 
-        private SoundNode TargetNode { get { return (SoundNode) target; } }
+        private SoundNode TargetNode { get { return (SoundNode)target; } }
 
         private SerializedProperty
             m_soundData,
@@ -138,7 +138,7 @@ namespace Doozy.Editor.UI.Nodes
                 case SoundNode.SoundActions.Stop:
                     renameTo = UILabels.StopAllSounds;
                     break;
-                case SoundNode.SoundActions.Pause:   
+                case SoundNode.SoundActions.Pause:
                     renameTo = UILabels.PauseAllSounds;
                     break;
                 case SoundNode.SoundActions.Unpause:

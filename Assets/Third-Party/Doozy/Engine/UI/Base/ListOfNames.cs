@@ -99,9 +99,9 @@ namespace Doozy.Engine.UI.Base
             if (Names == null) Names = new List<string>();
             int count = Names.Count;
             Names = Names.Distinct().ToList();
-            if(count != Names.Count) SetDirty(false);
+            if (count != Names.Count) SetDirty(false);
         }
-        
+
         /// <summary> Removes any empty entries from the names list </summary>
         public void RemoveEmptyNames()
         {
@@ -113,7 +113,7 @@ namespace Doozy.Engine.UI.Base
                 Names.RemoveAt(i);
                 setDirty = true;
             }
-            if(setDirty) SetDirty(false);
+            if (setDirty) SetDirty(false);
         }
 
         /// <summary> Removes an entry from the names list </summary>

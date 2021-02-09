@@ -2,8 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Soundy;
 using Doozy.Editor.Windows;
@@ -13,6 +11,8 @@ using Doozy.Engine.UI;
 using Doozy.Engine.UI.Base;
 using Doozy.Engine.UI.Settings;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -32,7 +32,7 @@ namespace Doozy.Editor.UI
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (UIDrawer) target;
+                m_target = (UIDrawer)target;
                 return m_target;
             }
         }
@@ -145,14 +145,14 @@ namespace Doozy.Editor.UI
 
         private RectTransform m_arrowRoot, m_arrowClosed, m_arrowOpened;
 
-//        private Quaternion m_arrowClosedHandleRotation, m_arrowOpenedHandleRotation;
+        //        private Quaternion m_arrowClosedHandleRotation, m_arrowOpenedHandleRotation;
         private const float HANDLE_SIZE = 0.4f;
 
         private void DrawDrawerNameAndCloseDirectionOnSceneGUI()
         {
-//            Handles.Label(Target.transform.position, "UIDrawer: " + Target.DrawerName +
-//                                                     "\n" +
-//                                                     UILabels.CloseDirection + ": " + Target.CloseDirection);
+            //            Handles.Label(Target.transform.position, "UIDrawer: " + Target.DrawerName +
+            //                                                     "\n" +
+            //                                                     UILabels.CloseDirection + ": " + Target.CloseDirection);
 
             if (!Target.ArrowEnabled || Target.CloseDirection == SimpleSwipe.None) return;
 
@@ -162,36 +162,36 @@ namespace Doozy.Editor.UI
                     m_arrowRoot = Target.Arrow.Left.Root;
                     m_arrowClosed = Target.Arrow.Left.Closed;
                     m_arrowOpened = Target.Arrow.Left.Opened;
-//                    m_arrowClosedHandleRotation = Quaternion.Euler(0, 90, 0);
-//                    m_arrowOpenedHandleRotation = Quaternion.Euler(0, -90, 0);
+                    //                    m_arrowClosedHandleRotation = Quaternion.Euler(0, 90, 0);
+                    //                    m_arrowOpenedHandleRotation = Quaternion.Euler(0, -90, 0);
                     break;
                 case SimpleSwipe.Right:
                     m_arrowRoot = Target.Arrow.Right.Root;
                     m_arrowClosed = Target.Arrow.Right.Closed;
                     m_arrowOpened = Target.Arrow.Right.Opened;
-//                    m_arrowClosedHandleRotation = Quaternion.Euler(0, -90, 0);
-//                    m_arrowOpenedHandleRotation = Quaternion.Euler(0, 90, 0);
+                    //                    m_arrowClosedHandleRotation = Quaternion.Euler(0, -90, 0);
+                    //                    m_arrowOpenedHandleRotation = Quaternion.Euler(0, 90, 0);
                     break;
                 case SimpleSwipe.Up:
                     m_arrowRoot = Target.Arrow.Up.Root;
                     m_arrowClosed = Target.Arrow.Up.Closed;
                     m_arrowOpened = Target.Arrow.Up.Opened;
-//                    m_arrowClosedHandleRotation = Quaternion.Euler(90, 90, 0);
-//                    m_arrowOpenedHandleRotation = Quaternion.Euler(-90, -90, 0);
+                    //                    m_arrowClosedHandleRotation = Quaternion.Euler(90, 90, 0);
+                    //                    m_arrowOpenedHandleRotation = Quaternion.Euler(-90, -90, 0);
                     break;
                 case SimpleSwipe.Down:
                     m_arrowRoot = Target.Arrow.Down.Root;
                     m_arrowClosed = Target.Arrow.Down.Closed;
                     m_arrowOpened = Target.Arrow.Down.Opened;
-//                    m_arrowClosedHandleRotation = Quaternion.Euler(-90, 90, 0);
-//                    m_arrowOpenedHandleRotation = Quaternion.Euler(90, -90, 0);
+                    //                    m_arrowClosedHandleRotation = Quaternion.Euler(-90, 90, 0);
+                    //                    m_arrowOpenedHandleRotation = Quaternion.Euler(90, -90, 0);
                     break;
             }
 
-//            if (Handles.Button(m_arrowRoot.position, m_arrowRoot.rotation, m_handleSize, m_handleSize, Handles.SphereHandleCap))
-//            {
-//                Selection.activeGameObject = m_arrowRoot.gameObject;
-//            }
+            //            if (Handles.Button(m_arrowRoot.position, m_arrowRoot.rotation, m_handleSize, m_handleSize, Handles.SphereHandleCap))
+            //            {
+            //                Selection.activeGameObject = m_arrowRoot.gameObject;
+            //            }
 
             Vector3 rootPosition = m_arrowRoot.position;
             Vector3 closedPosition = m_arrowClosed.position;
@@ -200,8 +200,8 @@ namespace Doozy.Editor.UI
             Handles.DrawDottedLine(rootPosition, closedPosition, HANDLE_SIZE);
             Handles.DrawDottedLine(rootPosition, openedPosition, HANDLE_SIZE);
 
-//            Handles.Label(closedPosition, "CLOSED");
-//            Handles.Label(openedPosition, "OPENED");
+            //            Handles.Label(closedPosition, "CLOSED");
+            //            Handles.Label(openedPosition, "OPENED");
 
             Vector3 arrowRootPosition = rootPosition;
             EditorGUI.BeginChangeCheck();
@@ -421,7 +421,7 @@ namespace Doozy.Editor.UI
         private void DrawBehavior(string behaviorName, UIDrawerBehavior behavior, SerializedProperty behaviorProperty, GUIStyle behaviorIcon, AnimBool behaviorExpanded)
         {
             SerializedProperty drawerBehaviorTypeProperty = GetProperty(PropertyName.DrawerBehaviorType, behaviorProperty);
-            var drawerBehaviorType = (UIDrawerBehaviorType) drawerBehaviorTypeProperty.enumValueIndex;
+            var drawerBehaviorType = (UIDrawerBehaviorType)drawerBehaviorTypeProperty.enumValueIndex;
             SerializedProperty startProperty = GetProperty(PropertyName.OnStart, behaviorProperty);
             SerializedProperty finishedProperty = GetProperty(PropertyName.OnFinished, behaviorProperty);
 
@@ -761,11 +761,11 @@ namespace Doozy.Editor.UI
             }
             GUILayout.EndHorizontal();
 
-            bool percentageOfScreenSelected = (UIDrawerContainerSize) size.enumValueIndex == UIDrawerContainerSize.PercentageOfScreen;
+            bool percentageOfScreenSelected = (UIDrawerContainerSize)size.enumValueIndex == UIDrawerContainerSize.PercentageOfScreen;
             AnimBool containerPercentageOfScreenExpanded = GetAnimBool(UIDrawerContainerSize.PercentageOfScreen.ToString(), percentageOfScreenSelected);
             containerPercentageOfScreenExpanded.target = percentageOfScreenSelected;
 
-            bool fixedSizeSelected = (UIDrawerContainerSize) size.enumValueIndex == UIDrawerContainerSize.FixedSize;
+            bool fixedSizeSelected = (UIDrawerContainerSize)size.enumValueIndex == UIDrawerContainerSize.FixedSize;
             AnimBool containerFixedSize = GetAnimBool(UIDrawerContainerSize.FixedSize.ToString(), fixedSizeSelected);
             containerFixedSize.target = fixedSizeSelected;
 
@@ -801,7 +801,7 @@ namespace Doozy.Editor.UI
         {
             if (Target.HasArrow)
             {
-                Undo.RecordObjects(new Object[] {Target.Container.RectTransform, Target.Arrow.Container}, "Update Container");
+                Undo.RecordObjects(new Object[] { Target.Container.RectTransform, Target.Arrow.Container }, "Update Container");
                 Target.UpdateContainer();
                 Target.UpdateArrowContainer();
             }

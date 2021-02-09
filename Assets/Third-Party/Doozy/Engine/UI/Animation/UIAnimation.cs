@@ -23,12 +23,12 @@ namespace Doozy.Engine.UI.Animation
                 switch (AnimationType)
                 {
                     case AnimationType.Undefined: return false;
-                    case AnimationType.Show:      return Move.Enabled || Rotate.Enabled || Scale.Enabled || Fade.Enabled;
-                    case AnimationType.Hide:      return Move.Enabled || Rotate.Enabled || Scale.Enabled || Fade.Enabled;
-                    case AnimationType.Loop:      return Move.Enabled || Rotate.Enabled || Scale.Enabled || Fade.Enabled;
-                    case AnimationType.Punch:     return Move.Enabled || Rotate.Enabled || Scale.Enabled;
-                    case AnimationType.State:     return Move.Enabled || Rotate.Enabled || Scale.Enabled || Fade.Enabled;
-                    default:                      return false;
+                    case AnimationType.Show: return Move.Enabled || Rotate.Enabled || Scale.Enabled || Fade.Enabled;
+                    case AnimationType.Hide: return Move.Enabled || Rotate.Enabled || Scale.Enabled || Fade.Enabled;
+                    case AnimationType.Loop: return Move.Enabled || Rotate.Enabled || Scale.Enabled || Fade.Enabled;
+                    case AnimationType.Punch: return Move.Enabled || Rotate.Enabled || Scale.Enabled;
+                    case AnimationType.State: return Move.Enabled || Rotate.Enabled || Scale.Enabled || Fade.Enabled;
+                    default: return false;
                 }
             }
         }
@@ -45,7 +45,7 @@ namespace Doozy.Engine.UI.Animation
                                  Fade.Enabled ? Fade.StartDelay : 10000);
             }
         }
-        
+
         /// <summary> Returns the maximum duration (including start delay) of the animation </summary>
         public float TotalDuration
         {
@@ -119,13 +119,13 @@ namespace Doozy.Engine.UI.Animation
         public UIAnimation Copy()
         {
             return new UIAnimation(AnimationType)
-                   {
-                       AnimationType = AnimationType,
-                       Move = Move.Copy(),
-                       Rotate = Rotate.Copy(),
-                       Scale = Scale.Copy(),
-                       Fade = Fade.Copy()
-                   };
+            {
+                AnimationType = AnimationType,
+                Move = Move.Copy(),
+                Rotate = Rotate.Copy(),
+                Scale = Scale.Copy(),
+                Fade = Fade.Copy()
+            };
         }
 
         #endregion

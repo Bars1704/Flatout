@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Nody.Attributes;
 using Doozy.Engine.Nody.Connections;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.SceneManagement;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -76,7 +76,7 @@ namespace Doozy.Engine.UI.Nodes
         [NonSerialized] private double m_timerStart;
         [NonSerialized] private float m_timeDelay;
 
-        public float TimerProgress { get { return Mathf.Clamp01(m_timerIsActive ? (float) (Time.realtimeSinceStartup - m_timerStart) / m_timeDelay : 0f); } }
+        public float TimerProgress { get { return Mathf.Clamp01(m_timerIsActive ? (float)(Time.realtimeSinceStartup - m_timerStart) / m_timeDelay : 0f); } }
 
         public string WaitForInfoTitle
         {
@@ -90,13 +90,13 @@ namespace Doozy.Engine.UI.Nodes
                                     ? "[" + DurationMin + " - " + DurationMax + "]"
                                     : Duration + "")
                                + " " + UILabels.Seconds;
-                    case WaitType.GameEvent:         return UILabels.GameEvent;
-                    case WaitType.SceneLoad:         return UILabels.SceneLoad;
-                    case WaitType.SceneUnload:       return UILabels.SceneUnload;
+                    case WaitType.GameEvent: return UILabels.GameEvent;
+                    case WaitType.SceneLoad: return UILabels.SceneLoad;
+                    case WaitType.SceneUnload: return UILabels.SceneUnload;
                     case WaitType.ActiveSceneChange: return UILabels.ActiveSceneChange;
-                    case WaitType.UIView:            return "UIView " + UIViewTriggerAction;
-                    case WaitType.UIButton:          return "UIButton " + UIButtonTriggerAction;
-                    case WaitType.UIDrawer:          return "UIDrawer " + UIDrawerTriggerAction;
+                    case WaitType.UIView: return "UIView " + UIViewTriggerAction;
+                    case WaitType.UIButton: return "UIButton " + UIButtonTriggerAction;
+                    case WaitType.UIDrawer: return "UIDrawer " + UIDrawerTriggerAction;
                 }
 
                 return "---";
@@ -133,7 +133,7 @@ namespace Doozy.Engine.UI.Nodes
                         }
 
                         break;
-                    case WaitType.UIView:   return AnyValue ? UILabels.AnyUIView : ViewCategory + " / " + ViewName;
+                    case WaitType.UIView: return AnyValue ? UILabels.AnyUIView : ViewCategory + " / " + ViewName;
                     case WaitType.UIButton: return AnyValue ? UILabels.AnyUIButton : ButtonCategory + " / " + ButtonName;
                     case WaitType.UIDrawer: return AnyValue ? UILabels.AnyUIDrawer : DrawerName;
                 }
@@ -161,7 +161,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var node = (WaitNode) original;
+            var node = (WaitNode)original;
             GetSceneBy = node.GetSceneBy;
             WaitFor = node.WaitFor;
             AnyValue = node.AnyValue;
@@ -216,7 +216,7 @@ namespace Doozy.Engine.UI.Nodes
         private void UpdateCurrentDuration()
         {
             CurrentDuration = RandomDuration ? Random.Range(DurationMin, DurationMax) : Duration;
-            CurrentDuration = (float) Math.Round(CurrentDuration, 2);
+            CurrentDuration = (float)Math.Round(CurrentDuration, 2);
         }
 
         private void StartWait()

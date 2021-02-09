@@ -22,7 +22,7 @@ namespace Doozy.Editor.UI.Input
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (KeyToGameEvent) target;
+                m_target = (KeyToGameEvent)target;
                 return m_target;
             }
         }
@@ -59,7 +59,7 @@ namespace Doozy.Editor.UI.Input
         {
             base.OnEnable();
 
-            m_alternateExpanded = GetAnimBool(m_enableAlternateInputs.propertyPath, (InputMode) m_inputMode.enumValueIndex != InputMode.None);
+            m_alternateExpanded = GetAnimBool(m_enableAlternateInputs.propertyPath, (InputMode)m_inputMode.enumValueIndex != InputMode.None);
         }
 
         public override void OnInspectorGUI()
@@ -86,7 +86,7 @@ namespace Doozy.Editor.UI.Input
                                                       ComponentColorName);
             GUILayout.Space(DGUI.Properties.Space());
 
-            var inputMode = (InputMode) m_inputMode.enumValueIndex;
+            var inputMode = (InputMode)m_inputMode.enumValueIndex;
             ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName(inputMode != InputMode.None, ComponentColorName);
             ColorName textColorName = DGUI.Colors.GetTextColorName(inputMode != InputMode.None, ComponentColorName);
 
@@ -194,9 +194,9 @@ namespace Doozy.Editor.UI.Input
                                                       DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2),
                                                       ComponentColorName,
                                                       ComponentColorName);
-            
+
             GUILayout.Space(DGUI.Properties.Space());
-            
+
             DGUI.Line.Draw(false, ComponentColorName,
                            () =>
                            {

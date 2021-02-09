@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Nody.Nodes;
 using System;
 using System.Collections.Generic;
-using Doozy.Engine.Nody.Nodes;
 using UnityEngine;
 
 namespace Doozy.Engine.Nody.Models
@@ -178,7 +178,7 @@ namespace Doozy.Engine.Nody.Models
             ActiveNode = GetStartOrEnterNode();
             ActiveNode.SetActiveGraph(this);
             ActiveNode.OnEnter(null, null);
-//            ActivateGlobalNodes();
+            //            ActivateGlobalNodes();
         }
 
         /// <summary> Returns TRUE if the passed Node is found in the graph </summary>

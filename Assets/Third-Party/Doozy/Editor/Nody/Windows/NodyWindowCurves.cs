@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -56,7 +56,7 @@ namespace Doozy.Editor.Nody.Windows
             //A node is selected and the Alt Key is not pressed -> show the connection color depending on socket type of this node (if it is an output or an input one)
             if (WindowSettings.SelectedNodes.Count == 1 && !m_altKeyPressed)
             {
-//                Node selectedNode = NodesDatabase[m_selectedNodes.Ids[0]];
+                //                Node selectedNode = NodesDatabase[m_selectedNodes.Ids[0]];
                 Node selectedNode = WindowSettings.SelectedNodes[0];
                 if (selectedNode == null) return;
                 if (selectedNode.ContainsConnection(vc.ConnectionId))
@@ -147,7 +147,7 @@ namespace Doozy.Editor.Nody.Windows
             if (!MouseInsideWindow) return;                  //if the mouse is not inside the window -> return (DO NOT PLAY ANIMATION)
             if (!m_animateInput && !m_animateOutput) return; //if the animation is not enabled for both points -> return (DO NOT PLAY ANIMATION)
 
-            m_numberOfPoints = (int) (Vector2.Distance(vc.OutputVirtualPoint.Rect.position,
+            m_numberOfPoints = (int)(Vector2.Distance(vc.OutputVirtualPoint.Rect.position,
                                                        vc.InputVirtualPoint.Rect.position) *
                                       NodySettings.Instance.CurvePointsMultiplier); //points multiplier - useful for a smooth dot travel - smaller means fewer travel point (makes the point 'jumpy') and higher means more travel points (make the point move smoothly)
             if (m_numberOfPoints <= 0) return;
@@ -161,8 +161,8 @@ namespace Doozy.Editor.Nody.Windows
             m_numberOfPoints--; //we set the number of points as the bezierPoints length - 1
 
             if (m_animateInput)
-                m_dotPointIndex = (int) (AnimationTime * m_numberOfPoints);
-            else if (m_animateOutput) m_dotPointIndex = m_numberOfPoints - (int) ((1 - AnimationTime) * m_numberOfPoints);
+                m_dotPointIndex = (int)(AnimationTime * m_numberOfPoints);
+            else if (m_animateOutput) m_dotPointIndex = m_numberOfPoints - (int)((1 - AnimationTime) * m_numberOfPoints);
 
             m_dotPointIndex = Mathf.Clamp(m_dotPointIndex, 0, m_numberOfPoints);
 
@@ -183,7 +183,7 @@ namespace Doozy.Editor.Nody.Windows
 
         private void CalculateAllConnectionCurves()
         {
-//            bool foundNullVirtualConnection = false;
+            //            bool foundNullVirtualConnection = false;
 
             foreach (VirtualConnection virtualConnection in ConnectionsDatabase.Values)
             {
@@ -197,14 +197,14 @@ namespace Doozy.Editor.Nody.Windows
                 CalculateConnectionCurve(virtualConnection);
             }
 
-//            if (foundNullVirtualConnection) ConstructGraphGUI();
+            //            if (foundNullVirtualConnection) ConstructGraphGUI();
         }
 
         private void CalculateAllPointRects()
         {
             foreach (string key in PointsDatabase.Keys)
-            foreach (VirtualPoint virtualPoint in PointsDatabase[key])
-                virtualPoint.CalculateRect();
+                foreach (VirtualPoint virtualPoint in PointsDatabase[key])
+                    virtualPoint.CalculateRect();
 
             m_recalculateAllPointRects = false;
         }
@@ -307,22 +307,22 @@ namespace Doozy.Editor.Nody.Windows
             Rect inputSocketWorldRect = GetSocketWorldRect(vc.InputSocket);
 
             //get position values needed to determine the connection points and curve settings
-//            float outputSocketCenter = (outputSocketWorldRect.center.x + PanOffset.x) / Zoom;
+            //            float outputSocketCenter = (outputSocketWorldRect.center.x + PanOffset.x) / Zoom;
             float outputSocketCenter = outputSocketWorldRect.center.x;
-//            float inputSocketCenter = (inputSocketWorldRect.center.x + PanOffset.x) / Zoom;
+            //            float inputSocketCenter = (inputSocketWorldRect.center.x + PanOffset.x) / Zoom;
             float inputSocketCenter = inputSocketWorldRect.center.x;
 
             //get the closest virtual points for both sockets
             float minDistance = 100000;
             foreach (VirtualPoint outputVirtualPoint in outputVirtualPoints)
-            foreach (VirtualPoint inputVirtualPoint in inputVirtualPoints)
-            {
-                float currentDistance = Vector2.Distance(outputVirtualPoint.Rect.position, inputVirtualPoint.Rect.position);
-                if (currentDistance > minDistance) continue;
-                vc.OutputVirtualPoint = outputVirtualPoint;
-                vc.InputVirtualPoint = inputVirtualPoint;
-                minDistance = currentDistance;
-            }
+                foreach (VirtualPoint inputVirtualPoint in inputVirtualPoints)
+                {
+                    float currentDistance = Vector2.Distance(outputVirtualPoint.Rect.position, inputVirtualPoint.Rect.position);
+                    if (currentDistance > minDistance) continue;
+                    vc.OutputVirtualPoint = outputVirtualPoint;
+                    vc.InputVirtualPoint = inputVirtualPoint;
+                    minDistance = currentDistance;
+                }
 
             //set both the output and the input points as their respective tangents
             Vector2 zoomedPanOffset = CurrentPanOffset / CurrentZoom;
@@ -346,7 +346,7 @@ namespace Doozy.Editor.Nody.Windows
             if (outputSocketCenter < inputSocketCenter && outputSocketCenter <= inputPoint.x ||
                 outputSocketCenter >= inputSocketCenter && outputPoint.x >= inputSocketCenter && outputSocketCenter <= inputPoint.x)
             {
-//                DDebug.Log("OUTPUT RIGHT");
+                //                DDebug.Log("OUTPUT RIGHT");
                 if (outputPoint.x <= inputSocketCenter + widthDifference / 2 && inputSocketCenter > outputPoint.x)
                 {
                     outputTangentArcDirection = Vector2.right;
@@ -361,7 +361,7 @@ namespace Doozy.Editor.Nody.Windows
             //OUTPUT LEFT CONNECTION
             else
             {
-//                DDebug.Log("OUTPUT LEFT");
+                //                DDebug.Log("OUTPUT LEFT");
                 if (outputPoint.x >= inputSocketCenter)
                 {
                     outputTangentArcDirection = Vector2.left;

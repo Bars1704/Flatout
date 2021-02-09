@@ -91,7 +91,7 @@ namespace Doozy.Engine.Progress
         public float InverseProgress { get { return 1 - Progress; } }
 
         private bool DebugComponent { get { return DebugMode || DoozySettings.Instance.DebugProgressorGroup; } }
-        
+
         #endregion
 
         #region Private Variables
@@ -139,7 +139,7 @@ namespace Doozy.Engine.Progress
 
             float totalProgress = 0;
             int progressorCount = 0;
-            
+
             for (int i = Progressors.Count - 1; i >= 0; i--)
             {
                 if (Progressors[i] == null) continue;
@@ -152,16 +152,16 @@ namespace Doozy.Engine.Progress
             if (newProgressValue > 1 - TOLERANCE) newProgressValue = 1;
             Progress = newProgressValue;
         }
-        
+
         /// <summary> Get either the Progress or the InverseProgress value, depending on the requested direction </summary>
         /// <param name="direction"> Progress Direction to return </param>
         public float GetProgress(TargetProgress direction)
         {
             switch (direction)
             {
-                case TargetProgress.Progress:   return Progress;
+                case TargetProgress.Progress: return Progress;
                 case TargetProgress.InverseProgress: return InverseProgress;
-                default:                      throw new ArgumentOutOfRangeException("direction", direction, null);
+                default: throw new ArgumentOutOfRangeException("direction", direction, null);
             }
         }
 
@@ -180,7 +180,7 @@ namespace Doozy.Engine.Progress
         /// <summary> Invokes the OnProgressChanged and OnInverseProgressChanged events </summary>
         private void OnProgressUpdated()
         {
-            if (DebugComponent) DDebug.Log( "[" + name + "] Progress: " + Progress + " / Inverse Progress: " + InverseProgress, this);
+            if (DebugComponent) DDebug.Log("[" + name + "] Progress: " + Progress + " / Inverse Progress: " + InverseProgress, this);
             OnProgressChanged.Invoke(Progress);
             OnInverseProgressChanged.Invoke(InverseProgress);
         }

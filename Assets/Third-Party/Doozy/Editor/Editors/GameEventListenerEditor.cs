@@ -23,7 +23,7 @@ namespace Doozy.Editor
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (GameEventListener) target;
+                m_target = (GameEventListener)target;
                 return m_target;
             }
         }

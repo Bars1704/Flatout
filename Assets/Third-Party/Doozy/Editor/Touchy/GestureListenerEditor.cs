@@ -24,7 +24,7 @@ namespace Doozy.Editor.Touchy
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (GestureListener) target;
+                m_target = (GestureListener)target;
                 return m_target;
             }
         }

@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using DG.Tweening;
 using Doozy.Engine.Nody.Attributes;
 using Doozy.Engine.Nody.Connections;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 namespace Doozy.Engine.UI.Nodes
@@ -37,7 +37,7 @@ namespace Doozy.Engine.UI.Nodes
         public bool WaitForAnimationToFinish = DEFAULT_WAIT_FOR_ANIMATION_TO_FINISH;
 
         private string GetAnimationId { get { return "TimeScale Animation"; } }
-        public float TimerProgress { get { return Mathf.Clamp01(m_timerIsActive ? (float) (Time.realtimeSinceStartup - m_timerStart) / m_timeDuration : 0f); } }
+        public float TimerProgress { get { return Mathf.Clamp01(m_timerIsActive ? (float)(Time.realtimeSinceStartup - m_timerStart) / m_timeDuration : 0f); } }
 
         [NonSerialized] private Sequence m_animationSequence;
         [NonSerialized] private bool m_timerIsActive;
@@ -63,7 +63,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var node = (TimeScaleNode) original;
+            var node = (TimeScaleNode)original;
             TargetValue = node.TargetValue;
             AnimateValue = node.AnimateValue;
             AnimationDuration = node.AnimationDuration;

@@ -45,25 +45,25 @@ namespace Doozy.Engine
 
         #region Unity Methods
 
-        #if UNITY_2019_3_OR_NEWER
+#if UNITY_2019_3_OR_NEWER
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void RunOnStart()
         {
             ApplicationIsQuitting = false;
         }
-        #endif
-        
+#endif
+
         private void Awake()
         {
             if (s_instance != null && s_instance != this)
             {
-//                DDebug.Log("There cannot be two " + typeof(Coroutiner) + "' active at the same time. Destroying this one!");
+                //                DDebug.Log("There cannot be two " + typeof(Coroutiner) + "' active at the same time. Destroying this one!");
                 Destroy(gameObject);
                 return;
             }
 
             s_instance = this;
-//            DontDestroyOnLoad(gameObject);
+            //            DontDestroyOnLoad(gameObject);
         }
 
         private void OnApplicationQuit() { ApplicationIsQuitting = true; }
@@ -95,8 +95,8 @@ namespace Doozy.Engine
         /// <param name="enumerator"> Target enumerator </param>
         public static Coroutine Start(IEnumerator enumerator)
         {
-            return Instance != null && enumerator != null 
-                       ? Instance.StartLocalCoroutine(enumerator) 
+            return Instance != null && enumerator != null
+                       ? Instance.StartLocalCoroutine(enumerator)
                        : null;
         }
 

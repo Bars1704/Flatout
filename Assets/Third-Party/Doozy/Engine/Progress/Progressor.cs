@@ -255,7 +255,7 @@ namespace Doozy.Engine.Progress
         /// <param name="instantUpdate"> If TRUE, the current Value will not get animated even if AnimateValue is set to TRUE </param>
         public void SetValue(float value, bool instantUpdate)
         {
-//            m_previousValue = Value;
+            //            m_previousValue = Value;
             value = ClampValueBetweenMinAndMax(value, m_wholeNumbers);
             if (Math.Abs(value - Value) < TOLERANCE) return;
 
@@ -312,9 +312,9 @@ namespace Doozy.Engine.Progress
         {
             switch (direction)
             {
-                case TargetProgress.Progress:        return Progress;
+                case TargetProgress.Progress: return Progress;
                 case TargetProgress.InverseProgress: return InverseProgress;
-                default:                             throw new ArgumentOutOfRangeException("direction", direction, null);
+                default: throw new ArgumentOutOfRangeException("direction", direction, null);
             }
         }
 
@@ -411,7 +411,7 @@ namespace Doozy.Engine.Progress
         public Tweener GetAnimationTween(float targetValue, float duration, Ease ease, bool ignoreTimescale)
         {
             return DOTween.To(() => m_currentValue, x => m_currentValue = x, targetValue, duration)
-//                          .SetSpeedBased(true)
+                          //                          .SetSpeedBased(true)
                           .SetId(this)
                           .SetEase(ease)
                           .SetUpdate(ignoreTimescale)
@@ -442,7 +442,7 @@ namespace Doozy.Engine.Progress
 
         private void KillTweener(bool complete = false)
         {
-            if(!m_tweenInitialized) return;
+            if (!m_tweenInitialized) return;
             m_tween.Kill(complete);
             m_tweenInitialized = false;
         }

@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Linq;
 using Doozy.Editor.Windows;
 using Doozy.Engine.Themes;
 using Doozy.Engine.Utils;
+using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -31,7 +31,7 @@ namespace Doozy.Editor.Themes
             /// <summary> The UI object cannot be selected </summary>
             Disabled,
         }
-        
+
         private static UILanguagePack UILabels { get { return UILanguagePack.Instance; } }
 
         public static void DrawOverrideAlpha(SerializedProperty overrideAlphaProperty, SerializedProperty alphaProperty, float currentAlpha,
@@ -86,7 +86,7 @@ namespace Doozy.Editor.Themes
                                            themeData = database.Themes[themeIndex];
                                            foreach (Object o in targets)
                                            {
-                                               var themeTarget = (ThemeTarget) o;
+                                               var themeTarget = (ThemeTarget)o;
                                                if (themeTarget == null) continue;
                                                themeTarget.ThemeId = themeData.Id;
                                            }
@@ -96,7 +96,7 @@ namespace Doozy.Editor.Themes
 
                                            foreach (Object o in targets)
                                            {
-                                               var themeTarget = (ThemeTarget) o;
+                                               var themeTarget = (ThemeTarget)o;
                                                if (themeTarget == null) continue;
 
                                                if (!themeData.ContainsColorProperty(themeTarget.PropertyId))
@@ -171,7 +171,7 @@ namespace Doozy.Editor.Themes
             if (themeData.ColorLabels.Count != themeData.ActiveVariant.Colors.Count)
                 foreach (LabelId labelId in themeData.ColorLabels.Where(labelId => !themeData.ActiveVariant.ContainsColor(labelId.Id)))
                     themeData.ActiveVariant.AddColorProperty(labelId.Id);
-            
+
             for (int i = 0; i < themeData.ColorLabels.Count; i++)
             {
                 LabelId colorProperty = themeData.ColorLabels[i];
@@ -189,7 +189,7 @@ namespace Doozy.Editor.Themes
                                 DoozyUtils.UndoRecordObjects(targets, UILabels.UpdateValue);
                                 foreach (Object o in targets)
                                 {
-                                    var themeTarget = (ThemeTarget) o;
+                                    var themeTarget = (ThemeTarget)o;
                                     if (themeTarget == null) continue;
                                     themeTarget.PropertyId = themeData.ColorLabels[index].Id;
                                     themeTarget.UpdateTarget(themeData);
@@ -213,18 +213,18 @@ namespace Doozy.Editor.Themes
                 GUILayout.Space(DGUI.Properties.Space());
             }
         }
-        
+
         public static void DrawSpriteProperties(ThemeData themeData, int propertyIndex,
                                                 SerializedObject serializedObject, Object[] targets, ThemeTarget target,
                                                 ColorName componentColorName, Color initialGUIColor)
         {
             GUIStyle buttonStyleDisabled = Styles.GetStyle(Styles.StyleName.CheckBoxDisabled);
             GUIStyle buttonStyleEnabled = Styles.GetStyle(Styles.StyleName.CheckBoxEnabled);
-            
+
             if (themeData.SpriteLabels.Count != themeData.ActiveVariant.Sprites.Count)
                 foreach (LabelId labelId in themeData.SpriteLabels.Where(labelId => !themeData.ActiveVariant.ContainsSprite(labelId.Id)))
                     themeData.ActiveVariant.AddSpriteProperty(labelId.Id);
-            
+
             for (int i = 0; i < themeData.SpriteLabels.Count; i++)
             {
                 LabelId spriteProperty = themeData.SpriteLabels[i];
@@ -240,7 +240,7 @@ namespace Doozy.Editor.Themes
                             DoozyUtils.UndoRecordObjects(targets, UILabels.UpdateValue);
                             foreach (Object o in targets)
                             {
-                                var themeTarget = (ThemeTarget) o;
+                                var themeTarget = (ThemeTarget)o;
                                 if (themeTarget == null) continue;
                                 themeTarget.PropertyId = themeData.SpriteLabels[index].Id;
                                 themeTarget.UpdateTarget(themeData);
@@ -271,11 +271,11 @@ namespace Doozy.Editor.Themes
         {
             GUIStyle buttonStyleDisabled = Styles.GetStyle(Styles.StyleName.CheckBoxDisabled);
             GUIStyle buttonStyleEnabled = Styles.GetStyle(Styles.StyleName.CheckBoxEnabled);
-            
+
             if (themeData.TextureLabels.Count != themeData.ActiveVariant.Textures.Count)
                 foreach (LabelId labelId in themeData.TextureLabels.Where(labelId => !themeData.ActiveVariant.ContainsTexture(labelId.Id)))
                     themeData.ActiveVariant.AddTextureProperty(labelId.Id);
-            
+
             for (int i = 0; i < themeData.TextureLabels.Count; i++)
             {
                 LabelId textureProperty = themeData.TextureLabels[i];
@@ -291,7 +291,7 @@ namespace Doozy.Editor.Themes
                             DoozyUtils.UndoRecordObjects(targets, UILabels.UpdateValue);
                             foreach (Object o in targets)
                             {
-                                var themeTarget = (ThemeTarget) o;
+                                var themeTarget = (ThemeTarget)o;
                                 if (themeTarget == null) continue;
                                 themeTarget.PropertyId = themeData.TextureLabels[index].Id;
                                 themeTarget.UpdateTarget(themeData);
@@ -322,11 +322,11 @@ namespace Doozy.Editor.Themes
         {
             GUIStyle buttonStyleDisabled = Styles.GetStyle(Styles.StyleName.CheckBoxDisabled);
             GUIStyle buttonStyleEnabled = Styles.GetStyle(Styles.StyleName.CheckBoxEnabled);
-            
+
             if (themeData.FontLabels.Count != themeData.ActiveVariant.Fonts.Count)
                 foreach (LabelId labelId in themeData.FontLabels.Where(labelId => !themeData.ActiveVariant.ContainsFont(labelId.Id)))
                     themeData.ActiveVariant.AddFontProperty(labelId.Id);
-            
+
             for (int i = 0; i < themeData.FontLabels.Count; i++)
             {
                 LabelId fontProperty = themeData.FontLabels[i];
@@ -342,7 +342,7 @@ namespace Doozy.Editor.Themes
                             DoozyUtils.UndoRecordObjects(targets, UILabels.UpdateValue);
                             foreach (Object o in targets)
                             {
-                                var themeTarget = (ThemeTarget) o;
+                                var themeTarget = (ThemeTarget)o;
                                 if (themeTarget == null) continue;
                                 themeTarget.PropertyId = themeData.FontLabels[index].Id;
                                 themeTarget.UpdateTarget(themeData);
@@ -373,13 +373,13 @@ namespace Doozy.Editor.Themes
         {
             GUIStyle buttonStyleDisabled = Styles.GetStyle(Styles.StyleName.CheckBoxDisabled);
             GUIStyle buttonStyleEnabled = Styles.GetStyle(Styles.StyleName.CheckBoxEnabled);
-            
+
 #if dUI_TextMeshPro
             if (themeData.FontAssetLabels.Count != themeData.ActiveVariant.FontAssets.Count)
                 foreach (LabelId labelId in themeData.FontAssetLabels.Where(labelId => !themeData.ActiveVariant.ContainsFontAsset(labelId.Id)))
                     themeData.ActiveVariant.AddFontAssetProperty(labelId.Id);
 #endif
-            
+
             for (int i = 0; i < themeData.FontAssetLabels.Count; i++)
             {
                 LabelId fontAssetProperty = themeData.FontAssetLabels[i];
@@ -395,7 +395,7 @@ namespace Doozy.Editor.Themes
                             DoozyUtils.UndoRecordObjects(targets, UILabels.UpdateValue);
                             foreach (Object o in targets)
                             {
-                                var themeTarget = (ThemeTarget) o;
+                                var themeTarget = (ThemeTarget)o;
                                 if (themeTarget == null) continue;
                                 themeTarget.PropertyId = themeData.FontAssetLabels[index].Id;
                                 themeTarget.UpdateTarget(themeData);

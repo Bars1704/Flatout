@@ -295,7 +295,7 @@ namespace Doozy.Engine.UI.Animation
         public static void Move(RectTransform target, UIAnimation animation, Vector3 startValue, Vector3 endValue, bool instantAction = false, UnityAction onStartCallback = null, UnityAction onCompleteCallback = null)
         {
             if (!animation.Move.Enabled && !instantAction) return;
-            
+
             if (instantAction)
             {
                 target.anchoredPosition3D = endValue;
@@ -331,7 +331,7 @@ namespace Doozy.Engine.UI.Animation
         public static void Rotate(RectTransform target, UIAnimation animation, Vector3 startValue, Vector3 endValue, bool instantAction = false, UnityAction onStartCallback = null, UnityAction onCompleteCallback = null)
         {
             if (!animation.Rotate.Enabled && !instantAction) return;
-            
+
             if (instantAction)
             {
                 target.localRotation = Quaternion.Euler(endValue);
@@ -405,7 +405,7 @@ namespace Doozy.Engine.UI.Animation
         public static void Fade(RectTransform target, UIAnimation animation, float startValue, float endValue, bool instantAction = false, UnityAction onStartCallback = null, UnityAction onCompleteCallback = null)
         {
             if (!animation.Fade.Enabled && !instantAction) return;
-            
+
             CanvasGroup canvasGroup = target.GetComponent<CanvasGroup>() ?? target.gameObject.AddComponent<CanvasGroup>();
             if (instantAction)
             {
@@ -448,7 +448,7 @@ namespace Doozy.Engine.UI.Animation
 
             // positionA <---> startPosition <---> positionB
             Vector3 positionA = MoveLoopPositionA(animation, startValue);
-//            Vector3 positionB = MoveLoopPositionB(animation, startValue);
+            //            Vector3 positionB = MoveLoopPositionB(animation, startValue);
 
             Sequence loopSequence = DOTween.Sequence()
                                            .SetId(GetTweenId(target, animation.AnimationType, AnimationAction.Move))
@@ -502,7 +502,7 @@ namespace Doozy.Engine.UI.Animation
 
             // rotationA <---> startRotation <---> rotationB
             Vector3 rotationA = RotateLoopRotationA(animation, startValue);
-//            Vector3 rotationB = RotateLoopRotationB(animation, startValue);
+            //            Vector3 rotationB = RotateLoopRotationB(animation, startValue);
 
             Sequence loopSequence = DOTween.Sequence()
                                            .SetId(GetTweenId(target, animation.AnimationType, AnimationAction.Rotate))
@@ -869,7 +869,7 @@ namespace Doozy.Engine.UI.Animation
             {
                 case AnimationType.Show: return animation.Move.UseCustomFromAndTo ? animation.Move.From : GetToPositionByDirection(target, animation, animation.Move.UseCustomFromAndTo ? animation.Move.CustomPosition : startValue);
                 case AnimationType.Hide: return animation.Move.UseCustomFromAndTo ? animation.Move.From : startValue;
-                default:                 return DEFAULT_START_POSITION;
+                default: return DEFAULT_START_POSITION;
             }
         }
 
@@ -884,7 +884,7 @@ namespace Doozy.Engine.UI.Animation
             {
                 case AnimationType.Show: return animation.Move.UseCustomFromAndTo ? animation.Move.To : startValue;
                 case AnimationType.Hide: return animation.Move.UseCustomFromAndTo ? animation.Move.To : GetToPositionByDirection(target, animation, animation.Move.UseCustomFromAndTo ? animation.Move.CustomPosition : startValue);
-                default:                 return DEFAULT_START_POSITION;
+                default: return DEFAULT_START_POSITION;
             }
         }
 
@@ -898,7 +898,7 @@ namespace Doozy.Engine.UI.Animation
             {
                 case AnimationType.Show: return animation.Rotate.From;
                 case AnimationType.Hide: return animation.Rotate.UseCustomFromAndTo ? animation.Rotate.From : startValue;
-                default:                 return DEFAULT_START_ROTATION;
+                default: return DEFAULT_START_ROTATION;
             }
         }
 
@@ -912,7 +912,7 @@ namespace Doozy.Engine.UI.Animation
             {
                 case AnimationType.Show: return animation.Rotate.UseCustomFromAndTo ? animation.Rotate.To : startValue;
                 case AnimationType.Hide: return animation.Rotate.To;
-                default:                 return DEFAULT_START_ROTATION;
+                default: return DEFAULT_START_ROTATION;
             }
         }
 
@@ -922,16 +922,16 @@ namespace Doozy.Engine.UI.Animation
         public static Vector3 GetAnimationScaleFrom(UIAnimation animation, Vector3 startValue)
         {
             Vector3 value;
-            
+
             // ReSharper disable once SwitchStatementMissingSomeCases
             switch (animation.AnimationType)
             {
                 case AnimationType.Show: value = animation.Scale.From; break;
                 case AnimationType.Hide: value = animation.Scale.UseCustomFromAndTo ? animation.Scale.From : startValue; break;
-                default:                 value = DEFAULT_START_SCALE; break;
+                default: value = DEFAULT_START_SCALE; break;
             }
 
-            return new Vector3(value.x, value.y, 1f);;
+            return new Vector3(value.x, value.y, 1f); ;
         }
 
         /// <summary> Returns a ScaleTo value depending on the given animation settings and the animation start scale </summary>
@@ -940,16 +940,16 @@ namespace Doozy.Engine.UI.Animation
         public static Vector3 GetAnimationScaleTo(UIAnimation animation, Vector3 startValue)
         {
             Vector3 value;
-            
+
             // ReSharper disable once SwitchStatementMissingSomeCases
             switch (animation.AnimationType)
             {
-                case AnimationType.Show:  value = animation.Scale.UseCustomFromAndTo ? animation.Scale.To : startValue;  break;
-                case AnimationType.Hide:  value = animation.Scale.To; break;
-                default:                  value = DEFAULT_START_SCALE; break;
+                case AnimationType.Show: value = animation.Scale.UseCustomFromAndTo ? animation.Scale.To : startValue; break;
+                case AnimationType.Hide: value = animation.Scale.To; break;
+                default: value = DEFAULT_START_SCALE; break;
             }
-            
-            return new Vector3(value.x, value.y, 1f);;
+
+            return new Vector3(value.x, value.y, 1f); ;
         }
 
         /// <summary> Returns a FadeFrom value depending on the given animation settings and the animation start alpha </summary>
@@ -962,7 +962,7 @@ namespace Doozy.Engine.UI.Animation
             {
                 case AnimationType.Show: return animation.Fade.From;
                 case AnimationType.Hide: return animation.Fade.UseCustomFromAndTo ? animation.Fade.From : startValue;
-                default:                 return DEFAULT_START_ALPHA;
+                default: return DEFAULT_START_ALPHA;
             }
         }
 
@@ -976,7 +976,7 @@ namespace Doozy.Engine.UI.Animation
             {
                 case AnimationType.Show: return animation.Fade.UseCustomFromAndTo ? animation.Fade.To : startValue;
                 case AnimationType.Hide: return animation.Fade.To;
-                default:                 return DEFAULT_START_ALPHA;
+                default: return DEFAULT_START_ALPHA;
             }
         }
 
@@ -986,21 +986,21 @@ namespace Doozy.Engine.UI.Animation
         {
             switch (direction)
             {
-                case Direction.Left:           return Direction.Right;
-                case Direction.Right:          return Direction.Left;
-                case Direction.Top:            return Direction.Bottom;
-                case Direction.Bottom:         return Direction.Top;
-                case Direction.TopLeft:        return Direction.BottomRight;
-                case Direction.TopCenter:      return Direction.BottomCenter;
-                case Direction.TopRight:       return Direction.BottomLeft;
-                case Direction.MiddleLeft:     return Direction.MiddleRight;
-                case Direction.MiddleCenter:   return Direction.MiddleCenter;
-                case Direction.MiddleRight:    return Direction.MiddleLeft;
-                case Direction.BottomLeft:     return Direction.TopRight;
-                case Direction.BottomCenter:   return Direction.TopCenter;
-                case Direction.BottomRight:    return Direction.TopLeft;
+                case Direction.Left: return Direction.Right;
+                case Direction.Right: return Direction.Left;
+                case Direction.Top: return Direction.Bottom;
+                case Direction.Bottom: return Direction.Top;
+                case Direction.TopLeft: return Direction.BottomRight;
+                case Direction.TopCenter: return Direction.BottomCenter;
+                case Direction.TopRight: return Direction.BottomLeft;
+                case Direction.MiddleLeft: return Direction.MiddleRight;
+                case Direction.MiddleCenter: return Direction.MiddleCenter;
+                case Direction.MiddleRight: return Direction.MiddleLeft;
+                case Direction.BottomLeft: return Direction.TopRight;
+                case Direction.BottomCenter: return Direction.TopCenter;
+                case Direction.BottomRight: return Direction.TopLeft;
                 case Direction.CustomPosition: return Direction.CustomPosition;
-                default:                       return Direction.Left;
+                default: return Direction.Left;
             }
         }
 
@@ -1017,21 +1017,21 @@ namespace Doozy.Engine.UI.Animation
 
             switch (animation.Move.Direction)
             {
-                case Direction.Left:           return new Vector3(-xOffset, startValue.y, startValue.z);
-                case Direction.Right:          return new Vector3(xOffset, startValue.y, startValue.z);
-                case Direction.Top:            return new Vector3(startValue.x, yOffset, startValue.z);
-                case Direction.Bottom:         return new Vector3(startValue.x, -yOffset, startValue.z);
-                case Direction.TopLeft:        return new Vector3(-xOffset, yOffset, startValue.z);
-                case Direction.TopCenter:      return new Vector3(0, yOffset, startValue.z);
-                case Direction.TopRight:       return new Vector3(xOffset, yOffset, startValue.z);
-                case Direction.MiddleLeft:     return new Vector3(-xOffset, 0, startValue.z);
-                case Direction.MiddleCenter:   return new Vector3(0, 0, startValue.z);
-                case Direction.MiddleRight:    return new Vector3(xOffset, 0, startValue.z);
-                case Direction.BottomLeft:     return new Vector3(-xOffset, -yOffset, startValue.z);
-                case Direction.BottomCenter:   return new Vector3(0, -yOffset, startValue.z);
-                case Direction.BottomRight:    return new Vector3(xOffset, -yOffset, startValue.z);
+                case Direction.Left: return new Vector3(-xOffset, startValue.y, startValue.z);
+                case Direction.Right: return new Vector3(xOffset, startValue.y, startValue.z);
+                case Direction.Top: return new Vector3(startValue.x, yOffset, startValue.z);
+                case Direction.Bottom: return new Vector3(startValue.x, -yOffset, startValue.z);
+                case Direction.TopLeft: return new Vector3(-xOffset, yOffset, startValue.z);
+                case Direction.TopCenter: return new Vector3(0, yOffset, startValue.z);
+                case Direction.TopRight: return new Vector3(xOffset, yOffset, startValue.z);
+                case Direction.MiddleLeft: return new Vector3(-xOffset, 0, startValue.z);
+                case Direction.MiddleCenter: return new Vector3(0, 0, startValue.z);
+                case Direction.MiddleRight: return new Vector3(xOffset, 0, startValue.z);
+                case Direction.BottomLeft: return new Vector3(-xOffset, -yOffset, startValue.z);
+                case Direction.BottomCenter: return new Vector3(0, -yOffset, startValue.z);
+                case Direction.BottomRight: return new Vector3(xOffset, -yOffset, startValue.z);
                 case Direction.CustomPosition: return animation.Move.CustomPosition;
-                default:                       return Vector3.zero;
+                default: return Vector3.zero;
             }
         }
 

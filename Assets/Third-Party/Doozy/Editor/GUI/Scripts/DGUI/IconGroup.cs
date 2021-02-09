@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Doozy.Engine.Extensions;
 using UnityEditor;
 using UnityEngine;
 
@@ -72,7 +72,7 @@ namespace Doozy.Editor
                 GUI.color = initialColor;
             }
 
-            public static List<Data> GetIcon(bool enabled, float iconSize, GUIStyle enabledIcon, GUIStyle disabledIcon, ColorName enabledIconColorName, ColorName disabledIconColorName) { return new List<Data> {new Data(enabled, iconSize, enabledIcon, disabledIcon, enabledIconColorName, disabledIconColorName)}; }
+            public static List<Data> GetIcon(bool enabled, float iconSize, GUIStyle enabledIcon, GUIStyle disabledIcon, ColorName enabledIconColorName, ColorName disabledIconColorName) { return new List<Data> { new Data(enabled, iconSize, enabledIcon, disabledIcon, enabledIconColorName, disabledIconColorName) }; }
 
             public static List<Data> GetIconWithCounter(bool enabled, int counter, float iconSize, GUIStyle enabledIcon, GUIStyle disabledIcon, ColorName enabledIconColorName, ColorName disabledIconColorName)
             {
@@ -112,9 +112,9 @@ namespace Doozy.Editor
                         switch (m_dataType)
                         {
                             case Type.EmptySpace: return m_spacePixels;
-                            case Type.Text:       return m_textSize.x;
-                            case Type.Icon:       return m_iconSize.x;
-                            default:              throw new ArgumentOutOfRangeException();
+                            case Type.Text: return m_textSize.x;
+                            case Type.Icon: return m_iconSize.x;
+                            default: throw new ArgumentOutOfRangeException();
                         }
                     }
                 }
@@ -126,9 +126,9 @@ namespace Doozy.Editor
                         switch (m_dataType)
                         {
                             case Type.EmptySpace: return 0;
-                            case Type.Text:       return m_textSize.y;
-                            case Type.Icon:       return m_iconSize.y;
-                            default:              throw new ArgumentOutOfRangeException();
+                            case Type.Text: return m_textSize.y;
+                            case Type.Icon: return m_iconSize.y;
+                            default: throw new ArgumentOutOfRangeException();
                         }
                     }
                 }
@@ -194,7 +194,7 @@ namespace Doozy.Editor
                                 GUILayout.Space(m_spacePixels);
                                 break;
                             case Type.Text:
-                                GUILayout.Label(m_text, new GUIStyle {normal = {textColor = iconColor}, fontSize = (int) m_iconSize.y}, GUILayout.Width(m_textSize.x));
+                                GUILayout.Label(m_text, new GUIStyle { normal = { textColor = iconColor }, fontSize = (int)m_iconSize.y }, GUILayout.Width(m_textSize.x));
                                 GUILayout.Space(Properties.Space());
                                 break;
                             case Type.Icon:

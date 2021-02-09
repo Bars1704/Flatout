@@ -19,7 +19,7 @@ namespace Doozy.Editor.Nody.Editors
         protected override void OnEnable()
         {
             base.OnEnable();
-            m_startNode = (StartNode) target;
+            m_startNode = (StartNode)target;
             m_infoMessageNotConnected = new InfoMessage(InfoMessage.MessageType.Error, UILabels.NotConnectedTitle, UILabels.NotConnectedMessage);
         }
 

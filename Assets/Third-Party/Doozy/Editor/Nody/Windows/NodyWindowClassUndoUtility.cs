@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Engine.Nody.Models;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,7 +22,7 @@ namespace Doozy.Editor.Nody.Windows
         private void RecordUndo(string message)
         {
             if (m_undo == null) m_undo = new UndoUtility();           //init the UndoUtility if found null
-            m_undoObjectList = new List<Object> {this, CurrentGraph}; //add the graph to the list
+            m_undoObjectList = new List<Object> { this, CurrentGraph }; //add the graph to the list
             if (CurrentGraph != null && m_nodesDatabase != null)
                 foreach (Node node in NodesDatabase.Values)
                     m_undoObjectList.Add(node);
@@ -33,18 +33,18 @@ namespace Doozy.Editor.Nody.Windows
         /// <summary> Triggered when an UndoRedo action has been performed </summary>
         private void UndoRedoPerformed()
         {
-//            if (CurrentGraph != null)
-//            {
-//                //if any node that has been soft deleted has been bought back via the undo / redo operation -> we need to remove it from the soft delete database
-//                foreach (Node node in CurrentGraph.Nodes) //look through the node references list that the graph has
-//                    if (EditorSettings.DeletedNodes.Contains(node)) //check if any node id, that is currently referenced, if it's also in the soft delete list (the one recovered from editor prefs)
-//                    {
-//                        EditorSettings.DeletedNodes.Remove(node); //if a nose was found -> remove it from the soft delete nodes list in order to prevent the node deletion when entering play mode, or closing the graph
-//                        EditorSettings.SetDirty(false);
-//                    }
-//
-//                CurrentGraph.SetGraphDirty(); //mark graph dirty
-//            }
+            //            if (CurrentGraph != null)
+            //            {
+            //                //if any node that has been soft deleted has been bought back via the undo / redo operation -> we need to remove it from the soft delete database
+            //                foreach (Node node in CurrentGraph.Nodes) //look through the node references list that the graph has
+            //                    if (EditorSettings.DeletedNodes.Contains(node)) //check if any node id, that is currently referenced, if it's also in the soft delete list (the one recovered from editor prefs)
+            //                    {
+            //                        EditorSettings.DeletedNodes.Remove(node); //if a nose was found -> remove it from the soft delete nodes list in order to prevent the node deletion when entering play mode, or closing the graph
+            //                        EditorSettings.SetDirty(false);
+            //                    }
+            //
+            //                CurrentGraph.SetGraphDirty(); //mark graph dirty
+            //            }
 
             ValidateDatabases();                                    //makes sure there are no invalid entries in the databases
             ConstructGraphGUI();                                    //recalculates the GUI

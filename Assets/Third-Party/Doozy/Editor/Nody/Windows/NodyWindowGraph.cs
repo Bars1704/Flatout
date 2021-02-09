@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Engine.Nody.Models;
+using System.Collections.Generic;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 
@@ -31,7 +31,7 @@ namespace Doozy.Editor.Nody.Windows
         public static Graph CurrentGraph { get { return WindowSettings.CurrentGraph; } private set { WindowSettings.CurrentGraph = value; } }
 
         [SerializeField] private string m_graphAssetPath = "";
-//        [SerializeField] private string m_graphAssetName = "";
+        //        [SerializeField] private string m_graphAssetName = "";
 
         public static string GetGraphName(Graph graph, bool addAsteriskIfDirty = true) { return graph.name + (addAsteriskIfDirty && graph.IsDirty ? "*" : ""); }
 
@@ -47,7 +47,7 @@ namespace Doozy.Editor.Nody.Windows
 
         public void ConstructGraphGUI()
         {
-//            DDebug.Log("ConstructGraphGUI");
+            //            DDebug.Log("ConstructGraphGUI");
 
             if (CurrentGraph == null) return; //no graph is loaded -> stop here
 
@@ -100,8 +100,8 @@ namespace Doozy.Editor.Nody.Windows
         {
             //mark all virtual points a not connected
             foreach (List<VirtualPoint> points in PointsDatabase.Values)
-            foreach (VirtualPoint point in points)
-                point.IsConnected = false;
+                foreach (VirtualPoint point in points)
+                    point.IsConnected = false;
 
             //go through all the virtual connections and mark their virtual points as connected 
             foreach (VirtualConnection vc in ConnectionsDatabase.Values)

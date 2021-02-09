@@ -3,9 +3,9 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 
+using Doozy.Engine.Utils;
 using System;
 using System.Collections.Generic;
-using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -14,7 +14,7 @@ namespace Doozy.Editor.Internal
 {
     /// <inheritdoc />
     /// <summary> Base class for all Doozy Base Editors </summary>
-    public class EditorBase :  UnityEditor.Editor
+    public class EditorBase : UnityEditor.Editor
     {
         #region Constants
 
@@ -22,23 +22,23 @@ namespace Doozy.Editor.Internal
         protected const Size NORMAL_TEXT_SIZE = Size.M;
 
         #endregion
-        
+
         #region Static Properties
 
         protected static float NormalBarHeight { get { return DGUI.Bar.Height(NORMAL_BAR_SIZE); } }
         protected static UILanguagePack UILabels { get { return UILanguagePack.Instance; } }
 
         #endregion
-        
+
         #region Properties
-        
+
         protected virtual bool UseCustomRepaintInterval { get { return false; } }
         protected virtual ColorName ComponentColorName { get { return DGUI.Colors.DisabledTextColorName; } }
         protected virtual double CustomRepaintIntervalDuringPlayMode { get { return 0.4f; } }
         protected virtual double CustomRepaintIntervalWhileIdle { get { return 0.6f; } }
-        
+
         #endregion
-        
+
         #region Public Variables
 
         protected bool LeftMouseButtonIsDown;
@@ -48,7 +48,7 @@ namespace Doozy.Editor.Internal
         protected Vector2 CurrentMousePosition;
 
         #endregion
-        
+
         #region Private Variables
 
         protected readonly Dictionary<string, AnimBool> AnimBools = new Dictionary<string, AnimBool>();
@@ -56,16 +56,16 @@ namespace Doozy.Editor.Internal
         protected readonly Dictionary<string, SerializedProperty> SerializedProperties = new Dictionary<string, SerializedProperty>();
 
         #endregion
-        
+
         #region Unity Methods
-        
+
         public override bool RequiresConstantRepaint() { return true; }
         protected virtual bool RepaintOnInspectorUpdate { get { return true; } }
-        
+
         #endregion
-        
+
         #region Public Methods
-        
+
         protected void AddInfoMessage(string key, InfoMessage infoMessage)
         {
             if (string.IsNullOrEmpty(key))
@@ -88,7 +88,7 @@ namespace Doozy.Editor.Internal
 
             InfoMessages.Add(key, infoMessage);
         }
-        
+
         /// <summary> Calls for a window Repaint when certain Event.current.type happen </summary>
         protected void ContextualRepaint()
         {
@@ -98,24 +98,24 @@ namespace Doozy.Editor.Internal
                 case EventType.MouseUp:
                 case EventType.MouseMove:
                 case EventType.MouseDrag:
-//                case EventType.KeyDown:
-//                case EventType.KeyUp:
+                //                case EventType.KeyDown:
+                //                case EventType.KeyUp:
                 case EventType.ScrollWheel:
-//                case EventType.DragUpdated:
-//                case EventType.DragPerform:
-//                case EventType.DragExited:
-//                case EventType.Ignore:
+                //                case EventType.DragUpdated:
+                //                case EventType.DragPerform:
+                //                case EventType.DragExited:
+                //                case EventType.Ignore:
                 case EventType.Used:
-//                case EventType.ValidateCommand:
-//                case EventType.ExecuteCommand:
-//                case EventType.ContextClick:
+                //                case EventType.ValidateCommand:
+                //                case EventType.ExecuteCommand:
+                //                case EventType.ContextClick:
                 case EventType.MouseEnterWindow:
                 case EventType.MouseLeaveWindow:
                     Repaint();
                     break;
             }
         }
-        
+
         protected AnimBool GetAnimBool(string key, bool defaultValue = false)
         {
             if (AnimBools.ContainsKey(key)) return AnimBools[key];
@@ -152,9 +152,9 @@ namespace Doozy.Editor.Internal
             SerializedProperties.Add(key, s);
             return s;
         }
-        
-    
-        
+
+
+
         #endregion
 
         #region Static Methods
@@ -173,7 +173,7 @@ namespace Doozy.Editor.Internal
             rectTransform.localScale = AdjustToRoundValues(rectTransform.localScale);
         }
 
-         protected static void DrawHeader(GUIStyle headerStyle)
+        protected static void DrawHeader(GUIStyle headerStyle)
         {
             GUILayout.Space(DGUI.Properties.Space(2));
             GUILayout.Label(GUIContent.none, headerStyle, GUILayout.ExpandWidth(true));
@@ -227,14 +227,14 @@ namespace Doozy.Editor.Internal
             GUILayout.EndHorizontal();
             GUILayout.Space(DGUI.Properties.Space(2));
         }
-        
-        
+
+
         private static float RoundToIntIfNeeded(float value, int maximumAllowedDecimals = 3)
         {
-            int numberOfDecimals = BitConverter.GetBytes(decimal.GetBits((decimal) value)[3])[2];
+            int numberOfDecimals = BitConverter.GetBytes(decimal.GetBits((decimal)value)[3])[2];
             return numberOfDecimals >= maximumAllowedDecimals ? Mathf.Round(value) : value;
         }
-        
+
         #endregion
     }
 

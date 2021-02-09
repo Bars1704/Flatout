@@ -185,8 +185,8 @@ namespace Doozy.Engine.SceneManagement
 
         private void Update()
         {
-//            if (!m_loadInProgress) return;
-//            Debug.Log("CurrentAsyncOperation == null? " + (CurrentAsyncOperation == null));
+            //            if (!m_loadInProgress) return;
+            //            Debug.Log("CurrentAsyncOperation == null? " + (CurrentAsyncOperation == null));
             if (CurrentAsyncOperation == null) return;
             Progress = Mathf.Clamp01(CurrentAsyncOperation.progress / 0.9f); //update load progress [0, 0.9] > [0, 1]
             if (DebugComponent && !m_activatingScene) DDebug.Log("[" + name + "] Load progress: " + Mathf.Round(Progress * 100) + "%", this);
@@ -380,7 +380,7 @@ namespace Doozy.Engine.SceneManagement
 
         private IEnumerator AsynchronousLoad(string sceneName, LoadSceneMode mode)
         {
-//            yield return null;
+            //            yield return null;
             ResetProgress();
             LoadBehavior.OnLoadScene.Invoke(gameObject);
 
@@ -392,10 +392,10 @@ namespace Doozy.Engine.SceneManagement
             bool sceneLoadedAndReady = false;                   //mark that the scene has not been loaded (load progress has not reached 90%)
             bool activatingScene = false;
 
-//            while (!CurrentAsyncOperation.isDone)
+            //            while (!CurrentAsyncOperation.isDone)
             while (m_loadInProgress)
             {
-//                if (CurrentAsyncOperation == null) yield break;
+                //                if (CurrentAsyncOperation == null) yield break;
 
                 // [0, 0.9] > [0, 1]
                 Progress = Mathf.Clamp01(CurrentAsyncOperation.progress / 0.9f); //update load progress
@@ -405,7 +405,7 @@ namespace Doozy.Engine.SceneManagement
                 // ReSharper disable once CompareOfFloatsByEqualityOperator
                 if (!sceneLoadedAndReady && CurrentAsyncOperation.progress == 0.9f)
                 {
-//                    Progress = 1f;
+                    //                    Progress = 1f;
                     if (DebugComponent) DDebug.Log("[" + name + "] Scene is ready to be activated.", this);
                     LoadBehavior.OnSceneLoaded.Invoke(gameObject);
 
@@ -428,7 +428,7 @@ namespace Doozy.Engine.SceneManagement
                 {
                     if (DebugComponent) DDebug.Log("[" + name + "] Scene has been activated.", this);
                     m_loadInProgress = false;
-//                    CurrentAsyncOperation = null;
+                    //                    CurrentAsyncOperation = null;
                     if (SelfDestructAfterSceneLoaded) Coroutiner.Start(SelfDestruct());
                 }
 
@@ -438,7 +438,7 @@ namespace Doozy.Engine.SceneManagement
 
         private IEnumerator AsynchronousLoad(int sceneBuildIndex, LoadSceneMode mode)
         {
-//            yield return null;
+            //            yield return null;
             ResetProgress();
             LoadBehavior.OnLoadScene.Invoke(gameObject);
 
@@ -450,10 +450,10 @@ namespace Doozy.Engine.SceneManagement
             bool sceneLoadedAndReady = false;                   //mark that the scene has not been loaded (load progress has not reached 90%)
             bool activatingScene = false;
 
-//            while (!CurrentAsyncOperation.isDone)
+            //            while (!CurrentAsyncOperation.isDone)
             while (m_loadInProgress)
             {
-//                if (CurrentAsyncOperation == null) yield break;
+                //                if (CurrentAsyncOperation == null) yield break;
 
                 // [0, 0.9] > [0, 1]
                 Progress = Mathf.Clamp01(CurrentAsyncOperation.progress / 0.9f); //update load progress
@@ -463,7 +463,7 @@ namespace Doozy.Engine.SceneManagement
                 // ReSharper disable once CompareOfFloatsByEqualityOperator
                 if (!sceneLoadedAndReady && CurrentAsyncOperation.progress == 0.9f)
                 {
-//                    Progress = 1f;
+                    //                    Progress = 1f;
                     if (DebugComponent) DDebug.Log("[" + name + "] Scene is ready to be activated.", this);
                     LoadBehavior.OnSceneLoaded.Invoke(gameObject);
 
@@ -482,7 +482,7 @@ namespace Doozy.Engine.SceneManagement
                 {
                     if (DebugComponent) DDebug.Log("[" + name + "] Scene has been activated.", this);
                     m_loadInProgress = false;
-//                    CurrentAsyncOperation = null;
+                    //                    CurrentAsyncOperation = null;
                     if (SelfDestructAfterSceneLoaded) Coroutiner.Start(SelfDestruct());
                 }
 

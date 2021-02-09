@@ -155,7 +155,7 @@ namespace Doozy.Engine.Touchy
         /// <summary> Returns TRUE if this is a global listener or if the touch info happened over the target game object </summary>
         private bool HasValidTarget(TouchInfo touchInfo)
         {
-            
+
             return GlobalListener || TargetGameObject != null && touchInfo.GameObject == TargetGameObject;
         }
 

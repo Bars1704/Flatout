@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using Gamebase.Miscellaneous;
+﻿using Gamebase.Miscellaneous;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Flatout
 {

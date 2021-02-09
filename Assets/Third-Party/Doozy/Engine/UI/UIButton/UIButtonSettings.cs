@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.UI.Animation;
 using Doozy.Engine.UI.Base;
 using Doozy.Engine.UI.Input;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 // ReSharper disable InconsistentNaming
@@ -122,14 +122,14 @@ namespace Doozy.Engine.UI.Settings
             button.DeselectButtonAfterClick = DeselectButtonAfterClick;
             button.DisableButtonBetweenClicksInterval = DisableButtonBetweenClicksInterval;
             button.InputData = new InputData
-                               {
-                                   InputMode = InputMode,
-                                   EnableAlternateInputs = EnableAlternateInputs,
-                                   KeyCode = KeyCode,
-                                   KeyCodeAlt = KeyCodeAlt,
-                                   VirtualButtonName = VirtualButtonName,
-                                   VirtualButtonNameAlt = VirtualButtonNameAlt
-                               };
+            {
+                InputMode = InputMode,
+                EnableAlternateInputs = EnableAlternateInputs,
+                KeyCode = KeyCode,
+                KeyCodeAlt = KeyCodeAlt,
+                VirtualButtonName = VirtualButtonName,
+                VirtualButtonNameAlt = VirtualButtonNameAlt
+            };
             button.NormalLoopAnimation = new UIButtonLoopAnimation(ButtonLoopAnimationType.Normal);
             button.OnClick = new UIButtonBehavior(UIButtonBehaviorType.OnClick, true);
             button.OnDeselected = new UIButtonBehavior(UIButtonBehaviorType.OnDeselected);

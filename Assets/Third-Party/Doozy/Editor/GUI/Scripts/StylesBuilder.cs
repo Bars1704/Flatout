@@ -2,13 +2,13 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Editor.Internal;
+using Doozy.Engine.Extensions;
+using Doozy.Engine.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Doozy.Editor.Internal;
-using Doozy.Engine.Extensions;
-using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ namespace Doozy.Editor
     public class StylesBuilderEditor : BaseEditor
     {
         protected override ColorName ComponentColorName { get { return ColorName.Teal; } }
-        private StylesBuilder Builder { get { return (StylesBuilder) target; } }
+        private StylesBuilder Builder { get { return (StylesBuilder)target; } }
 
         private const string ARROW = "Arrow";
         private const string BACKGROUND = "Background";
@@ -108,7 +108,7 @@ namespace Doozy.Editor
             styles.AddRange(Bars(skin));
 
             styles.AddRange(CheckBoxes(skin));
-            
+
             styles.AddRange(ColorButtons());
 
             styles.AddRange(ComponentHeaders(skin));
@@ -169,16 +169,16 @@ namespace Doozy.Editor
         {
             string styleName = ARROW + BUTTON + direction;
             var style = new GUIStyle
-                        {
-                            name = styleName,
-                            normal = {background = GetTexture(styleName + StyleState.Normal + skin)},
-                            hover = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                            active = {background = GetTexture(styleName + StyleState.Active + skin)},
-                            onNormal = {background = GetTexture(styleName + StyleState.Normal + skin)},
-                            onHover = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                            onActive = {background = GetTexture(styleName + StyleState.Active + skin)},
-                            imagePosition = ImagePosition.ImageOnly
-                        };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName + StyleState.Normal + skin) },
+                hover = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                active = { background = GetTexture(styleName + StyleState.Active + skin) },
+                onNormal = { background = GetTexture(styleName + StyleState.Normal + skin) },
+                onHover = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                onActive = { background = GetTexture(styleName + StyleState.Active + skin) },
+                imagePosition = ImagePosition.ImageOnly
+            };
 
             switch (direction)
             {
@@ -216,14 +216,14 @@ namespace Doozy.Editor
         {
             string styleName = BACKGROUND + cornerType;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName + skin)},
-                       border = new RectOffset(4, 4, 4, 4),
-                       imagePosition = ImagePosition.ImageOnly,
-                       stretchWidth = true,
-                       stretchHeight = true
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName + skin) },
+                border = new RectOffset(4, 4, 4, 4),
+                imagePosition = ImagePosition.ImageOnly,
+                stretchWidth = true,
+                stretchHeight = true
+            };
         }
 
         #endregion
@@ -234,10 +234,10 @@ namespace Doozy.Editor
         {
             switch (textAlign)
             {
-                case TextAlign.Left:   return TextAnchor.MiddleLeft;
+                case TextAlign.Left: return TextAnchor.MiddleLeft;
                 case TextAlign.Center: return TextAnchor.MiddleCenter;
-                case TextAlign.Right:  return TextAnchor.MiddleRight;
-                default:               throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
+                case TextAlign.Right: return TextAnchor.MiddleRight;
+                default: throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
             }
         }
 
@@ -247,8 +247,8 @@ namespace Doozy.Editor
 
             //BUTTON LABELS
             foreach (TextAlign textAlign in Enum.GetValues(typeof(TextAlign)))
-            foreach (Size size in Enum.GetValues(typeof(Size)))
-                styles.Add(ButtonLabel(textAlign, size, skin));
+                foreach (Size size in Enum.GetValues(typeof(Size)))
+                    styles.Add(ButtonLabel(textAlign, size, skin));
 
             //BUTTONS
             foreach (State state in Enum.GetValues(typeof(State)))
@@ -256,8 +256,8 @@ namespace Doozy.Editor
 
             //BUTTONS LEFT MIDDLE RIGHT
             foreach (State state in Enum.GetValues(typeof(State)))
-            foreach (TabPosition tabPosition in Enum.GetValues(typeof(TabPosition)))
-                styles.Add(Button(state, tabPosition, skin));
+                foreach (TabPosition tabPosition in Enum.GetValues(typeof(TabPosition)))
+                    styles.Add(Button(state, tabPosition, skin));
 
             return styles;
         }
@@ -266,40 +266,40 @@ namespace Doozy.Editor
         {
             string styleName = BUTTON + LABEL + size + textAlign;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Normal, skin)},
-                       onNormal = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Normal, skin)},
-                       hover = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin)},
-                       onHover = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin)},
-                       active = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Active, skin)},
-                       onActive = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Active, skin)},
-                       focused = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin)},
-                       onFocused = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin)},
-                       padding = new RectOffset(4, 4, 2, 2),
-                       fontSize = DGUI.Sizes.ButtonFontSize(size),
-                       alignment = GetTextAnchor(textAlign),
-                       clipping = TextClipping.Clip,
-                       stretchWidth = true
-                   };
+            {
+                name = styleName,
+                normal = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Normal, skin) },
+                onNormal = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Normal, skin) },
+                hover = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin) },
+                onHover = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin) },
+                active = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Active, skin) },
+                onActive = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Active, skin) },
+                focused = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin) },
+                onFocused = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin) },
+                padding = new RectOffset(4, 4, 2, 2),
+                fontSize = DGUI.Sizes.ButtonFontSize(size),
+                alignment = GetTextAnchor(textAlign),
+                clipping = TextClipping.Clip,
+                stretchWidth = true
+            };
         }
 
         private static GUIStyle Button(State state, Skin skin)
         {
             string styleName = BUTTON + state;
             return new GUIStyle(ButtonLabel(TextAlign.Center, Size.M, skin))
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName + StyleState.Normal + skin)},
-                       onNormal = {background = GetTexture(styleName + StyleState.Normal + skin)},
-                       hover = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       onHover = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       active = {background = GetTexture(styleName + StyleState.Active + skin)},
-                       onActive = {background = GetTexture(styleName + StyleState.Active + skin)},
-                       focused = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       onFocused = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       border = new RectOffset(6, 6, 6, 6)
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName + StyleState.Normal + skin) },
+                onNormal = { background = GetTexture(styleName + StyleState.Normal + skin) },
+                hover = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                onHover = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                active = { background = GetTexture(styleName + StyleState.Active + skin) },
+                onActive = { background = GetTexture(styleName + StyleState.Active + skin) },
+                focused = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                onFocused = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                border = new RectOffset(6, 6, 6, 6)
+            };
         }
 
         private static GUIStyle Button(State state, TabPosition position, Skin skin)
@@ -307,18 +307,18 @@ namespace Doozy.Editor
             string styleName = BUTTON + position + state;
             string filenamePrefix = BUTTON + state + position;
             return new GUIStyle(ButtonLabel(TextAlign.Center, Size.M, skin))
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(filenamePrefix + StyleState.Normal + skin)},
-                       onNormal = {background = GetTexture(filenamePrefix + StyleState.Normal + skin)},
-                       hover = {background = GetTexture(filenamePrefix + StyleState.Hover + skin)},
-                       onHover = {background = GetTexture(filenamePrefix + StyleState.Hover + skin)},
-                       active = {background = GetTexture(filenamePrefix + StyleState.Active + skin)},
-                       onActive = {background = GetTexture(filenamePrefix + StyleState.Active + skin)},
-                       focused = {background = GetTexture(filenamePrefix + StyleState.Hover + skin)},
-                       onFocused = {background = GetTexture(filenamePrefix + StyleState.Hover + skin)},
-                       border = new RectOffset(6, 6, 6, 6)
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(filenamePrefix + StyleState.Normal + skin) },
+                onNormal = { background = GetTexture(filenamePrefix + StyleState.Normal + skin) },
+                hover = { background = GetTexture(filenamePrefix + StyleState.Hover + skin) },
+                onHover = { background = GetTexture(filenamePrefix + StyleState.Hover + skin) },
+                active = { background = GetTexture(filenamePrefix + StyleState.Active + skin) },
+                onActive = { background = GetTexture(filenamePrefix + StyleState.Active + skin) },
+                focused = { background = GetTexture(filenamePrefix + StyleState.Hover + skin) },
+                onFocused = { background = GetTexture(filenamePrefix + StyleState.Hover + skin) },
+                border = new RectOffset(6, 6, 6, 6)
+            };
         }
 
         #endregion
@@ -330,8 +330,8 @@ namespace Doozy.Editor
             var styles = new List<GUIStyle>();
 
             foreach (Size size in Enum.GetValues(typeof(Size)))
-            foreach (State state in Enum.GetValues(typeof(State)))
-                styles.AddRange(Bar(size, state, skin));
+                foreach (State state in Enum.GetValues(typeof(State)))
+                    styles.AddRange(Bar(size, state, skin));
 
             return styles;
         }
@@ -343,7 +343,7 @@ namespace Doozy.Editor
             label.fixedHeight = DGUI.Sizes.BarHeight(size);
 
             float caretSize = DGUI.Sizes.BarHeight(size) * DGUI.Bar.CARET_SIZE_RATIO;
-            int leftPadding = (int) (caretSize * 1.3f);
+            int leftPadding = (int)(caretSize * 1.3f);
 
             switch (size)
             {
@@ -365,20 +365,20 @@ namespace Doozy.Editor
             string barStyleName = BAR + size + state;
             string textureFileNamePrefix = BUTTON + state;
             var bar = new GUIStyle(label)
-                      {
-                          name = barStyleName,
-                          normal = {background = GetTexture(textureFileNamePrefix + StyleState.Normal + skin)},
-                          onNormal = {background = GetTexture(textureFileNamePrefix + StyleState.Normal + skin)},
-                          hover = {background = GetTexture(textureFileNamePrefix + StyleState.Hover + skin)},
-                          onHover = {background = GetTexture(textureFileNamePrefix + StyleState.Hover + skin)},
-                          active = {background = GetTexture(textureFileNamePrefix + StyleState.Active + skin)},
-                          onActive = {background = GetTexture(textureFileNamePrefix + StyleState.Active + skin)},
-                          focused = {background = GetTexture(textureFileNamePrefix + StyleState.Hover + skin)},
-                          onFocused = {background = GetTexture(textureFileNamePrefix + StyleState.Hover + skin)},
-                          border = new RectOffset(6, 6, 6, 6)
-                      };
+            {
+                name = barStyleName,
+                normal = { background = GetTexture(textureFileNamePrefix + StyleState.Normal + skin) },
+                onNormal = { background = GetTexture(textureFileNamePrefix + StyleState.Normal + skin) },
+                hover = { background = GetTexture(textureFileNamePrefix + StyleState.Hover + skin) },
+                onHover = { background = GetTexture(textureFileNamePrefix + StyleState.Hover + skin) },
+                active = { background = GetTexture(textureFileNamePrefix + StyleState.Active + skin) },
+                onActive = { background = GetTexture(textureFileNamePrefix + StyleState.Active + skin) },
+                focused = { background = GetTexture(textureFileNamePrefix + StyleState.Hover + skin) },
+                onFocused = { background = GetTexture(textureFileNamePrefix + StyleState.Hover + skin) },
+                border = new RectOffset(6, 6, 6, 6)
+            };
 
-            return new List<GUIStyle> {label, bar};
+            return new List<GUIStyle> { label, bar };
         }
 
         #endregion
@@ -397,25 +397,25 @@ namespace Doozy.Editor
         {
             string styleName = CHECKBOX + toggleState;
             return new GUIStyle
-                   {
-                       name = styleName,
+            {
+                name = styleName,
 
-                       normal = {background = GetTexture(styleName + StyleState.Normal + skin)},
-                       onNormal = {background = GetTexture(styleName + StyleState.Normal + skin)},
+                normal = { background = GetTexture(styleName + StyleState.Normal + skin) },
+                onNormal = { background = GetTexture(styleName + StyleState.Normal + skin) },
 
-                       hover = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       onHover = {background = GetTexture(styleName + StyleState.Hover + skin)},
+                hover = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                onHover = { background = GetTexture(styleName + StyleState.Hover + skin) },
 
-                       active = {background = GetTexture(styleName + StyleState.Active + skin)},
-                       onActive = {background = GetTexture(styleName + StyleState.Active + skin)},
+                active = { background = GetTexture(styleName + StyleState.Active + skin) },
+                onActive = { background = GetTexture(styleName + StyleState.Active + skin) },
 
-                       focused = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       onFocused = {background = GetTexture(styleName + StyleState.Hover + skin)},
+                focused = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                onFocused = { background = GetTexture(styleName + StyleState.Hover + skin) },
 
-                       imagePosition = ImagePosition.ImageOnly,
-                       fixedWidth = DGUI.Sizes.CHECKBOX_WIDTH,
-                       fixedHeight = DGUI.Sizes.CHECKBOX_HEIGHT
-                   };
+                imagePosition = ImagePosition.ImageOnly,
+                fixedWidth = DGUI.Sizes.CHECKBOX_WIDTH,
+                fixedHeight = DGUI.Sizes.CHECKBOX_HEIGHT
+            };
         }
 
         #endregion
@@ -427,20 +427,20 @@ namespace Doozy.Editor
             string buttonName = COLOR + BUTTON + (selected ? SELECTED : "");
             float buttonSize = 18 + (selected ? 6 : 0);
             return new GUIStyle
-                   {
-                       name = buttonName,
-                       normal = {background = GetTexture(buttonName + StyleState.Normal)},
-                       hover = {background = GetTexture(buttonName + StyleState.Hover)},
-                       active = {background = GetTexture(buttonName + StyleState.Active)},
-                       focused = {background = GetTexture(buttonName + StyleState.Hover)},
-                       onNormal = {background = GetTexture(buttonName + StyleState.Normal)},
-                       onHover = {background = GetTexture(buttonName + StyleState.Hover)},
-                       onActive = {background = GetTexture(buttonName + StyleState.Active)},
-                       onFocused = {background = GetTexture(buttonName + StyleState.Hover)},
-                       imagePosition = ImagePosition.ImageOnly,
-                       fixedHeight = buttonSize,
-                       fixedWidth = buttonSize
-                   };
+            {
+                name = buttonName,
+                normal = { background = GetTexture(buttonName + StyleState.Normal) },
+                hover = { background = GetTexture(buttonName + StyleState.Hover) },
+                active = { background = GetTexture(buttonName + StyleState.Active) },
+                focused = { background = GetTexture(buttonName + StyleState.Hover) },
+                onNormal = { background = GetTexture(buttonName + StyleState.Normal) },
+                onHover = { background = GetTexture(buttonName + StyleState.Hover) },
+                onActive = { background = GetTexture(buttonName + StyleState.Active) },
+                onFocused = { background = GetTexture(buttonName + StyleState.Hover) },
+                imagePosition = ImagePosition.ImageOnly,
+                fixedHeight = buttonSize,
+                fixedWidth = buttonSize
+            };
         }
 
         private static List<GUIStyle> ColorButtons()
@@ -460,13 +460,13 @@ namespace Doozy.Editor
         {
             string styleName = COMPONENT + HEADER + componentName;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName + skin)},
-                       border = new RectOffset(292, 28, 0, 0),
-                       imagePosition = ImagePosition.ImageOnly,
-                       fixedHeight = 48
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName + skin) },
+                border = new RectOffset(292, 28, 0, 0),
+                imagePosition = ImagePosition.ImageOnly,
+                fixedHeight = 48
+            };
         }
 
         private static List<GUIStyle> ComponentHeaders(Skin skin)
@@ -571,14 +571,14 @@ namespace Doozy.Editor
         {
             string styleName = DIVIDER + dividerType;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName + skin)},
-                       border = new RectOffset(1, 1, 0, 0),
-                       imagePosition = ImagePosition.ImageOnly,
-                       fixedHeight = DGUI.Sizes.DIVIDER_HEIGHT,
-                       stretchWidth = true
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName + skin) },
+                border = new RectOffset(1, 1, 0, 0),
+                imagePosition = ImagePosition.ImageOnly,
+                fixedHeight = DGUI.Sizes.DIVIDER_HEIGHT,
+                stretchWidth = true
+            };
         }
 
         #endregion
@@ -589,13 +589,13 @@ namespace Doozy.Editor
         {
             string styleName = WINDOW + ICON + BACKGROUND;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName + skin)},
-                       imagePosition = ImagePosition.ImageOnly,
-                       fixedWidth = 78,
-                       fixedHeight = 60
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName + skin) },
+                imagePosition = ImagePosition.ImageOnly,
+                fixedWidth = 78,
+                fixedHeight = 60
+            };
         }
 
         private static List<GUIStyle> DoozyWindowToolbarButtons(Skin skin)
@@ -743,12 +743,12 @@ namespace Doozy.Editor
         {
             string styleName = DOOZY + WINDOW + VIEW + HEADER + viewName;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName + skin)},
-                       border = new RectOffset(382, 1, 0, 0),
-                       fixedHeight = 96
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName + skin) },
+                border = new RectOffset(382, 1, 0, 0),
+                fixedHeight = 96
+            };
         }
 
         #endregion
@@ -758,22 +758,22 @@ namespace Doozy.Editor
         private static GUIStyle IconButton(string iconName)
         {
             return new GUIStyle
-                   {
-                       name = ICON + BUTTON + iconName,
-                       normal = {background = GetTexture(ICON + BUTTON + iconName + StyleState.Normal)},
-                       hover = {background = GetTexture(ICON + BUTTON + iconName + StyleState.Hover)},
-                       active = {background = GetTexture(ICON + BUTTON + iconName + StyleState.Active)},
-                       focused = {background = GetTexture(ICON + BUTTON + iconName + StyleState.Hover)},
-                       onNormal = {background = GetTexture(ICON + BUTTON + iconName + StyleState.Normal)},
-                       onHover = {background = GetTexture(ICON + BUTTON + iconName + StyleState.Hover)},
-                       onActive = {background = GetTexture(ICON + BUTTON + iconName + StyleState.Active)},
-                       onFocused = {background = GetTexture(ICON + BUTTON + iconName + StyleState.Hover)},
-                       margin = new RectOffset(4, 4, 2, 2),
-                       imagePosition = ImagePosition.ImageOnly,
-                       alignment = TextAnchor.MiddleCenter,
-                       fixedWidth = DGUI.Sizes.ICON_BUTTON_SIZE,
-                       fixedHeight = DGUI.Sizes.ICON_BUTTON_SIZE
-                   };
+            {
+                name = ICON + BUTTON + iconName,
+                normal = { background = GetTexture(ICON + BUTTON + iconName + StyleState.Normal) },
+                hover = { background = GetTexture(ICON + BUTTON + iconName + StyleState.Hover) },
+                active = { background = GetTexture(ICON + BUTTON + iconName + StyleState.Active) },
+                focused = { background = GetTexture(ICON + BUTTON + iconName + StyleState.Hover) },
+                onNormal = { background = GetTexture(ICON + BUTTON + iconName + StyleState.Normal) },
+                onHover = { background = GetTexture(ICON + BUTTON + iconName + StyleState.Hover) },
+                onActive = { background = GetTexture(ICON + BUTTON + iconName + StyleState.Active) },
+                onFocused = { background = GetTexture(ICON + BUTTON + iconName + StyleState.Hover) },
+                margin = new RectOffset(4, 4, 2, 2),
+                imagePosition = ImagePosition.ImageOnly,
+                alignment = TextAnchor.MiddleCenter,
+                fixedWidth = DGUI.Sizes.ICON_BUTTON_SIZE,
+                fixedHeight = DGUI.Sizes.ICON_BUTTON_SIZE
+            };
         }
 
         private static List<GUIStyle> IconButtons()
@@ -809,27 +809,27 @@ namespace Doozy.Editor
         private static GUIStyle Icon(string iconName)
         {
             return new GUIStyle
-                   {
-                       name = ICON + iconName,
-                       normal =
+            {
+                name = ICON + iconName,
+                normal =
                        {
                            background = GetTexture(ICON + iconName)
                        },
-                       imagePosition = ImagePosition.ImageOnly
-                   };
+                imagePosition = ImagePosition.ImageOnly
+            };
         }
 
         private static GUIStyle Icon(string iconName, Skin skin)
         {
             return new GUIStyle
-                   {
-                       name = ICON + iconName,
-                       normal =
+            {
+                name = ICON + iconName,
+                normal =
                        {
                            background = GetTexture(ICON + iconName + skin)
                        },
-                       imagePosition = ImagePosition.ImageOnly
-                   };
+                imagePosition = ImagePosition.ImageOnly
+            };
         }
 
         private static List<GUIStyle> Icons(Skin skin)
@@ -1386,11 +1386,11 @@ namespace Doozy.Editor
         {
             string styleName = NODE + ICON + iconName;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName)},
-                       imagePosition = ImagePosition.ImageOnly
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName) },
+                imagePosition = ImagePosition.ImageOnly
+            };
         }
 
         #endregion
@@ -1401,8 +1401,8 @@ namespace Doozy.Editor
         {
             var styles = new List<GUIStyle>();
             foreach (Size size in Enum.GetValues(typeof(Size)))
-            foreach (TextAlign textAlign in Enum.GetValues(typeof(TextAlign)))
-                styles.Add(Label(size, textAlign, skin));
+                foreach (TextAlign textAlign in Enum.GetValues(typeof(TextAlign)))
+                    styles.Add(Label(size, textAlign, skin));
 
             return styles;
         }
@@ -1410,25 +1410,25 @@ namespace Doozy.Editor
         private static GUIStyle Label(Size size, TextAlign textAlign, Skin skin)
         {
             var style = new GUIStyle
-                        {
-                            name = LABEL + size + textAlign,
+            {
+                name = LABEL + size + textAlign,
 
-                            normal = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Normal, skin)},
-                            onNormal = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Normal, skin)},
+                normal = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Normal, skin) },
+                onNormal = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Normal, skin) },
 
-                            hover = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin)},
-                            onHover = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin)},
+                hover = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin) },
+                onHover = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin) },
 
-                            active = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Active, skin)},
-                            onActive = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Active, skin)},
+                active = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Active, skin) },
+                onActive = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Active, skin) },
 
-                            focused = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin)},
-                            onFocused = {textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin)},
+                focused = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin) },
+                onFocused = { textColor = DGUI.Colors.ButtonBaseColor(StyleState.Hover, skin) },
 
-                            fontSize = DGUI.Sizes.LabelFontSize(size),
-                            clipping = TextClipping.Clip,
-                            stretchWidth = true
-                        };
+                fontSize = DGUI.Sizes.LabelFontSize(size),
+                clipping = TextClipping.Clip,
+                stretchWidth = true
+            };
 
             switch (textAlign)
             {
@@ -1506,20 +1506,20 @@ namespace Doozy.Editor
         {
             string styleName = RADIO + BUTTON + toggleState;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName + StyleState.Normal + skin)},
-                       hover = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       active = {background = GetTexture(styleName + StyleState.Active + skin)},
-                       focused = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       onNormal = {background = GetTexture(styleName + StyleState.Normal + skin)},
-                       onHover = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       onActive = {background = GetTexture(styleName + StyleState.Active + skin)},
-                       onFocused = {background = GetTexture(styleName + StyleState.Hover + skin)},
-                       imagePosition = ImagePosition.ImageOnly,
-                       fixedWidth = 14,
-                       fixedHeight = 14
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName + StyleState.Normal + skin) },
+                hover = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                active = { background = GetTexture(styleName + StyleState.Active + skin) },
+                focused = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                onNormal = { background = GetTexture(styleName + StyleState.Normal + skin) },
+                onHover = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                onActive = { background = GetTexture(styleName + StyleState.Active + skin) },
+                onFocused = { background = GetTexture(styleName + StyleState.Hover + skin) },
+                imagePosition = ImagePosition.ImageOnly,
+                fixedWidth = 14,
+                fixedHeight = 14
+            };
         }
 
         private static List<GUIStyle> Switches(Skin skin)
@@ -1533,31 +1533,31 @@ namespace Doozy.Editor
         private static GUIStyle Switch(ToggleState toggleState, Skin skin)
         {
             return new GUIStyle
-                   {
-                       name = SWITCH + toggleState,
-                       normal = {background = GetTexture(SWITCH + toggleState + StyleState.Normal + skin)},
-                       onNormal = {background = GetTexture(SWITCH + toggleState + StyleState.Normal + skin)},
-                       hover = {background = GetTexture(SWITCH + toggleState + StyleState.Hover + skin)},
-                       onHover = {background = GetTexture(SWITCH + toggleState + StyleState.Hover + skin)},
-                       active = {background = GetTexture(SWITCH + toggleState + StyleState.Active + skin)},
-                       onActive = {background = GetTexture(SWITCH + toggleState + StyleState.Active + skin)},
-                       focused = {background = GetTexture(SWITCH + toggleState + StyleState.Hover + skin)},
-                       onFocused = {background = GetTexture(SWITCH + toggleState + StyleState.Hover + skin)},
-                       imagePosition = ImagePosition.ImageOnly,
-                       fixedWidth = DGUI.Sizes.SWITCH_WIDTH,
-                       fixedHeight = DGUI.Sizes.SWITCH_HEIGHT
-                   };
+            {
+                name = SWITCH + toggleState,
+                normal = { background = GetTexture(SWITCH + toggleState + StyleState.Normal + skin) },
+                onNormal = { background = GetTexture(SWITCH + toggleState + StyleState.Normal + skin) },
+                hover = { background = GetTexture(SWITCH + toggleState + StyleState.Hover + skin) },
+                onHover = { background = GetTexture(SWITCH + toggleState + StyleState.Hover + skin) },
+                active = { background = GetTexture(SWITCH + toggleState + StyleState.Active + skin) },
+                onActive = { background = GetTexture(SWITCH + toggleState + StyleState.Active + skin) },
+                focused = { background = GetTexture(SWITCH + toggleState + StyleState.Hover + skin) },
+                onFocused = { background = GetTexture(SWITCH + toggleState + StyleState.Hover + skin) },
+                imagePosition = ImagePosition.ImageOnly,
+                fixedWidth = DGUI.Sizes.SWITCH_WIDTH,
+                fixedHeight = DGUI.Sizes.SWITCH_HEIGHT
+            };
         }
 
         private static GUIStyle TitleBackground(Skin skin)
         {
             string styleName = TITLE + BACKGROUND;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName + skin)},
-                       border = new RectOffset(8, 8, 8, 8)
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName + skin) },
+                border = new RectOffset(8, 8, 8, 8)
+            };
         }
 
         private static List<GUIStyle> WhiteGradients()
@@ -1574,16 +1574,16 @@ namespace Doozy.Editor
         private static GUIStyle WhiteGradient(Direction direction)
         {
             return new GUIStyle
-                   {
-                       name = WHITE_GRADIENT + direction,
-                       normal =
+            {
+                name = WHITE_GRADIENT + direction,
+                normal =
                        {
                            background = GetTexture(WHITE_GRADIENT + direction)
                        },
-                       imagePosition = ImagePosition.ImageOnly,
-                       stretchWidth = true,
-                       stretchHeight = true
-                   };
+                imagePosition = ImagePosition.ImageOnly,
+                stretchWidth = true,
+                stretchHeight = true
+            };
         }
 
         private static List<GUIStyle> WindowToolbarElements()
@@ -1605,14 +1605,14 @@ namespace Doozy.Editor
         {
             string styleName = WINDOW + TOOLBAR + elementName + direction;
             return new GUIStyle
-                   {
-                       name = styleName,
-                       normal = {background = GetTexture(styleName)},
-                       border = border,
-                       imagePosition = ImagePosition.ImageOnly,
-                       stretchWidth = true,
-                       stretchHeight = true
-                   };
+            {
+                name = styleName,
+                normal = { background = GetTexture(styleName) },
+                border = border,
+                imagePosition = ImagePosition.ImageOnly,
+                stretchWidth = true,
+                stretchHeight = true
+            };
         }
     }
 }

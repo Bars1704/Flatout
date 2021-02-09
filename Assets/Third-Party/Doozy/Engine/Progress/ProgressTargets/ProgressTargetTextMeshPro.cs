@@ -145,7 +145,7 @@ namespace Doozy.Engine.Progress
                 TextMeshPro = GetComponent<TMP_Text>();
 #endif
         }
-        
+
         #endregion
     }
 }

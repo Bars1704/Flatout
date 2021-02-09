@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class BrookPS2ConverterMacNativeProfile : Xbox360DriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class BrookPS2ConverterMacNativeProfile : Xbox360DriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Brook PS2 Converter";
-			DeviceNotes = "Brook PS2 Converter on Mac";
+            DeviceName = "Brook PS2 Converter";
+            DeviceNotes = "Brook PS2 Converter on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x0c12,
-					ProductID = 0x08f1,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x0c12,
+                    ProductID = 0x08f1,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

@@ -14,22 +14,22 @@ namespace Doozy.Engine.UI.Connections
         /// A UIButton OnClick will trigger the UIConnection to change the active node to the connection's input node
         /// </summary>
         ButtonClick,
-        
+
         /// <summary>
         /// A UIButton OnDoubleClick will trigger the UIConnection to change the active node to the connection's input node
         /// </summary>
         ButtonDoubleClick,
-        
+
         /// <summary>
         /// A UIButton OnLongClick will trigger the UIConnection to change the active node to the connection's input node
         /// </summary>
         ButtonLongClick,
-        
+
         /// <summary>
         /// A specific game event string will trigger the UIConnection to change the active node to the connection's input node
         /// </summary>
         GameEvent,
-        
+
         /// <summary>
         /// A timer will trigger the UIConnection to change the active node to the connection's input node
         /// </summary>

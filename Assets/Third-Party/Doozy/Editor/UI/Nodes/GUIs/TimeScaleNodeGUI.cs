@@ -16,8 +16,8 @@ namespace Doozy.Editor.UI.Nodes
         private static GUIStyle s_iconStyle;
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconTimeScaleNode)); } }
         protected override GUIStyle GetIconStyle() { return IconStyle; }
-        
-        private TimeScaleNode TargetNode { get { return (TimeScaleNode) Node; } }
+
+        private TimeScaleNode TargetNode { get { return (TimeScaleNode)Node; } }
 
         private Rect
             m_timeScaleRect,

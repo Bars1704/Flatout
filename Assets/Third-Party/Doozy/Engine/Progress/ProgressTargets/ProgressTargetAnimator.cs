@@ -66,10 +66,10 @@ namespace Doozy.Engine.Progress
 
         private void UpdateReference()
         {
-            if(Animator == null)
+            if (Animator == null)
                 Animator = GetComponent<Animator>();
         }
-        
+
         #endregion
     }
 }

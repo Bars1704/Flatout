@@ -2,12 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.IO;
 using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Nody.Nodes;
 using Doozy.Engine.Utils;
+using System;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -64,7 +64,7 @@ namespace Doozy.Editor.Nody.Utils
         /// <summary> Opens a file panel set to filter only the given Graph type and returns the selected asset file </summary>
         public static T LoadGraphWithDialog<T>() where T : Graph
         {
-            string path = EditorUtility.OpenFilePanelWithFilters(UILabels.OpenGraph, "", new[] {typeof(T).Name, "asset"});
+            string path = EditorUtility.OpenFilePanelWithFilters(UILabels.OpenGraph, "", new[] { typeof(T).Name, "asset" });
             return LoadGraph<T>(path);
         }
 
@@ -237,8 +237,8 @@ namespace Doozy.Editor.Nody.Utils
         /// <param name="saveAssets"> Perform AssetDatabase.Save </param>
         public static void ConnectSockets(Graph graph, Socket outputSocket, Socket inputSocket, bool saveAssets = false)
         {
-//            if (outputSocket.OverrideConnection) DisconnectSocket(outputSocket, false);
-//            if (inputSocket.OverrideConnection) DisconnectSocket(inputSocket, false);
+            //            if (outputSocket.OverrideConnection) DisconnectSocket(outputSocket, false);
+            //            if (inputSocket.OverrideConnection) DisconnectSocket(inputSocket, false);
             if (outputSocket.OverrideConnection)
             {
                 outputSocket.Disconnect();

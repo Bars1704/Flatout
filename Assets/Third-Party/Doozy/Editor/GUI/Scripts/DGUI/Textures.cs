@@ -35,13 +35,13 @@ namespace Doozy.Editor
                 var texture = new Texture2D(64, 64);
                 var colors = new Color[64 * 64];
                 for (int y = 0; y < 64; y++)
-                for (int x = 0; x < 64; x++)
-                {
-                    Color color = backgroundColor;
-                    if (y % 16 == 0 || x % 16 == 0) color = Color.Lerp(lineColor, backgroundColor, 0.65f);
-                    if (y == 63 || x == 63) color = Color.Lerp(lineColor, backgroundColor, 0.35f);
-                    colors[y * 64 + x] = color;
-                }
+                    for (int x = 0; x < 64; x++)
+                    {
+                        Color color = backgroundColor;
+                        if (y % 16 == 0 || x % 16 == 0) color = Color.Lerp(lineColor, backgroundColor, 0.65f);
+                        if (y == 63 || x == 63) color = Color.Lerp(lineColor, backgroundColor, 0.35f);
+                        colors[y * 64 + x] = color;
+                    }
 
                 texture.SetPixels(colors);
                 texture.wrapMode = TextureWrapMode.Repeat;
@@ -58,12 +58,12 @@ namespace Doozy.Editor
                 var texture = new Texture2D(64, 64);
                 var colors = new Color[64 * 64];
                 for (int y = 0; y < 64; y++)
-                for (int x = 0; x < 64; x++)
-                {
-                    Color color = lineColor;
-                    if (y != 31 && x != 31) color.a = 0;
-                    colors[y * 64 + x] = color;
-                }
+                    for (int x = 0; x < 64; x++)
+                    {
+                        Color color = lineColor;
+                        if (y != 31 && x != 31) color.a = 0;
+                        colors[y * 64 + x] = color;
+                    }
 
                 texture.SetPixels(colors);
                 texture.wrapMode = TextureWrapMode.Clamp;

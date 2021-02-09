@@ -15,7 +15,7 @@ using Doozy.Engine.Utils;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-    
+
 #if dUI_TextMeshPro
 using TMPro;
 #endif
@@ -365,13 +365,13 @@ namespace Doozy.Engine.UI
             ResetToStartValues();
 
             ReadyAllBehaviors();
-            
+
             if (m_disableButtonCoroutine == null) return;
             StopCoroutine(m_disableButtonCoroutine);
             m_disableButtonCoroutine = null;
             EnableButton();
         }
-        
+
         private void Update()
         {
             if (InputData.InputMode == InputMode.None) return;
@@ -805,7 +805,7 @@ namespace Doozy.Engine.UI
             OnSelected.Ready = true;
             OnDeselected.Ready = true;
         }
-        
+
         private void RegisterLongClick(bool debug = false)
         {
             if (OnLongClick.Enabled) PrintBehaviorDebugMessage(OnLongClick, "registered", debug);
@@ -836,16 +836,16 @@ namespace Doozy.Engine.UI
         {
             switch (behaviorType)
             {
-                case UIButtonBehaviorType.OnClick:        return OnClick.Enabled;
-                case UIButtonBehaviorType.OnDoubleClick:  return OnDoubleClick.Enabled;
-                case UIButtonBehaviorType.OnLongClick:    return OnLongClick.Enabled;
-                case UIButtonBehaviorType.OnRightClick:   return OnRightClick.Enabled;
+                case UIButtonBehaviorType.OnClick: return OnClick.Enabled;
+                case UIButtonBehaviorType.OnDoubleClick: return OnDoubleClick.Enabled;
+                case UIButtonBehaviorType.OnLongClick: return OnLongClick.Enabled;
+                case UIButtonBehaviorType.OnRightClick: return OnRightClick.Enabled;
                 case UIButtonBehaviorType.OnPointerEnter: return OnPointerEnter.Enabled;
-                case UIButtonBehaviorType.OnPointerExit:  return OnPointerExit.Enabled;
-                case UIButtonBehaviorType.OnPointerDown:  return OnPointerDown.Enabled;
-                case UIButtonBehaviorType.OnPointerUp:    return OnPointerUp.Enabled;
-                case UIButtonBehaviorType.OnSelected:     return OnSelected.Enabled;
-                case UIButtonBehaviorType.OnDeselected:   return OnDeselected.Enabled;
+                case UIButtonBehaviorType.OnPointerExit: return OnPointerExit.Enabled;
+                case UIButtonBehaviorType.OnPointerDown: return OnPointerDown.Enabled;
+                case UIButtonBehaviorType.OnPointerUp: return OnPointerUp.Enabled;
+                case UIButtonBehaviorType.OnSelected: return OnSelected.Enabled;
+                case UIButtonBehaviorType.OnDeselected: return OnDeselected.Enabled;
                 default: throw new ArgumentOutOfRangeException("behaviorType", behaviorType, null);
             }
         }
@@ -1050,9 +1050,9 @@ namespace Doozy.Engine.UI
         }
 
         #endregion
-        
+
         #region Static Methods
-        
+
         /// <summary>
         /// Returns a list of all the UIButton, registered in the UIButton.Database, with the given button category and button name.
         /// <para/> If no UIButton is found, it will return an empty list.
@@ -1071,7 +1071,7 @@ namespace Doozy.Engine.UI
 
             return views; //return list
         }
-        
+
         #endregion
     }
 }

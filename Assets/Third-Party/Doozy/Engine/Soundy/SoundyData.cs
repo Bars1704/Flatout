@@ -23,7 +23,7 @@ namespace Doozy.Engine.Soundy
 
         /// <summary> SoundDatabase database name that contains the sound name (enabled only for SoundSource.Soundy) </summary>
         public string DatabaseName;
-        
+
         /// <summary> Sound name of a SoundGroupData that holds settings and references to one or more audio clips (enabled only for SoundSource.Soundy and SoundSource.MasterAudio) </summary>
         public string SoundName;
 

@@ -2,10 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Utils;
 using System;
 using System.Collections.Generic;
-using Doozy.Engine.Extensions;
-using Doozy.Engine.Utils;
 using UnityEngine;
 
 namespace Doozy.Editor
@@ -25,8 +24,8 @@ namespace Doozy.Editor
                 switch (state)
                 {
                     case State.Disabled: return Styles.GetStyle(Styles.StyleName.ButtonDisabled);
-                    case State.Enabled:  return Styles.GetStyle(Styles.StyleName.ButtonEnabled);
-                    default:             throw new ArgumentOutOfRangeException("state", state, null);
+                    case State.Enabled: return Styles.GetStyle(Styles.StyleName.ButtonEnabled);
+                    default: throw new ArgumentOutOfRangeException("state", state, null);
                 }
             }
 
@@ -40,22 +39,22 @@ namespace Doozy.Editor
                         switch (state)
                         {
                             case State.Disabled: return Styles.GetStyle(Styles.StyleName.ButtonLeftDisabled);
-                            case State.Enabled:  return Styles.GetStyle(Styles.StyleName.ButtonLeftEnabled);
-                            default:             throw new ArgumentOutOfRangeException("state", state, null);
+                            case State.Enabled: return Styles.GetStyle(Styles.StyleName.ButtonLeftEnabled);
+                            default: throw new ArgumentOutOfRangeException("state", state, null);
                         }
                     case TabPosition.Middle:
                         switch (state)
                         {
                             case State.Disabled: return Styles.GetStyle(Styles.StyleName.ButtonMiddleDisabled);
-                            case State.Enabled:  return Styles.GetStyle(Styles.StyleName.ButtonMiddleEnabled);
-                            default:             throw new ArgumentOutOfRangeException("state", state, null);
+                            case State.Enabled: return Styles.GetStyle(Styles.StyleName.ButtonMiddleEnabled);
+                            default: throw new ArgumentOutOfRangeException("state", state, null);
                         }
                     case TabPosition.Right:
                         switch (state)
                         {
                             case State.Disabled: return Styles.GetStyle(Styles.StyleName.ButtonRightDisabled);
-                            case State.Enabled:  return Styles.GetStyle(Styles.StyleName.ButtonRightEnabled);
-                            default:             throw new ArgumentOutOfRangeException("state", state, null);
+                            case State.Enabled: return Styles.GetStyle(Styles.StyleName.ButtonRightEnabled);
+                            default: throw new ArgumentOutOfRangeException("state", state, null);
                         }
                     default: throw new ArgumentOutOfRangeException("position", position, null);
                 }
@@ -68,34 +67,34 @@ namespace Doozy.Editor
                     case Size.S:
                         switch (textAlign)
                         {
-                            case TextAlign.Left:   return Styles.GetStyle(Styles.StyleName.ButtonLabelSLeft);
+                            case TextAlign.Left: return Styles.GetStyle(Styles.StyleName.ButtonLabelSLeft);
                             case TextAlign.Center: return Styles.GetStyle(Styles.StyleName.ButtonLabelSCenter);
-                            case TextAlign.Right:  return Styles.GetStyle(Styles.StyleName.ButtonLabelSRight);
-                            default:               throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
+                            case TextAlign.Right: return Styles.GetStyle(Styles.StyleName.ButtonLabelSRight);
+                            default: throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
                         }
                     case Size.M:
                         switch (textAlign)
                         {
-                            case TextAlign.Left:   return Styles.GetStyle(Styles.StyleName.ButtonLabelMLeft);
+                            case TextAlign.Left: return Styles.GetStyle(Styles.StyleName.ButtonLabelMLeft);
                             case TextAlign.Center: return Styles.GetStyle(Styles.StyleName.ButtonLabelMCenter);
-                            case TextAlign.Right:  return Styles.GetStyle(Styles.StyleName.ButtonLabelMRight);
-                            default:               throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
+                            case TextAlign.Right: return Styles.GetStyle(Styles.StyleName.ButtonLabelMRight);
+                            default: throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
                         }
                     case Size.L:
                         switch (textAlign)
                         {
-                            case TextAlign.Left:   return Styles.GetStyle(Styles.StyleName.ButtonLabelLLeft);
+                            case TextAlign.Left: return Styles.GetStyle(Styles.StyleName.ButtonLabelLLeft);
                             case TextAlign.Center: return Styles.GetStyle(Styles.StyleName.ButtonLabelLCenter);
-                            case TextAlign.Right:  return Styles.GetStyle(Styles.StyleName.ButtonLabelLRight);
-                            default:               throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
+                            case TextAlign.Right: return Styles.GetStyle(Styles.StyleName.ButtonLabelLRight);
+                            default: throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
                         }
                     case Size.XL:
                         switch (textAlign)
                         {
-                            case TextAlign.Left:   return Styles.GetStyle(Styles.StyleName.ButtonLabelXLLeft);
+                            case TextAlign.Left: return Styles.GetStyle(Styles.StyleName.ButtonLabelXLLeft);
                             case TextAlign.Center: return Styles.GetStyle(Styles.StyleName.ButtonLabelXLCenter);
-                            case TextAlign.Right:  return Styles.GetStyle(Styles.StyleName.ButtonLabelXLRight);
-                            default:               throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
+                            case TextAlign.Right: return Styles.GetStyle(Styles.StyleName.ButtonLabelXLRight);
+                            default: throw new ArgumentOutOfRangeException("textAlign", textAlign, null);
                         }
                     default: throw new ArgumentOutOfRangeException("size", size, null);
                 }
@@ -132,7 +131,7 @@ namespace Doozy.Editor
                 GUI.color = Colors.BarColor(buttonDColor, true);
                 bool result = GUI.Button(rect, GUIContent.none, buttonStyle);
                 GUI.color = color;
-                GUI.Label(rect, content, new GUIStyle(labelStyle) {normal = {textColor = Colors.TextColor(textDColor)}});
+                GUI.Label(rect, content, new GUIStyle(labelStyle) { normal = { textColor = Colors.TextColor(textDColor) } });
                 if (result)
                 {
                     Properties.ResetKeyboardFocus();
@@ -168,7 +167,7 @@ namespace Doozy.Editor
 
             public static bool Draw(GUIContent content, GUIStyle buttonStyle, GUIStyle labelStyle, DColor buttonDColor, DColor textDColor, float height, float width = -1)
             {
-                var options = new List<GUILayoutOption> {GUILayout.Height(height)};
+                var options = new List<GUILayoutOption> { GUILayout.Height(height) };
                 if (width > 0) options.Add(GUILayout.Width(width));
                 bool result;
                 Color color = GUI.color;
@@ -178,7 +177,7 @@ namespace Doozy.Editor
                     result = GUILayout.Button(GUIContent.none, buttonStyle, options.ToArray());
                     GUILayout.Space(-height);
                     GUI.color = color;
-                    GUILayout.Label(content, new GUIStyle(labelStyle) {normal = {textColor = Colors.TextColor(textDColor)}}, options.ToArray());
+                    GUILayout.Label(content, new GUIStyle(labelStyle) { normal = { textColor = Colors.TextColor(textDColor) } }, options.ToArray());
                 }
                 GUILayout.EndVertical();
 
@@ -210,7 +209,7 @@ namespace Doozy.Editor
                     float iconSize = height * 0.6f;
                     float iconPadding = height * 0.1f;
                     Vector2 contentSize = LabelStyle(textSize, textAlign).CalcSize(content);
-                    var options = new List<GUILayoutOption> {GUILayout.Height(height)};
+                    var options = new List<GUILayoutOption> { GUILayout.Height(height) };
                     if (expandWidth)
                     {
                         options.Add(GUILayout.ExpandWidth(true));
@@ -239,7 +238,7 @@ namespace Doozy.Editor
                             GUILayout.Space(iconPadding * 3);
                             Icon.Draw(iconStyle, iconSize, height, Colors.TextColor(textDColor));
                             GUILayout.Space(iconPadding);
-                            GUILayout.Label(content, new GUIStyle(LabelStyle(textSize, textAlign)) {normal = {textColor = Colors.TextColor(textDColor)}}, GUILayout.Width(contentSize.x), GUILayout.Height(height));
+                            GUILayout.Label(content, new GUIStyle(LabelStyle(textSize, textAlign)) { normal = { textColor = Colors.TextColor(textDColor) } }, GUILayout.Width(contentSize.x), GUILayout.Height(height));
                             GUILayout.Space(iconPadding);
                         }
                         GUILayout.EndHorizontal();
@@ -255,12 +254,12 @@ namespace Doozy.Editor
                 }
 
                 public static bool DrawIconButton(GUIStyle iconStyle, ColorName buttonColorName, ColorName iconColorName, float height) { return DrawIconButton(iconStyle, Colors.GetDColor(buttonColorName), Colors.GetDColor(iconColorName), height); }
-                
+
                 public static bool DrawIconButton(GUIStyle iconStyle, DColor buttonDColor, DColor iconDColor, float height)
                 {
                     float iconSize = height * 0.7f;
                     float iconPadding = height * 0.1f;
-                    var options = new List<GUILayoutOption> {GUILayout.Height(height)};
+                    var options = new List<GUILayoutOption> { GUILayout.Height(height) };
                     float width = 0;
                     width += iconPadding * 2;
                     width += iconSize;
@@ -355,7 +354,7 @@ namespace Doozy.Editor
                     Event.current.Use();
                     return true;
                 }
-                
+
                 public static bool Draw(GUIStyle style, Color iconColor, float rowHeight, float iconSize)
                 {
                     Color color = GUI.color;
@@ -367,10 +366,10 @@ namespace Doozy.Editor
 
                     GUI.color = iconColor;
                     var resizedStyle = new GUIStyle(style)
-                                       {
-                                           fixedWidth = iconSize,
-                                           fixedHeight = iconSize
-                                       };
+                    {
+                        fixedWidth = iconSize,
+                        fixedHeight = iconSize
+                    };
                     bool buttonClicked = GUILayout.Button(GUIContent.none, resizedStyle);
                     GUI.color = color;
                     if (rowHeight > 0) GUILayout.EndVertical();

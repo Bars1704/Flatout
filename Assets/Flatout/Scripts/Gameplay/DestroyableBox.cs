@@ -31,15 +31,14 @@ namespace Flatout
             {
                 boxPartcollider.enabled = true;
             }
-                foreach (var boxPart in transform.GetComponentsInChildren<Rigidbody>())
+            foreach (var boxPart in transform.GetComponentsInChildren<Rigidbody>())
             {
                 boxPart.mass = 0.3f;
                 boxPart.isKinematic = false;
                 boxPart.constraints = RigidbodyConstraints.None;
-                boxPart.AddExplosionForce(explosionForce, transform.position,10);
+                boxPart.AddExplosionForce(explosionForce, transform.position, 10);
             }
-            CarBase car;
-            if (collision.gameObject.TryGetComponent(out car))
+            if (collision.gameObject.TryGetComponent(out CarBase car))
                 car.BoxCrashed();
         }
     }

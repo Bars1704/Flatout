@@ -4,8 +4,6 @@
 
 using System;
 using UnityEngine;
-using UnityEngine.Rendering;
-using Language = Doozy.Engine.Language;  
 
 // ReSharper disable InconsistentNaming
 
@@ -94,7 +92,7 @@ namespace Doozy.Engine.Utils
         public string AutoRebuild = "Auto Rebuild";
         public string AutoResetSequence = "Auto Reset Sequence";
         public string AutoSelectButtonAfterShow = "Auto selected button after Show";
-        public string AutoSelectPreviouslySelectedButtonAfterHide= "Auto select previously selected button after Hide";
+        public string AutoSelectPreviouslySelectedButtonAfterHide = "Auto select previously selected button after Hide";
         public string AutoSort = "Auto Sort";
         public string AutoStartLoopAnimation = "Auto Start Loop Animation";
         public string BackButton = "Back Button";
@@ -729,7 +727,7 @@ namespace Doozy.Engine.Utils
         public string SelectListenerToActivateMessage = "Select at least one listener";
 
         public string HasChildViews = "This UIView has child views. For the child views to show and hide as expected, it is recommended that the GameObject of this view NOT get disabled when the view is hidden";
-        
+
         public string HowToUsePlaymakerEventDispatcherMessage = "This dispatcher auto targets the first FSM on this GameObject." +
                                                                 "\n" +
                                                                 "You can override that and reference the FSM you want to target." +

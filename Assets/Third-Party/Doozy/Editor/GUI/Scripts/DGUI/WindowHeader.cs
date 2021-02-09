@@ -20,7 +20,7 @@ namespace Doozy.Editor
                     if (s_titleStyle != null) return s_titleStyle;
                     s_titleStyle = new GUIStyle
                     {
-                        normal = {textColor = Color.white},
+                        normal = { textColor = Color.white },
                         font = Fonts.SansationBold,
                         fontSize = 28,
                         alignment = TextAnchor.MiddleLeft,

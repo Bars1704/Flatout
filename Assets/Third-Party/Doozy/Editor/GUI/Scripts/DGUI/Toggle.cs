@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Utils;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -181,10 +181,10 @@ namespace Doozy.Editor
                 {
                     switch (toggleState)
                     {
-                        case ToggleState.Disabled:    return Styles.GetStyle(Styles.StyleName.SwitchDisabled);
-                        case ToggleState.Enabled:     return Styles.GetStyle(Styles.StyleName.SwitchEnabled);
+                        case ToggleState.Disabled: return Styles.GetStyle(Styles.StyleName.SwitchDisabled);
+                        case ToggleState.Enabled: return Styles.GetStyle(Styles.StyleName.SwitchEnabled);
                         case ToggleState.MultiValues: return Styles.GetStyle(Styles.StyleName.SwitchMultiValues);
-                        default:                      throw new ArgumentOutOfRangeException("toggleState", toggleState, null);
+                        default: throw new ArgumentOutOfRangeException("toggleState", toggleState, null);
                     }
                 }
 
@@ -228,10 +228,10 @@ namespace Doozy.Editor
                 {
                     switch (toggleState)
                     {
-                        case ToggleState.Disabled:    return Styles.GetStyle(Styles.StyleName.CheckBoxDisabled);
-                        case ToggleState.Enabled:     return Styles.GetStyle(Styles.StyleName.CheckBoxEnabled);
+                        case ToggleState.Disabled: return Styles.GetStyle(Styles.StyleName.CheckBoxDisabled);
+                        case ToggleState.Enabled: return Styles.GetStyle(Styles.StyleName.CheckBoxEnabled);
                         case ToggleState.MultiValues: return Styles.GetStyle(Styles.StyleName.CheckBoxMultiValues);
-                        default:                      throw new ArgumentOutOfRangeException("toggleState", toggleState, null);
+                        default: throw new ArgumentOutOfRangeException("toggleState", toggleState, null);
                     }
                 }
 

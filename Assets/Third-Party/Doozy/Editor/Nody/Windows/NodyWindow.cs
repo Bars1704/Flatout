@@ -7,7 +7,6 @@ using Doozy.Editor.Nody.Settings;
 using Doozy.Editor.Settings;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Nody;
-using Doozy.Engine.Nody.Models;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -149,6 +148,6 @@ namespace Doozy.Editor.Nody.Windows
             GraphEvent.OnGraphEvent = HandleOnGraphEvent;
 
             if (!ReopenCurrentGraph()) SetView(View.General);
-        }       
+        }
     }
 }

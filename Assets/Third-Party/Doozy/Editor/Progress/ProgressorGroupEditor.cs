@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Internal;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Progress;
 using Doozy.Engine.Utils;
+using System;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -25,7 +25,7 @@ namespace Doozy.Editor.Progress
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (ProgressorGroup) target;
+                m_target = (ProgressorGroup)target;
                 return m_target;
             }
         }
@@ -64,7 +64,7 @@ namespace Doozy.Editor.Progress
         public override void OnInspectorGUI()
         {
             if (!EditorApplication.isPlayingOrWillChangePlaymode) Target.UpdateProgress();
-            
+
             base.OnInspectorGUI();
             serializedObject.Update();
             DrawHeader(Styles.GetStyle(Styles.StyleName.ComponentHeaderProgressorGroup), MenuUtils.ProgressorGroup_Manual, MenuUtils.ProgressorGroup_YouTube);
@@ -89,7 +89,7 @@ namespace Doozy.Editor.Progress
 
         private void DrawProgressBar(float progress, float barHeight = -1)
         {
-            if(Math.Abs(barHeight - (-1)) < ProgressorGroup.TOLERANCE) barHeight = DGUI.Properties.Space(2);
+            if (Math.Abs(barHeight - (-1)) < ProgressorGroup.TOLERANCE) barHeight = DGUI.Properties.Space(2);
             GUILayoutOption barHeightOption = GUILayout.Height(barHeight);
             Color backgroundColor = DGUI.Utility.IsProSkin ? Color.black : Color.white;
 

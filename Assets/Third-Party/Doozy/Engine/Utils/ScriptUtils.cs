@@ -14,7 +14,7 @@ namespace Doozy.Engine.Utils
     {
         public const char STRING_SEPARATOR = '|';
         private const string BASE64_IDENTIFIER = "B64|";
-        
+
         private static readonly bool debug = false;
 
         public static string DecodeString(string data)

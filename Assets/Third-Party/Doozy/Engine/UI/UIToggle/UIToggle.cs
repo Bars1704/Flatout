@@ -363,13 +363,13 @@ namespace Doozy.Engine.UI
 
         private void Update()
         {
-//            if (m_initialized && m_previousValue != IsOn)
-//            {
-//                m_previousValue = IsOn;
-//                OnValueChanged.Invoke(IsOn);
-//                Debug.Log("On value changed");
-//                if (ToggleProgressor != null) ToggleProgressor.SetProgress(IsOn ? 1 : 0);
-//            }
+            //            if (m_initialized && m_previousValue != IsOn)
+            //            {
+            //                m_previousValue = IsOn;
+            //                OnValueChanged.Invoke(IsOn);
+            //                Debug.Log("On value changed");
+            //                if (ToggleProgressor != null) ToggleProgressor.SetProgress(IsOn ? 1 : 0);
+            //            }
 
             if (InputData.InputMode == InputMode.None) return;
 
@@ -614,12 +614,12 @@ namespace Doozy.Engine.UI
         {
             switch (behaviorType)
             {
-                case UIToggleBehaviorType.OnClick:        return OnClick.Enabled;
+                case UIToggleBehaviorType.OnClick: return OnClick.Enabled;
                 case UIToggleBehaviorType.OnPointerEnter: return OnPointerEnter.Enabled;
-                case UIToggleBehaviorType.OnPointerExit:  return OnPointerExit.Enabled;
-                case UIToggleBehaviorType.OnSelected:     return OnSelected.Enabled;
-                case UIToggleBehaviorType.OnDeselected:   return OnDeselected.Enabled;
-                default:                                  throw new ArgumentOutOfRangeException("behaviorType", behaviorType, null);
+                case UIToggleBehaviorType.OnPointerExit: return OnPointerExit.Enabled;
+                case UIToggleBehaviorType.OnSelected: return OnSelected.Enabled;
+                case UIToggleBehaviorType.OnDeselected: return OnDeselected.Enabled;
+                default: throw new ArgumentOutOfRangeException("behaviorType", behaviorType, null);
             }
         }
 

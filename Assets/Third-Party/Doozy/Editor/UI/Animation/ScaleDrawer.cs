@@ -2,13 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using Doozy.Editor;
 using Doozy.Editor.Internal;
 using Doozy.Engine.UI.Animation;
 using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEngine;
-using PropertyName = Doozy.Editor.PropertyName;
 
 namespace Doozy.Editor.UI.Animation
 {
@@ -168,7 +166,7 @@ namespace Doozy.Editor.UI.Animation
 
             //LINE 1
             drawRect.y += DGUI.Properties.StandardVerticalSpacing;
-            Elements.DrawLine(drawRect, 
+            Elements.DrawLine(drawRect,
                               Elements.GetLayout(Properties.Get(PropertyName.StartDelay, property), 0.2f),
                               Elements.GetLayout(Properties.Get(PropertyName.Duration, property), 0.2f),
                               Elements.GetLayout(Properties.Get(PropertyName.NumberOfLoops, property), 0.2f),
@@ -176,7 +174,7 @@ namespace Doozy.Editor.UI.Animation
 
             //LINE 2
             drawRect.y += DGUI.Properties.SingleLineHeight + DGUI.Properties.StandardVerticalSpacing;
-            Elements.DrawLine(drawRect, 
+            Elements.DrawLine(drawRect,
                               Elements.GetLayout(Properties.Get(PropertyName.From, property), 0.5f),
                               Elements.GetLayout(Properties.Get(PropertyName.To, property), 0.5f));
 

@@ -58,7 +58,7 @@ namespace Doozy.Engine.Nody.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var subGraphNode = (SubGraphNode) original;
+            var subGraphNode = (SubGraphNode)original;
             m_subGraph = subGraphNode.SubGraph;
         }
 

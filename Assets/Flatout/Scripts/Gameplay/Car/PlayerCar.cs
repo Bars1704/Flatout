@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Cinemachine;
+﻿using Cinemachine;
 using System.Linq;
+using UnityEngine;
 
 namespace Flatout
 {

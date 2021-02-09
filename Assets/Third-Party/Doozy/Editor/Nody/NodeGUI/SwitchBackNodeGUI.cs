@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using Doozy.Editor;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
@@ -14,7 +13,7 @@ namespace Doozy.Editor.Nody.NodeGUI
     [CustomNodeGUI(typeof(SwitchBackNode))]
     public class SwitchBackNodeGUI : BaseNodeGUI
     {
-        private SwitchBackNode SwitchBackNode { get { return (SwitchBackNode) target; } }
+        private SwitchBackNode SwitchBackNode { get { return (SwitchBackNode)target; } }
 
         private static GUIStyle s_iconStyle;
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconSwitchBackNode)); } }
@@ -86,7 +85,7 @@ namespace Doozy.Editor.Nody.NodeGUI
                 var sourceNameContent = new GUIContent(source.SourceName);
                 Vector2 sourceNameContentSize = SourceNameStyle.CalcSize(sourceNameContent);
                 var sourceNameRect = new Rect(x + width / 2 - sourceNameContentSize.x / 2, DynamicHeight + (DGUI.Properties.SingleLineHeight - sourcesContentSize.y) / 2, sourceNameContentSize.x, sourceNameContentSize.y);
-                
+
 
                 if (!string.IsNullOrEmpty(SwitchBackNode.ReturnSourceOutputSocketId) && SwitchBackNode.ReturnSourceOutputSocketId == source.OutputSocketId)
                 {
@@ -98,10 +97,10 @@ namespace Doozy.Editor.Nody.NodeGUI
                     DGUI.Icon.Draw(rightChevronRect, Doozy.Editor.Styles.GetStyle(Doozy.Editor.Styles.StyleName.IconFaChevronRight), DGUI.Colors.ActionColorName);
                     GUI.color = DGUI.Colors.IconColor(DGUI.Colors.ActionColorName);
                 }
-                
+
                 GUI.Label(sourceNameRect, source.SourceName, SourceNameStyle);
                 GUI.color = color;
-                
+
                 DynamicHeight += DGUI.Properties.SingleLineHeight;
 
                 Socket inputSocket = Node.GetSocketFromId(source.InputSocketId);

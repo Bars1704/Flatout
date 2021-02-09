@@ -2,13 +2,13 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Doozy.Editor.Nody.NodeGUI;
 using Doozy.Editor.Nody.Utils;
 using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -34,11 +34,11 @@ namespace Doozy.Editor.Nody.Windows
 
             return true;
         }
-        
+
         private static Node CreateNodeCopy(Node node)
         {
             var copy = CreateInstance(node.GetType()) as Node;
-//            DDebug.Log("node.GetType(): " + node.GetType().Name);
+            //            DDebug.Log("node.GetType(): " + node.GetType().Name);
             Debug.Assert(copy != null, "copy != null");
             copy.CopyNode(node);
             EditorUtility.SetDirty(copy);
@@ -98,7 +98,7 @@ namespace Doozy.Editor.Nody.Windows
             EditorUtility.SetDirty(node);                                             //mark the new node as dirty
             CurrentGraph.SetDirty(saveAssets);                                        //set the graph dirty
             if (recordUndo) GraphEvent.Send(GraphEvent.EventType.EVENT_NODE_CREATED); //notify the system the a node has been created
-            SelectNodes(new List<Node> {node}, false, false);                         //select the newly created node
+            SelectNodes(new List<Node> { node }, false, false);                         //select the newly created node
             WindowSettings.SetDirty(false);
         }
 
@@ -106,7 +106,7 @@ namespace Doozy.Editor.Nody.Windows
         {
             foreach (BaseNodeGUI nodeGUI in NodesGUIsDatabase.Values) nodeGUI.IsSelected = selectedNodes.Contains(nodeGUI.Node);
         }
-        
+
         private static void DeleteUnreferencedAssetNodes()
         {
             if (CurrentGraph == null) return;                                                               //check that the graph is not null
@@ -127,7 +127,7 @@ namespace Doozy.Editor.Nody.Windows
             WindowSettings.SetDirty(false);
             CurrentGraph.SetDirty(true); //save the graph
         }
-        
+
         private void PasteNodes()
         {
             if (!WindowSettings.CanPasteNodes) return; //paste operation cannot work if no nodes have been added to the 'virtual clipboard'
@@ -191,8 +191,8 @@ namespace Doozy.Editor.Nody.Windows
             //create current connections list
             var copyConnections = new List<Connection>();
             foreach (Socket copySocket in copySockets)
-            foreach (Connection copyConnection in copySocket.Connections)
-                copyConnections.Add(copyConnection);
+                foreach (Connection copyConnection in copySocket.Connections)
+                    copyConnections.Add(copyConnection);
 
             //generate new connection ids
             foreach (Connection copyConnection in copyConnections)
@@ -201,9 +201,9 @@ namespace Doozy.Editor.Nody.Windows
                 string newConnectionId = copyConnection.GenerateNewId(); //save new conenction id
 
                 foreach (Socket socket in copySockets)                      //go through each socket
-                foreach (Connection socketConnection in socket.Connections) //go through each socket's connections
-                    if (socketConnection.Id == oldConnectionId)
-                        socketConnection.Id = newConnectionId; //update the connection id
+                    foreach (Connection socketConnection in socket.Connections) //go through each socket's connections
+                        if (socketConnection.Id == oldConnectionId)
+                            socketConnection.Id = newConnectionId; //update the connection id
             }
 
             //generate new socket ids
@@ -389,7 +389,7 @@ namespace Doozy.Editor.Nody.Windows
 
             foreach (BaseNodeGUI nodeGUI in NodesGUIsDatabase.Values) nodeGUI.IsActive = CurrentGraph.ActiveNode == nodeGUI.Node;
         }
-        
+
         // ReSharper disable once UnusedMember.Local
         private void UpdateNodesSelectedState(ICollection<string> selectedNodeIds)
         {

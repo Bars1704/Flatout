@@ -2,19 +2,17 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using DG.DOTweenEditor;
 using DG.Tweening;
-using Doozy.Editor;
 using Doozy.Editor.Internal;
+using Doozy.Editor.Soundy;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Progress;
 using Doozy.Engine.Utils;
-using Doozy.Editor.Soundy;
+using System;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
-using PropertyName = Doozy.Editor.PropertyName;
 
 namespace Doozy.Editor.Progress
 {
@@ -29,14 +27,14 @@ namespace Doozy.Editor.Progress
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (Progressor) target;
+                m_target = (Progressor)target;
                 return m_target;
             }
         }
 
         private const string SOME_PROGRESS_TARGETS_GET_UPDATED_ONLY_IN_PLAY_MODE = "PlayModeTarget";
         private bool m_showProgressTargetsSimulationMessage = false;
-        
+
         private SerializedProperty
             m_progressTargets,
             m_onEnableResetValue,
@@ -72,8 +70,8 @@ namespace Doozy.Editor.Progress
         {
             get
             {
-                return (ResetValue) m_onEnableResetValue.enumValueIndex == ResetValue.ToCustomValue ||
-                       (ResetValue) m_onDisableResetValue.enumValueIndex == ResetValue.ToCustomValue;
+                return (ResetValue)m_onEnableResetValue.enumValueIndex == ResetValue.ToCustomValue ||
+                       (ResetValue)m_onDisableResetValue.enumValueIndex == ResetValue.ToCustomValue;
             }
         }
 
@@ -151,7 +149,7 @@ namespace Doozy.Editor.Progress
             serializedObject.ApplyModifiedProperties();
 
             GetInfoMessage(SOME_PROGRESS_TARGETS_GET_UPDATED_ONLY_IN_PLAY_MODE).Draw(m_showProgressTargetsSimulationMessage, InspectorWidth);
-            
+
             if (EditorApplication.isPlayingOrWillChangePlaymode) return;
             // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (m_previousProgress == Target.Progress) return;
@@ -196,7 +194,7 @@ namespace Doozy.Editor.Progress
                                    GUILayout.Space(DGUI.Properties.Space(2));
                                    DGUI.Label.Draw(UILabels.Ease, Size.M, ComponentColorName, DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2));
                                    GUI.color = DGUI.Colors.PropertyColor(ComponentColorName);
-                                   m_simulatorEase = (Ease) EditorGUILayout.EnumPopup(m_simulatorEase, GUILayout.Width(DGUI.Properties.DefaultFieldWidth * 3));
+                                   m_simulatorEase = (Ease)EditorGUILayout.EnumPopup(m_simulatorEase, GUILayout.Width(DGUI.Properties.DefaultFieldWidth * 3));
                                    GUI.color = InitialGUIColor;
                                });
 
@@ -224,7 +222,7 @@ namespace Doozy.Editor.Progress
         {
             float barHeight = DGUI.Properties.Space(2);
             GUILayoutOption barHeightOption = GUILayout.Height(barHeight);
-//            Color contentColor = DGUI.Utility.IsProSkin ? Color.white : Color.black;
+            //            Color contentColor = DGUI.Utility.IsProSkin ? Color.white : Color.black;
             Color backgroundColor = DGUI.Utility.IsProSkin ? Color.black : Color.white;
 
             GUILayout.BeginVertical(barHeightOption);
@@ -254,7 +252,7 @@ namespace Doozy.Editor.Progress
 
         private void DrawProgressInfo()
         {
-//            Color contentColor = DGUI.Utility.IsProSkin ? Color.white : Color.black;
+            //            Color contentColor = DGUI.Utility.IsProSkin ? Color.white : Color.black;
 
             GUILayout.BeginHorizontal();
             {
@@ -338,8 +336,8 @@ namespace Doozy.Editor.Progress
 
         private void DrawResetValue(SerializedProperty property, string propertyName)
         {
-            ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName((ResetValue) property.enumValueIndex != ResetValue.Disabled, ComponentColorName);
-            ColorName textColorName = DGUI.Colors.GetTextColorName((ResetValue) property.enumValueIndex != ResetValue.Disabled, ComponentColorName);
+            ColorName backgroundColorName = DGUI.Colors.GetBackgroundColorName((ResetValue)property.enumValueIndex != ResetValue.Disabled, ComponentColorName);
+            ColorName textColorName = DGUI.Colors.GetTextColorName((ResetValue)property.enumValueIndex != ResetValue.Disabled, ComponentColorName);
             DGUI.Property.Draw(property, propertyName, backgroundColorName, textColorName);
         }
 
@@ -410,15 +408,15 @@ namespace Doozy.Editor.Progress
             {
                 DOTweenEditorPreview.PrepareTweenForPreview(m_simulatorTween, false, false);
                 DOTweenEditorPreview.Start();
-//                if (Target.AnimateValue)
-//                {
-//                    DOTweenEditorPreview.PrepareTweenForPreview(m_simulatorTween, false, false);
-//                    DOTweenEditorPreview.Start();
-//                }
-//                else
-//                {
-//                    Target.SetValue(value);
-//                }
+                //                if (Target.AnimateValue)
+                //                {
+                //                    DOTweenEditorPreview.PrepareTweenForPreview(m_simulatorTween, false, false);
+                //                    DOTweenEditorPreview.Start();
+                //                }
+                //                else
+                //                {
+                //                    Target.SetValue(value);
+                //                }
             }
             else
             {
@@ -428,6 +426,6 @@ namespace Doozy.Editor.Progress
             Target.OnValueUpdated();
         }
 
-        private static bool ResetValueEnabled(SerializedProperty property) { return (ResetValue) property.enumValueIndex != ResetValue.Disabled; }
+        private static bool ResetValueEnabled(SerializedProperty property) { return (ResetValue)property.enumValueIndex != ResetValue.Disabled; }
     }
 }

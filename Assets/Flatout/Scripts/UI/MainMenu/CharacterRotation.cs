@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
-using DG.Tweening;
 
 namespace Bomberman
 {
@@ -9,6 +8,7 @@ namespace Bomberman
     {
         private Touch touch;
         private Quaternion rotationY;
+        [SerializeField]
         private float rotateSpeedModifie = 0.2f;
 
         private bool isRotating = false;
@@ -32,7 +32,7 @@ namespace Bomberman
                     transform.rotation = rotationY * transform.rotation;
                 }
             }
-            else if(isRotating)
+            else if (isRotating)
             {
                 isRotating = false;
                 coroutine = StartCoroutine(RotateToDefault());
@@ -43,7 +43,7 @@ namespace Bomberman
         private IEnumerator RotateToDefault()
         {
             yield return new WaitForSeconds(2f);
-            transform.DORotate(new Vector3(0f,-180f,0f), 1f);
+            transform.DORotate(new Vector3(0f, -180f, 0f), 1f);
             yield return null;
         }
     }

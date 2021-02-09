@@ -52,7 +52,7 @@ namespace Doozy.Engine.Progress
         /// <para/> If TRUE the progressor. Progress value will be used (converted to its logarithmic value), if FALSE progressor.Value value will be used (as is).
         /// </summary>
         public bool UseLogarithmicConversion = true;
-        
+
         #endregion
 
         #region Public Methods

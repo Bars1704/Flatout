@@ -53,15 +53,15 @@ namespace Doozy.Editor.Nody.Windows
             GUI.BeginClip(m_graphAreaIncludingTab);
             GUI.matrix = initialMatrix; //reset the matrix to the initial value
 
-//            DrawOverlay();
+            //            DrawOverlay();
 
-//            DrawGraphName();
-//            DrawGraphBottomInfoBar();
-//            DrawGraphToolbar();
+            //            DrawGraphName();
+            //            DrawGraphBottomInfoBar();
+            //            DrawGraphToolbar();
 
-//            DrawGraphModes();
-//            DrawGraphInfo();
-//            DrawWindowInfo();
+            //            DrawGraphModes();
+            //            DrawGraphInfo();
+            //            DrawWindowInfo();
 
             HandleZoom();
             HandlePanning();
@@ -93,7 +93,7 @@ namespace Doozy.Editor.Nody.Windows
             m_panMode.target = m_mode == GraphMode.Pan;
             m_deleteMode.target = m_mode == GraphMode.Delete;
 
-//            return;
+            //            return;
 
             DrawGraphMode("Connect Mode", Color.yellow, m_connectMode);
             DrawGraphMode("Select Mode", Color.magenta, m_selectMode);
@@ -128,7 +128,7 @@ namespace Doozy.Editor.Nody.Windows
 
             GUI.Box(titleRect, GUIContent.none, ToolbarTabTopToBottom);
             GUI.color = Color.black;
-            GUI.Box(titleRect, tempContent, new GUIStyle(GUI.skin.label) {alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold});
+            GUI.Box(titleRect, tempContent, new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold });
             GUI.color = Color.white;
         }
 
@@ -152,13 +152,13 @@ namespace Doozy.Editor.Nody.Windows
             var graphNameRect = new Rect(6, 2, position.width, 32);
             GUI.color = new Color(0.92f, 0.92f, 0.92f, 0.35f);
             GUI.Label(graphNameRect, new GUIContent(GetGraphName(CurrentGraph)), new GUIStyle(GUI.skin.label)
-                                                                                 {
-                                                                                     alignment = TextAnchor.UpperLeft,
-                                                                                     fontSize = 14,
-                                                                                     padding = new RectOffset(),
-                                                                                     margin = new RectOffset(),
-                                                                                     border = new RectOffset()
-                                                                                 });
+            {
+                alignment = TextAnchor.UpperLeft,
+                fontSize = 14,
+                padding = new RectOffset(),
+                margin = new RectOffset(),
+                border = new RectOffset()
+            });
             GUI.color = Color.white;
         }
 
@@ -171,13 +171,13 @@ namespace Doozy.Editor.Nody.Windows
             GUI.Box(bottomInfoBar, GUIContent.none, WhiteGradientBottomToTop);
             GUI.color = new Color(0.92f, 0.92f, 0.92f, 0.35f);
             GUI.Label(bottomInfoBar, new GUIContent(m_graphAssetPath + (CurrentGraph.IsDirty ? "*" : "")), new GUIStyle(GUI.skin.label)
-                                                                                                           {
-                                                                                                               alignment = TextAnchor.MiddleLeft,
-                                                                                                               fontSize = 10,
-                                                                                                               padding = new RectOffset(6, 0, 0, 2),
-                                                                                                               margin = new RectOffset(),
-                                                                                                               border = new RectOffset()
-                                                                                                           });
+            {
+                alignment = TextAnchor.MiddleLeft,
+                fontSize = 10,
+                padding = new RectOffset(6, 0, 0, 2),
+                margin = new RectOffset(),
+                border = new RectOffset()
+            });
             GUI.color = Color.white;
         }
     }

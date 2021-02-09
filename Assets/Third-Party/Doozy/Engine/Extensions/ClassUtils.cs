@@ -13,20 +13,20 @@ namespace Doozy.Engine.Extensions
         /// <returns>The copied object </returns>
         public static T Clone<T>(this T source)
         {
-            if(!typeof(T).IsSerializable)
+            if (!typeof(T).IsSerializable)
             {
                 throw new System.ArgumentException("The type must be serializable.", "source");
             }
 
             // Don't serialize a null object, simply return the default for that object
-            if(UnityEngine.Object.ReferenceEquals(source, null))
+            if (UnityEngine.Object.ReferenceEquals(source, null))
             {
                 return default(T);
             }
 
             System.Runtime.Serialization.IFormatter formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
             System.IO.Stream stream = new System.IO.MemoryStream();
-            using(stream)
+            using (stream)
             {
                 formatter.Serialize(stream, source);
                 stream.Seek(0, System.IO.SeekOrigin.Begin);

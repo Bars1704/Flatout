@@ -4,27 +4,28 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.UnityDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve] [UnityInputDeviceProfile]
-	public class XTR55_G2_MacUnityProfile : InputDeviceProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve]
+    [UnityInputDeviceProfile]
+    public class XTR55_G2_MacUnityProfile : InputDeviceProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "SAILI Simulator XTR5.5 G2 FMS Controller";
-			DeviceNotes = "SAILI Simulator XTR5.5 G2 FMS Controller on OS X";
+            DeviceName = "SAILI Simulator XTR5.5 G2 FMS Controller";
+            DeviceNotes = "SAILI Simulator XTR5.5 G2 FMS Controller on OS X";
 
-			DeviceClass = InputDeviceClass.Controller;
+            DeviceClass = InputDeviceClass.Controller;
 
-			IncludePlatforms = new[]
-			{
-				"OS X"
-			};
+            IncludePlatforms = new[]
+            {
+                "OS X"
+            };
 
-			Matchers = new[] { new InputDeviceMatcher { NameLiteral = "              SAILI Simulator --- XTR5.5+G2+FMS Controller" } };
+            Matchers = new[] { new InputDeviceMatcher { NameLiteral = "              SAILI Simulator --- XTR5.5+G2+FMS Controller" } };
 
-			/*
+            /*
 			AnalogMappings = new[] {
 				new InputControlMapping {
 					Handle = "Left Stick Up",
@@ -84,8 +85,8 @@ namespace InControl.UnityDeviceProfiles
 				}
 			};
 			*/
-		}
-	}
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

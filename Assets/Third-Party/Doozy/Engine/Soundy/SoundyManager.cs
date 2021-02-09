@@ -115,7 +115,7 @@ namespace Doozy.Engine.Soundy
             s_pooler = null;
         }
 #endif
-        
+
         private void Awake() { s_initialized = true; }
 
         #endregion

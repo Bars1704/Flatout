@@ -242,7 +242,7 @@ namespace Doozy.Engine.Themes
             if (id == Guid.Empty) return -1;
             for (int i = 0; i < Themes.Count; i++)
             {
-                if(!Themes[i].Id.Equals(id))continue;
+                if (!Themes[i].Id.Equals(id)) continue;
                 return i;
             }
 
@@ -256,10 +256,10 @@ namespace Doozy.Engine.Themes
             if (variantId == Guid.Empty) return null;
             foreach (ThemeData theme in Themes)
             {
-                if(theme == null) continue;
+                if (theme == null) continue;
                 foreach (ThemeVariantData variant in theme.Variants)
                 {
-                    if(variant == null) continue;
+                    if (variant == null) continue;
                     if (variant.Id.Equals(variantId))
                         return variant;
                 }
@@ -268,7 +268,7 @@ namespace Doozy.Engine.Themes
             return null;
         }
 
-        
+
         /// <summary> Add the 'General' theme if it does not exist and initializes it </summary>
         public void Initialize()
         {
@@ -386,7 +386,7 @@ namespace Doozy.Engine.Themes
 #endif
             return true;
         }
-        
+
         /// <summary> Reset the database to the default values </summary>
         public bool ResetDatabase()
         {
@@ -436,7 +436,7 @@ namespace Doozy.Engine.Themes
                 AddTheme(foundThemeData, false);
                 foundUnregisteredThemeData = true;
             }
-            
+
             if (!foundUnregisteredThemeData)
             {
                 DoozyUtils.ClearProgressBar();

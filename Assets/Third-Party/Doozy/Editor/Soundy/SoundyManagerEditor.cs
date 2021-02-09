@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using Doozy.Editor;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Windows;
 using Doozy.Engine.Soundy;
@@ -16,7 +15,7 @@ namespace Doozy.Editor.Soundy
     public class SoundyManagerEditor : BaseEditor
     {
         protected override ColorName ComponentColorName { get { return DGUI.Colors.SoundyManagerColorName; } }
-        
+
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
@@ -26,7 +25,7 @@ namespace Doozy.Editor.Soundy
             GUILayout.Space(DGUI.Properties.Space(4));
             serializedObject.ApplyModifiedProperties();
         }
-        
+
         private void DrawSoundySettings()
         {
             GUILayout.BeginHorizontal();

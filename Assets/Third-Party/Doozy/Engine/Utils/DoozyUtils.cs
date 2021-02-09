@@ -93,8 +93,8 @@ namespace Doozy.Engine.Utils
         public static void AddObjectToAsset(Object objectToAdd, Object assetObject)
         {
 #if UNITY_EDITOR
-//            Debug.Log("objectToAdd is null? " + (objectToAdd == null));
-//            Debug.Log("assetObject is null? " + (assetObject == null));
+            //            Debug.Log("objectToAdd is null? " + (objectToAdd == null));
+            //            Debug.Log("assetObject is null? " + (assetObject == null));
 
             if (objectToAdd == null || assetObject == null) return;
 
@@ -174,7 +174,7 @@ namespace Doozy.Engine.Utils
         /// <summary> [Editor Only] Writes all unsaved asset changes to disk </summary>
         public static void SaveAssets()
         {
-//            DDebug.Log("SaveAssets");
+            //            DDebug.Log("SaveAssets");
 #if UNITY_EDITOR
             DoozySettings.Instance.AssetDatabaseSaveAssetsNeeded = false;
             UnityEditor.AssetDatabase.SaveAssets();

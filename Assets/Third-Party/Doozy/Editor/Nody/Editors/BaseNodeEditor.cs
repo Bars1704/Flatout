@@ -2,13 +2,13 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Nody.Settings;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.Utils;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -33,7 +33,7 @@ namespace Doozy.Editor.Nody.Editors
         #region Properties
 
         protected AnimBool ShowCurveModifier { get { return GetAnimBool("ShowCurveModifier"); } }
-        protected Node BaseNode { get { return (Node) target; } }
+        protected Node BaseNode { get { return (Node)target; } }
         protected static ColorName InputColorName { get { return DGUI.Colors.NodyInputColorName; } }
         protected static ColorName OutputColorName { get { return DGUI.Colors.NodyOutputColorName; } }
         protected static GUIStyle InputSocketIconStyle { get { return Editor.Styles.GetStyle(Editor.Styles.StyleName.IconFaSignIn); } }
@@ -44,7 +44,7 @@ namespace Doozy.Editor.Nody.Editors
         #region Public Variables
 
         protected bool NodeUpdated;
-//        protected bool HasNotes { get { return GetProperty(PropertyName.m_notes).stringValue.Length > 0; } }
+        //        protected bool HasNotes { get { return GetProperty(PropertyName.m_notes).stringValue.Length > 0; } }
 
         #endregion
 
@@ -386,8 +386,8 @@ namespace Doozy.Editor.Nody.Editors
                 }
             }
             GUILayout.EndHorizontal();
-            
-            if(!showNotes || !NodyWindowSettings.Instance.ShowNodeNotes) return;
+
+            if (!showNotes || !NodyWindowSettings.Instance.ShowNodeNotes) return;
             GUILayout.Space(DGUI.Properties.Space(2));
             DrawNodeNotes();
         }

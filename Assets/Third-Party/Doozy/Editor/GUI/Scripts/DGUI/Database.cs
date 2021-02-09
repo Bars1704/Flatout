@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.UI;
 using Doozy.Engine.UI.Base;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 

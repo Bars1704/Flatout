@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
 using Doozy.Engine.Attributes;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
@@ -167,8 +167,8 @@ namespace Doozy.Engine.Soundy
             SoundName = DEFAULT_SOUND_NAME;
             IgnoreListenerPause = DEFAULT_IGNORE_LISTENER_PAUSE;
             Loop = DEFAULT_LOOP;
-            Volume = new RangedFloat {MinValue = DEFAULT_VOLUME, MaxValue = DEFAULT_VOLUME};
-            Pitch = new RangedFloat {MinValue = DEFAULT_PITCH, MaxValue = DEFAULT_PITCH};
+            Volume = new RangedFloat { MinValue = DEFAULT_VOLUME, MaxValue = DEFAULT_VOLUME };
+            Pitch = new RangedFloat { MinValue = DEFAULT_PITCH, MaxValue = DEFAULT_PITCH };
             SpatialBlend = DEFAULT_SPATIAL_BLEND;
             Mode = DEFAULT_PLAY_MODE;
             ResetSequenceAfterInactiveTime = DEFAULT_RESET_SEQUENCE_AFTER_INACTIVE_TIME;
@@ -244,7 +244,7 @@ namespace Doozy.Engine.Soundy
             Camera main = Camera.main;
             audioSource.transform.position = main == null ? Vector3.zero : main.transform.position;
             audioSource.Play();
-//            DDebug.Log( "Preview Sound: " + audioSource.clip.name, this);
+            //            DDebug.Log( "Preview Sound: " + audioSource.clip.name, this);
         }
 
         /// <summary> [Editor Only] Plays a sound preview in the Editor </summary>

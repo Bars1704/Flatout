@@ -27,14 +27,14 @@ namespace Doozy.Editor.UI.Nodes
         private static NamesDatabase UIViewDatabase { get { return UIViewSettings.Database; } }
         private static NamesDatabase UIButtonDatabase { get { return UIButtonSettings.Database; } }
         private static NamesDatabase UIDrawerDatabase { get { return UIDrawerSettings.Database; } }
-        
-        private WaitNode TargetNode { get { return (WaitNode) target; } }
+
+        private WaitNode TargetNode { get { return (WaitNode)target; } }
 
         private SerializedProperty
             m_getSceneBy,
             m_waitFor,
             m_anyValue,
-//            m_ignoreUnityTimescale,
+            //            m_ignoreUnityTimescale,
             m_randomDuration,
             m_duration,
             m_durationMax,
@@ -59,7 +59,7 @@ namespace Doozy.Editor.UI.Nodes
             m_getSceneBy = GetProperty(PropertyName.GetSceneBy);
             m_waitFor = GetProperty(PropertyName.WaitFor);
             m_anyValue = GetProperty(PropertyName.AnyValue);
-//            m_ignoreUnityTimescale = GetProperty(PropertyName.IgnoreUnityTimescale);
+            //            m_ignoreUnityTimescale = GetProperty(PropertyName.IgnoreUnityTimescale);
             m_randomDuration = GetProperty(PropertyName.RandomDuration);
             m_duration = GetProperty(PropertyName.Duration);
             m_durationMax = GetProperty(PropertyName.DurationMax);
@@ -138,24 +138,24 @@ namespace Doozy.Editor.UI.Nodes
                         case WaitNode.WaitType.GameEvent:
                             anyLabel = UILabels.AnyGameEvent;
                             break;
-                        case WaitNode.WaitType.SceneLoad: 
-                        case WaitNode.WaitType.SceneUnload: 
+                        case WaitNode.WaitType.SceneLoad:
+                        case WaitNode.WaitType.SceneUnload:
                         case WaitNode.WaitType.ActiveSceneChange:
                             anyLabel = UILabels.AnyScene;
                             break;
-                        case WaitNode.WaitType.UIView: 
+                        case WaitNode.WaitType.UIView:
                             DGUI.Property.Draw(m_uiViewTriggerAction, UILabels.TriggerAction, backgroundColorName, textColorName);
                             GUILayout.Space(DGUI.Properties.Space());
-                            if ((UIViewBehaviorType) m_uiViewTriggerAction.enumValueIndex == UIViewBehaviorType.Unknown)
-                                m_uiViewTriggerAction.enumValueIndex = (int) UIViewBehaviorType.Show;
+                            if ((UIViewBehaviorType)m_uiViewTriggerAction.enumValueIndex == UIViewBehaviorType.Unknown)
+                                m_uiViewTriggerAction.enumValueIndex = (int)UIViewBehaviorType.Show;
                             anyLabel = UILabels.AnyUIView;
                             break;
-                        case WaitNode.WaitType.UIButton: 
+                        case WaitNode.WaitType.UIButton:
                             DGUI.Property.Draw(m_uiButtonTriggerAction, UILabels.TriggerAction, backgroundColorName, textColorName);
                             GUILayout.Space(DGUI.Properties.Space());
                             anyLabel = UILabels.AnyUIButton;
                             break;
-                        case WaitNode.WaitType.UIDrawer: 
+                        case WaitNode.WaitType.UIDrawer:
                             DGUI.Property.Draw(m_uiDrawerTriggerAction, UILabels.TriggerAction, backgroundColorName, textColorName);
                             GUILayout.Space(DGUI.Properties.Space());
                             anyLabel = UILabels.AnyUIDrawer;

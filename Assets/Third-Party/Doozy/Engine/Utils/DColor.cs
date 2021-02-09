@@ -2,9 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using Doozy.Engine.Extensions;
 using Doozy.Engine.Utils.ColorModels;
+using System;
 using UnityEngine;
 
 namespace Doozy.Engine.Utils
@@ -23,8 +22,8 @@ namespace Doozy.Engine.Utils
         {
             //Light = new Color(normal.r, normal.g, normal.b, normal.a).Lighter();
             HSV lightHSV = ColorUtils.RGBtoHSV(new RGB(normalColor.r, normalColor.g, normalColor.b));
-            lightHSV.s = 90f/255f;
-            lightHSV.v = 240f/255f;
+            lightHSV.s = 90f / 255f;
+            lightHSV.v = 240f / 255f;
             return lightHSV.Color();
         }
 
@@ -32,11 +31,11 @@ namespace Doozy.Engine.Utils
         {
             //Dark = new Color(normal.r, normal.g, normal.b, normal.a).Darker();
             HSV darkHSV = ColorUtils.RGBtoHSV(new RGB(normalColor.r, normalColor.g, normalColor.b));
-            darkHSV.s = 220f/255f;
-            darkHSV.v = 90f/255f;
+            darkHSV.s = 220f / 255f;
+            darkHSV.v = 90f / 255f;
             return darkHSV.Color();
         }
-        
+
         public DColor(Color normal)
         {
             ColorName = UNNAMED_COLOR;

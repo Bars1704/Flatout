@@ -1,22 +1,22 @@
 ﻿// ReSharper disable InconsistentNaming
 namespace InControl
 {
-	using UnityEngine;
+    using UnityEngine;
 
-	public enum InputDeviceDriverType : ushort
-	{
-		Unknown,
-		HID,
-		USB,
-		Bluetooth,
+    public enum InputDeviceDriverType : ushort
+    {
+        Unknown,
+        HID,
+        USB,
+        Bluetooth,
 
-		[InspectorName( "XInput" )]
-		XInput,
+        [InspectorName("XInput")]
+        XInput,
 
-		[InspectorName( "DirectInput" )]
-		DirectInput,
+        [InspectorName("DirectInput")]
+        DirectInput,
 
-		[InspectorName( "RawInput" )]
-		RawInput,
-	}
+        [InspectorName("RawInput")]
+        RawInput,
+    }
 }

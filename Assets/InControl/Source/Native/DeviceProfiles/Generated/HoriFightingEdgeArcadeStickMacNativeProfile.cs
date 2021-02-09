@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class HoriFightingEdgeArcadeStickMacNativeProfile : Xbox360DriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class HoriFightingEdgeArcadeStickMacNativeProfile : Xbox360DriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Hori Fighting Edge Arcade Stick";
-			DeviceNotes = "Hori Fighting Edge Arcade Stick on Mac";
+            DeviceName = "Hori Fighting Edge Arcade Stick";
+            DeviceNotes = "Hori Fighting Edge Arcade Stick on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x24c6,
-					ProductID = 0x5503,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x24c6,
+                    ProductID = 0x5503,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Soundy;
 using Doozy.Engine.Extensions;
@@ -26,7 +25,7 @@ namespace Doozy.Editor.Progress
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (ProgressTargetAction) target;
+                m_target = (ProgressTargetAction)target;
                 return m_target;
             }
         }
@@ -128,7 +127,7 @@ namespace Doozy.Editor.Progress
                 DGUI.Label.Draw(UILabels.Is, Size.S, ComponentColorName, DGUI.Properties.SingleLineHeight);
 
 
-                var compareMethod = (CompareType) m_compareMethod.enumValueIndex;
+                var compareMethod = (CompareType)m_compareMethod.enumValueIndex;
                 float compareMethodWidth;
                 switch (compareMethod)
                 {
@@ -250,7 +249,7 @@ namespace Doozy.Editor.Progress
         private void DrawActions()
         {
             ColorName currentColor = Target.IsActive ? ComponentColorName : ColorName.Red;
-            
+
             DGUI.Doozy.DrawTitleWithIconAndBackground(Styles.GetStyle(Styles.StyleName.IconAction),
                                                       UILabels.Actions,
                                                       Size.L,

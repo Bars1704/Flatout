@@ -62,10 +62,10 @@ namespace Doozy.Engine.Nody
             get
             {
                 return m_graphModel;
-//                return GraphModel;
-//                if (m_graph != null) return m_graph;
-//                m_graph = m_graphModel.Clone();
-//                return m_graph;
+                //                return GraphModel;
+                //                if (m_graph != null) return m_graph;
+                //                m_graph = m_graphModel.Clone();
+                //                return m_graph;
             }
         }
 
@@ -238,8 +238,8 @@ namespace Doozy.Engine.Nody
 
 
             StartCoroutine(ActivateStartOrEnterNodeEnumerator());
-//            Graph.ActivateStartOrEnterNode();
-//            Initialized = true;
+            //            Graph.ActivateStartOrEnterNode();
+            //            Initialized = true;
         }
 
         private void ResetController()

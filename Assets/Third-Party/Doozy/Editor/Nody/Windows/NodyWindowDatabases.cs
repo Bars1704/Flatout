@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Editor.Nody.NodeGUI;
 using Doozy.Editor.Nody.Utils;
 using Doozy.Engine.Nody.Models;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -249,7 +249,7 @@ namespace Doozy.Editor.Nody.Windows
                         }
 
                         //check if the connection id has been added to the dictionary
-                        if (!m_connectionsDatabase.ContainsKey(connection.Id)) m_connectionsDatabase.Add(connection.Id, new VirtualConnection {ConnectionId = connection.Id}); //if not -> create a new entry with this connection id
+                        if (!m_connectionsDatabase.ContainsKey(connection.Id)) m_connectionsDatabase.Add(connection.Id, new VirtualConnection { ConnectionId = connection.Id }); //if not -> create a new entry with this connection id
                         if (connection.InputSocketId == socket.Id) m_connectionsDatabase[connection.Id].InputSocket = socket;                                                  //reference this socket if it is the connection's InputSocket
                         if (connection.InputNodeId == socket.NodeId) m_connectionsDatabase[connection.Id].InputNode = NodesDatabase[socket.NodeId];                            //reference this socket's parent as the InputNode
                         if (connection.OutputSocketId == socket.Id) m_connectionsDatabase[connection.Id].OutputSocket = socket;                                                //reference this socket if it is the connection's OutputSocket

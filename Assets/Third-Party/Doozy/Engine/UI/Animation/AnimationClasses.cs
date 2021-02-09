@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using DG.Tweening;
+using System;
 using UnityEngine;
 
 // ReSharper disable InconsistentNaming
@@ -185,25 +185,25 @@ namespace Doozy.Engine.UI.Animation
         public Move Copy()
         {
             return new Move(AnimationType)
-                   {
-                       AnimationType = AnimationType,
-                       Enabled = Enabled,
-                       From = From,
-                       To = To,
-                       By = By,
-                       UseCustomFromAndTo = UseCustomFromAndTo,
-                       Vibrato = Vibrato,
-                       Elasticity = Elasticity,
-                       NumberOfLoops = NumberOfLoops,
-                       LoopType = LoopType,
-                       Direction = Direction,
-                       CustomPosition = CustomPosition,
-                       EaseType = EaseType,
-                       Ease = Ease,
-                       AnimationCurve = new AnimationCurve(AnimationCurve.keys),
-                       StartDelay = StartDelay,
-                       Duration = Duration
-                   };
+            {
+                AnimationType = AnimationType,
+                Enabled = Enabled,
+                From = From,
+                To = To,
+                By = By,
+                UseCustomFromAndTo = UseCustomFromAndTo,
+                Vibrato = Vibrato,
+                Elasticity = Elasticity,
+                NumberOfLoops = NumberOfLoops,
+                LoopType = LoopType,
+                Direction = Direction,
+                CustomPosition = CustomPosition,
+                EaseType = EaseType,
+                Ease = Ease,
+                AnimationCurve = new AnimationCurve(AnimationCurve.keys),
+                StartDelay = StartDelay,
+                Duration = Duration
+            };
         }
 
         #endregion
@@ -374,24 +374,24 @@ namespace Doozy.Engine.UI.Animation
         public Rotate Copy()
         {
             return new Rotate(AnimationType)
-                   {
-                       AnimationType = AnimationType,
-                       Enabled = Enabled,
-                       From = From,
-                       To = To,
-                       By = By,
-                       UseCustomFromAndTo = UseCustomFromAndTo,
-                       Vibrato = Vibrato,
-                       Elasticity = Elasticity,
-                       NumberOfLoops = NumberOfLoops,
-                       LoopType = LoopType,
-                       RotateMode = RotateMode,
-                       EaseType = EaseType,
-                       Ease = Ease,
-                       AnimationCurve = new AnimationCurve(AnimationCurve.keys),
-                       StartDelay = StartDelay,
-                       Duration = Duration
-                   };
+            {
+                AnimationType = AnimationType,
+                Enabled = Enabled,
+                From = From,
+                To = To,
+                By = By,
+                UseCustomFromAndTo = UseCustomFromAndTo,
+                Vibrato = Vibrato,
+                Elasticity = Elasticity,
+                NumberOfLoops = NumberOfLoops,
+                LoopType = LoopType,
+                RotateMode = RotateMode,
+                EaseType = EaseType,
+                Ease = Ease,
+                AnimationCurve = new AnimationCurve(AnimationCurve.keys),
+                StartDelay = StartDelay,
+                Duration = Duration
+            };
         }
 
         #endregion
@@ -555,23 +555,23 @@ namespace Doozy.Engine.UI.Animation
         public Scale Copy()
         {
             return new Scale(AnimationType)
-                   {
-                       AnimationType = AnimationType,
-                       Enabled = Enabled,
-                       From = From,
-                       To = To,
-                       By = By,
-                       UseCustomFromAndTo = UseCustomFromAndTo,
-                       Vibrato = Vibrato,
-                       Elasticity = Elasticity,
-                       NumberOfLoops = NumberOfLoops,
-                       LoopType = LoopType,
-                       EaseType = EaseType,
-                       Ease = Ease,
-                       AnimationCurve = new AnimationCurve(AnimationCurve.keys),
-                       StartDelay = StartDelay,
-                       Duration = Duration
-                   };
+            {
+                AnimationType = AnimationType,
+                Enabled = Enabled,
+                From = From,
+                To = To,
+                By = By,
+                UseCustomFromAndTo = UseCustomFromAndTo,
+                Vibrato = Vibrato,
+                Elasticity = Elasticity,
+                NumberOfLoops = NumberOfLoops,
+                LoopType = LoopType,
+                EaseType = EaseType,
+                Ease = Ease,
+                AnimationCurve = new AnimationCurve(AnimationCurve.keys),
+                StartDelay = StartDelay,
+                Duration = Duration
+            };
         }
 
         #endregion
@@ -712,21 +712,21 @@ namespace Doozy.Engine.UI.Animation
         public Fade Copy()
         {
             return new Fade(AnimationType)
-                   {
-                       AnimationType = AnimationType,
-                       Enabled = Enabled,
-                       From = From,
-                       To = To,
-                       By = By,
-                       UseCustomFromAndTo = UseCustomFromAndTo,
-                       NumberOfLoops = NumberOfLoops,
-                       LoopType = LoopType,
-                       EaseType = EaseType,
-                       Ease = Ease,
-                       AnimationCurve = new AnimationCurve(AnimationCurve.keys),
-                       StartDelay = StartDelay,
-                       Duration = Duration
-                   };
+            {
+                AnimationType = AnimationType,
+                Enabled = Enabled,
+                From = From,
+                To = To,
+                By = By,
+                UseCustomFromAndTo = UseCustomFromAndTo,
+                NumberOfLoops = NumberOfLoops,
+                LoopType = LoopType,
+                EaseType = EaseType,
+                Ease = Ease,
+                AnimationCurve = new AnimationCurve(AnimationCurve.keys),
+                StartDelay = StartDelay,
+                Duration = Duration
+            };
         }
 
         #endregion

@@ -28,7 +28,7 @@ namespace Doozy.Engine.Themes
 #endif
 
         #endregion
-        
+
         #region Public Variables
 
         /// <summary> Target ParticleSystem component </summary>
@@ -45,14 +45,14 @@ namespace Doozy.Engine.Themes
         #region Private Variables
 
         private float m_previousAlphaValue = -1;
-        
+
         #endregion
-        
+
         #region Unity Methods
 
         private void Update()
         {
-            if(!OverrideAlpha) return;
+            if (!OverrideAlpha) return;
             // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (Alpha == m_previousAlphaValue) return;
             SetAlpha(Alpha);
@@ -60,7 +60,7 @@ namespace Doozy.Engine.Themes
         }
 
         #endregion
-        
+
         #region Public Methods
 
         /// <summary> Method used by the ThemeManager when the active variant or selected theme have changed </summary>
@@ -88,12 +88,12 @@ namespace Doozy.Engine.Themes
             ParticleSystem.MainModule mainModule = ParticleSystem.main;
             Color color = mainModule.startColor.color;
             mainModule.startColor = new Color()
-                                         {
-                                             r = color.r,
-                                             g = color.g,
-                                             b = color.b,
-                                             a = Alpha
-                                         };
+            {
+                r = color.r,
+                g = color.g,
+                b = color.b,
+                a = Alpha
+            };
             ;
         }
 

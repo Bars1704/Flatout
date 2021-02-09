@@ -164,7 +164,7 @@ namespace Doozy.Engine.UI
 
             drawer.Container.Canvas.enabled = true;
             drawer.Container.GraphicRaycaster.enabled = true;
-            
+
             drawer.Overlay.Canvas.enabled = true;
             drawer.Overlay.GraphicRaycaster.enabled = true;
 
@@ -284,7 +284,7 @@ namespace Doozy.Engine.UI
 
         /// <summary> If TRUE, the 'Back' button event will be blocked by this UIDrawer is visible (default: TRUE) </summary>
         public bool BlockBackButton = true;
-        
+
         /// <summary> Behavior when this UIDrawer gets hidden (goes off screen) </summary>
         public UIDrawerBehavior CloseBehavior;
 
@@ -319,7 +319,7 @@ namespace Doozy.Engine.UI
 
         /// <summary> If TRUE, the next 'Back' button event will hide (close) this UIDrawer (default: TRUE) </summary>
         public bool HideOnBackButton = true;
-        
+
         /// <summary>
         ///     Callback executed when the drawer is animating (opening or closing) and its progress has been updated.
         ///     <para />
@@ -882,11 +882,11 @@ namespace Doozy.Engine.UI
 
             switch (CloseDirection)
             {
-                case SimpleSwipe.Left:  return new Vector3(Container.OpenedPosition.x - xOffset, Container.OpenedPosition.y, Container.OpenedPosition.z);
+                case SimpleSwipe.Left: return new Vector3(Container.OpenedPosition.x - xOffset, Container.OpenedPosition.y, Container.OpenedPosition.z);
                 case SimpleSwipe.Right: return new Vector3(Container.OpenedPosition.x + xOffset, Container.OpenedPosition.y, Container.OpenedPosition.z);
-                case SimpleSwipe.Up:    return new Vector3(Container.OpenedPosition.x, Container.OpenedPosition.y + yOffset, Container.OpenedPosition.z);
-                case SimpleSwipe.Down:  return new Vector3(Container.OpenedPosition.x, Container.OpenedPosition.y - yOffset, Container.OpenedPosition.z);
-                default:                return Vector3.zero;
+                case SimpleSwipe.Up: return new Vector3(Container.OpenedPosition.x, Container.OpenedPosition.y + yOffset, Container.OpenedPosition.z);
+                case SimpleSwipe.Down: return new Vector3(Container.OpenedPosition.x, Container.OpenedPosition.y - yOffset, Container.OpenedPosition.z);
+                default: return Vector3.zero;
             }
         }
 
@@ -920,73 +920,73 @@ namespace Doozy.Engine.UI
                 //does this drawer close to the Left or the Right of the screen?
                 case SimpleSwipe.Left:
                 case SimpleSwipe.Right:
-                {
-                    if (Opened) //is the drawer opened?
                     {
-                        Vector3 anchoredPosition3D;
-                        anchoredPosition3D = new Vector3(Container.OpenedPosition.x + ScaledPositionX(Detector.CurrentTouchInfo.Touch.position.x) - m_dragStartPosition.x, //calculate the X 'dragged' position
-                                                         (anchoredPosition3D = Container.RectTransform.anchoredPosition3D).y,
-                                                         anchoredPosition3D.z);
-                        Container.RectTransform.anchoredPosition3D = anchoredPosition3D;
-                    }
-                    else if (Closed) //is the drawer closed?
-                    {
-                        Vector3 anchoredPosition3D;
-                        anchoredPosition3D = new Vector3(Container.ClosedPosition.x + ScaledPositionX(Detector.CurrentTouchInfo.Touch.position.x) - m_dragStartPosition.x, //calculate the X 'dragged' position
-                                                         (anchoredPosition3D = Container.RectTransform.anchoredPosition3D).y,
-                                                         anchoredPosition3D.z);
-                        Container.RectTransform.anchoredPosition3D = anchoredPosition3D;
-                    }
+                        if (Opened) //is the drawer opened?
+                        {
+                            Vector3 anchoredPosition3D;
+                            anchoredPosition3D = new Vector3(Container.OpenedPosition.x + ScaledPositionX(Detector.CurrentTouchInfo.Touch.position.x) - m_dragStartPosition.x, //calculate the X 'dragged' position
+                                                             (anchoredPosition3D = Container.RectTransform.anchoredPosition3D).y,
+                                                             anchoredPosition3D.z);
+                            Container.RectTransform.anchoredPosition3D = anchoredPosition3D;
+                        }
+                        else if (Closed) //is the drawer closed?
+                        {
+                            Vector3 anchoredPosition3D;
+                            anchoredPosition3D = new Vector3(Container.ClosedPosition.x + ScaledPositionX(Detector.CurrentTouchInfo.Touch.position.x) - m_dragStartPosition.x, //calculate the X 'dragged' position
+                                                             (anchoredPosition3D = Container.RectTransform.anchoredPosition3D).y,
+                                                             anchoredPosition3D.z);
+                            Container.RectTransform.anchoredPosition3D = anchoredPosition3D;
+                        }
 
-                    if (CloseDirection == SimpleSwipe.Left) //does this drawer close to the Left -> clamp its position accordingly
-                    {
-                        Vector3 anchoredPosition3D;
-                        anchoredPosition3D = new Vector3(Mathf.Clamp(Container.RectTransform.anchoredPosition3D.x, Container.ClosedPosition.x, Container.OpenedPosition.x), //clamp X position
-                                                         (anchoredPosition3D = Container.RectTransform.anchoredPosition3D).y,
-                                                         anchoredPosition3D.z);
-                        Container.RectTransform.anchoredPosition3D = anchoredPosition3D;
-                    }
-                    else //this drawer closes to the Right -> clamp its position accordingly
-                    {
-                        Vector3 anchoredPosition3D;
-                        anchoredPosition3D = new Vector3(Mathf.Clamp(Container.RectTransform.anchoredPosition3D.x, Container.OpenedPosition.x, Container.ClosedPosition.x), //clamp X position
-                                                         (anchoredPosition3D = Container.RectTransform.anchoredPosition3D).y,
-                                                         anchoredPosition3D.z);
-                        Container.RectTransform.anchoredPosition3D = anchoredPosition3D;
-                    }
+                        if (CloseDirection == SimpleSwipe.Left) //does this drawer close to the Left -> clamp its position accordingly
+                        {
+                            Vector3 anchoredPosition3D;
+                            anchoredPosition3D = new Vector3(Mathf.Clamp(Container.RectTransform.anchoredPosition3D.x, Container.ClosedPosition.x, Container.OpenedPosition.x), //clamp X position
+                                                             (anchoredPosition3D = Container.RectTransform.anchoredPosition3D).y,
+                                                             anchoredPosition3D.z);
+                            Container.RectTransform.anchoredPosition3D = anchoredPosition3D;
+                        }
+                        else //this drawer closes to the Right -> clamp its position accordingly
+                        {
+                            Vector3 anchoredPosition3D;
+                            anchoredPosition3D = new Vector3(Mathf.Clamp(Container.RectTransform.anchoredPosition3D.x, Container.OpenedPosition.x, Container.ClosedPosition.x), //clamp X position
+                                                             (anchoredPosition3D = Container.RectTransform.anchoredPosition3D).y,
+                                                             anchoredPosition3D.z);
+                            Container.RectTransform.anchoredPosition3D = anchoredPosition3D;
+                        }
 
-                    break;
-                }
+                        break;
+                    }
                 //does this drawer close Up or Down
                 case SimpleSwipe.Up:
                 case SimpleSwipe.Down:
-                {
-                    if (Opened) //is the drawer opened?
-                        Container.RectTransform.anchoredPosition3D = new Vector3(Container.RectTransform.anchoredPosition3D.x,
-                                                                                 Container.OpenedPosition.y + ScaledPositionY(Detector.CurrentTouchInfo.Touch.position.y) - m_dragStartPosition.y, //calculate the Y 'dragged' position
-                                                                                 Container.RectTransform.anchoredPosition3D.z);
-                    else if (Closed) //is the drawer closed?
-                        Container.RectTransform.anchoredPosition3D = new Vector3(Container.RectTransform.anchoredPosition3D.x,
-                                                                                 Container.ClosedPosition.y + ScaledPositionY(Detector.CurrentTouchInfo.Touch.position.y) - m_dragStartPosition.y, //calculate the Y 'dragged' position
-                                                                                 Container.RectTransform.anchoredPosition3D.z);
-
-                    if (CloseDirection == SimpleSwipe.Up) //does this drawer close Up -> clamp its position accordingly
                     {
-                        Vector3 anchoredPosition3D = Container.RectTransform.anchoredPosition3D;
-                        Container.RectTransform.anchoredPosition3D = new Vector3(anchoredPosition3D.x,
-                                                                                 Mathf.Clamp(anchoredPosition3D.y, Container.OpenedPosition.y, Container.ClosedPosition.y), //clamp Y position
-                                                                                 Container.RectTransform.anchoredPosition3D.z);
-                    }
-                    else //this drawer closes Down -> clamp its position accordingly
-                    {
-                        Vector3 anchoredPosition3D = Container.RectTransform.anchoredPosition3D;
-                        Container.RectTransform.anchoredPosition3D = new Vector3(anchoredPosition3D.x,
-                                                                                 Mathf.Clamp(anchoredPosition3D.y, Container.ClosedPosition.y, Container.OpenedPosition.y), //clamp Y position
-                                                                                 Container.RectTransform.anchoredPosition3D.z);
-                    }
+                        if (Opened) //is the drawer opened?
+                            Container.RectTransform.anchoredPosition3D = new Vector3(Container.RectTransform.anchoredPosition3D.x,
+                                                                                     Container.OpenedPosition.y + ScaledPositionY(Detector.CurrentTouchInfo.Touch.position.y) - m_dragStartPosition.y, //calculate the Y 'dragged' position
+                                                                                     Container.RectTransform.anchoredPosition3D.z);
+                        else if (Closed) //is the drawer closed?
+                            Container.RectTransform.anchoredPosition3D = new Vector3(Container.RectTransform.anchoredPosition3D.x,
+                                                                                     Container.ClosedPosition.y + ScaledPositionY(Detector.CurrentTouchInfo.Touch.position.y) - m_dragStartPosition.y, //calculate the Y 'dragged' position
+                                                                                     Container.RectTransform.anchoredPosition3D.z);
 
-                    break;
-                }
+                        if (CloseDirection == SimpleSwipe.Up) //does this drawer close Up -> clamp its position accordingly
+                        {
+                            Vector3 anchoredPosition3D = Container.RectTransform.anchoredPosition3D;
+                            Container.RectTransform.anchoredPosition3D = new Vector3(anchoredPosition3D.x,
+                                                                                     Mathf.Clamp(anchoredPosition3D.y, Container.OpenedPosition.y, Container.ClosedPosition.y), //clamp Y position
+                                                                                     Container.RectTransform.anchoredPosition3D.z);
+                        }
+                        else //this drawer closes Down -> clamp its position accordingly
+                        {
+                            Vector3 anchoredPosition3D = Container.RectTransform.anchoredPosition3D;
+                            Container.RectTransform.anchoredPosition3D = new Vector3(anchoredPosition3D.x,
+                                                                                     Mathf.Clamp(anchoredPosition3D.y, Container.ClosedPosition.y, Container.OpenedPosition.y), //clamp Y position
+                                                                                     Container.RectTransform.anchoredPosition3D.z);
+                        }
+
+                        break;
+                    }
             }
         }
 

@@ -6,7 +6,7 @@ namespace Doozy.Editor.Internal
     {
         private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
-//            DDebug.Log("OnPostprocessAllAssets: Running Doozy Assets Processor...");
+            //            DDebug.Log("OnPostprocessAllAssets: Running Doozy Assets Processor...");
         }
     }
 }

@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Utils;
 using System;
 using System.IO;
-using Doozy.Engine.Utils;
 using UnityEngine;
 
 // ReSharper disable UnusedMethodReturnValue.Global
@@ -106,12 +106,12 @@ namespace Doozy.Engine.UI.Animation
             // ReSharper disable once SwitchStatementMissingSomeCases
             switch (databaseType)
             {
-                case AnimationType.Show:  return Show;
-                case AnimationType.Hide:  return Hide;
-                case AnimationType.Loop:  return Loop;
+                case AnimationType.Show: return Show;
+                case AnimationType.Hide: return Hide;
+                case AnimationType.Loop: return Loop;
                 case AnimationType.Punch: return Punch;
                 case AnimationType.State: return State;
-                default:                  return null;
+                default: return null;
             }
         }
 

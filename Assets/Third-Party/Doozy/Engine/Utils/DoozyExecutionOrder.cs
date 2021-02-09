@@ -10,7 +10,7 @@ namespace Doozy.Engine.Utils
     {
         private const int COMPONENT = -100;
         private const int MANAGER = -200;
-        
+
         public const int BACK_BUTTON = MANAGER;
         public const int COLOR_TARGET_IMAGE = COMPONENT;
         public const int COLOR_TARGET_PARTICLE_SYSTEM = COMPONENT;

@@ -13,7 +13,7 @@ namespace Doozy.Editor.UI
     public class ArrowAnimatorEditor : BaseEditor
     {
         protected override ColorName ComponentColorName { get { return DGUI.Colors.UIDrawerColorName; } }
-        
+
 #pragma warning disable 0414 //The private field is assigned but its value is never used
         private UIDrawerArrowAnimator m_target;
 #pragma warning restore 0414
@@ -35,7 +35,7 @@ namespace Doozy.Editor.UI
         protected override void OnEnable()
         {
             base.OnEnable();
-            m_target = (UIDrawerArrowAnimator) target;
+            m_target = (UIDrawerArrowAnimator)target;
         }
 
         public override void OnInspectorGUI()

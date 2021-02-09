@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Doozy.Editor.Themes
 {
     [CustomEditor(typeof(ThemeManager))]
-    public class ThemeManagerEditor  : BaseEditor
+    public class ThemeManagerEditor : BaseEditor
     {
         protected override ColorName ComponentColorName { get { return DGUI.Colors.ThemesColorName; } }
         private ThemeManager m_target;
@@ -22,7 +22,7 @@ namespace Doozy.Editor.Themes
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (ThemeManager) target;
+                m_target = (ThemeManager)target;
                 return m_target;
             }
         }

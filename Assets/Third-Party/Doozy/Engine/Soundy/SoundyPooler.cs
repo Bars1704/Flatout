@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Settings;
+using Doozy.Engine.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Doozy.Engine.Settings;
-using Doozy.Engine.Utils;
 using UnityEngine;
 
 // ReSharper disable UnusedMember.Global

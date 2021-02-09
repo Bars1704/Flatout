@@ -152,7 +152,7 @@ namespace Doozy.Engine.Events
 
             InvokeCallback(callback, true);
         }
-        
+
         /// <summary> Resets this instance to the default values </summary>
         public void Reset()
         {

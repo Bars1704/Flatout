@@ -2,14 +2,13 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Nody;
-using Doozy.Engine.Extensions;
 using Doozy.Editor.Nody.NodeGUI;
+using Doozy.Engine.Extensions;
 using Doozy.Engine.Nody.Connections;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.UI.Nodes;
-using UnityEditor;
+using System;
 using UnityEngine;
 
 namespace Doozy.Editor.UI.Nodes
@@ -22,7 +21,7 @@ namespace Doozy.Editor.UI.Nodes
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconPortalNode)); } }
         protected override GUIStyle GetIconStyle() { return IconStyle; }
 
-        private PortalNode TargetNode { get { return (PortalNode) Node; } }
+        private PortalNode TargetNode { get { return (PortalNode)Node; } }
 
         protected override void OnNodeGUI()
         {
@@ -73,10 +72,10 @@ namespace Doozy.Editor.UI.Nodes
                 switch (TargetNode.ListenFor)
                 {
                     case PortalNode.ListenerType.GameEvent: return Styles.StyleName.IconGameEventListener;
-                    case PortalNode.ListenerType.UIView:    return Styles.StyleName.IconUIViewListener;
-                    case PortalNode.ListenerType.UIButton:  return Styles.StyleName.IconUIButtonListener;
-                    case PortalNode.ListenerType.UIDrawer:  return Styles.StyleName.IconUIDrawerListener;
-                    default:                                throw new ArgumentOutOfRangeException();
+                    case PortalNode.ListenerType.UIView: return Styles.StyleName.IconUIViewListener;
+                    case PortalNode.ListenerType.UIButton: return Styles.StyleName.IconUIButtonListener;
+                    case PortalNode.ListenerType.UIDrawer: return Styles.StyleName.IconUIDrawerListener;
+                    default: throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -101,7 +100,7 @@ namespace Doozy.Editor.UI.Nodes
             var sourceTextRect = new Rect();
 
             bool switchBackModeEnabled = TargetNode.SwitchBackMode && TargetNode.HasSource;
-            
+
             if (switchBackModeEnabled)
             {
                 DynamicHeight -= DGUI.Properties.Space(2);

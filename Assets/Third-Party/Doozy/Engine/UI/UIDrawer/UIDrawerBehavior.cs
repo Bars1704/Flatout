@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.UI.Base;
+using System;
 
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -22,10 +22,10 @@ namespace Doozy.Engine.UI
 
         /// <summary> Returns TRUE if either OnStart UIAction Effect (UIEffect) or OnFinished UIAction Effect (UIEffect) have a target ParticleSystem referenced </summary>
         public bool HasEffect { get { return OnStart.HasEffect || OnFinished.HasEffect; } }
-        
+
         /// <summary> Returns TRUE if either OnStart UIAction or OnFinished UIAction have has at least one game event in their GameEvents list </summary>
         public bool HasGameEvents { get { return OnStart.HasGameEvents || OnFinished.HasGameEvents; } }
-        
+
         /// <summary> Returns TRUE if either OnStart UIAction or OnFinished UIAction have valid sound settings </summary>
         public bool HasSound { get { return OnStart.HasSound || OnFinished.HasSound; } }
 

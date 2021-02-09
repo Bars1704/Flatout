@@ -4,90 +4,90 @@ using UnityEngine;
 
 namespace InControl
 {
-	using Internal;
+    using Internal;
 
 
-	[CustomPropertyDrawer( typeof(OptionalUInt16) )]
-	class OptionalUInt16PropertyDrawer : PropertyDrawer
-	{
-		static ulong ParseNumber( string text )
-		{
-			text = text.Trim();
+    [CustomPropertyDrawer(typeof(OptionalUInt16))]
+    class OptionalUInt16PropertyDrawer : PropertyDrawer
+    {
+        static ulong ParseNumber(string text)
+        {
+            text = text.Trim();
 
-			if (text.StartsWith( "0x", StringComparison.OrdinalIgnoreCase ))
-			{
-				text = text.Substring( 2 );
-				try
-				{
-					return ulong.Parse( text, System.Globalization.NumberStyles.HexNumber );
-				}
-				catch
-				{
-					// Ignore
-				}
-			}
+            if (text.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+            {
+                text = text.Substring(2);
+                try
+                {
+                    return ulong.Parse(text, System.Globalization.NumberStyles.HexNumber);
+                }
+                catch
+                {
+                    // Ignore
+                }
+            }
 
-			try
-			{
-				return ulong.Parse( text );
-			}
-			catch
-			{
-				return 0;
-			}
-		}
+            try
+            {
+                return ulong.Parse(text);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
 
 
-		public override void OnGUI( Rect position, SerializedProperty property, GUIContent label )
-		{
-			EditorGUI.BeginProperty( position, label, property );
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            EditorGUI.BeginProperty(position, label, property);
 
-			var serializedProperty = property.Copy();
+            var serializedProperty = property.Copy();
 
-			serializedProperty.NextVisible( true );
+            serializedProperty.NextVisible(true);
 
-			var fullWidth = position.width;
-			position.width = EditorGUIUtility.labelWidth - 10;
-			var checkValue = EditorGUI.ToggleLeft( position, label, serializedProperty.boolValue, EditorUtility.labelStyle );
-			serializedProperty.boolValue = checkValue;
-			position.width = fullWidth;
+            var fullWidth = position.width;
+            position.width = EditorGUIUtility.labelWidth - 10;
+            var checkValue = EditorGUI.ToggleLeft(position, label, serializedProperty.boolValue, EditorUtility.labelStyle);
+            serializedProperty.boolValue = checkValue;
+            position.width = fullWidth;
 
-			var indent = EditorGUI.indentLevel;
-			EditorGUI.indentLevel = 0;
+            var indent = EditorGUI.indentLevel;
+            EditorGUI.indentLevel = 0;
 
-			serializedProperty.NextVisible( true );
-			var valueRect = new Rect(
-				position.x + EditorGUIUtility.labelWidth,
-				position.y,
-				position.width - EditorGUIUtility.labelWidth,
-				position.height
-			);
+            serializedProperty.NextVisible(true);
+            var valueRect = new Rect(
+                position.x + EditorGUIUtility.labelWidth,
+                position.y,
+                position.width - EditorGUIUtility.labelWidth,
+                position.height
+            );
 
-			EditorGUI.BeginDisabledGroup( !checkValue );
+            EditorGUI.BeginDisabledGroup(!checkValue);
 
-			if (checkValue)
-			{
-				if (fieldInfo.GetCustomAttributes( typeof(HexadecimalAttribute), true ).Length > 0)
-				{
-					var textValue = EditorGUI.TextField( valueRect, GUIContent.none, string.Format( "0x{0:x4}", serializedProperty.intValue ) ).Trim();
-					var longValue = ParseNumber( textValue );
-					serializedProperty.intValue = longValue >= UInt16.MaxValue ? UInt16.MaxValue : (UInt16) longValue;
-				}
-				else
-				{
-					EditorGUI.PropertyField( valueRect, serializedProperty, GUIContent.none );
-				}
-			}
-			else
-			{
-				GUI.Label( valueRect, "Empty (Optional UInt16)", "TextField" );
-			}
+            if (checkValue)
+            {
+                if (fieldInfo.GetCustomAttributes(typeof(HexadecimalAttribute), true).Length > 0)
+                {
+                    var textValue = EditorGUI.TextField(valueRect, GUIContent.none, string.Format("0x{0:x4}", serializedProperty.intValue)).Trim();
+                    var longValue = ParseNumber(textValue);
+                    serializedProperty.intValue = longValue >= UInt16.MaxValue ? UInt16.MaxValue : (UInt16)longValue;
+                }
+                else
+                {
+                    EditorGUI.PropertyField(valueRect, serializedProperty, GUIContent.none);
+                }
+            }
+            else
+            {
+                GUI.Label(valueRect, "Empty (Optional UInt16)", "TextField");
+            }
 
-			EditorGUI.EndDisabledGroup();
+            EditorGUI.EndDisabledGroup();
 
-			EditorGUI.indentLevel = indent;
+            EditorGUI.indentLevel = indent;
 
-			EditorGUI.EndProperty();
-		}
-	}
+            EditorGUI.EndProperty();
+        }
+    }
 }

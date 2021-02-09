@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Engine.Utils;
 using System.Collections.Generic;
 using System.IO;
-using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEngine;
 
@@ -36,16 +36,16 @@ namespace Doozy.Editor
             {
                 if (DarkStyles.ContainsKey(styleName)) return DarkStyles[styleName];
                 GUIStyle newDarkStyle = DarkSkin.GetStyle(styleName);
-                if(newDarkStyle != null) DarkStyles.Add(styleName, newDarkStyle);
+                if (newDarkStyle != null) DarkStyles.Add(styleName, newDarkStyle);
                 return new GUIStyle(newDarkStyle);
             }
 
             if (LightStyles.ContainsKey(styleName)) return LightStyles[styleName];
             GUIStyle newLightStyle = LightSkin.GetStyle(styleName);
-            if(newLightStyle != null) LightStyles.Add(styleName, newLightStyle);
+            if (newLightStyle != null) LightStyles.Add(styleName, newLightStyle);
             return new GUIStyle(newLightStyle);
         }
-        
+
         public static GUIStyle GetStyle(StyleName styleName) { return GetStyle(styleName.ToString()); }
     }
 }

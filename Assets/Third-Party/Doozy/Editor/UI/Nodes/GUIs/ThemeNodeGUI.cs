@@ -17,7 +17,7 @@ namespace Doozy.Editor.UI.Nodes
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconThemeNode)); } }
         protected override GUIStyle GetIconStyle() { return IconStyle; }
 
-        private ThemeNode TargetNode { get { return (ThemeNode) Node; } }
+        private ThemeNode TargetNode { get { return (ThemeNode)Node; } }
 
         private readonly GUIStyle m_actionIcon = Styles.GetStyle(Styles.StyleName.IconThemeManager);
         private string m_targetThemeName;
@@ -51,7 +51,7 @@ namespace Doozy.Editor.UI.Nodes
 
             m_targetThemeName = "---";
             m_targetVariantName = "---";
-            
+
             ThemeData theme = ThemesSettings.Database.GetThemeData(TargetNode.ThemeId);
             if (theme != null)
             {

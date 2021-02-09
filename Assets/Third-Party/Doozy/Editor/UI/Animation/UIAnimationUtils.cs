@@ -155,9 +155,9 @@ namespace Doozy.Editor.UI.Animation
                                    {
                                        UIAnimations.Instance.SearchForUnregisteredDatabases(true);
                                    }
-                                   
+
                                    GUILayout.Space(DGUI.Properties.Space(2));
-                                   
+
                                    if (DGUI.Button.Dynamic.DrawIconButton(Styles.GetStyle(Styles.StyleName.IconNew), DGUI.Properties.Labels.NewPreset, Size.S, TextAlign.Left, colorName, colorName, buttonHeight, false))
                                    {
                                        s_behaviorPropertyBeingEdited = loadSelectedPresetAtRuntime;
@@ -209,7 +209,7 @@ namespace Doozy.Editor.UI.Animation
                                    }
                                }
 
-//                               GUILayout.Space(DGUI.Properties.Space());
+                               //                               GUILayout.Space(DGUI.Properties.Space());
                            });
 
             GUILayout.Space(DGUI.Properties.Space());

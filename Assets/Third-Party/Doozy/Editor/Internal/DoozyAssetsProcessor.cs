@@ -12,7 +12,6 @@ using Doozy.Engine.UI.Animation;
 using Doozy.Engine.UI.Settings;
 using Doozy.Engine.Utils;
 using UnityEditor;
-using UnityEngine;
 
 namespace Doozy.Editor.Internal
 {
@@ -21,17 +20,17 @@ namespace Doozy.Editor.Internal
     {
         static DoozyAssetsProcessor()
         {
-//            Debug.Log("Initialize On Load");
+            //            Debug.Log("Initialize On Load");
             ExecuteProcessor();
         }
 
-//        [UnityEditor.Callbacks.DidReloadScripts(100)]
-//        private static void OnScriptsReloaded()
-//        {
-////            Debug.Log("Scripts Reloaded");
-//            ExecuteProcessor();
-//        }
-        
+        //        [UnityEditor.Callbacks.DidReloadScripts(100)]
+        //        private static void OnScriptsReloaded()
+        //        {
+        ////            Debug.Log("Scripts Reloaded");
+        //            ExecuteProcessor();
+        //        }
+
         private static void ExecuteProcessor()
         {
             if (EditorApplication.isPlayingOrWillChangePlaymode) return;
@@ -67,7 +66,7 @@ namespace Doozy.Editor.Internal
             DoozyUtils.ClearProgressBar();
 
 #if !dUI_MASTER
-            if(AssetDatabase.IsValidFolder("Assets/DoozyInstaller"))
+            if (AssetDatabase.IsValidFolder("Assets/DoozyInstaller"))
                 AssetDatabase.MoveAssetToTrash("Assets/DoozyInstaller");
 #endif
         }
@@ -152,7 +151,7 @@ namespace Doozy.Editor.Internal
             ThemesSettings.Database.SearchForUnregisteredThemes(false);
             DoozyUtils.DisplayProgressBar("Hold on...", "Themes - Refresh", 0.25f);
             ThemesSettings.Database.RefreshDatabase(false, true);
-            
+
             //UIAnimations
             DoozyUtils.DisplayProgressBar("Hold on...", "UIAnimations - Search For Unregistered Databases", 0.3f);
             UIAnimations.Instance.SearchForUnregisteredDatabases(true);

@@ -2,14 +2,13 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Editor.Internal;
+using Doozy.Engine.Extensions;
+using Doozy.Engine.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Doozy.Editor;
-using Doozy.Editor.Internal;
-using Doozy.Engine.Extensions;
-using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,7 +25,7 @@ namespace Doozy.Editor.Nody
     public class NodyStylesBuilderEditor : BaseEditor
     {
         protected override ColorName ComponentColorName { get { return ColorName.Teal; } }
-        private NodyStylesBuilder Builder { get { return (NodyStylesBuilder) target; } }
+        private NodyStylesBuilder Builder { get { return (NodyStylesBuilder)target; } }
 
         private const string ACCENT = "Accent";
         private const string AREA = "Area";
@@ -159,7 +158,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 border = new RectOffset(8, 8, 8, 8),
                 imagePosition = ImagePosition.ImageOnly,
                 stretchWidth = true,
@@ -177,8 +176,8 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + StyleState.Normal + skin)},
-                hover = {background = GetTexture(styleName + StyleState.Hover + skin)},
+                normal = { background = GetTexture(styleName + StyleState.Normal + skin) },
+                hover = { background = GetTexture(styleName + StyleState.Hover + skin) },
                 imagePosition = ImagePosition.ImageOnly,
                 stretchWidth = true,
                 stretchHeight = true
@@ -195,7 +194,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 imagePosition = ImagePosition.ImageOnly
             };
         }
@@ -210,7 +209,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 border = new RectOffset(8, 8, 0, 0),
                 imagePosition = ImagePosition.ImageOnly,
                 stretchWidth = true,
@@ -228,7 +227,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 border = new RectOffset(12, 12, 12, 12),
                 overflow = new RectOffset(-2, -2, -2, -2),
                 imagePosition = ImagePosition.ImageOnly,
@@ -247,7 +246,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 border = new RectOffset(8, 8, 8, 8),
                 imagePosition = ImagePosition.ImageOnly,
                 stretchWidth = true,
@@ -265,7 +264,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 border = new RectOffset(1, 1, 0, 0),
                 stretchWidth = true,
             };
@@ -281,7 +280,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 border = new RectOffset(1, 1, 0, 0),
                 imagePosition = ImagePosition.ImageOnly,
                 stretchWidth = true,
@@ -299,7 +298,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 border = new RectOffset(12, 12, 12, 12),
                 overflow = new RectOffset(-4, -4, -4, -4),
                 imagePosition = ImagePosition.ImageOnly,
@@ -318,7 +317,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 imagePosition = ImagePosition.ImageOnly,
                 stretchWidth = true,
                 stretchHeight = true
@@ -344,8 +343,8 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + StyleState.Normal + skin)},
-                hover = {background = GetTexture(styleName + StyleState.Hover + skin)},
+                normal = { background = GetTexture(styleName + StyleState.Normal + skin) },
+                hover = { background = GetTexture(styleName + StyleState.Hover + skin) },
                 imagePosition = ImagePosition.ImageOnly
             };
         }
@@ -366,7 +365,7 @@ namespace Doozy.Editor.Nody
             };
         }
 
-         private static List<GUIStyle> Icons()
+        private static List<GUIStyle> Icons()
         {
             return new List<GUIStyle>
             {
@@ -376,7 +375,7 @@ namespace Doozy.Editor.Nody
             };
         }
         #endregion
-        
+
         #region Node Icon
 
         private static GUIStyle NodeIcon(string iconName)
@@ -385,7 +384,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName)},
+                normal = { background = GetTexture(styleName) },
                 imagePosition = ImagePosition.ImageOnly
             };
         }
@@ -412,7 +411,7 @@ namespace Doozy.Editor.Nody
             return new GUIStyle
             {
                 name = styleName,
-                normal = {background = GetTexture(styleName + skin)},
+                normal = { background = GetTexture(styleName + skin) },
                 border = new RectOffset(292, 28, 0, 0),
                 imagePosition = ImagePosition.ImageOnly,
                 fixedHeight = 48
@@ -438,9 +437,9 @@ namespace Doozy.Editor.Nody
         }
 
         #endregion
-        
+
         #region WindowToolbarButtons
-         private static List<GUIStyle> WindowToolbarButtons(Skin skin)
+        private static List<GUIStyle> WindowToolbarButtons(Skin skin)
         {
             var styles = new List<GUIStyle>();
             styles.AddRange(WindowToolbarButton("Close", skin));

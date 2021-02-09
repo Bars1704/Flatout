@@ -14,7 +14,7 @@ namespace Doozy.Editor.UI.Nodes
     [CustomEditor(typeof(TimeScaleNode))]
     public class TimeScaleNodeEditor : BaseNodeEditor
     {
-        private BackButtonNode TargetNode { get { return (BackButtonNode) target; } }
+        private BackButtonNode TargetNode { get { return (BackButtonNode)target; } }
 
         private SerializedProperty
             m_targetValue,
@@ -25,11 +25,11 @@ namespace Doozy.Editor.UI.Nodes
 
         private AnimBool
             m_animateValueExpanded;
-        
+
         protected override void LoadSerializedProperty()
         {
             base.LoadSerializedProperty();
-            
+
             m_targetValue = GetProperty(PropertyName.TargetValue);
             m_animateValue = GetProperty(PropertyName.AnimateValue);
             m_animationDuration = GetProperty(PropertyName.AnimationDuration);
@@ -40,7 +40,7 @@ namespace Doozy.Editor.UI.Nodes
         protected override void InitAnimBool()
         {
             base.InitAnimBool();
-            
+
             m_animateValueExpanded = GetAnimBool(m_animateValue.propertyPath, m_animateValue.boolValue);
         }
 
@@ -82,7 +82,7 @@ namespace Doozy.Editor.UI.Nodes
             }
             GUILayout.EndHorizontal();
         }
-        
+
         private void DrawAnimateValue()
         {
             m_animateValueExpanded.target = m_animateValue.boolValue;

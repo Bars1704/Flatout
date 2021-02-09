@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Doozy.Engine.Utils.ColorModels
 {
-     /// <summary>
+    /// <summary>
     /// This CMY color model stands for cyan-magenta-yellow and is used for hardcopy devices.
     /// <para/> In contrast to color on the monitor, the color in printing acts subtractive and not additive.
     /// <para/> A printed color that looks red absorbs the other two components Green and Blue and reflects Red. Thus its (internal) color is G+B=CYAN. Similarly R+B=MAGENTA and R+G=YELLOW.

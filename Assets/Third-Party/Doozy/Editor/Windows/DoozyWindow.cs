@@ -2,13 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.IO;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Settings;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Settings;
-using Doozy.Engine.Themes;
 using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
@@ -128,10 +125,10 @@ namespace Doozy.Editor.Windows
                                   DoozyWindowSettings.Instance.ToolbarButtonHeight * 13 +
                                   LeftToolbarVerticalSectionSpacing * 5);
 
-            m_view = (View) EditorPrefs.GetInt(DoozyWindowSettings.Instance.EditorPrefsKeyWindowCurrentView, (int) DEFAULT_VIEW);
+            m_view = (View)EditorPrefs.GetInt(DoozyWindowSettings.Instance.EditorPrefsKeyWindowCurrentView, (int)DEFAULT_VIEW);
 
             MainToolbarAnimBool.value = DoozyWindowSettings.Instance.DynamicToolbarExpanded;
-            m_anyDebugExpanded = new AnimBool(AnyDebugActive, Repaint) {speed = 3};
+            m_anyDebugExpanded = new AnimBool(AnyDebugActive, Repaint) { speed = 3 };
             SetView(CurrentView);
         }
 

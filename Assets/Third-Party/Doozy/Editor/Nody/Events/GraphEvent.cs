@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
 using Doozy.Editor.Nody.NodeGUI;
 using Doozy.Engine.Nody.Models;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Doozy.Editor.Nody
@@ -20,14 +20,14 @@ namespace Doozy.Editor.Nody
         {
             if (Receivers.Contains(action)) return;
             Receivers.Add(action);
-//            DDebug.Log("Add Receiver: " + action.Method.Name);
+            //            DDebug.Log("Add Receiver: " + action.Method.Name);
         }
 
         public static void RemoveReceiver(Action<GraphEvent> action)
         {
             if (!Receivers.Contains(action)) return;
             Receivers.Remove(action);
-//            DDebug.Log("Remove Receiver: " + action.Method.Name);
+            //            DDebug.Log("Remove Receiver: " + action.Method.Name);
         }
 
         private static void TriggerReceivers(GraphEvent graphEvent)
@@ -123,7 +123,7 @@ namespace Doozy.Editor.Nody
             this.message = message;
             this.commandType = CommandType.NONE;
         }
-        
+
         private GraphEvent(CommandType commandType)
         {
             this.eventType = EventType.EVENT_NONE;
@@ -190,7 +190,7 @@ namespace Doozy.Editor.Nody
         public enum CommandType
         {
             NONE,
-            
+
             CONSTRUCT_GRAPH,
             RECALCULATE_ALL_POINTS,
 

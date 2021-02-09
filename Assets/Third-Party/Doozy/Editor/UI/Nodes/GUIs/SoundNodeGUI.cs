@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Nody.NodeGUI;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Soundy;
 using Doozy.Engine.UI.Nodes;
+using System;
 using UnityEngine;
 
 namespace Doozy.Editor.UI.Nodes
@@ -15,7 +15,7 @@ namespace Doozy.Editor.UI.Nodes
     [CustomNodeGUI(typeof(SoundNode))]
     public class SoundNodeGUI : BaseNodeGUI
     {
-        private SoundNode TargetNode { get { return (SoundNode) Node; } }
+        private SoundNode TargetNode { get { return (SoundNode)Node; } }
 
         protected override GUIStyle GetIconStyle()
         {
@@ -34,7 +34,7 @@ namespace Doozy.Editor.UI.Nodes
         private GUIStyle m_icon;
         private string m_title;
         private string m_description;
-        
+
         protected override void OnNodeGUI()
         {
             DrawNodeBody();
@@ -42,7 +42,7 @@ namespace Doozy.Editor.UI.Nodes
             DrawSocketsList(Node.OutputSockets);
             DrawActionDescription();
         }
- 
+
         private void DrawActionDescription()
         {
             bool playSound = TargetNode.SoundAction == SoundNode.SoundActions.Play;
@@ -79,30 +79,30 @@ namespace Doozy.Editor.UI.Nodes
                 case SoundNode.SoundActions.Play:
                     soundAction = UILabels.PlaySound;
                     break;
-                
+
                 case SoundNode.SoundActions.Stop:
                     soundAction = UILabels.StopAllSounds;
                     break;
-                
+
                 case SoundNode.SoundActions.Pause:
                     soundAction = UILabels.PauseAllSounds;
                     break;
-                
+
                 case SoundNode.SoundActions.Unpause:
                     soundAction = UILabels.UnpauseAllSounds;
                     break;
-                
-                case SoundNode.SoundActions.Mute: 
+
+                case SoundNode.SoundActions.Mute:
                     soundAction = UILabels.MuteAllSounds;
                     break;
-                
+
                 case SoundNode.SoundActions.Unmute:
                     soundAction = UILabels.UnmuteAllSounds;
                     break;
-                
+
                 default: throw new ArgumentOutOfRangeException();
             }
-            
+
             Color soundActionTextColor = (DGUI.Utility.IsProSkin ? Color.white.Darker() : Color.black.Lighter()).WithAlpha(0.6f);
             GUI.Label(soundActionRect, soundAction, DGUI.Colors.ColorTextOfGUIStyle(DGUI.Label.Style(Doozy.Editor.Size.S, TextAlign.Center), soundActionTextColor));
 

@@ -23,7 +23,7 @@ namespace Doozy.Editor
                                                   );
             return methods.Any();
         }
-        
+
         /// <summary> Return a prettiefied type name. </summary>
         public static string PrettyName(this Type type)
         {

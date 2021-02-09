@@ -3,18 +3,27 @@ using UnityEngine;
 
 namespace Flatout
 {
+    /// <summary>
+    /// Кнопка, отвечающая за ускорение машинки игрока
+    /// </summary>
     public class BoosterButton : MonoBehaviour
     {
-        private void Start()
+
+        CarControlBase _carControl;
+        private CarControlBase carControl
         {
-            carControl = PlayerCar.Instance.transform.GetComponent<CarControlBase>();
+            get
+            {
+                if (_carControl == null)
+                    _carControl = PlayerCar.Instance.transform.GetComponent<CarControlBase>();
+                return _carControl;
+            }
+            set => _carControl = value;
         }
-        private CarControlBase carControl;
-        public void SetBooster(bool boosterStatus) 
+        public void SetBooster(bool boosterStatus)
             => carControl.IsBoosted = boosterStatus;
         public void AddForcePuch()
         {
-            UIButton uI;
             carControl.DashBoost();
         }
     }

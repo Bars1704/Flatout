@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using Doozy.Engine.Soundy;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using Doozy.Engine.Soundy;
-using System.Collections.Generic;
 
 namespace Flatout
 {

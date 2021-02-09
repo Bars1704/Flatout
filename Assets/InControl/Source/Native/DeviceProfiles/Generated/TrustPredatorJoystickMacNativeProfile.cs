@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class TrustPredatorJoystickMacNativeProfile : Xbox360DriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class TrustPredatorJoystickMacNativeProfile : Xbox360DriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Trust Predator Joystick";
-			DeviceNotes = "Trust Predator Joystick on Mac";
+            DeviceName = "Trust Predator Joystick";
+            DeviceNotes = "Trust Predator Joystick on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x0810,
-					ProductID = 0x0003,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x0810,
+                    ProductID = 0x0003,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

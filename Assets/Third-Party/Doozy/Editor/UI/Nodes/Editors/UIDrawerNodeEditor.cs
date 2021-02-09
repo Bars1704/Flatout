@@ -19,7 +19,7 @@ namespace Doozy.Editor.UI.Nodes
     {
         private const string ERROR_NO_DRAWER_NAME = "ErrorNoDrawerName";
 
-        private UIDrawerNode TargetNode { get { return (UIDrawerNode) target; } }
+        private UIDrawerNode TargetNode { get { return (UIDrawerNode)target; } }
 
         private static NamesDatabase Database { get { return UIDrawerSettings.Database; } }
 

@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Nody.NodeGUI;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.SceneManagement;
 using Doozy.Engine.UI.Nodes;
+using System;
 using UnityEngine;
 
 namespace Doozy.Editor.UI.Nodes
@@ -18,8 +18,8 @@ namespace Doozy.Editor.UI.Nodes
         private static GUIStyle s_iconStyle;
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconUnloadSceneNode)); } }
         protected override GUIStyle GetIconStyle() { return IconStyle; }
-        
-        private UnloadSceneNode TargetNode { get { return (UnloadSceneNode) Node; } }
+
+        private UnloadSceneNode TargetNode { get { return (UnloadSceneNode)Node; } }
 
         protected override void OnNodeGUI()
         {
@@ -39,11 +39,11 @@ namespace Doozy.Editor.UI.Nodes
             DynamicHeight += sceneNameOrBuildIndexModeRect.height;
             var continueAfterSceneUnloadedRect = new Rect(x, DynamicHeight, DrawRect.width - 32, lineHeight);
             DynamicHeight += continueAfterSceneUnloadedRect.height;
-            
+
             DynamicHeight += DGUI.Properties.Space(4);
 
             if (ZoomedBeyondSocketDrawThreshold) return;
-            
+
             Color textColor = (DGUI.Utility.IsProSkin ? Color.white.Darker() : Color.black.Lighter()).WithAlpha(0.6f);
             string sceneNameOrBuildIndex;
             switch (TargetNode.GetSceneBy)
@@ -58,7 +58,7 @@ namespace Doozy.Editor.UI.Nodes
             }
 
             GUI.Label(sceneNameOrBuildIndexModeRect, sceneNameOrBuildIndex, DGUI.Colors.ColorTextOfGUIStyle(DGUI.Label.Style(Editor.Size.S, TextAlign.Left), TargetNode.ErrorNoSceneName || TargetNode.ErrorBadBuildIndex ? Color.red : textColor));
-            
+
             string waitForSceneToUnload = UILabels.WaitForSceneToUnload + ": " + (TargetNode.WaitForSceneToUnload ? UILabels.Yes : UILabels.No);
 
             GUI.Label(continueAfterSceneUnloadedRect, waitForSceneToUnload, DGUI.Colors.ColorTextOfGUIStyle(DGUI.Label.Style(Editor.Size.S, TextAlign.Left), textColor));

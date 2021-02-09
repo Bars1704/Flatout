@@ -52,7 +52,7 @@ namespace Doozy.Editor.Windows
                 {
                     GUI.color = DGUI.Colors.TextColor(colorName);
                     DGUI.Colors.SetDisabledGUIColorAlpha();
-                    EditorGUILayout.LabelField(about, new GUIStyle(DGUI.Label.Style()) {wordWrap = true});
+                    EditorGUILayout.LabelField(about, new GUIStyle(DGUI.Label.Style()) { wordWrap = true });
                     DGUI.Colors.SetNormalGUIColorAlpha();
                     GUI.color = InitialGUIColor;
                 }

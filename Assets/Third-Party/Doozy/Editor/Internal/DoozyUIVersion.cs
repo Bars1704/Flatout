@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.IO;
 using Doozy.Engine.Utils;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -42,10 +42,10 @@ namespace Doozy.Editor.Internal
             {
                 switch (VersionStatus)
                 {
-                    case 0:  return "a"; //alpha
-                    case 1:  return "b"; //beta
-                    case 2:  return "c"; //commercial distribution
-                    case 3:  return "d"; //debug
+                    case 0: return "a"; //alpha
+                    case 1: return "b"; //beta
+                    case 2: return "c"; //commercial distribution
+                    case 3: return "d"; //debug
                     default: return "?";
                 }
             }

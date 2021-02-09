@@ -4,35 +4,35 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class XTR_G2_WindowsNativeProfile : InputDeviceProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class XTR_G2_WindowsNativeProfile : InputDeviceProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "KMODEL Simulator XTR G2 FMS Controller";
-			DeviceNotes = "KMODEL Simulator XTR G2 FMS Controller on Windows";
+            DeviceName = "KMODEL Simulator XTR G2 FMS Controller";
+            DeviceNotes = "KMODEL Simulator XTR G2 FMS Controller on Windows";
 
-			DeviceClass = InputDeviceClass.Controller;
+            DeviceClass = InputDeviceClass.Controller;
 
-			IncludePlatforms = new[]
-			{
-				"Windows"
-			};
+            IncludePlatforms = new[]
+            {
+                "Windows"
+            };
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0xb9b,
-					ProductID = 0x4012,
-					NameLiteral = "KMODEL Simulator - XTR+G2+FMS Controller"
-				},
-			};
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0xb9b,
+                    ProductID = 0x4012,
+                    NameLiteral = "KMODEL Simulator - XTR+G2+FMS Controller"
+                },
+            };
 
-			/*
+            /*
 			AnalogMappings = new[] {
 				new InputControlMapping {
 					Handle = "Left Stick Up",
@@ -92,8 +92,8 @@ namespace InControl.NativeDeviceProfiles
 				}
 			};
 			*/
-		}
-	}
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

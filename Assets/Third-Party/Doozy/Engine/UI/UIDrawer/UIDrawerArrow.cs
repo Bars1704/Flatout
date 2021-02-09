@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Touchy;
+using System;
 using UnityEngine;
 
 namespace Doozy.Engine.UI
@@ -90,11 +90,11 @@ namespace Doozy.Engine.UI
             // ReSharper disable once SwitchStatementMissingSomeCases
             switch (closeDirection)
             {
-                case SimpleSwipe.Left:  return Left;
+                case SimpleSwipe.Left: return Left;
                 case SimpleSwipe.Right: return Right;
-                case SimpleSwipe.Up:    return Up;
-                case SimpleSwipe.Down:  return Down;
-                default:                return null;
+                case SimpleSwipe.Up: return Up;
+                case SimpleSwipe.Down: return Down;
+                default: return null;
             }
         }
 

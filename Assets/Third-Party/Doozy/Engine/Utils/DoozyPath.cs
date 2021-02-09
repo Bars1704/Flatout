@@ -182,7 +182,7 @@ namespace Doozy.Engine.Utils
         public static void CreateMissingFolders(bool silentMode = false)
         {
 #if UNITY_EDITOR
-//            DoozyUtils.ClearProgressBar();
+            //            DoozyUtils.ClearProgressBar();
 
             if (!silentMode) DoozyUtils.DisplayProgressBar("Validate Folder", ENGINE_RESOURCES_PATH, 0.1f);
             if (!UnityEditor.AssetDatabase.IsValidFolder(ENGINE_RESOURCES_PATH)) UnityEditor.AssetDatabase.CreateFolder(ENGINE_PATH, RESOURCES); // -- Doozy/Engine/Resources/

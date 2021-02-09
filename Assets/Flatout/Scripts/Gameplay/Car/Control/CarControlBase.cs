@@ -1,7 +1,4 @@
-﻿using Doozy.Engine.Soundy;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace Flatout
@@ -11,7 +8,7 @@ namespace Flatout
         protected CarTier controlCarTier;
         protected CarBase carBase;
 
-        public Action<float> OnCarRun; 
+        public Action<float> OnCarRun;
         public Action<Vector3> OnCarRotate;
         public Action OnCarBoost;
         public Action OnCarBoostDash;

@@ -21,7 +21,7 @@ namespace Doozy.Engine.Touchy
             else
                 s_touches.Clear();
 
-//            s_touches.AddRange(Input.touches); // check the Input.touches allocates temporary variables
+            //            s_touches.AddRange(Input.touches); // check the Input.touches allocates temporary variables
 
             // fix by Randhall
             int touchCount = Input.touchCount;

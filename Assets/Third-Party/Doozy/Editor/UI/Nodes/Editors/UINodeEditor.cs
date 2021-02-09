@@ -2,8 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
 using Doozy.Editor.Internal;
 using Doozy.Editor.Nody;
 using Doozy.Editor.Nody.Editors;
@@ -15,6 +13,8 @@ using Doozy.Engine.UI.Internal;
 using Doozy.Engine.UI.Nodes;
 using Doozy.Engine.UI.Settings;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -23,7 +23,7 @@ namespace Doozy.Editor.UI.Nodes
     [CustomEditor(typeof(UINode))]
     public class UINodeEditor : BaseNodeEditor
     {
-        private UINode TargetNode { get { return (UINode) target; } }
+        private UINode TargetNode { get { return (UINode)target; } }
 
         private InfoMessage m_infoMessageUnnamedNodeName,
                             m_infoMessageDuplicateNodeName;
@@ -169,7 +169,7 @@ namespace Doozy.Editor.UI.Nodes
                             GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight), GUILayout.Width(120));
                             {
                                 GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
-                                trigger = (UIConnectionTrigger) EditorGUILayout.EnumPopup(trigger, GUILayout.ExpandWidth(true), GUILayout.Height(DGUI.Properties.SingleLineHeight)); //Draw output connection trigger popup (Game Event / Button)
+                                trigger = (UIConnectionTrigger)EditorGUILayout.EnumPopup(trigger, GUILayout.ExpandWidth(true), GUILayout.Height(DGUI.Properties.SingleLineHeight)); //Draw output connection trigger popup (Game Event / Button)
                             }
                             GUILayout.EndVertical();
                             GUI.color = initialColor;
@@ -205,214 +205,214 @@ namespace Doozy.Editor.UI.Nodes
                                 case UIConnectionTrigger.ButtonClick:
                                 case UIConnectionTrigger.ButtonDoubleClick:
                                 case UIConnectionTrigger.ButtonLongClick:
-                                {
-                                    GUI.color = connectionsCount > 0 ? FieldsColor(directionColorName) : GUI.color;
-
-                                    var items = new List<string>();
-
-                                    //BUTTON CATEGORY
-                                    int buttonCategorySelectedIndex = ButtonsDatabase.CategoryNames.Contains(buttonCategory)
-                                                                          ? ButtonsDatabase.CategoryNames.IndexOf(buttonCategory)
-                                                                          : ButtonsDatabase.CategoryNames.IndexOf(NamesDatabase.CUSTOM);
-
-                                    EditorGUI.BeginChangeCheck();
-
-                                    GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight));
                                     {
-                                        GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
-                                        buttonCategorySelectedIndex = EditorGUILayout.Popup(buttonCategorySelectedIndex, ButtonsDatabase.CategoryNames.ToArray(), GUILayout.Height(DGUI.Properties.SingleLineHeight));
-                                    }
-                                    GUILayout.EndVertical();
-                                    if (EditorGUI.EndChangeCheck())
-                                    {
-                                        valueUpdated = true;
-                                        buttonCategory = ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex];
-                                        if (ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex] != NamesDatabase.CUSTOM)
-                                        {
-                                            if (string.IsNullOrEmpty(buttonName.Trim()))
-                                            {
-                                                buttonName = ButtonsDatabase.GetNamesList(ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex])[0];
-                                            }
-                                            else if (buttonName.Trim() != NamesDatabase.UNNAMED &&
-                                                     !ButtonsDatabase.GetNamesList(ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex]).Contains(buttonName.Trim()))
-                                            {
-                                                if (EditorUtility.DisplayDialog("Add Name",
-                                                                                "Add the '" + buttonName.Trim() + "' name to the '" + ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex] + "' category?",
-                                                                                "Yes",
-                                                                                "No"))
-                                                {
-                                                    ButtonsDatabase.GetNamesList(ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex], true).Add(buttonName.Trim());
-                                                    ButtonsDatabase.SetDirty(true);
-                                                }
-                                                else if (ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex] == NamesDatabase.GENERAL)
-                                                {
-                                                    buttonName = NamesDatabase.UNNAMED;
-                                                }
-                                                else
-                                                {
-                                                    buttonName = ButtonsDatabase.GetNamesList(ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex])[0];
-                                                }
-                                            }
-                                        }
-                                    }
+                                        GUI.color = connectionsCount > 0 ? FieldsColor(directionColorName) : GUI.color;
 
-                                    bool hasCustomName = buttonCategory.Equals(NamesDatabase.CUSTOM);
-                                    if (!ButtonsDatabase.Contains(buttonCategory)) //database does not contain this category -> reset it to custom
-                                    {
-                                        hasCustomName = true;
-                                        buttonCategory = NamesDatabase.CUSTOM;
-                                    }
+                                        var items = new List<string>();
 
-                                    //BUTTON NAME
-                                    if (!hasCustomName)
-                                    {
-                                        items = ButtonsDatabase.GetNamesList(buttonCategory);
-                                        if (items.Count == 0)
-                                        {
-                                            if (!ButtonsDatabase.GetNamesList(NamesDatabase.GENERAL, true).Contains(NamesDatabase.UNNAMED))
-                                            {
-                                                ButtonsDatabase.GetNamesList(NamesDatabase.GENERAL, true).Add(NamesDatabase.UNNAMED);
-                                                ButtonsDatabase.SetDirty(true);
-                                            }
+                                        //BUTTON CATEGORY
+                                        int buttonCategorySelectedIndex = ButtonsDatabase.CategoryNames.Contains(buttonCategory)
+                                                                              ? ButtonsDatabase.CategoryNames.IndexOf(buttonCategory)
+                                                                              : ButtonsDatabase.CategoryNames.IndexOf(NamesDatabase.CUSTOM);
 
-                                            buttonCategory = NamesDatabase.GENERAL;
-                                            items = ButtonsDatabase.GetNamesList(buttonCategory);
-                                        }
-                                    }
-
-                                    if (hasCustomName)
-                                    {
                                         EditorGUI.BeginChangeCheck();
+
                                         GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight));
                                         {
                                             GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
-                                            buttonName = EditorGUILayout.TextField(buttonName, GUILayout.Height(DGUI.Properties.SingleLineHeight));
-                                        }
-                                        GUILayout.EndVertical();
-                                        if (EditorGUI.EndChangeCheck()) valueUpdated = true;
-                                    }
-                                    else
-                                    {
-                                        int buttonNameSelectedIndex = 0;
-                                        if (items.Contains(buttonName))
-                                        {
-                                            buttonNameSelectedIndex = items.IndexOf(buttonName);
-                                        }
-                                        else
-                                        {
-                                            if (buttonCategory.Equals(NamesDatabase.GENERAL))
-                                            {
-                                                buttonName = NamesDatabase.UNNAMED;
-                                                buttonNameSelectedIndex = items.IndexOf(NamesDatabase.UNNAMED);
-                                            }
-                                            else if (buttonName != NamesDatabase.UNNAMED &&
-                                                     EditorUtility.DisplayDialog("Add Name",
-                                                                                 "Add the '" + buttonName + "' name to the '" + buttonCategory + "' category?",
-                                                                                 "Yes",
-                                                                                 "No"))
-                                            {
-                                                string cleanName = buttonName.Trim();
-                                                if (string.IsNullOrEmpty(cleanName))
-                                                {
-                                                    buttonName = items[buttonNameSelectedIndex];
-                                                }
-                                                else if (items.Contains(cleanName))
-                                                {
-                                                    buttonName = cleanName;
-                                                    buttonNameSelectedIndex = items.IndexOf(cleanName);
-                                                }
-                                                else
-                                                {
-                                                    ButtonsDatabase.GetNamesList(buttonCategory, true).Add(cleanName);
-                                                    ButtonsDatabase.SetDirty(true);
-                                                    buttonName = cleanName;
-                                                    buttonNameSelectedIndex = items.IndexOf(buttonName);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                buttonName = items[buttonNameSelectedIndex];
-                                            }
-
-                                            valueUpdated = true;
-                                        }
-
-                                        EditorGUI.BeginChangeCheck();
-                                        GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight));
-                                        {
-                                            GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
-                                            buttonNameSelectedIndex = EditorGUILayout.Popup(buttonNameSelectedIndex, items.ToArray(), GUILayout.Height(DGUI.Properties.SingleLineHeight));
+                                            buttonCategorySelectedIndex = EditorGUILayout.Popup(buttonCategorySelectedIndex, ButtonsDatabase.CategoryNames.ToArray(), GUILayout.Height(DGUI.Properties.SingleLineHeight));
                                         }
                                         GUILayout.EndVertical();
                                         if (EditorGUI.EndChangeCheck())
                                         {
                                             valueUpdated = true;
-                                            buttonName = items[buttonNameSelectedIndex];
-                                        }
-                                    }
-
-                                    GUI.color = initialColor;
-                                }
-                                    break;
-                                case UIConnectionTrigger.GameEvent:
-                                {
-                                    GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight), GUILayout.ExpandWidth(true));
-                                    {
-                                        GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
-
-                                        GUILayout.BeginHorizontal(GUILayout.Height(kNodeLineHeight), GUILayout.ExpandWidth(true));
-                                        {
-                                            GUILayout.Space(DGUI.Properties.Space(3));
-                                            GUI.color = socket.IsConnected ? FieldsColor(directionColorName) : GUI.color;
-                                            EditorGUI.BeginChangeCheck();
-                                            gameEvent = EditorGUILayout.TextField(gameEvent, GUILayout.Height(DGUI.Properties.SingleLineHeight), GUILayout.ExpandWidth(true));
-                                            if (EditorGUI.EndChangeCheck()) valueUpdated = true;
-                                            GUI.color = initialColor;
-                                            if (DGUI.Button.Dynamic.DrawIconButton(Styles.GetStyle(Styles.StyleName.IconFaPaste),
-                                                                                   UILabels.Paste,
-                                                                                   Size.S, TextAlign.Left,
-                                                                                   colorName, colorName,
-                                                                                   DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2), false))
+                                            buttonCategory = ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex];
+                                            if (ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex] != NamesDatabase.CUSTOM)
                                             {
-                                                gameEvent = EditorGUIUtility.systemCopyBuffer;
+                                                if (string.IsNullOrEmpty(buttonName.Trim()))
+                                                {
+                                                    buttonName = ButtonsDatabase.GetNamesList(ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex])[0];
+                                                }
+                                                else if (buttonName.Trim() != NamesDatabase.UNNAMED &&
+                                                         !ButtonsDatabase.GetNamesList(ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex]).Contains(buttonName.Trim()))
+                                                {
+                                                    if (EditorUtility.DisplayDialog("Add Name",
+                                                                                    "Add the '" + buttonName.Trim() + "' name to the '" + ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex] + "' category?",
+                                                                                    "Yes",
+                                                                                    "No"))
+                                                    {
+                                                        ButtonsDatabase.GetNamesList(ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex], true).Add(buttonName.Trim());
+                                                        ButtonsDatabase.SetDirty(true);
+                                                    }
+                                                    else if (ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex] == NamesDatabase.GENERAL)
+                                                    {
+                                                        buttonName = NamesDatabase.UNNAMED;
+                                                    }
+                                                    else
+                                                    {
+                                                        buttonName = ButtonsDatabase.GetNamesList(ButtonsDatabase.CategoryNames[buttonCategorySelectedIndex])[0];
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        bool hasCustomName = buttonCategory.Equals(NamesDatabase.CUSTOM);
+                                        if (!ButtonsDatabase.Contains(buttonCategory)) //database does not contain this category -> reset it to custom
+                                        {
+                                            hasCustomName = true;
+                                            buttonCategory = NamesDatabase.CUSTOM;
+                                        }
+
+                                        //BUTTON NAME
+                                        if (!hasCustomName)
+                                        {
+                                            items = ButtonsDatabase.GetNamesList(buttonCategory);
+                                            if (items.Count == 0)
+                                            {
+                                                if (!ButtonsDatabase.GetNamesList(NamesDatabase.GENERAL, true).Contains(NamesDatabase.UNNAMED))
+                                                {
+                                                    ButtonsDatabase.GetNamesList(NamesDatabase.GENERAL, true).Add(NamesDatabase.UNNAMED);
+                                                    ButtonsDatabase.SetDirty(true);
+                                                }
+
+                                                buttonCategory = NamesDatabase.GENERAL;
+                                                items = ButtonsDatabase.GetNamesList(buttonCategory);
+                                            }
+                                        }
+
+                                        if (hasCustomName)
+                                        {
+                                            EditorGUI.BeginChangeCheck();
+                                            GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight));
+                                            {
+                                                GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
+                                                buttonName = EditorGUILayout.TextField(buttonName, GUILayout.Height(DGUI.Properties.SingleLineHeight));
+                                            }
+                                            GUILayout.EndVertical();
+                                            if (EditorGUI.EndChangeCheck()) valueUpdated = true;
+                                        }
+                                        else
+                                        {
+                                            int buttonNameSelectedIndex = 0;
+                                            if (items.Contains(buttonName))
+                                            {
+                                                buttonNameSelectedIndex = items.IndexOf(buttonName);
+                                            }
+                                            else
+                                            {
+                                                if (buttonCategory.Equals(NamesDatabase.GENERAL))
+                                                {
+                                                    buttonName = NamesDatabase.UNNAMED;
+                                                    buttonNameSelectedIndex = items.IndexOf(NamesDatabase.UNNAMED);
+                                                }
+                                                else if (buttonName != NamesDatabase.UNNAMED &&
+                                                         EditorUtility.DisplayDialog("Add Name",
+                                                                                     "Add the '" + buttonName + "' name to the '" + buttonCategory + "' category?",
+                                                                                     "Yes",
+                                                                                     "No"))
+                                                {
+                                                    string cleanName = buttonName.Trim();
+                                                    if (string.IsNullOrEmpty(cleanName))
+                                                    {
+                                                        buttonName = items[buttonNameSelectedIndex];
+                                                    }
+                                                    else if (items.Contains(cleanName))
+                                                    {
+                                                        buttonName = cleanName;
+                                                        buttonNameSelectedIndex = items.IndexOf(cleanName);
+                                                    }
+                                                    else
+                                                    {
+                                                        ButtonsDatabase.GetNamesList(buttonCategory, true).Add(cleanName);
+                                                        ButtonsDatabase.SetDirty(true);
+                                                        buttonName = cleanName;
+                                                        buttonNameSelectedIndex = items.IndexOf(buttonName);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    buttonName = items[buttonNameSelectedIndex];
+                                                }
+
                                                 valueUpdated = true;
                                             }
 
-                                            GUILayout.Space(DGUI.Properties.Space());
-                                            bool enabledState = GUI.enabled;
-                                            GUI.enabled = !string.IsNullOrEmpty(gameEvent);
-                                            if (DGUI.Button.Dynamic.DrawIconButton(Styles.GetStyle(Styles.StyleName.IconFaCopy),
-                                                                                   UILabels.Copy,
-                                                                                   Size.S, TextAlign.Left,
-                                                                                   colorName, colorName,
-                                                                                   DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2), false))
+                                            EditorGUI.BeginChangeCheck();
+                                            GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight));
                                             {
-                                                EditorGUIUtility.systemCopyBuffer = gameEvent;
-                                                Debug.Log(UILabels.GameEvent + " '" + gameEvent + "' " + UILabels.HasBeenAddedToClipboard);
+                                                GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
+                                                buttonNameSelectedIndex = EditorGUILayout.Popup(buttonNameSelectedIndex, items.ToArray(), GUILayout.Height(DGUI.Properties.SingleLineHeight));
                                             }
-
-                                            GUI.enabled = enabledState;
+                                            GUILayout.EndVertical();
+                                            if (EditorGUI.EndChangeCheck())
+                                            {
+                                                valueUpdated = true;
+                                                buttonName = items[buttonNameSelectedIndex];
+                                            }
                                         }
-                                        GUILayout.EndHorizontal();
+
+                                        GUI.color = initialColor;
                                     }
-                                    GUILayout.EndVertical();
-                                    GUI.color = initialColor;
-                                }
+                                    break;
+                                case UIConnectionTrigger.GameEvent:
+                                    {
+                                        GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight), GUILayout.ExpandWidth(true));
+                                        {
+                                            GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
+
+                                            GUILayout.BeginHorizontal(GUILayout.Height(kNodeLineHeight), GUILayout.ExpandWidth(true));
+                                            {
+                                                GUILayout.Space(DGUI.Properties.Space(3));
+                                                GUI.color = socket.IsConnected ? FieldsColor(directionColorName) : GUI.color;
+                                                EditorGUI.BeginChangeCheck();
+                                                gameEvent = EditorGUILayout.TextField(gameEvent, GUILayout.Height(DGUI.Properties.SingleLineHeight), GUILayout.ExpandWidth(true));
+                                                if (EditorGUI.EndChangeCheck()) valueUpdated = true;
+                                                GUI.color = initialColor;
+                                                if (DGUI.Button.Dynamic.DrawIconButton(Styles.GetStyle(Styles.StyleName.IconFaPaste),
+                                                                                       UILabels.Paste,
+                                                                                       Size.S, TextAlign.Left,
+                                                                                       colorName, colorName,
+                                                                                       DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2), false))
+                                                {
+                                                    gameEvent = EditorGUIUtility.systemCopyBuffer;
+                                                    valueUpdated = true;
+                                                }
+
+                                                GUILayout.Space(DGUI.Properties.Space());
+                                                bool enabledState = GUI.enabled;
+                                                GUI.enabled = !string.IsNullOrEmpty(gameEvent);
+                                                if (DGUI.Button.Dynamic.DrawIconButton(Styles.GetStyle(Styles.StyleName.IconFaCopy),
+                                                                                       UILabels.Copy,
+                                                                                       Size.S, TextAlign.Left,
+                                                                                       colorName, colorName,
+                                                                                       DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2), false))
+                                                {
+                                                    EditorGUIUtility.systemCopyBuffer = gameEvent;
+                                                    Debug.Log(UILabels.GameEvent + " '" + gameEvent + "' " + UILabels.HasBeenAddedToClipboard);
+                                                }
+
+                                                GUI.enabled = enabledState;
+                                            }
+                                            GUILayout.EndHorizontal();
+                                        }
+                                        GUILayout.EndVertical();
+                                        GUI.color = initialColor;
+                                    }
                                     break;
                                 case UIConnectionTrigger.TimeDelay:
-                                {
-                                    EditorGUI.BeginChangeCheck();
-                                    GUI.color = connectionsCount > 0 ? FieldsColor(directionColorName) : GUI.color;
-                                    GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight), GUILayout.ExpandWidth(true));
                                     {
-                                        GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
-                                        timeDelay = EditorGUILayout.FloatField(timeDelay, GUILayout.Height(DGUI.Properties.SingleLineHeight), GUILayout.ExpandWidth(true));
+                                        EditorGUI.BeginChangeCheck();
+                                        GUI.color = connectionsCount > 0 ? FieldsColor(directionColorName) : GUI.color;
+                                        GUILayout.BeginVertical(GUILayout.Height(kNodeLineHeight), GUILayout.ExpandWidth(true));
+                                        {
+                                            GUILayout.Space((kNodeLineHeight - DGUI.Properties.SingleLineHeight) / 2);
+                                            timeDelay = EditorGUILayout.FloatField(timeDelay, GUILayout.Height(DGUI.Properties.SingleLineHeight), GUILayout.ExpandWidth(true));
+                                        }
+                                        GUILayout.EndVertical();
+                                        DGUI.Label.Draw(UILabels.SecondsDelay, Size.S, DGUI.Properties.SingleLineHeight);
+                                        GUI.color = initialColor;
+                                        if (EditorGUI.EndChangeCheck()) valueUpdated = true;
                                     }
-                                    GUILayout.EndVertical();
-                                    DGUI.Label.Draw(UILabels.SecondsDelay, Size.S, DGUI.Properties.SingleLineHeight);
-                                    GUI.color = initialColor;
-                                    if (EditorGUI.EndChangeCheck()) valueUpdated = true;
-                                }
                                     break;
                             }
 
@@ -517,7 +517,7 @@ namespace Doozy.Editor.UI.Nodes
                             Undo.RecordObject(TargetNode, "Add Category Name");
                             list.Add(new UIViewCategoryName());
                             EditorUtility.SetDirty(TargetNode);
-//                            property.InsertArrayElementAtIndex(property.arraySize);
+                            //                            property.InsertArrayElementAtIndex(property.arraySize);
                         }
                     }
                     GUILayout.EndHorizontal();
@@ -547,7 +547,7 @@ namespace Doozy.Editor.UI.Nodes
                         Undo.RecordObject(TargetNode, "Add Category Name");
                         list.Add(new UIViewCategoryName());
                         EditorUtility.SetDirty(TargetNode);
-//                        property.InsertArrayElementAtIndex(property.arraySize);
+                        //                        property.InsertArrayElementAtIndex(property.arraySize);
                     }
                 }
                 GUILayout.EndHorizontal();

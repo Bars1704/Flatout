@@ -22,11 +22,11 @@ namespace Doozy.Editor
             {
                 switch (size)
                 {
-                    case Size.S:  return 9;
-                    case Size.M:  return 11;
-                    case Size.L:  return 13;
+                    case Size.S: return 9;
+                    case Size.M: return 11;
+                    case Size.L: return 13;
                     case Size.XL: return 15;
-                    default:      throw new ArgumentOutOfRangeException("size", size, null);
+                    default: throw new ArgumentOutOfRangeException("size", size, null);
                 }
             }
 
@@ -34,11 +34,11 @@ namespace Doozy.Editor
             {
                 switch (size)
                 {
-                    case Size.S:  return 10;
-                    case Size.M:  return 12;
-                    case Size.L:  return 14;
+                    case Size.S: return 10;
+                    case Size.M: return 12;
+                    case Size.L: return 14;
                     case Size.XL: return 16;
-                    default:      throw new ArgumentOutOfRangeException("size", size, null);
+                    default: throw new ArgumentOutOfRangeException("size", size, null);
                 }
             }
 
@@ -46,11 +46,11 @@ namespace Doozy.Editor
             {
                 switch (size)
                 {
-                    case Size.S:  return 18;
-                    case Size.M:  return 20;
-                    case Size.L:  return 24;
+                    case Size.S: return 18;
+                    case Size.M: return 20;
+                    case Size.L: return 24;
                     case Size.XL: return 32;
-                    default:      throw new ArgumentOutOfRangeException("size", size, null);
+                    default: throw new ArgumentOutOfRangeException("size", size, null);
                 }
             }
         }

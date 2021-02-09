@@ -45,7 +45,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var node = (BackButtonNode) original;
+            var node = (BackButtonNode)original;
             BackButtonAction = node.BackButtonAction;
         }
 

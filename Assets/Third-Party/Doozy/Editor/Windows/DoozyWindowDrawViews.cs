@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Settings;
+using System;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -51,23 +51,23 @@ namespace Doozy.Editor.Windows
             {
                 case View.General: return DGUI.Colors.GeneralColorName;
 
-                case View.Buttons:    return DGUI.Colors.UIButtonColorName;
-                case View.Views:      return DGUI.Colors.UIViewColorName;
-                case View.Canvases:   return DGUI.Colors.UICanvasColorName;
-                case View.Drawers:    return DGUI.Colors.UIDrawerColorName;
-                case View.Popups:     return DGUI.Colors.UIPopupColorName;
-                case View.Nody:       return DGUI.Colors.NodyColorName;
-                case View.Soundy:     return DGUI.Colors.SoundyColorName;
-                case View.Touchy:     return DGUI.Colors.TouchyColorName;
+                case View.Buttons: return DGUI.Colors.UIButtonColorName;
+                case View.Views: return DGUI.Colors.UIViewColorName;
+                case View.Canvases: return DGUI.Colors.UICanvasColorName;
+                case View.Drawers: return DGUI.Colors.UIDrawerColorName;
+                case View.Popups: return DGUI.Colors.UIPopupColorName;
+                case View.Nody: return DGUI.Colors.NodyColorName;
+                case View.Soundy: return DGUI.Colors.SoundyColorName;
+                case View.Touchy: return DGUI.Colors.TouchyColorName;
                 case View.Animations: return DGUI.Colors.AnimationsColorName;
-                case View.Templates:  return DGUI.Colors.UITemplateColorName;
-                case View.Themes:     return DGUI.Colors.ThemesColorName;
-                case View.Settings:   return DGUI.Colors.SettingsColorName;
-                case View.Debug:      return DGUI.Colors.DebugColorName;
-                case View.Keys:       return DGUI.Colors.KeysColorName;
-                case View.Help:       return DGUI.Colors.HelpColorName;
-                case View.About:      return DGUI.Colors.AboutColorName;
-                default:              throw new ArgumentOutOfRangeException("view", view, null);
+                case View.Templates: return DGUI.Colors.UITemplateColorName;
+                case View.Themes: return DGUI.Colors.ThemesColorName;
+                case View.Settings: return DGUI.Colors.SettingsColorName;
+                case View.Debug: return DGUI.Colors.DebugColorName;
+                case View.Keys: return DGUI.Colors.KeysColorName;
+                case View.Help: return DGUI.Colors.HelpColorName;
+                case View.About: return DGUI.Colors.AboutColorName;
+                default: throw new ArgumentOutOfRangeException("view", view, null);
             }
         }
 
@@ -82,7 +82,7 @@ namespace Doozy.Editor.Windows
             set
             {
                 m_view = value;
-                EditorPrefs.SetInt(DoozyWindowSettings.Instance.EditorPrefsKeyWindowCurrentView, (int) m_view);
+                EditorPrefs.SetInt(DoozyWindowSettings.Instance.EditorPrefsKeyWindowCurrentView, (int)m_view);
             }
         }
 

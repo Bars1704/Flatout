@@ -84,7 +84,7 @@ namespace Doozy.Editor.Windows
                     EditorGUI.BeginChangeCheck();
                     GUILayout.BeginVertical();
                     GUILayout.Space(0);
-                    currentLanguage = (Engine.Language) EditorGUILayout.EnumPopup(currentLanguage, GUILayout.Width(DGUI.Properties.DefaultFieldWidth * 3));
+                    currentLanguage = (Engine.Language)EditorGUILayout.EnumPopup(currentLanguage, GUILayout.Width(DGUI.Properties.DefaultFieldWidth * 3));
                     GUILayout.EndVertical();
                     if (EditorGUI.EndChangeCheck())
                         if (currentLanguage != Engine.Language.Unknown)
@@ -298,7 +298,7 @@ namespace Doozy.Editor.Windows
             get
             {
                 if (m_newsContentStyle != null) return m_newsContentStyle;
-                m_newsContentStyle = new GUIStyle(DGUI.Label.Style(Size.S, DGUI.Colors.DisabledTextColorName)) {wordWrap = true};
+                m_newsContentStyle = new GUIStyle(DGUI.Label.Style(Size.S, DGUI.Colors.DisabledTextColorName)) { wordWrap = true };
                 return m_newsContentStyle;
             }
         }

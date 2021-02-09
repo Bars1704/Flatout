@@ -24,7 +24,7 @@ namespace Doozy.Engine.Soundy
     ///     NamesDatabaseType of database, of SoundGroupData, used by Soundy
     /// </summary>
     [Serializable]
-//    [CreateAssetMenu(fileName = "SoundDatabase", menuName = "Soundy/Sound Database", order = 500)]
+    //    [CreateAssetMenu(fileName = "SoundDatabase", menuName = "Soundy/Sound Database", order = 500)]
     public class SoundDatabase : ScriptableObject
     {
         #region Static Properties

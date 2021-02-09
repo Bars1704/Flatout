@@ -19,16 +19,16 @@ namespace Doozy.Editor.Windows
             if (DGUI.KeyMapper.DetectKeyUpCombo(current, EventModifiers.Alt, KeyCode.BackQuote)) ToggleToolbarMenuExpandOrCollapse();
 
             //Toolbar Quick Tab Selector
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha1)) SetView(View.General);
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha2)) SetView(View.Buttons);
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha3)) SetView(View.Views);
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha4)) SetView(View.Canvases);
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha5)) SetView(View.Drawers);
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha6)) SetView(View.Nody);
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha7)) SetView(View.Soundy);
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha8)) SetView(View.Touchy);
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha9)) SetView(View.Animations);
-//            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha0)) SetView(View.Templates);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha1)) SetView(View.General);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha2)) SetView(View.Buttons);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha3)) SetView(View.Views);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha4)) SetView(View.Canvases);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha5)) SetView(View.Drawers);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha6)) SetView(View.Nody);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha7)) SetView(View.Soundy);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha8)) SetView(View.Touchy);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha9)) SetView(View.Animations);
+            //            if (DGUI.KeyMapper.DetectKeyDownCombo(current, EventModifiers.Alt, KeyCode.Alpha0)) SetView(View.Templates);
         }
     }
 }

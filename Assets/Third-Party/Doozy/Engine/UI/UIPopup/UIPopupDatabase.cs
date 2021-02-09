@@ -365,7 +365,7 @@ namespace Doozy.Engine.UI
             if (performUndo) UndoRecord(UILabels.SortDatabase);
             Popups = Popups.OrderBy(reference => reference.PopupName).ToList();
             SetDirty(saveAssets);
-//            DDebug.Log(UILabels.DatabaseSorted);
+            //            DDebug.Log(UILabels.DatabaseSorted);
         }
 
         /// <summary> [Editor Only] Records any changes done on the object after this function </summary>

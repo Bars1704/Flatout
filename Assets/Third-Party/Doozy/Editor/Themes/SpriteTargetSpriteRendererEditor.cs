@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Editor.Internal;
 using Doozy.Engine.Themes;
 using Doozy.Engine.Utils;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ namespace Doozy.Editor.Themes
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (SpriteTargetSpriteRenderer) target;
+                m_target = (SpriteTargetSpriteRenderer)target;
                 return m_target;
             }
         }
@@ -53,7 +53,7 @@ namespace Doozy.Editor.Themes
             m_spriteRenderer = GetProperty(PropertyName.SpriteRenderer);
         }
 
-         public override void OnInspectorGUI()
+        public override void OnInspectorGUI()
         {
             UpdateIds();
             UpdateLists();

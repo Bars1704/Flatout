@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 // ReSharper disable InconsistentNaming
@@ -16,7 +16,7 @@ namespace Doozy.Engine.Themes
     public struct TextureId : ISerializationCallbackReceiver
     {
         #region Private Variables
-        
+
         /// <summary> Texture reference </summary>
         [SerializeField]
         private Texture m_texture;
@@ -35,7 +35,7 @@ namespace Doozy.Engine.Themes
 
         /// <summary> Id of this struct </summary>
         public Guid Id { get { return m_id; } set { m_id = value; } }
-        
+
         /// <summary> Texture reference of this struct </summary>
         public Texture Texture { get { return m_texture; } set { m_texture = value; } }
 
@@ -67,7 +67,7 @@ namespace Doozy.Engine.Themes
         public void OnBeforeSerialize() { SerializedGuid = GuidUtils.GuidToSerializedGuid(m_id); }
 
         public void OnAfterDeserialize() { m_id = GuidUtils.SerializedGuidToGuid(SerializedGuid); }
-        
+
         #endregion
 
         #region Public Methods
@@ -81,7 +81,7 @@ namespace Doozy.Engine.Themes
         public void SetTexture(Texture texture) { m_texture = texture; }
 
         #endregion
-        
+
 
     }
 }

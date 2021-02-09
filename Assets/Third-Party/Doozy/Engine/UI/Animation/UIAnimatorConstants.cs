@@ -20,7 +20,7 @@ namespace Doozy.Engine.UI.Animation
         public static Vector3 DEFAULT_START_ROTATION = Vector3.zero;
         public static Vector3 DEFAULT_START_SCALE = Vector3.one;
         public const float DEFAULT_START_ALPHA = 1f;
-        
+
         /// <summary> Default animation enabled state set to an animation </summary>
         public const bool DefaultAnimationEnabledState = false;
 

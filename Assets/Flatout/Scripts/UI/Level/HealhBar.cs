@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Flatout
@@ -17,8 +15,8 @@ namespace Flatout
         }
         public void ShowHealth(int health, int maxHealth)
         {
-            if(healtBarFillerSprite!=default)
-            healtBarFillerSprite.fillAmount = (float)health / maxHealth;
+            if (healtBarFillerSprite != default)
+                healtBarFillerSprite.fillAmount = (float)health / maxHealth;
         }
     }
 }

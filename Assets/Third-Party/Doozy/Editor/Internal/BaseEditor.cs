@@ -2,11 +2,7 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
-using Doozy.Engine.Utils;
 using UnityEditor;
-using UnityEditor.AnimatedValues;
 using UnityEngine;
 
 // ReSharper disable MemberCanBePrivate.Global
@@ -35,7 +31,7 @@ namespace Doozy.Editor.Internal
 
         /// <summary> Called when EditorWindow is closed </summary>
         protected virtual void OnDestroy() { }
-        
+
         /// <inheritdoc />
         /// <summary> Used to create custom inspectors </summary>
         public override void OnInspectorGUI()

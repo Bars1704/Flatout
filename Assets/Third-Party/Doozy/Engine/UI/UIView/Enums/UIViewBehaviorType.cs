@@ -11,17 +11,17 @@ namespace Doozy.Engine.UI
         ///  Unknown UIView behavior
         /// </summary>
         Unknown,
-        
+
         /// <summary>
         ///  UIView behavior when it becomes visible
         /// </summary>
         Show,
-        
+
         /// <summary>
         ///  UIView behavior when it goes off screen 
         /// </summary>
         Hide,
-        
+
         /// <summary>
         ///  UIView behavior when it starts the loop animation 
         /// </summary>

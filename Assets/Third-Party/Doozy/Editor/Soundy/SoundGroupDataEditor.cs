@@ -2,13 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Editor.Internal;
+using Doozy.Engine.Soundy;
+using Doozy.Engine.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Doozy.Editor.Internal;
-using Doozy.Engine.Extensions;
-using Doozy.Engine.Soundy;
-using Doozy.Engine.Utils;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -26,14 +25,14 @@ namespace Doozy.Editor.Soundy
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (SoundGroupData) target;
+                m_target = (SoundGroupData)target;
                 return m_target;
             }
         }
 
         protected override ColorName ComponentColorName { get { return DGUI.Colors.SoundGroupDataColorName; } }
 
-        private SoundGroupData Data { get { return (SoundGroupData) target; } }
+        private SoundGroupData Data { get { return (SoundGroupData)target; } }
         private AudioSource m_previewAudioSource;
         private bool m_soundNameHasBeenChanged;
         private bool m_needsSave;
@@ -158,8 +157,8 @@ namespace Doozy.Editor.Soundy
                                DGUI.Property.Draw(volume, DGUI.Properties.SingleLineHeight); //volume property
                                if (EditorGUI.EndChangeCheck())
                                {
-                                   min.floatValue = (float) Math.Round(min.floatValue, 1);
-                                   max.floatValue = (float) Math.Round(max.floatValue, 1);
+                                   min.floatValue = (float)Math.Round(min.floatValue, 1);
+                                   max.floatValue = (float)Math.Round(max.floatValue, 1);
                                }
 
                                GUILayout.Space(DGUI.Properties.Space());
@@ -190,8 +189,8 @@ namespace Doozy.Editor.Soundy
                                DGUI.Property.Draw(pitch, DGUI.Properties.SingleLineHeight); //pitch property
                                if (EditorGUI.EndChangeCheck())
                                {
-                                   min.floatValue = (float) Math.Round(min.floatValue, 1);
-                                   max.floatValue = (float) Math.Round(max.floatValue, 1);
+                                   min.floatValue = (float)Math.Round(min.floatValue, 1);
+                                   max.floatValue = (float)Math.Round(max.floatValue, 1);
                                }
 
                                GUILayout.Space(DGUI.Properties.Space());
@@ -245,7 +244,7 @@ namespace Doozy.Editor.Soundy
 
             //PlayMode.Sequence Options
             AnimBool showPlayModeSequenceOptions = GetAnimBool(mode.propertyPath);
-            showPlayModeSequenceOptions.target = mode.enumValueIndex == (int) SoundGroupData.PlayMode.Sequence;
+            showPlayModeSequenceOptions.target = mode.enumValueIndex == (int)SoundGroupData.PlayMode.Sequence;
             SerializedProperty resetSequence = GetProperty(PropertyName.ResetSequenceAfterInactiveTime);
             AnimBool resetSequenceExpanded = GetAnimBool(resetSequence.propertyPath, resetSequence.boolValue);
             resetSequenceExpanded.target = resetSequence.boolValue;
@@ -333,7 +332,7 @@ namespace Doozy.Editor.Soundy
                 return;
             }
 
-//            float backgroundHeight = DGUI.Properties.Space() + DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(); //plus button height
+            //            float backgroundHeight = DGUI.Properties.Space() + DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(); //plus button height
             float backgroundHeight = -DGUI.Properties.SingleLineHeight + DGUI.Properties.Space();
 
             for (int i = 0; i < sounds.arraySize; i++)
@@ -370,7 +369,7 @@ namespace Doozy.Editor.Soundy
                                        else
                                        {
                                            if (DGUI.Button.IconButton.Play(DGUI.Properties.SingleLineHeight, DGUI.Colors.DisabledTextColorName)) //play button
-                                               Player.Play((AudioClip) audioClipProperty.objectReferenceValue);
+                                               Player.Play((AudioClip)audioClipProperty.objectReferenceValue);
                                        }
 
                                        GUILayout.Space(-DGUI.Properties.Space());
@@ -393,7 +392,7 @@ namespace Doozy.Editor.Soundy
                                            m_soundNameHasBeenChanged = true;
                                            Data.SetDirty(true);
                                        }
-                                       
+
                                        GUILayout.Space(DGUI.Properties.Space());
                                    }
 
@@ -413,7 +412,7 @@ namespace Doozy.Editor.Soundy
                                DrawDropZone();
                                if (DGUI.Button.IconButton.Plus(DGUI.Properties.SingleLineHeight)) //plus button
                                {
-//                                   sounds.InsertArrayElementAtIndex(sounds.arraySize);
+                                   //                                   sounds.InsertArrayElementAtIndex(sounds.arraySize);
                                    Undo.RecordObject(this, "Add AudioData");
                                    Target.Sounds.Add(new AudioData());
                                    Data.SetDirty(false);
@@ -429,7 +428,7 @@ namespace Doozy.Editor.Soundy
             GUILayout.Label(GUIContent.none, GUILayout.ExpandWidth(true), GUILayout.Height(0));
             Rect lastRect = GUILayoutUtility.GetLastRect();
             var dropRect = new Rect(lastRect.x + DGUI.Properties.Space(), lastRect.y - 2, DGUI.Properties.DefaultFieldWidth * 5, DGUI.Properties.SingleLineHeight); //calculate rect
-           
+
             bool containsMouse = dropRect.Contains(Event.current.mousePosition);
             if (containsMouse)
             {
@@ -467,6 +466,6 @@ namespace Doozy.Editor.Soundy
 
             DGUI.Doozy.DrawDropZone(dropRect, containsMouse);
             GUILayout.Space(dropRect.width - DGUI.Properties.Space(2));
-        }      
+        }
     }
 }

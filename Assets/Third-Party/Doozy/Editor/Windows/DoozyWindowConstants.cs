@@ -17,7 +17,7 @@ namespace Doozy.Editor.Windows
         private const string RENAME = "Rename";
 
         private const ColorName RENAME_COLOR_NAME = ColorName.Orange;
-        
+
         private const Size TOP_BUTTON_TEXT_SIZE = Size.M;
         private const TextAlign TOP_BUTTON_TEXT_ALIGN = TextAlign.Left;
         private static float TopButtonHeight { get { return DGUI.Sizes.BarHeight(Size.L); } }
@@ -25,16 +25,16 @@ namespace Doozy.Editor.Windows
         private const Size WINDOW_TAB_BUTTON_TEXT_SIZE = Size.L;
         private const TextAlign WINDOW_TAB_BUTTON_TEXT_ALIGN = TextAlign.Left;
         private static float WindowTabButtonHeight { get { return DGUI.Sizes.BarHeight(Size.XL); } }
-        
+
         private const Size BAR_SIZE = Size.L;
         private static float BarHeight { get { return DGUI.Sizes.BarHeight(BAR_SIZE); } }
-        
+
         private float NewCategoryNameTextFieldWidth { get { return Mathf.Max(FullViewWidth * 0.6f, DGUI.Properties.DefaultFieldWidth * 4); } }
         private static float SearchRowHeight { get { return DGUI.Properties.SingleLineHeight; } }
         private static float NormalRowHeight { get { return DGUI.Properties.SingleLineHeight + DGUI.Properties.Space(2); } }
-        
-       
-        
+
+
+
         private static DoozySettings Settings { get { return DoozySettings.Instance; } }
         private static DoozyWindowSettings WindowSettings { get { return DoozyWindowSettings.Instance; } }
     }

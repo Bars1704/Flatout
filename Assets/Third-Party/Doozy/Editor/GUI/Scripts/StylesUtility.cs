@@ -2,11 +2,11 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
+using Doozy.Editor.Internal;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Doozy.Editor.Internal;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,7 +26,7 @@ namespace Doozy.Editor
     public class StylesUtilityEditor : BaseEditor
     {
         protected override ColorName ComponentColorName { get { return ColorName.Teal; } }
-        private StylesUtility Utility { get { return (StylesUtility) target; } }
+        private StylesUtility Utility { get { return (StylesUtility)target; } }
 
         public override void OnInspectorGUI()
         {

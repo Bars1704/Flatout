@@ -163,7 +163,7 @@ namespace Doozy.Engine.UI
 
         public void UpdateArrow()
         {
-//            if (Drawer == null) return;
+            //            if (Drawer == null) return;
 
             if (!Drawer.IsDragged && !Drawer.IsClosing && !Drawer.IsOpening) //if the target UIDrawer is not dragged, is not closing or is not opening -> set the arrow to point in the open or close direction (to be used as a visual guide)
             {
@@ -194,7 +194,7 @@ namespace Doozy.Engine.UI
                                                                   ROTATION_SPEED * Time.unscaledDeltaTime));
 
             LeftBar.localEulerAngles = leftBarLocalEulerAngles;
-//            LeftBar.localRotation = Quaternion.Euler(leftBarLocalEulerAngles);
+            //            LeftBar.localRotation = Quaternion.Euler(leftBarLocalEulerAngles);
 
             Vector3 rightBarLocalEulerAngles = RightBar.localEulerAngles;
             rightBarLocalEulerAngles = new Vector3(rightBarLocalEulerAngles.x,
@@ -204,7 +204,7 @@ namespace Doozy.Engine.UI
                                                                    ROTATION_SPEED * Time.unscaledDeltaTime));
 
             RightBar.localEulerAngles = rightBarLocalEulerAngles;
-//            RightBar.localRotation = Quaternion.Euler(rightBarLocalEulerAngles);
+            //            RightBar.localRotation = Quaternion.Euler(rightBarLocalEulerAngles);
         }
 
         /// <summary> Updates the UIDrawerArrow color according to the UIDrawer's settings </summary>

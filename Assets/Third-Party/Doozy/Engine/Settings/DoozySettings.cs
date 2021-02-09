@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 namespace Doozy.Engine.Settings
@@ -84,7 +84,7 @@ namespace Doozy.Engine.Settings
                 UnityEditor.AssetDatabase.Refresh();
                 return;
             }
-            
+
             if (AssetDatabaseSaveAssetsNeeded)
             {
                 AssetDatabaseSaveAssetsNeeded = false;
@@ -120,7 +120,7 @@ namespace Doozy.Engine.Settings
         #endregion
 
         #region About
-      
+
         public const string DOOZYUI_ABOUT = "DoozyUI is a complete User Interface (UI) management system for Unity. It does that by manipulating native Unity components and taking full advantage of their intended usage." +
                                             "\n\n" +
                                             "This approach assures maximum compatibility with uGUI, best performance and makes the entire system behave in a predictable manner." +
@@ -151,7 +151,7 @@ namespace Doozy.Engine.Settings
 
         #endregion
 
-      
+
         /// <summary> [Editor Only] Marks target object as dirty. (Only suitable for non-scene objects) </summary>
         /// <param name="saveAssets"> Write all unsaved asset changes to disk? </param>
         public void SetDirty(bool saveAssets) { DoozyUtils.SetDirty(this, saveAssets); }

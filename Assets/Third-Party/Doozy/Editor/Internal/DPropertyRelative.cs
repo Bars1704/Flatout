@@ -3,7 +3,6 @@
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
 using System.Collections.Generic;
-using Doozy.Engine;
 using UnityEditor;
 
 namespace Doozy.Editor.Internal
@@ -12,11 +11,11 @@ namespace Doozy.Editor.Internal
     {
         private readonly Dictionary<string, SerializedProperty> m_childProperties = new Dictionary<string, SerializedProperty>();
 
-        public SerializedProperty Add(PropertyName propertyName, SerializedProperty parentProperty) { return Add(propertyName.ToString(), parentProperty);}
+        public SerializedProperty Add(PropertyName propertyName, SerializedProperty parentProperty) { return Add(propertyName.ToString(), parentProperty); }
         public SerializedProperty Add(string propertyName, SerializedProperty parentProperty)
         {
             string key = parentProperty.propertyPath + "." + propertyName;
-            if (m_childProperties.ContainsKey(key))  return m_childProperties[key];
+            if (m_childProperties.ContainsKey(key)) return m_childProperties[key];
             SerializedProperty s = parentProperty.FindPropertyRelative(propertyName);
             if (s == null)
             {
@@ -28,7 +27,7 @@ namespace Doozy.Editor.Internal
         }
 
 
-        public SerializedProperty Get(PropertyName propertyName, SerializedProperty parentProperty) { return Get(propertyName.ToString(), parentProperty);}
+        public SerializedProperty Get(PropertyName propertyName, SerializedProperty parentProperty) { return Get(propertyName.ToString(), parentProperty); }
         public SerializedProperty Get(string propertyName, SerializedProperty parentProperty)
         {
             string key = parentProperty.propertyPath + "." + propertyName;

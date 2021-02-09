@@ -42,7 +42,7 @@ namespace Doozy.Engine.UI.Nodes
         public override void CopyNode(Node original)
         {
             base.CopyNode(original);
-            var node = (GameEventNode) original;
+            var node = (GameEventNode)original;
             GameEvent = node.GameEvent;
         }
 

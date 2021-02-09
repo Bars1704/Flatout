@@ -21,7 +21,7 @@ namespace Doozy.Editor.Layouts
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (RadialLayout) target;
+                m_target = (RadialLayout)target;
                 return m_target;
             }
         }
@@ -106,7 +106,7 @@ namespace Doozy.Editor.Layouts
                 DrawChildHeight();
             }
             if (EditorGUI.EndChangeCheck()) Target.CalculateRadial();
-            
+
             GUILayout.Space(DGUI.Properties.Space(2));
 
             serializedObject.ApplyModifiedProperties();

@@ -106,7 +106,7 @@ namespace Doozy.Engine.SceneManagement
             ApplicationIsQuitting = false;
         }
 #endif
-        
+
         private void Awake()
         {
             if (s_instance != null && s_instance != this)

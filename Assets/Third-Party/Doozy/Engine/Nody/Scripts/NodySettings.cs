@@ -32,7 +32,7 @@ namespace Doozy.Engine.Nody
         public float ActiveOpacity = 0.6f;
         public float HoverOpacity = 1.0f;
 
-        [Header("Node GUI")] 
+        [Header("Node GUI")]
         public float FooterHeight = 10f;
         public float MaxNodeWidth = 300f;
         public float MinNodeWidth = 100f;
@@ -45,7 +45,7 @@ namespace Doozy.Engine.Nody
         public float NodeHeaderIconSize = 20f;
         public float PingColorChangeSpeed = 0.6f;
 
-        [Header("Socket GUI")] 
+        [Header("Socket GUI")]
         public float SocketConnectedOpacity = 1f;
         public float SocketCurveModifierMaxValue = 1f;
         public float SocketCurveModifierMinValue = -1f;
@@ -55,13 +55,13 @@ namespace Doozy.Engine.Nody
         public float SocketNotConnectedOpacity = 0.5f;
         public float SocketVerticalSpacing;
 
-        [Header("Connection GUI")] 
+        [Header("Connection GUI")]
         public float ConnectionPointHeight = 16f;
         public float ConnectionPointOffsetFromLeftMargin = -2f;
         public float ConnectionPointOffsetFromRightMargin = 2f;
         public float ConnectionPointWidth = 16f;
 
-        [Header("Curve Settings")] 
+        [Header("Curve Settings")]
         public float CurvePointsMultiplier = 3f;
         public float CurveStrengthModifier = 0.48f;
         public float CurveWidth = 3f;
@@ -77,7 +77,7 @@ namespace Doozy.Engine.Nody
         public float GraphTabsAreaHeight = 40f;
         public float GraphTabsBackgroundOpacity = 0.8f;
 
-        [Header("Repaint Intervals")] 
+        [Header("Repaint Intervals")]
         public double RepaintIntervalDuringPlayMode = 0.4f;
         public double RepaintIntervalWhileIdle = 0.6f;
 
@@ -85,7 +85,7 @@ namespace Doozy.Engine.Nody
         public string EditorPrefsKeyWindowToolbar = "Doozy.Nody.WindowToolbar";
         public string EditorPrefsKeyDotAnimationSpeed = "Doozy.Nody.DotAnimationSpeed";
 
-        [Header("Default Node Sizes")] 
+        [Header("Default Node Sizes")]
         public float DefaultNodeHeight = 216f;
         public float DefaultNodeWidth = 216f;
         public float EnterNodeWidth = 120f;
@@ -94,7 +94,7 @@ namespace Doozy.Engine.Nody
         public float SubGraphNodeWidth = 216f;
         public float SwitchBackNodeWidth = 216f;
 
-        [Header("Misc")] 
+        [Header("Misc")]
         public HideFlags DefaultHideFlagsForNodes = HideFlags.HideInHierarchy; //HideFlags.None;
 
         #endregion

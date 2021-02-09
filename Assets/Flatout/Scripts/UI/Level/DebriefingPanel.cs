@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Gamebase.Miscellaneous;
 using TMPro;
-using Gamebase.Miscellaneous;
+using UnityEngine;
 
 namespace Flatout
 {

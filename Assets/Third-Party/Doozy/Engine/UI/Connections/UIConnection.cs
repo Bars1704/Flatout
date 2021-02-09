@@ -2,9 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Nody.Models;
 using Doozy.Engine.UI.Base;
+using System;
 using UnityEngine;
 
 // ReSharper disable MemberCanBePrivate.Global
@@ -63,8 +63,8 @@ namespace Doozy.Engine.UI.Connections
         /// <param name="socket"> Socket that has an UIConnection type Value </param>
         public static UIConnection GetValue(Socket socket)
         {
-//            return (UIConnection) JsonUtility.FromJson(socket.Value, socket.ValueType);
-            return (UIConnection) JsonUtility.FromJson(socket.Value, typeof(UIConnection));
+            //            return (UIConnection) JsonUtility.FromJson(socket.Value, socket.ValueType);
+            return (UIConnection)JsonUtility.FromJson(socket.Value, typeof(UIConnection));
         }
 
         /// <summary> Sets a socket.Value by using JsonUtility.ToJson(value) </summary>

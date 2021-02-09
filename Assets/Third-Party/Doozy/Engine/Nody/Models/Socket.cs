@@ -29,7 +29,7 @@ namespace Doozy.Engine.Nody.Models
         public const string DEFAULT_OUTPUT_SOCKET_NAME_PREFIX = "OutputSocket_";
 
         #endregion
-      
+
         #region Properties
 
         /// <summary> Returns TRUE if this socket can establish multiple connections </summary>
@@ -270,13 +270,13 @@ namespace Doozy.Engine.Nody.Models
             float minDistance = 100000;                            //arbitrary value that will surely be greater than any other possible distance
             Vector2 closestPoint = ConnectionPoints[0];            //set the closest point as the first connection point
             foreach (Vector2 ownPoint in ConnectionPoints)         //iterate through this socket's own connection points list
-            foreach (Vector2 otherPoint in other.ConnectionPoints) //iterate through the other socket's connection points list
-            {
-                float distance = Vector2.Distance(ownPoint, otherPoint); //compare the distance between the connection points
-                if (distance > minDistance) continue;                    //the distance is greater than the current minimum distance -> continue
-                closestPoint = ownPoint;                                 //the distance is smaller than the current minimum distance -> update the selected connection point
-                minDistance = distance;                                  //update the current minimum distance
-            }
+                foreach (Vector2 otherPoint in other.ConnectionPoints) //iterate through the other socket's connection points list
+                {
+                    float distance = Vector2.Distance(ownPoint, otherPoint); //compare the distance between the connection points
+                    if (distance > minDistance) continue;                    //the distance is greater than the current minimum distance -> continue
+                    closestPoint = ownPoint;                                 //the distance is smaller than the current minimum distance -> update the selected connection point
+                    minDistance = distance;                                  //update the current minimum distance
+                }
 
             return closestPoint; //return the closest connection point
         }

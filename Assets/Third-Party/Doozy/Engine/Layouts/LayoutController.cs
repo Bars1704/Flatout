@@ -99,17 +99,17 @@ namespace Doozy.Engine.Layouts
         /// <summary> Disables the target LayoutGroup </summary>
         public void DisableLayoutGroup()
         {
-            if(Layout == null) return;
+            if (Layout == null) return;
             Layout.enabled = false;
         }
 
         /// <summary> Enables the target LayoutGroup </summary>
         public void EnableLayoutGroup()
         {
-            if(Layout == null) return;
+            if (Layout == null) return;
             Layout.enabled = true;
         }
-        
+
         /// <summary> Triggers an immediate rebuild of the target LayoutGroup </summary>
         /// <param name="forced"> Forces the rebuild regardless if NeedRebuild if FALSE or if a Rebuild was already triggered this frame </param>
         public void Rebuild(bool forced = false)

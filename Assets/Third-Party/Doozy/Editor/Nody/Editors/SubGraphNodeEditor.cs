@@ -14,7 +14,7 @@ namespace Doozy.Editor.Nody.Editors
     [CustomEditor(typeof(SubGraphNode))]
     public class SubGraphNodeEditor : BaseNodeEditor
     {
-        private SubGraphNode Node { get { return (SubGraphNode) target; } }
+        private SubGraphNode Node { get { return (SubGraphNode)target; } }
 
         protected override ColorName ComponentColorName { get { return DGUI.Colors.SubGraphNodeColorName; } }
 

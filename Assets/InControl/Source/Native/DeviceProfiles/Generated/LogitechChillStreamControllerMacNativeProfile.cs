@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class LogitechChillStreamControllerMacNativeProfile : Xbox360DriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class LogitechChillStreamControllerMacNativeProfile : Xbox360DriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Logitech Chill Stream Controller";
-			DeviceNotes = "Logitech Chill Stream Controller on Mac";
+            DeviceName = "Logitech Chill Stream Controller";
+            DeviceNotes = "Logitech Chill Stream Controller on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x046d,
-					ProductID = 0xc242,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x046d,
+                    ProductID = 0xc242,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

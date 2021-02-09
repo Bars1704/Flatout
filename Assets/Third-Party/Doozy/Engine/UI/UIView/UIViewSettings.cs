@@ -2,10 +2,10 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.UI.Animation;
 using Doozy.Engine.UI.Base;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 // ReSharper disable InconsistentNaming

@@ -2,7 +2,6 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using Doozy.Editor;
 using Doozy.Editor.Internal;
 using Doozy.Engine.Progress;
 using UnityEditor;
@@ -14,14 +13,14 @@ namespace Doozy.Editor.Progress
     public class ProgressTargetEditor : BaseEditor
     {
         protected override ColorName ComponentColorName { get { return DGUI.Colors.ProgressorColorName; } }
-        private ProgressTarget Target { get { return (ProgressTarget) target; } }
+        private ProgressTarget Target { get { return (ProgressTarget)target; } }
 
         private const string INFO = "Info";
-        
+
         protected override void OnEnable()
         {
             base.OnEnable();
-            
+
             AddInfoMessage(INFO, new InfoMessage(InfoMessage.MessageType.Warning, UILabels.ThisClassShouldBeExtended, true, Repaint));
         }
 

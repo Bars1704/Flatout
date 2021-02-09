@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Touchy;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,7 +29,7 @@ namespace Doozy.Editor.Windows
                 GUILayout.EndVertical();
             }
             GUILayout.EndHorizontal();
-            
+
             DrawDynamicViewVerticalSpace(2);
         }
 
@@ -44,7 +44,7 @@ namespace Doozy.Editor.Windows
                 swipeLength = EditorGUILayout.Slider(swipeLength, TouchySettings.SWIPE_LENGTH_MIN, TouchySettings.SWIPE_LENGTH_MAX);
                 if (EditorGUI.EndChangeCheck())
                 {
-                    TouchySettings.Instance.SwipeLength = (float) Math.Round(swipeLength, 1);
+                    TouchySettings.Instance.SwipeLength = (float)Math.Round(swipeLength, 1);
                     TouchySettings.Instance.SetDirty(false);
                 }
 
@@ -77,7 +77,7 @@ namespace Doozy.Editor.Windows
                 duration = EditorGUILayout.Slider(duration, TouchySettings.LONG_TAP_DURATION_MIN, TouchySettings.LONG_TAP_DURATION_MAX);
                 if (EditorGUI.EndChangeCheck())
                 {
-                    TouchySettings.Instance.LongTapDuration = (float) Math.Round(duration, 1);
+                    TouchySettings.Instance.LongTapDuration = (float)Math.Round(duration, 1);
                     TouchySettings.Instance.SetDirty(false);
                 }
 

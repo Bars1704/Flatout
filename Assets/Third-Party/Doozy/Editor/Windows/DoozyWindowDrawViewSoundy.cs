@@ -2,14 +2,14 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Doozy.Editor.Soundy;
 using Doozy.Engine.Extensions;
 using Doozy.Engine.Soundy;
 using Doozy.Engine.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -170,7 +170,7 @@ namespace Doozy.Editor.Windows
                 killDuration = EditorGUILayout.Slider(killDuration, SoundySettings.CONTROLLER_IDLE_KILL_DURATION_MIN, SoundySettings.CONTROLLER_IDLE_KILL_DURATION_MAX);
                 if (EditorGUI.EndChangeCheck())
                 {
-                    SoundySettings.Instance.ControllerIdleKillDuration = (float) Math.Round(killDuration, 1);
+                    SoundySettings.Instance.ControllerIdleKillDuration = (float)Math.Round(killDuration, 1);
                     SoundySettings.Instance.SetDirty(false);
                 }
 
@@ -206,7 +206,7 @@ namespace Doozy.Editor.Windows
                 checkInterval = EditorGUILayout.Slider(checkInterval, SoundySettings.IDLE_CHECK_INTERVAL_MIN, SoundySettings.IDLE_CHECK_INTERVAL_MAX);
                 if (EditorGUI.EndChangeCheck())
                 {
-                    SoundySettings.Instance.IdleCheckInterval = (float) Math.Round(checkInterval, 1);
+                    SoundySettings.Instance.IdleCheckInterval = (float)Math.Round(checkInterval, 1);
                     SoundySettings.Instance.SetDirty(false);
                 }
 
@@ -268,9 +268,9 @@ namespace Doozy.Editor.Windows
                 {
                     Save();
                 }
-                
+
                 DrawDefaultViewHorizontalSpacing();
-                
+
                 if (ButtonSearchFor(UILabels.SoundDatabases))
                 {
                     ResetCreateNewSoundDatabase();
@@ -288,7 +288,7 @@ namespace Doozy.Editor.Windows
         private void DrawViewSoundyDatabase()
         {
             Event current = Event.current;
-//            AnimBool viewExpanded = GetAnimBool(View.Soundy.ToString());
+            //            AnimBool viewExpanded = GetAnimBool(View.Soundy.ToString());
             AnimBool createSoundDatabase = GetAnimBool(NEW_SOUND_DATABASE);
             AnimBool renameSoundDatabase = GetAnimBool(RENAME_SOUND_DATABASE);
             renameSoundDatabase.target = m_soundDatabaseBeingRenamed != null;
@@ -597,7 +597,7 @@ namespace Doozy.Editor.Windows
                                                        {
                                                            GUILayout.Space(0f);
                                                            EditorGUI.BeginChangeCheck();
-                                                           outputAudioMixerGroup = (AudioMixerGroup) EditorGUILayout.ObjectField(GUIContent.none, outputAudioMixerGroup, typeof(AudioMixerGroup), false); //mixer field
+                                                           outputAudioMixerGroup = (AudioMixerGroup)EditorGUILayout.ObjectField(GUIContent.none, outputAudioMixerGroup, typeof(AudioMixerGroup), false); //mixer field
                                                            if (EditorGUI.EndChangeCheck())
                                                            {
                                                                Undo.RecordObject(database, "Update AudioMixerGroup");
@@ -689,7 +689,7 @@ namespace Doozy.Editor.Windows
                                             ? ColorName.Red
                                             : CurrentViewColorName;
 
-//                                    if (i % 2 == 0)
+                                    //                                    if (i % 2 == 0)
                                     if (player.IsPlaying)
                                     {
                                         var backgroundRect = new Rect(x - DGUI.Properties.Space(2), y - DGUI.Properties.Space(), totalWidth + DGUI.Properties.Space(4), lineHeight + DGUI.Properties.Space(2));

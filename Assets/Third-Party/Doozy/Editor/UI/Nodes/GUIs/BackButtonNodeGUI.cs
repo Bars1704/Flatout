@@ -16,8 +16,8 @@ namespace Doozy.Editor.UI.Nodes
         private static GUIStyle s_iconStyle;
         private static GUIStyle IconStyle { get { return s_iconStyle ?? (s_iconStyle = Styles.GetStyle(Styles.StyleName.NodeIconBackButtonNode)); } }
         protected override GUIStyle GetIconStyle() { return IconStyle; }
-        
-        private BackButtonNode TargetNode { get { return (BackButtonNode) Node; } }
+
+        private BackButtonNode TargetNode { get { return (BackButtonNode)Node; } }
 
         protected override void OnNodeGUI()
         {

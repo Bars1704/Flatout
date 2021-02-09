@@ -1,96 +1,96 @@
 ﻿#if UNITY_4_6 || UNITY_4_7 || UNITY_5 || UNITY_2017_1_OR_NEWER
 namespace InControl
 {
-	using UnityEngine;
-	using UnityEngine.EventSystems;
-	using UnityEngine.Serialization;
+    using UnityEngine;
+    using UnityEngine.EventSystems;
+    using UnityEngine.Serialization;
 
 
-	[AddComponentMenu( "Event/InControl Input Module" )]
+    [AddComponentMenu("Event/InControl Input Module")]
 #if UNITY_2017_1_OR_NEWER
-	public class InControlInputModule : PointerInputModule
+    public class InControlInputModule : PointerInputModule
 #else
 	public class InControlInputModule : StandaloneInputModule
 #endif
-	{
-		public enum Button : int
-		{
-			Action1 = InputControlType.Action1,
-			Action2 = InputControlType.Action2,
-			Action3 = InputControlType.Action3,
-			Action4 = InputControlType.Action4
-		}
+    {
+        public enum Button : int
+        {
+            Action1 = InputControlType.Action1,
+            Action2 = InputControlType.Action2,
+            Action3 = InputControlType.Action3,
+            Action4 = InputControlType.Action4
+        }
 
 #if UNITY_2017_1_OR_NEWER
-		public Button submitButton = Button.Action1;
-		public Button cancelButton = Button.Action2;
+        public Button submitButton = Button.Action1;
+        public Button cancelButton = Button.Action2;
 #else
 		public new Button submitButton = Button.Action1;
 		public new Button cancelButton = Button.Action2;
 #endif
 
-		[Range( 0.1f, 0.9f )]
-		public float analogMoveThreshold = 0.5f;
+        [Range(0.1f, 0.9f)]
+        public float analogMoveThreshold = 0.5f;
 
-		public float moveRepeatFirstDuration = 0.8f;
-		public float moveRepeatDelayDuration = 0.1f;
+        public float moveRepeatFirstDuration = 0.8f;
+        public float moveRepeatDelayDuration = 0.1f;
 
-		[FormerlySerializedAs( "allowMobileDevice" )]
+        [FormerlySerializedAs("allowMobileDevice")]
 #if (UNITY_5 || UNITY_5_6_OR_NEWER) && !(UNITY_5_0 || UNITY_5_1 || UNITY_2017_1_OR_NEWER)
 		new public bool forceModuleActive;
 #else
-		public bool forceModuleActive;
+        public bool forceModuleActive;
 #endif
 
-		public bool allowMouseInput = true;
-		public bool focusOnMouseHover;
+        public bool allowMouseInput = true;
+        public bool focusOnMouseHover;
 
-		public bool allowTouchInput = true;
+        public bool allowTouchInput = true;
 
-		InputDevice inputDevice;
-		Vector3 thisMousePosition;
-		Vector3 lastMousePosition;
-		Vector2 thisVectorState;
-		Vector2 lastVectorState;
-		bool thisSubmitState;
-		bool lastSubmitState;
-		bool thisCancelState;
-		bool lastCancelState;
+        InputDevice inputDevice;
+        Vector3 thisMousePosition;
+        Vector3 lastMousePosition;
+        Vector2 thisVectorState;
+        Vector2 lastVectorState;
+        bool thisSubmitState;
+        bool lastSubmitState;
+        bool thisCancelState;
+        bool lastCancelState;
 
-		bool moveWasRepeated;
-		float nextMoveRepeatTime;
+        bool moveWasRepeated;
+        float nextMoveRepeatTime;
 
-		TwoAxisInputControl direction;
+        TwoAxisInputControl direction;
 
-		public PlayerAction SubmitAction { get; set; }
-		public PlayerAction CancelAction { get; set; }
-		public PlayerTwoAxisAction MoveAction { get; set; }
-
-
-		protected InControlInputModule()
-		{
-			direction = new TwoAxisInputControl();
-			direction.StateThreshold = analogMoveThreshold;
-		}
+        public PlayerAction SubmitAction { get; set; }
+        public PlayerAction CancelAction { get; set; }
+        public PlayerTwoAxisAction MoveAction { get; set; }
 
 
-		public override void UpdateModule()
-		{
-			lastMousePosition = thisMousePosition;
-			thisMousePosition = Input.mousePosition;
-		}
+        protected InControlInputModule()
+        {
+            direction = new TwoAxisInputControl();
+            direction.StateThreshold = analogMoveThreshold;
+        }
 
 
-		public override bool IsModuleSupported()
-		{
+        public override void UpdateModule()
+        {
+            lastMousePosition = thisMousePosition;
+            thisMousePosition = Input.mousePosition;
+        }
+
+
+        public override bool IsModuleSupported()
+        {
 #if UNITY_WII || UNITY_PS3 || UNITY_PS4 || UNITY_XBOX360 || UNITY_XBOXONE || UNITY_SWITCH
 			return true;
 #else
 
-			if (forceModuleActive || Input.mousePresent || Input.touchSupported)
-			{
-				return true;
-			}
+            if (forceModuleActive || Input.mousePresent || Input.touchSupported)
+            {
+                return true;
+            }
 
 #if UNITY_5
 			if (Input.touchSupported)
@@ -99,331 +99,331 @@ namespace InControl
 			}
 #endif
 
-			return false;
+            return false;
 #endif
-		}
+        }
 
 
-		public override bool ShouldActivateModule()
-		{
-			if (!(enabled && gameObject.activeInHierarchy))
-			{
-				return false;
-			}
+        public override bool ShouldActivateModule()
+        {
+            if (!(enabled && gameObject.activeInHierarchy))
+            {
+                return false;
+            }
 
-			UpdateInputState();
+            UpdateInputState();
 
-			var shouldActivate = false;
-			shouldActivate |= SubmitWasPressed;
-			shouldActivate |= CancelWasPressed;
-			shouldActivate |= VectorWasPressed;
+            var shouldActivate = false;
+            shouldActivate |= SubmitWasPressed;
+            shouldActivate |= CancelWasPressed;
+            shouldActivate |= VectorWasPressed;
 
 #if !UNITY_IOS || UNITY_EDITOR
-			if (allowMouseInput)
-			{
-				shouldActivate |= MouseHasMoved;
-				shouldActivate |= MouseButtonIsPressed;
-			}
+            if (allowMouseInput)
+            {
+                shouldActivate |= MouseHasMoved;
+                shouldActivate |= MouseButtonIsPressed;
+            }
 #endif
 
-			if (allowTouchInput)
-			{
-				shouldActivate |= Input.touchCount > 0;
-			}
+            if (allowTouchInput)
+            {
+                shouldActivate |= Input.touchCount > 0;
+            }
 
-			return shouldActivate;
-		}
-
-
-		public override void ActivateModule()
-		{
-			base.ActivateModule();
-
-			thisMousePosition = Input.mousePosition;
-			lastMousePosition = Input.mousePosition;
-
-			var selectObject = eventSystem.currentSelectedGameObject;
-
-			if (selectObject == null)
-			{
-				selectObject = eventSystem.firstSelectedGameObject;
-			}
-
-			eventSystem.SetSelectedGameObject( selectObject, GetBaseEventData() );
-		}
+            return shouldActivate;
+        }
 
 
-		public override void Process()
-		{
-			var usedEvent = SendUpdateEventToSelectedObject();
+        public override void ActivateModule()
+        {
+            base.ActivateModule();
 
-			if (eventSystem.sendNavigationEvents)
-			{
-				if (!usedEvent)
-				{
-					usedEvent = SendVectorEventToSelectedObject();
-				}
+            thisMousePosition = Input.mousePosition;
+            lastMousePosition = Input.mousePosition;
 
-				if (!usedEvent)
-				{
-					SendButtonEventToSelectedObject();
-				}
-			}
+            var selectObject = eventSystem.currentSelectedGameObject;
+
+            if (selectObject == null)
+            {
+                selectObject = eventSystem.firstSelectedGameObject;
+            }
+
+            eventSystem.SetSelectedGameObject(selectObject, GetBaseEventData());
+        }
+
+
+        public override void Process()
+        {
+            var usedEvent = SendUpdateEventToSelectedObject();
+
+            if (eventSystem.sendNavigationEvents)
+            {
+                if (!usedEvent)
+                {
+                    usedEvent = SendVectorEventToSelectedObject();
+                }
+
+                if (!usedEvent)
+                {
+                    SendButtonEventToSelectedObject();
+                }
+            }
 
 #if (UNITY_5 && !(UNITY_5_0 || UNITY_5_1)) || UNITY_2017_1_OR_NEWER
-			if (allowTouchInput && ProcessTouchEvents())
-			{
-				return;
-			}
+            if (allowTouchInput && ProcessTouchEvents())
+            {
+                return;
+            }
 #endif
 
 #if !UNITY_IOS || UNITY_EDITOR
-			if (allowMouseInput)
-			{
-				ProcessMouseEvent();
-			}
+            if (allowMouseInput)
+            {
+                ProcessMouseEvent();
+            }
 #endif
-		}
+        }
 
 
 #if (UNITY_5 && !(UNITY_5_0 || UNITY_5_1)) || UNITY_2017_1_OR_NEWER
-		bool ProcessTouchEvents()
-		{
-			var touchCount = Input.touchCount;
-			for (var i = 0; i < touchCount; ++i)
-			{
-				var touch = Input.GetTouch( i );
+        bool ProcessTouchEvents()
+        {
+            var touchCount = Input.touchCount;
+            for (var i = 0; i < touchCount; ++i)
+            {
+                var touch = Input.GetTouch(i);
 
-				if (touch.type == UnityEngine.TouchType.Indirect)
-				{
-					continue;
-				}
+                if (touch.type == UnityEngine.TouchType.Indirect)
+                {
+                    continue;
+                }
 
-				bool released;
-				bool pressed;
-				var pointer = GetTouchPointerEventData( touch, out pressed, out released );
+                bool released;
+                bool pressed;
+                var pointer = GetTouchPointerEventData(touch, out pressed, out released);
 
-				ProcessTouchPress( pointer, pressed, released );
+                ProcessTouchPress(pointer, pressed, released);
 
-				if (!released)
-				{
-					ProcessMove( pointer );
-					ProcessDrag( pointer );
-				}
-				else
-				{
-					RemovePointerData( pointer );
-				}
-			}
+                if (!released)
+                {
+                    ProcessMove(pointer);
+                    ProcessDrag(pointer);
+                }
+                else
+                {
+                    RemovePointerData(pointer);
+                }
+            }
 
-			return touchCount > 0;
-		}
+            return touchCount > 0;
+        }
 #endif
 
 
-		bool SendButtonEventToSelectedObject()
-		{
-			if (eventSystem.currentSelectedGameObject == null)
-			{
-				return false;
-			}
+        bool SendButtonEventToSelectedObject()
+        {
+            if (eventSystem.currentSelectedGameObject == null)
+            {
+                return false;
+            }
 
-			var eventData = GetBaseEventData();
+            var eventData = GetBaseEventData();
 
-			if (SubmitWasPressed)
-			{
-				//ExecuteEvents.Execute( eventSystem.currentSelectedGameObject, new PointerEventData( EventSystem.current ), ExecuteEvents.pointerDownHandler );
-				ExecuteEvents.Execute( eventSystem.currentSelectedGameObject, eventData, ExecuteEvents.submitHandler );
-			}
-			else if (SubmitWasReleased)
-			{
-				//ExecuteEvents.Execute( eventSystem.currentSelectedGameObject, new PointerEventData( EventSystem.current ), ExecuteEvents.pointerUpHandler );
-			}
+            if (SubmitWasPressed)
+            {
+                //ExecuteEvents.Execute( eventSystem.currentSelectedGameObject, new PointerEventData( EventSystem.current ), ExecuteEvents.pointerDownHandler );
+                ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, eventData, ExecuteEvents.submitHandler);
+            }
+            else if (SubmitWasReleased)
+            {
+                //ExecuteEvents.Execute( eventSystem.currentSelectedGameObject, new PointerEventData( EventSystem.current ), ExecuteEvents.pointerUpHandler );
+            }
 
-			if (CancelWasPressed)
-			{
-				ExecuteEvents.Execute( eventSystem.currentSelectedGameObject, eventData, ExecuteEvents.cancelHandler );
-			}
+            if (CancelWasPressed)
+            {
+                ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, eventData, ExecuteEvents.cancelHandler);
+            }
 
-			return eventData.used;
-		}
-
-
-		bool SendVectorEventToSelectedObject()
-		{
-			if (!VectorWasPressed)
-			{
-				return false;
-			}
-
-			var axisEventData = GetAxisEventData( thisVectorState.x, thisVectorState.y, 0.5f );
-
-			if (axisEventData.moveDir != MoveDirection.None)
-			{
-				if (eventSystem.currentSelectedGameObject == null)
-				{
-					eventSystem.SetSelectedGameObject( eventSystem.firstSelectedGameObject, GetBaseEventData() );
-				}
-				else
-				{
-					ExecuteEvents.Execute( eventSystem.currentSelectedGameObject, axisEventData, ExecuteEvents.moveHandler );
-				}
-
-				SetVectorRepeatTimer();
-			}
-
-			return axisEventData.used;
-		}
+            return eventData.used;
+        }
 
 
-		protected override void ProcessMove( PointerEventData pointerEvent )
-		{
-			var lastPointerEnter = pointerEvent.pointerEnter;
+        bool SendVectorEventToSelectedObject()
+        {
+            if (!VectorWasPressed)
+            {
+                return false;
+            }
 
-			base.ProcessMove( pointerEvent );
+            var axisEventData = GetAxisEventData(thisVectorState.x, thisVectorState.y, 0.5f);
 
-			if (focusOnMouseHover && lastPointerEnter != pointerEvent.pointerEnter)
-			{
-				var selectObject = ExecuteEvents.GetEventHandler<ISelectHandler>( pointerEvent.pointerEnter );
-				eventSystem.SetSelectedGameObject( selectObject, pointerEvent );
-			}
-		}
+            if (axisEventData.moveDir != MoveDirection.None)
+            {
+                if (eventSystem.currentSelectedGameObject == null)
+                {
+                    eventSystem.SetSelectedGameObject(eventSystem.firstSelectedGameObject, GetBaseEventData());
+                }
+                else
+                {
+                    ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, axisEventData, ExecuteEvents.moveHandler);
+                }
 
+                SetVectorRepeatTimer();
+            }
 
-		void Update()
-		{
-			direction.Filter( Device.Direction, Time.deltaTime );
-		}
-
-
-		void UpdateInputState()
-		{
-			lastVectorState = thisVectorState;
-			thisVectorState = Vector2.zero;
-
-			var dir = MoveAction ?? direction;
-
-			if (Utility.AbsoluteIsOverThreshold( dir.X, analogMoveThreshold ))
-			{
-				thisVectorState.x = Mathf.Sign( dir.X );
-			}
-
-			if (Utility.AbsoluteIsOverThreshold( dir.Y, analogMoveThreshold ))
-			{
-				thisVectorState.y = Mathf.Sign( dir.Y );
-			}
-
-			moveWasRepeated = false;
-			if (VectorIsReleased)
-			{
-				nextMoveRepeatTime = 0.0f;
-			}
-			else if (VectorIsPressed)
-			{
-				var realtimeSinceStartup = Time.realtimeSinceStartup;
-				if (lastVectorState == Vector2.zero) // if vector was pressed
-				{
-					nextMoveRepeatTime = realtimeSinceStartup + moveRepeatFirstDuration;
-				}
-				else if (realtimeSinceStartup >= nextMoveRepeatTime)
-				{
-					moveWasRepeated = true;
-					nextMoveRepeatTime = realtimeSinceStartup + moveRepeatDelayDuration;
-				}
-			}
-
-			lastSubmitState = thisSubmitState;
-			thisSubmitState = SubmitAction == null ? SubmitButton.IsPressed : SubmitAction.IsPressed;
-
-			lastCancelState = thisCancelState;
-			thisCancelState = CancelAction == null ? CancelButton.IsPressed : CancelAction.IsPressed;
-		}
+            return axisEventData.used;
+        }
 
 
-		public InputDevice Device
-		{
-			set { inputDevice = value; }
+        protected override void ProcessMove(PointerEventData pointerEvent)
+        {
+            var lastPointerEnter = pointerEvent.pointerEnter;
 
-			get { return inputDevice ?? InputManager.ActiveDevice; }
-		}
+            base.ProcessMove(pointerEvent);
 
-
-		InputControl SubmitButton
-		{
-			get { return Device.GetControl( (InputControlType) submitButton ); }
-		}
-
-
-		InputControl CancelButton
-		{
-			get { return Device.GetControl( (InputControlType) cancelButton ); }
-		}
+            if (focusOnMouseHover && lastPointerEnter != pointerEvent.pointerEnter)
+            {
+                var selectObject = ExecuteEvents.GetEventHandler<ISelectHandler>(pointerEvent.pointerEnter);
+                eventSystem.SetSelectedGameObject(selectObject, pointerEvent);
+            }
+        }
 
 
-		void SetVectorRepeatTimer()
-		{
-			nextMoveRepeatTime = Mathf.Max( nextMoveRepeatTime, Time.realtimeSinceStartup + moveRepeatDelayDuration );
-		}
+        void Update()
+        {
+            direction.Filter(Device.Direction, Time.deltaTime);
+        }
 
 
-		bool VectorIsPressed
-		{
-			get { return thisVectorState != Vector2.zero; }
-		}
+        void UpdateInputState()
+        {
+            lastVectorState = thisVectorState;
+            thisVectorState = Vector2.zero;
+
+            var dir = MoveAction ?? direction;
+
+            if (Utility.AbsoluteIsOverThreshold(dir.X, analogMoveThreshold))
+            {
+                thisVectorState.x = Mathf.Sign(dir.X);
+            }
+
+            if (Utility.AbsoluteIsOverThreshold(dir.Y, analogMoveThreshold))
+            {
+                thisVectorState.y = Mathf.Sign(dir.Y);
+            }
+
+            moveWasRepeated = false;
+            if (VectorIsReleased)
+            {
+                nextMoveRepeatTime = 0.0f;
+            }
+            else if (VectorIsPressed)
+            {
+                var realtimeSinceStartup = Time.realtimeSinceStartup;
+                if (lastVectorState == Vector2.zero) // if vector was pressed
+                {
+                    nextMoveRepeatTime = realtimeSinceStartup + moveRepeatFirstDuration;
+                }
+                else if (realtimeSinceStartup >= nextMoveRepeatTime)
+                {
+                    moveWasRepeated = true;
+                    nextMoveRepeatTime = realtimeSinceStartup + moveRepeatDelayDuration;
+                }
+            }
+
+            lastSubmitState = thisSubmitState;
+            thisSubmitState = SubmitAction == null ? SubmitButton.IsPressed : SubmitAction.IsPressed;
+
+            lastCancelState = thisCancelState;
+            thisCancelState = CancelAction == null ? CancelButton.IsPressed : CancelAction.IsPressed;
+        }
 
 
-		bool VectorIsReleased
-		{
-			get { return thisVectorState == Vector2.zero; }
-		}
+        public InputDevice Device
+        {
+            set { inputDevice = value; }
+
+            get { return inputDevice ?? InputManager.ActiveDevice; }
+        }
 
 
-		bool VectorHasChanged
-		{
-			get { return thisVectorState != lastVectorState; }
-		}
+        InputControl SubmitButton
+        {
+            get { return Device.GetControl((InputControlType)submitButton); }
+        }
 
 
-		bool VectorWasPressed
-		{
-			get { return moveWasRepeated || (VectorIsPressed && lastVectorState == Vector2.zero); }
-		}
+        InputControl CancelButton
+        {
+            get { return Device.GetControl((InputControlType)cancelButton); }
+        }
 
 
-		bool SubmitWasPressed
-		{
-			get { return thisSubmitState && thisSubmitState != lastSubmitState; }
-		}
+        void SetVectorRepeatTimer()
+        {
+            nextMoveRepeatTime = Mathf.Max(nextMoveRepeatTime, Time.realtimeSinceStartup + moveRepeatDelayDuration);
+        }
 
 
-		bool SubmitWasReleased
-		{
-			get { return !thisSubmitState && thisSubmitState != lastSubmitState; }
-		}
+        bool VectorIsPressed
+        {
+            get { return thisVectorState != Vector2.zero; }
+        }
 
 
-		bool CancelWasPressed
-		{
-			get { return thisCancelState && thisCancelState != lastCancelState; }
-		}
+        bool VectorIsReleased
+        {
+            get { return thisVectorState == Vector2.zero; }
+        }
 
 
-		bool MouseHasMoved
-		{
-			get { return (thisMousePosition - lastMousePosition).sqrMagnitude > 0.0f; }
-		}
+        bool VectorHasChanged
+        {
+            get { return thisVectorState != lastVectorState; }
+        }
 
 
-		bool MouseButtonIsPressed
-		{
-			get { return Input.GetMouseButtonDown( 0 ); }
-		}
+        bool VectorWasPressed
+        {
+            get { return moveWasRepeated || (VectorIsPressed && lastVectorState == Vector2.zero); }
+        }
 
 
-		// Copied from StandaloneInputModule where these are marked private instead of protected in Unity 5.0
+        bool SubmitWasPressed
+        {
+            get { return thisSubmitState && thisSubmitState != lastSubmitState; }
+        }
 
 
-		#region Unity 5.0 compatibility.
+        bool SubmitWasReleased
+        {
+            get { return !thisSubmitState && thisSubmitState != lastSubmitState; }
+        }
+
+
+        bool CancelWasPressed
+        {
+            get { return thisCancelState && thisCancelState != lastCancelState; }
+        }
+
+
+        bool MouseHasMoved
+        {
+            get { return (thisMousePosition - lastMousePosition).sqrMagnitude > 0.0f; }
+        }
+
+
+        bool MouseButtonIsPressed
+        {
+            get { return Input.GetMouseButtonDown(0); }
+        }
+
+
+        // Copied from StandaloneInputModule where these are marked private instead of protected in Unity 5.0
+
+
+        #region Unity 5.0 compatibility.
 
 #if UNITY_5_0
 		bool SendUpdateEventToSelectedObject()
@@ -548,13 +548,13 @@ namespace InControl
 
 #endif
 
-		#endregion
+        #endregion
 
 
-		// Copied from StandaloneInputModule where these are marked private instead of protected in Unity 5.3 / 5.4
+        // Copied from StandaloneInputModule where these are marked private instead of protected in Unity 5.3 / 5.4
 
 
-		#region Unity 5.3 / 5.4 compatibility.
+        #region Unity 5.3 / 5.4 compatibility.
 
 #if UNITY_5_3 || UNITY_5_4
 		void ProcessTouchPress( PointerEventData pointerEvent, bool pressed, bool released )
@@ -638,266 +638,266 @@ namespace InControl
 		}
 #endif
 
-		#endregion
+        #endregion
 
 
-		// Copied from StandaloneInputModule and TouchInputModule so we can bypass it and inherit directly from PointerInputModule.
+        // Copied from StandaloneInputModule and TouchInputModule so we can bypass it and inherit directly from PointerInputModule.
 
 
-		#region Unity 2017 compatibility
+        #region Unity 2017 compatibility
 
 #if UNITY_2017_1_OR_NEWER
-		protected bool SendUpdateEventToSelectedObject()
-		{
-			if (eventSystem.currentSelectedGameObject == null)
-			{
-				return false;
-			}
-			var data = GetBaseEventData();
-			ExecuteEvents.Execute( eventSystem.currentSelectedGameObject, data, ExecuteEvents.updateSelectedHandler );
-			return data.used;
-		}
+        protected bool SendUpdateEventToSelectedObject()
+        {
+            if (eventSystem.currentSelectedGameObject == null)
+            {
+                return false;
+            }
+            var data = GetBaseEventData();
+            ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, data, ExecuteEvents.updateSelectedHandler);
+            return data.used;
+        }
 
 
-		protected void ProcessMouseEvent()
-		{
-			ProcessMouseEvent( 0 );
-		}
+        protected void ProcessMouseEvent()
+        {
+            ProcessMouseEvent(0);
+        }
 
 
-		protected void ProcessMouseEvent( int id )
-		{
-			var mouseData = GetMousePointerEventData( id );
-			var leftButtonData = mouseData.GetButtonState( PointerEventData.InputButton.Left ).eventData;
+        protected void ProcessMouseEvent(int id)
+        {
+            var mouseData = GetMousePointerEventData(id);
+            var leftButtonData = mouseData.GetButtonState(PointerEventData.InputButton.Left).eventData;
 
-			// Process the first mouse button fully
-			ProcessMousePress( leftButtonData );
-			ProcessMove( leftButtonData.buttonData );
-			ProcessDrag( leftButtonData.buttonData );
+            // Process the first mouse button fully
+            ProcessMousePress(leftButtonData);
+            ProcessMove(leftButtonData.buttonData);
+            ProcessDrag(leftButtonData.buttonData);
 
-			// Now process right / middle clicks
-			ProcessMousePress( mouseData.GetButtonState( PointerEventData.InputButton.Right ).eventData );
-			ProcessDrag( mouseData.GetButtonState( PointerEventData.InputButton.Right ).eventData.buttonData );
-			ProcessMousePress( mouseData.GetButtonState( PointerEventData.InputButton.Middle ).eventData );
-			ProcessDrag( mouseData.GetButtonState( PointerEventData.InputButton.Middle ).eventData.buttonData );
+            // Now process right / middle clicks
+            ProcessMousePress(mouseData.GetButtonState(PointerEventData.InputButton.Right).eventData);
+            ProcessDrag(mouseData.GetButtonState(PointerEventData.InputButton.Right).eventData.buttonData);
+            ProcessMousePress(mouseData.GetButtonState(PointerEventData.InputButton.Middle).eventData);
+            ProcessDrag(mouseData.GetButtonState(PointerEventData.InputButton.Middle).eventData.buttonData);
 
-			if (!Mathf.Approximately( leftButtonData.buttonData.scrollDelta.sqrMagnitude, 0.0f ))
-			{
-				var scrollHandler = ExecuteEvents.GetEventHandler<IScrollHandler>( leftButtonData.buttonData.pointerCurrentRaycast.gameObject );
-				ExecuteEvents.ExecuteHierarchy( scrollHandler, leftButtonData.buttonData, ExecuteEvents.scrollHandler );
-			}
-		}
-
-
-		protected void ProcessMousePress( MouseButtonEventData data )
-		{
-			var pointerEvent = data.buttonData;
-			var currentOverGo = pointerEvent.pointerCurrentRaycast.gameObject;
-
-			// PointerDown notification
-			if (data.PressedThisFrame())
-			{
-				pointerEvent.eligibleForClick = true;
-				pointerEvent.delta = Vector2.zero;
-				pointerEvent.dragging = false;
-				pointerEvent.useDragThreshold = true;
-				pointerEvent.pressPosition = pointerEvent.position;
-				pointerEvent.pointerPressRaycast = pointerEvent.pointerCurrentRaycast;
-
-				DeselectIfSelectionChanged( currentOverGo, pointerEvent );
-
-				// search for the control that will receive the press
-				// if we can't find a press handler set the press
-				// handler to be what would receive a click.
-				var newPressed = ExecuteEvents.ExecuteHierarchy( currentOverGo, pointerEvent, ExecuteEvents.pointerDownHandler );
-
-				// didnt find a press handler... search for a click handler
-				if (newPressed == null)
-					newPressed = ExecuteEvents.GetEventHandler<IPointerClickHandler>( currentOverGo );
-
-				// Debug.Log("Pressed: " + newPressed);
-
-				float time = Time.unscaledTime;
-
-				if (newPressed == pointerEvent.lastPress)
-				{
-					var diffTime = time - pointerEvent.clickTime;
-					if (diffTime < 0.3f)
-						++pointerEvent.clickCount;
-					else
-						pointerEvent.clickCount = 1;
-
-					pointerEvent.clickTime = time;
-				}
-				else
-				{
-					pointerEvent.clickCount = 1;
-				}
-
-				pointerEvent.pointerPress = newPressed;
-				pointerEvent.rawPointerPress = currentOverGo;
-
-				pointerEvent.clickTime = time;
-
-				// Save the drag handler as well
-				pointerEvent.pointerDrag = ExecuteEvents.GetEventHandler<IDragHandler>( currentOverGo );
-
-				if (pointerEvent.pointerDrag != null)
-					ExecuteEvents.Execute( pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.initializePotentialDrag );
-			}
-
-			// PointerUp notification
-			if (data.ReleasedThisFrame())
-			{
-				// Debug.Log("Executing pressup on: " + pointer.pointerPress);
-				ExecuteEvents.Execute( pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerUpHandler );
-
-				// Debug.Log("KeyCode: " + pointer.eventData.keyCode);
-
-				// see if we mouse up on the same element that we clicked on...
-				var pointerUpHandler = ExecuteEvents.GetEventHandler<IPointerClickHandler>( currentOverGo );
-
-				// PointerClick and Drop events
-				if (pointerEvent.pointerPress == pointerUpHandler && pointerEvent.eligibleForClick)
-				{
-					ExecuteEvents.Execute( pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerClickHandler );
-				}
-				else if (pointerEvent.pointerDrag != null && pointerEvent.dragging)
-				{
-					ExecuteEvents.ExecuteHierarchy( currentOverGo, pointerEvent, ExecuteEvents.dropHandler );
-				}
-
-				pointerEvent.eligibleForClick = false;
-				pointerEvent.pointerPress = null;
-				pointerEvent.rawPointerPress = null;
-
-				if (pointerEvent.pointerDrag != null && pointerEvent.dragging)
-					ExecuteEvents.Execute( pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.endDragHandler );
-
-				pointerEvent.dragging = false;
-				pointerEvent.pointerDrag = null;
-
-				// redo pointer enter / exit to refresh state
-				// so that if we moused over something that ignored it before
-				// due to having pressed on something else
-				// it now gets it.
-				if (currentOverGo != pointerEvent.pointerEnter)
-				{
-					HandlePointerExitAndEnter( pointerEvent, null );
-					HandlePointerExitAndEnter( pointerEvent, currentOverGo );
-				}
-			}
-		}
+            if (!Mathf.Approximately(leftButtonData.buttonData.scrollDelta.sqrMagnitude, 0.0f))
+            {
+                var scrollHandler = ExecuteEvents.GetEventHandler<IScrollHandler>(leftButtonData.buttonData.pointerCurrentRaycast.gameObject);
+                ExecuteEvents.ExecuteHierarchy(scrollHandler, leftButtonData.buttonData, ExecuteEvents.scrollHandler);
+            }
+        }
 
 
-		protected void ProcessTouchPress( PointerEventData pointerEvent, bool pressed, bool released )
-		{
-			var currentOverGo = pointerEvent.pointerCurrentRaycast.gameObject;
+        protected void ProcessMousePress(MouseButtonEventData data)
+        {
+            var pointerEvent = data.buttonData;
+            var currentOverGo = pointerEvent.pointerCurrentRaycast.gameObject;
 
-			// PointerDown notification
-			if (pressed)
-			{
-				pointerEvent.eligibleForClick = true;
-				pointerEvent.delta = Vector2.zero;
-				pointerEvent.dragging = false;
-				pointerEvent.useDragThreshold = true;
-				pointerEvent.pressPosition = pointerEvent.position;
-				pointerEvent.pointerPressRaycast = pointerEvent.pointerCurrentRaycast;
+            // PointerDown notification
+            if (data.PressedThisFrame())
+            {
+                pointerEvent.eligibleForClick = true;
+                pointerEvent.delta = Vector2.zero;
+                pointerEvent.dragging = false;
+                pointerEvent.useDragThreshold = true;
+                pointerEvent.pressPosition = pointerEvent.position;
+                pointerEvent.pointerPressRaycast = pointerEvent.pointerCurrentRaycast;
 
-				DeselectIfSelectionChanged( currentOverGo, pointerEvent );
+                DeselectIfSelectionChanged(currentOverGo, pointerEvent);
 
-				if (pointerEvent.pointerEnter != currentOverGo)
-				{
-					// send a pointer enter to the touched element if it isn't the one to select...
-					HandlePointerExitAndEnter( pointerEvent, currentOverGo );
-					pointerEvent.pointerEnter = currentOverGo;
-				}
+                // search for the control that will receive the press
+                // if we can't find a press handler set the press
+                // handler to be what would receive a click.
+                var newPressed = ExecuteEvents.ExecuteHierarchy(currentOverGo, pointerEvent, ExecuteEvents.pointerDownHandler);
 
-				// search for the control that will receive the press
-				// if we can't find a press handler set the press
-				// handler to be what would receive a click.
-				var newPressed = ExecuteEvents.ExecuteHierarchy( currentOverGo, pointerEvent, ExecuteEvents.pointerDownHandler );
+                // didnt find a press handler... search for a click handler
+                if (newPressed == null)
+                    newPressed = ExecuteEvents.GetEventHandler<IPointerClickHandler>(currentOverGo);
 
-				// didnt find a press handler... search for a click handler
-				if (newPressed == null)
-					newPressed = ExecuteEvents.GetEventHandler<IPointerClickHandler>( currentOverGo );
+                // Debug.Log("Pressed: " + newPressed);
 
-				// Debug.Log("Pressed: " + newPressed);
+                float time = Time.unscaledTime;
 
-				float time = Time.unscaledTime;
+                if (newPressed == pointerEvent.lastPress)
+                {
+                    var diffTime = time - pointerEvent.clickTime;
+                    if (diffTime < 0.3f)
+                        ++pointerEvent.clickCount;
+                    else
+                        pointerEvent.clickCount = 1;
 
-				if (newPressed == pointerEvent.lastPress)
-				{
-					var diffTime = time - pointerEvent.clickTime;
-					if (diffTime < 0.3f)
-						++pointerEvent.clickCount;
-					else
-						pointerEvent.clickCount = 1;
+                    pointerEvent.clickTime = time;
+                }
+                else
+                {
+                    pointerEvent.clickCount = 1;
+                }
 
-					pointerEvent.clickTime = time;
-				}
-				else
-				{
-					pointerEvent.clickCount = 1;
-				}
+                pointerEvent.pointerPress = newPressed;
+                pointerEvent.rawPointerPress = currentOverGo;
 
-				pointerEvent.pointerPress = newPressed;
-				pointerEvent.rawPointerPress = currentOverGo;
+                pointerEvent.clickTime = time;
 
-				pointerEvent.clickTime = time;
+                // Save the drag handler as well
+                pointerEvent.pointerDrag = ExecuteEvents.GetEventHandler<IDragHandler>(currentOverGo);
 
-				// Save the drag handler as well
-				pointerEvent.pointerDrag = ExecuteEvents.GetEventHandler<IDragHandler>( currentOverGo );
+                if (pointerEvent.pointerDrag != null)
+                    ExecuteEvents.Execute(pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.initializePotentialDrag);
+            }
 
-				if (pointerEvent.pointerDrag != null)
-					ExecuteEvents.Execute( pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.initializePotentialDrag );
-			}
+            // PointerUp notification
+            if (data.ReleasedThisFrame())
+            {
+                // Debug.Log("Executing pressup on: " + pointer.pointerPress);
+                ExecuteEvents.Execute(pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerUpHandler);
 
-			// PointerUp notification
-			if (released)
-			{
-				// Debug.Log("Executing pressup on: " + pointer.pointerPress);
-				ExecuteEvents.Execute( pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerUpHandler );
+                // Debug.Log("KeyCode: " + pointer.eventData.keyCode);
 
-				// Debug.Log("KeyCode: " + pointer.eventData.keyCode);
+                // see if we mouse up on the same element that we clicked on...
+                var pointerUpHandler = ExecuteEvents.GetEventHandler<IPointerClickHandler>(currentOverGo);
 
-				// see if we mouse up on the same element that we clicked on...
-				var pointerUpHandler = ExecuteEvents.GetEventHandler<IPointerClickHandler>( currentOverGo );
+                // PointerClick and Drop events
+                if (pointerEvent.pointerPress == pointerUpHandler && pointerEvent.eligibleForClick)
+                {
+                    ExecuteEvents.Execute(pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerClickHandler);
+                }
+                else if (pointerEvent.pointerDrag != null && pointerEvent.dragging)
+                {
+                    ExecuteEvents.ExecuteHierarchy(currentOverGo, pointerEvent, ExecuteEvents.dropHandler);
+                }
 
-				// PointerClick and Drop events
-				if (pointerEvent.pointerPress == pointerUpHandler && pointerEvent.eligibleForClick)
-				{
-					ExecuteEvents.Execute( pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerClickHandler );
-				}
-				else if (pointerEvent.pointerDrag != null && pointerEvent.dragging)
-				{
-					ExecuteEvents.ExecuteHierarchy( currentOverGo, pointerEvent, ExecuteEvents.dropHandler );
-				}
+                pointerEvent.eligibleForClick = false;
+                pointerEvent.pointerPress = null;
+                pointerEvent.rawPointerPress = null;
 
-				pointerEvent.eligibleForClick = false;
-				pointerEvent.pointerPress = null;
-				pointerEvent.rawPointerPress = null;
+                if (pointerEvent.pointerDrag != null && pointerEvent.dragging)
+                    ExecuteEvents.Execute(pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.endDragHandler);
 
-				if (pointerEvent.pointerDrag != null && pointerEvent.dragging)
-					ExecuteEvents.Execute( pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.endDragHandler );
+                pointerEvent.dragging = false;
+                pointerEvent.pointerDrag = null;
 
-				pointerEvent.dragging = false;
-				pointerEvent.pointerDrag = null;
+                // redo pointer enter / exit to refresh state
+                // so that if we moused over something that ignored it before
+                // due to having pressed on something else
+                // it now gets it.
+                if (currentOverGo != pointerEvent.pointerEnter)
+                {
+                    HandlePointerExitAndEnter(pointerEvent, null);
+                    HandlePointerExitAndEnter(pointerEvent, currentOverGo);
+                }
+            }
+        }
 
-				if (pointerEvent.pointerDrag != null)
-					ExecuteEvents.Execute( pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.endDragHandler );
 
-				pointerEvent.pointerDrag = null;
+        protected void ProcessTouchPress(PointerEventData pointerEvent, bool pressed, bool released)
+        {
+            var currentOverGo = pointerEvent.pointerCurrentRaycast.gameObject;
 
-				// send exit events as we need to simulate this on touch up on touch device
-				ExecuteEvents.ExecuteHierarchy( pointerEvent.pointerEnter, pointerEvent, ExecuteEvents.pointerExitHandler );
-				pointerEvent.pointerEnter = null;
-			}
-		}
+            // PointerDown notification
+            if (pressed)
+            {
+                pointerEvent.eligibleForClick = true;
+                pointerEvent.delta = Vector2.zero;
+                pointerEvent.dragging = false;
+                pointerEvent.useDragThreshold = true;
+                pointerEvent.pressPosition = pointerEvent.position;
+                pointerEvent.pointerPressRaycast = pointerEvent.pointerCurrentRaycast;
+
+                DeselectIfSelectionChanged(currentOverGo, pointerEvent);
+
+                if (pointerEvent.pointerEnter != currentOverGo)
+                {
+                    // send a pointer enter to the touched element if it isn't the one to select...
+                    HandlePointerExitAndEnter(pointerEvent, currentOverGo);
+                    pointerEvent.pointerEnter = currentOverGo;
+                }
+
+                // search for the control that will receive the press
+                // if we can't find a press handler set the press
+                // handler to be what would receive a click.
+                var newPressed = ExecuteEvents.ExecuteHierarchy(currentOverGo, pointerEvent, ExecuteEvents.pointerDownHandler);
+
+                // didnt find a press handler... search for a click handler
+                if (newPressed == null)
+                    newPressed = ExecuteEvents.GetEventHandler<IPointerClickHandler>(currentOverGo);
+
+                // Debug.Log("Pressed: " + newPressed);
+
+                float time = Time.unscaledTime;
+
+                if (newPressed == pointerEvent.lastPress)
+                {
+                    var diffTime = time - pointerEvent.clickTime;
+                    if (diffTime < 0.3f)
+                        ++pointerEvent.clickCount;
+                    else
+                        pointerEvent.clickCount = 1;
+
+                    pointerEvent.clickTime = time;
+                }
+                else
+                {
+                    pointerEvent.clickCount = 1;
+                }
+
+                pointerEvent.pointerPress = newPressed;
+                pointerEvent.rawPointerPress = currentOverGo;
+
+                pointerEvent.clickTime = time;
+
+                // Save the drag handler as well
+                pointerEvent.pointerDrag = ExecuteEvents.GetEventHandler<IDragHandler>(currentOverGo);
+
+                if (pointerEvent.pointerDrag != null)
+                    ExecuteEvents.Execute(pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.initializePotentialDrag);
+            }
+
+            // PointerUp notification
+            if (released)
+            {
+                // Debug.Log("Executing pressup on: " + pointer.pointerPress);
+                ExecuteEvents.Execute(pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerUpHandler);
+
+                // Debug.Log("KeyCode: " + pointer.eventData.keyCode);
+
+                // see if we mouse up on the same element that we clicked on...
+                var pointerUpHandler = ExecuteEvents.GetEventHandler<IPointerClickHandler>(currentOverGo);
+
+                // PointerClick and Drop events
+                if (pointerEvent.pointerPress == pointerUpHandler && pointerEvent.eligibleForClick)
+                {
+                    ExecuteEvents.Execute(pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerClickHandler);
+                }
+                else if (pointerEvent.pointerDrag != null && pointerEvent.dragging)
+                {
+                    ExecuteEvents.ExecuteHierarchy(currentOverGo, pointerEvent, ExecuteEvents.dropHandler);
+                }
+
+                pointerEvent.eligibleForClick = false;
+                pointerEvent.pointerPress = null;
+                pointerEvent.rawPointerPress = null;
+
+                if (pointerEvent.pointerDrag != null && pointerEvent.dragging)
+                    ExecuteEvents.Execute(pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.endDragHandler);
+
+                pointerEvent.dragging = false;
+                pointerEvent.pointerDrag = null;
+
+                if (pointerEvent.pointerDrag != null)
+                    ExecuteEvents.Execute(pointerEvent.pointerDrag, pointerEvent, ExecuteEvents.endDragHandler);
+
+                pointerEvent.pointerDrag = null;
+
+                // send exit events as we need to simulate this on touch up on touch device
+                ExecuteEvents.ExecuteHierarchy(pointerEvent.pointerEnter, pointerEvent, ExecuteEvents.pointerExitHandler);
+                pointerEvent.pointerEnter = null;
+            }
+        }
 
 #endif
 
-		#endregion
-	}
+        #endregion
+    }
 }
 #endif

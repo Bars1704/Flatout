@@ -137,7 +137,7 @@ namespace Doozy.Engine.UI.Input
             s_initialized = false;
         }
 #endif
-        
+
         private void Reset() { BackButtonInputData = GetBackButtonInputData(); }
 
         private void Awake()
@@ -260,14 +260,14 @@ namespace Doozy.Engine.UI.Input
         private static InputData GetBackButtonInputData()
         {
             return new InputData
-                   {
-                       InputMode = DEFAULT_INPUT_MODE,
-                       KeyCode = DEFAULT_BACK_BUTTON_KEY_CODE,
-                       KeyCodeAlt = DEFAULT_BACK_BUTTON_KEY_CODE_ALT,
-                       EnableAlternateInputs = DEFAULT_ENABLE_ALTERNATE_INPUTS,
-                       VirtualButtonName = DEFAULT_BACK_BUTTON_VIRTUAL_BUTTON_NAME,
-                       VirtualButtonNameAlt = DEFAULT_BACK_BUTTON_VIRTUAL_BUTTON_NAME_ALT
-                   };
+            {
+                InputMode = DEFAULT_INPUT_MODE,
+                KeyCode = DEFAULT_BACK_BUTTON_KEY_CODE,
+                KeyCodeAlt = DEFAULT_BACK_BUTTON_KEY_CODE_ALT,
+                EnableAlternateInputs = DEFAULT_ENABLE_ALTERNATE_INPUTS,
+                VirtualButtonName = DEFAULT_BACK_BUTTON_VIRTUAL_BUTTON_NAME,
+                VirtualButtonNameAlt = DEFAULT_BACK_BUTTON_VIRTUAL_BUTTON_NAME_ALT
+            };
         }
 
         #endregion

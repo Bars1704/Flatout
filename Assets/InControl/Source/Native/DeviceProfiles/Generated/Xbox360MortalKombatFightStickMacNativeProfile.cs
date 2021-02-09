@@ -4,27 +4,27 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class Xbox360MortalKombatFightStickMacNativeProfile : Xbox360DriverMacNativeProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class Xbox360MortalKombatFightStickMacNativeProfile : Xbox360DriverMacNativeProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "Xbox 360 Mortal Kombat Fight Stick";
-			DeviceNotes = "Xbox 360 Mortal Kombat Fight Stick on Mac";
+            DeviceName = "Xbox 360 Mortal Kombat Fight Stick";
+            DeviceNotes = "Xbox 360 Mortal Kombat Fight Stick on Mac";
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0x1bad,
-					ProductID = 0xf906,
-				},
-			};
-		}
-	}
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0x1bad,
+                    ProductID = 0xf906,
+                },
+            };
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

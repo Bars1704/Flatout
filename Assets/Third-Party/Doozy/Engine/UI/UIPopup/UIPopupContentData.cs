@@ -16,7 +16,7 @@ namespace Doozy.Engine.UI
     public class UIPopupContentData
     {
         #region Public Variables
-        
+
         /// <summary> List of UnityActions. Used for callbacks </summary>
         public List<UnityAction> ButtonCallbacks = new List<UnityAction>();
         /// <summary> List of string button labels. Used for the UIButton label text value </summary>
@@ -27,7 +27,7 @@ namespace Doozy.Engine.UI
         public List<string> Labels = new List<string>();
         /// <summary> List of sprites. Used for any Image sprite value </summary>
         public List<Sprite> Sprites = new List<Sprite>();
-        
+
         #endregion
     }
 }

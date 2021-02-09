@@ -20,7 +20,7 @@ namespace Doozy.Engine.UI
 
         /// <summary> UIViewBehaviorType of the UIViewBehavior that triggered the UIView to send this message </summary>
         public UIViewBehaviorType Type;
-        
+
         #endregion
 
         #region Constructors

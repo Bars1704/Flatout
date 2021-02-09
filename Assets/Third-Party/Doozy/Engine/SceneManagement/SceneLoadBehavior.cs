@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.UI.Base;
+using System;
 
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -22,10 +22,10 @@ namespace Doozy.Engine.SceneManagement
 
         /// <summary> Returns TRUE if either OnLoadScene UIAction Effect (UIEffect) or OnSceneLoaded UIAction Effect (UIEffect) have a target ParticleSystem referenced </summary>
         public bool HasEffect { get { return OnLoadScene.HasEffect || OnSceneLoaded.HasEffect; } }
-       
+
         /// <summary> Returns TRUE if either OnLoadScene UIAction or OnSceneLoaded UIAction have at least one game event in their GameEvents list </summary>
         public bool HasGameEvents { get { return OnLoadScene.HasGameEvents || OnSceneLoaded.HasGameEvents; } }
-        
+
         /// <summary> Returns TRUE if either OnLoadScene UIAction or OnSceneLoaded UIAction have valid sound settings </summary>
         public bool HasSound { get { return OnLoadScene.HasSound || OnSceneLoaded.HasSound; } }
 
@@ -33,7 +33,7 @@ namespace Doozy.Engine.SceneManagement
         public bool HasUnityEvents { get { return OnLoadScene.HasUnityEvent || OnSceneLoaded.HasUnityEvent; } }
 
         #endregion
-        
+
         #region Public Variables
 
         /// <summary> Actions performed when a scene started loading </summary>
@@ -44,7 +44,7 @@ namespace Doozy.Engine.SceneManagement
         /// <para/> This action is triggered after the scene has been loaded and before its activation (at 90% load progress)
         /// </summary>
         public UIAction OnSceneLoaded = new UIAction();
-        
+
         #endregion
 
         #region Constructors
@@ -55,14 +55,14 @@ namespace Doozy.Engine.SceneManagement
         #endregion
 
         #region Public Methods
-        
+
         /// <summary> Resets this instance to the default values </summary>
         public void Reset()
         {
             OnLoadScene = new UIAction();
             OnSceneLoaded = new UIAction();
         }
-        
+
         #endregion
     }
 }

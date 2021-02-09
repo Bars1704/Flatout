@@ -23,9 +23,9 @@ namespace Doozy.Editor
             {
                 switch (direction)
                 {
-                    case Direction.ToRight:  break;
+                    case Direction.ToRight: break;
                     case Direction.ToBottom: break;
-                    case Direction.ToLeft:   break;
+                    case Direction.ToLeft: break;
                     case Direction.ToTop:
                         return Styles.GetStyle(selectedStyle ? Styles.StyleName.TabToTopSelected : Styles.StyleName.TabToTop);
                     default: throw new ArgumentOutOfRangeException("direction", direction, null);

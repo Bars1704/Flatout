@@ -1,7 +1,5 @@
-﻿using Gamebase.Miscellaneous;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using Sirenix.Serialization;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

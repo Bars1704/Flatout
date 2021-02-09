@@ -2,11 +2,9 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
 using Doozy.Editor.Nody.Settings;
-using Doozy.Editor.Nody.Utils;
-using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -99,7 +97,7 @@ namespace Doozy.Editor.Nody.Windows
 
             if (targetNode == null) return; //no start/enter node found -> return as we have nothing to select
 
-            SelectNodes(new List<Node> {targetNode}, false, true);
+            SelectNodes(new List<Node> { targetNode }, false, true);
             CenterSelectedNodesInWindow();
         }
 
@@ -155,7 +153,7 @@ namespace Doozy.Editor.Nody.Windows
 
         private void UpdateSelectBoxSelectedNodesWhileSelecting(Event e)
         {
-//            if (m_mode != GraphMode.Select) return;
+            //            if (m_mode != GraphMode.Select) return;
             //update the current selection
             m_selectedNodesWhileSelecting.Clear();
             foreach (Node node in NodesDatabase.Values)
@@ -173,7 +171,7 @@ namespace Doozy.Editor.Nody.Windows
                     else
                         m_selectedNodesWhileSelecting.Remove(tempNode);
         }
-        
+
         private void UpdateSelectionBox(Vector2 currentMousePosition)
         {
             currentMousePosition = currentMousePosition / CurrentZoom;

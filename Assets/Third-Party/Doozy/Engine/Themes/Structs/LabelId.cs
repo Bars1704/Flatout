@@ -2,8 +2,8 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System;
 using Doozy.Engine.Utils;
+using System;
 using UnityEngine;
 
 // ReSharper disable InconsistentNaming
@@ -35,7 +35,7 @@ namespace Doozy.Engine.Themes
 
         /// <summary> Id of this struct </summary>
         public Guid Id { get { return m_id; } }
-        
+
         /// <summary> Label of this struct </summary>
         public string Label { get { return m_label; } set { m_label = value; } }
 
@@ -59,7 +59,7 @@ namespace Doozy.Engine.Themes
             m_id = guid;
             m_label = label;
         }
-        
+
         #endregion
 
         #region Unity Methods

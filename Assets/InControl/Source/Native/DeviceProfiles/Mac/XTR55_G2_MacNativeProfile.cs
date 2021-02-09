@@ -4,35 +4,35 @@
 // ReSharper disable UnusedType.Global
 namespace InControl.NativeDeviceProfiles
 {
-	// @cond nodoc
-	[Preserve, NativeInputDeviceProfile]
-	public class XTR55_G2_MacNativeProfile : InputDeviceProfile
-	{
-		public override void Define()
-		{
-			base.Define();
+    // @cond nodoc
+    [Preserve, NativeInputDeviceProfile]
+    public class XTR55_G2_MacNativeProfile : InputDeviceProfile
+    {
+        public override void Define()
+        {
+            base.Define();
 
-			DeviceName = "SAILI Simulator XTR5.5 G2 FMS Controller";
-			DeviceNotes = "SAILI Simulator XTR5.5 G2 FMS Controller on OS X";
+            DeviceName = "SAILI Simulator XTR5.5 G2 FMS Controller";
+            DeviceNotes = "SAILI Simulator XTR5.5 G2 FMS Controller on OS X";
 
-			DeviceClass = InputDeviceClass.Controller;
+            DeviceClass = InputDeviceClass.Controller;
 
-			IncludePlatforms = new[]
-			{
-				"OS X"
-			};
+            IncludePlatforms = new[]
+            {
+                "OS X"
+            };
 
-			Matchers = new[]
-			{
-				new InputDeviceMatcher
-				{
-					VendorID = 0xb9b,
-					ProductID = 0x4012,
-					NameLiteral = "SAILI Simulator --- XTR5.5+G2+FMS Controller"
-				},
-			};
+            Matchers = new[]
+            {
+                new InputDeviceMatcher
+                {
+                    VendorID = 0xb9b,
+                    ProductID = 0x4012,
+                    NameLiteral = "SAILI Simulator --- XTR5.5+G2+FMS Controller"
+                },
+            };
 
-			/*
+            /*
 			AnalogMappings = new[] {
 				new InputControlMapping {
 					Handle = "Left Stick Up",
@@ -92,8 +92,8 @@ namespace InControl.NativeDeviceProfiles
 				}
 			};
 			*/
-		}
-	}
+        }
+    }
 
-	// @endcond
+    // @endcond
 }

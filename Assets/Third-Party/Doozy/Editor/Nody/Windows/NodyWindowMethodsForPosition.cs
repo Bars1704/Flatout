@@ -2,13 +2,12 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
-using System.Linq;
 using Doozy.Editor.Nody.NodeGUI;
 using Doozy.Editor.Nody.Settings;
-using Doozy.Editor.Nody.Utils;
 using Doozy.Engine.Nody;
 using Doozy.Engine.Nody.Models;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Doozy.Editor.Nody.Windows
@@ -32,7 +31,7 @@ namespace Doozy.Editor.Nody.Windows
 
             return worldPosition;
         }
-        
+
         private Node GetNodeAtWorldPosition(Vector2 worldPosition)
         {
             foreach (BaseNodeGUI nodeGUI in NodesGUIsDatabase.Values.Reverse())
@@ -47,7 +46,7 @@ namespace Doozy.Editor.Nody.Windows
         private Rect GetNodeFooterGridRect(Node node) { return new Rect(GridToWorldPosition(node.GetFooterRect().position), node.GetFooterRect().size * CurrentZoom); }
 
         private Rect GetNodeGridRect(Node node) { return new Rect(GridToWorldPosition(node.GetRect().position), node.GetRect().size * CurrentZoom); }
-        
+
         private Rect GetNodeHeaderGridRect(Node node) { return new Rect(GridToWorldPosition(node.GetHeaderRect().position), node.GetHeaderRect().size * CurrentZoom); }
 
         private BaseNodeGUI GetNodeGUIOfDeleteButtonAtWorldPosition(Vector2 mousePosition)
@@ -78,24 +77,24 @@ namespace Doozy.Editor.Nody.Windows
             mouseRect.x -= size / 2;
             mouseRect.y -= size / 2;
 
-//            GUI.color = Color.magenta;
-//            GUI.Box(mouseRect, "");
-//            GUI.color = Color.white;
+            //            GUI.color = Color.magenta;
+            //            GUI.Box(mouseRect, "");
+            //            GUI.color = Color.white;
 
             foreach (string key in PointsDatabase.Keys)
-            foreach (VirtualPoint point in PointsDatabase[key])
-            {
-                if (!NodesGUIsDatabase[point.Node.Id].IsVisible) continue; //the node, that his point belongs to, is not visible -> do not process it
-                var pointGridRect = new Rect(point.Rect.position * CurrentZoom, point.Rect.size * CurrentZoom);
-                pointGridRect.x -= pointGridRect.width / 2;
-                pointGridRect.y -= pointGridRect.height / 4;
+                foreach (VirtualPoint point in PointsDatabase[key])
+                {
+                    if (!NodesGUIsDatabase[point.Node.Id].IsVisible) continue; //the node, that his point belongs to, is not visible -> do not process it
+                    var pointGridRect = new Rect(point.Rect.position * CurrentZoom, point.Rect.size * CurrentZoom);
+                    pointGridRect.x -= pointGridRect.width / 2;
+                    pointGridRect.y -= pointGridRect.height / 4;
 
-//                GUI.color = Color.yellow;
-//                GUI.Box(pointGridRect, "");
-//                GUI.color = Color.white;
+                    //                GUI.color = Color.yellow;
+                    //                GUI.Box(pointGridRect, "");
+                    //                GUI.color = Color.white;
 
-                if (pointGridRect.Overlaps(mouseRect)) return point;
-            }
+                    if (pointGridRect.Overlaps(mouseRect)) return point;
+                }
 
             return null;
         }
@@ -143,9 +142,9 @@ namespace Doozy.Editor.Nody.Windows
                 var socketGridRect = new Rect(socketWorldRect.position * CurrentZoom + CurrentPanOffset,
                                               socketWorldRect.size * CurrentZoom);
 
-//                GUI.color = Color.yellow;
-//                GUI.Box(socketGridRect, GUIContent.none);
-//                GUI.color = Color.white;
+                //                GUI.color = Color.yellow;
+                //                GUI.Box(socketGridRect, GUIContent.none);
+                //                GUI.color = Color.white;
 
                 if (socketGridRect.Contains(worldPosition))
                     return socket;
@@ -168,9 +167,9 @@ namespace Doozy.Editor.Nody.Windows
 
                 socketWorldRect.position += CurrentPanOffset / CurrentZoom; //this is the calculated socketGridRect
 
-//                GUI.color = Color.magenta;
-//                GUI.Box(socketWorldRect, "");
-//                GUI.color = Color.white;
+                //                GUI.color = Color.magenta;
+                //                GUI.Box(socketWorldRect, "");
+                //                GUI.color = Color.white;
 
                 pointsInWorldSpace.Add(new Vector2(socketWorldRect.x + connectionPoint.x + NodySettings.Instance.ConnectionPointWidth / 2,
                                                    socketWorldRect.y + connectionPoint.y + NodySettings.Instance.ConnectionPointHeight / 2));

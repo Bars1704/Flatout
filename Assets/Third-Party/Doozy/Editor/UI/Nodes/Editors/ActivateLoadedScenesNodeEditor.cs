@@ -13,8 +13,8 @@ namespace Doozy.Editor.UI.Nodes
     [CustomEditor(typeof(ActivateLoadedScenesNode))]
     public class ActivateLoadedScenesNodeEditor : BaseNodeEditor
     {
-        private ActivateLoadedScenesNode TargetNode { get { return (ActivateLoadedScenesNode) target; } }
-        
+        private ActivateLoadedScenesNode TargetNode { get { return (ActivateLoadedScenesNode)target; } }
+
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();

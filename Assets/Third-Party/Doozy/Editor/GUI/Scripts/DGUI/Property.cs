@@ -70,7 +70,7 @@ namespace Doozy.Editor
             {
                 Draw(property, label, propertyColorName, propertyColorName, fieldWidth, hasErrors);
             }
-            
+
             public static void Draw(SerializedProperty property, string label, ColorName propertyColorName, ColorName textColorName, bool hasErrors = false)
             {
                 Line.Draw(false, propertyColorName,
@@ -85,7 +85,7 @@ namespace Doozy.Editor
                               Draw(property, hasErrors ? ColorName.Red : propertyColorName, Properties.SingleLineHeight);
                           });
             }
-            
+
             public static void Draw(SerializedProperty property, string label, ColorName propertyColorName, ColorName textColorName, float fieldWidth, bool hasErrors = false)
             {
                 Line.Draw(false, propertyColorName,

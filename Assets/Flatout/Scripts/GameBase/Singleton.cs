@@ -12,11 +12,11 @@ namespace Gamebase.Miscellaneous
         [SerializeField]
         private bool AutoInitializeOnStart = true;
 
-        #pragma warning disable CS0108
+#pragma warning disable CS0108
         [Tooltip("Не уничтожать объект при переключении на другую сцену")]
         [SerializeField]
         private bool DontDestroyOnLoad;
-        #pragma warning restore CS0108
+#pragma warning restore CS0108
 
         /// <summary>
         /// Метод, выполняемый при инициализации класса

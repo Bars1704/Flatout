@@ -8,7 +8,6 @@ using Doozy.Engine.UI.Base;
 using Doozy.Engine.UI.Settings;
 using Doozy.Engine.Utils;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -91,7 +90,7 @@ namespace Doozy.Engine.UI
         public bool IsMasterCanvas { get { return CanvasName.Equals(MasterCanvasName) && GetMasterCanvas() == this; } }
 
         private bool DebugComponent { get { return DebugMode || DoozySettings.Instance.DebugUICanvas; } }
-        
+
         #endregion
 
         #region Public Variables

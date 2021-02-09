@@ -124,7 +124,7 @@ namespace Doozy.Engine.Touchy
             ApplicationIsQuitting = false;
         }
 #endif
-        
+
         private void Awake()
         {
             if (s_instance != null && s_instance != this)
@@ -200,7 +200,7 @@ namespace Doozy.Engine.Touchy
 
             if (m_touch.phase == TouchPhase.Began)
             {
-                m_pointerEventData = new PointerEventData(EventSystem.current) {position = m_touch.position};
+                m_pointerEventData = new PointerEventData(EventSystem.current) { position = m_touch.position };
                 m_raycastResults.Clear();
                 EventSystem.current.RaycastAll(m_pointerEventData, m_raycastResults);
                 m_currentTouchInfo.Update(m_touch, m_raycastResults.Count > 0 ? m_raycastResults[0].gameObject : null); //reset
@@ -306,12 +306,12 @@ namespace Doozy.Engine.Touchy
         {
             switch (simpleSwipe)
             {
-                case SimpleSwipe.None:  return Swipe.None;
-                case SimpleSwipe.Left:  return reverse ? Swipe.Right : Swipe.Left;
+                case SimpleSwipe.None: return Swipe.None;
+                case SimpleSwipe.Left: return reverse ? Swipe.Right : Swipe.Left;
                 case SimpleSwipe.Right: return reverse ? Swipe.Left : Swipe.Right;
-                case SimpleSwipe.Up:    return reverse ? Swipe.Down : Swipe.Up;
-                case SimpleSwipe.Down:  return reverse ? Swipe.Up : Swipe.Down;
-                default:                return Swipe.None;
+                case SimpleSwipe.Up: return reverse ? Swipe.Down : Swipe.Up;
+                case SimpleSwipe.Down: return reverse ? Swipe.Up : Swipe.Down;
+                default: return Swipe.None;
             }
         }
 
@@ -322,16 +322,16 @@ namespace Doozy.Engine.Touchy
         {
             switch (swipe)
             {
-                case Swipe.None:      return SimpleSwipe.None;
-                case Swipe.UpLeft:    return reverse ? SimpleSwipe.Right : SimpleSwipe.Left;
-                case Swipe.Up:        return reverse ? SimpleSwipe.Down : SimpleSwipe.Up;
-                case Swipe.UpRight:   return reverse ? SimpleSwipe.Left : SimpleSwipe.Right;
-                case Swipe.Left:      return reverse ? SimpleSwipe.Right : SimpleSwipe.Left;
-                case Swipe.Right:     return reverse ? SimpleSwipe.Left : SimpleSwipe.Right;
-                case Swipe.DownLeft:  return reverse ? SimpleSwipe.Right : SimpleSwipe.Left;
-                case Swipe.Down:      return reverse ? SimpleSwipe.Up : SimpleSwipe.Down;
+                case Swipe.None: return SimpleSwipe.None;
+                case Swipe.UpLeft: return reverse ? SimpleSwipe.Right : SimpleSwipe.Left;
+                case Swipe.Up: return reverse ? SimpleSwipe.Down : SimpleSwipe.Up;
+                case Swipe.UpRight: return reverse ? SimpleSwipe.Left : SimpleSwipe.Right;
+                case Swipe.Left: return reverse ? SimpleSwipe.Right : SimpleSwipe.Left;
+                case Swipe.Right: return reverse ? SimpleSwipe.Left : SimpleSwipe.Right;
+                case Swipe.DownLeft: return reverse ? SimpleSwipe.Right : SimpleSwipe.Left;
+                case Swipe.Down: return reverse ? SimpleSwipe.Up : SimpleSwipe.Down;
                 case Swipe.DownRight: return reverse ? SimpleSwipe.Left : SimpleSwipe.Right;
-                default:              return SimpleSwipe.None;
+                default: return SimpleSwipe.None;
             }
         }
 

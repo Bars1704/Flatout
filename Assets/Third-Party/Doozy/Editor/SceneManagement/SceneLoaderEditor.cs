@@ -2,18 +2,15 @@
 // This code can only be used under the standard Unity Asset Store End User License Agreement
 // A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
 
-using System.Collections.Generic;
-using Doozy.Editor;
 using Doozy.Editor.Internal;
-using Doozy.Engine.SceneManagement;
-using Doozy.Engine.Utils;
-using Doozy.Engine.Soundy;
 using Doozy.Editor.Soundy;
+using Doozy.Engine.SceneManagement;
 using Doozy.Engine.UI.Base;
+using Doozy.Engine.Utils;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
-using PropertyName = Doozy.Editor.PropertyName;
 
 namespace Doozy.Editor.SceneManagement
 {
@@ -28,7 +25,7 @@ namespace Doozy.Editor.SceneManagement
             get
             {
                 if (m_target != null) return m_target;
-                m_target = (SceneLoader) target;
+                m_target = (SceneLoader)target;
                 return m_target;
             }
         }
@@ -128,7 +125,7 @@ namespace Doozy.Editor.SceneManagement
                 GUILayout.Space(DGUI.Properties.Space());
                 DGUI.Property.Draw(getSceneBy, UILabels.GetSceneBy, componentColorName, 80);
                 GUILayout.Space(DGUI.Properties.Space());
-                switch ((GetSceneBy) getSceneBy.enumValueIndex)
+                switch ((GetSceneBy)getSceneBy.enumValueIndex)
                 {
                     case GetSceneBy.Name:
                         DGUI.Property.Draw(sceneName, UILabels.SceneName, componentColorName, string.IsNullOrEmpty(sceneName.stringValue.Trim()));

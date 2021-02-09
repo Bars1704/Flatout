@@ -32,19 +32,19 @@ namespace Doozy.Engine
         #endregion
 
         #region Properties
-        
+
         private bool DebugComponent { get { return DebugMode || DoozySettings.Instance.DebugGameEventListener; } }
-        
+
         #endregion
-        
+
         #region Public Variables
 
         /// <summary> Enables relevant debug messages to be printed to the console </summary>
         public bool DebugMode;
-        
+
         /// <summary> UnityEvent executed when this listener has been triggered </summary>
         public StringEvent Event;
-        
+
         /// <summary> Game event string value that will trigger this listener's callback </summary>
         public string GameEvent;
 
@@ -75,13 +75,13 @@ namespace Doozy.Engine
         private void RegisterListener()
         {
             Message.AddListener<GameEventMessage>(OnMessage);
-            if (DebugComponent) DDebug.Log( "[" + name + "] Started listening for GameEvents", this);
+            if (DebugComponent) DDebug.Log("[" + name + "] Started listening for GameEvents", this);
         }
 
         private void UnregisterListener()
         {
             Message.RemoveListener<GameEventMessage>(OnMessage);
-            if (DebugComponent) DDebug.Log( "[" + name + "] Stopped listening for GameEvents", this);
+            if (DebugComponent) DDebug.Log("[" + name + "] Stopped listening for GameEvents", this);
         }
 
         private void OnMessage(GameEventMessage message)
@@ -95,11 +95,11 @@ namespace Doozy.Engine
             if (!message.HasGameEvent) return;
             if (Event == null) return;
             Event.Invoke(message.EventName);
-            if (DebugComponent) DDebug.Log( "[" + name + "] Triggered Event: " + message.EventName, this);
+            if (DebugComponent) DDebug.Log("[" + name + "] Triggered Event: " + message.EventName, this);
         }
 
         #endregion
-        
+
         #region Static Methods
 
         // ReSharper disable once UnusedMember.Local
