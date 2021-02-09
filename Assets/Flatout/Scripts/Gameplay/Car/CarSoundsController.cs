@@ -6,7 +6,7 @@ namespace Flatout
     [RequireComponent(typeof(AudioSource))]
     public class CarSoundsController : MonoBehaviour
     {
-        CarVFXManager soundsBase;
+        CarVFXSettings soundsBase;
         [SerializeField] AudioSource audioSource;
         void PlayCarBoostSound()
         {
@@ -45,7 +45,7 @@ namespace Flatout
         }
         public void Start()
         {
-            soundsBase = CarVFXManager.Instance;
+            soundsBase = CarVFXSettings.Instance;
             audioSource = GetComponent<AudioSource>();
             CarControlBase carControl = GetComponent<CarControlBase>();
             carControl.OnCarBoost += PlayCarBoostSound;

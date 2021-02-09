@@ -5,7 +5,7 @@ namespace Flatout
 {
     public class CarControlEffextsManager : MonoBehaviour
     {
-        CarVFXManager settings;
+        CarVFXSettings settings;
         [SerializeField] ParticleSystem BoosterParticles;
         [SerializeField] ParticleSystem BoosterBlastParticles;
         [SerializeField] Transform[] allWheels;
@@ -35,7 +35,7 @@ namespace Flatout
         }
         private void Start()
         {
-            settings = CarVFXManager.Instance;
+            settings = CarVFXSettings.Instance;
 
             carAnimator = GetComponentInChildren<Animator>(true);
             carAnimator.enabled = false;

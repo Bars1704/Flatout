@@ -5,9 +5,9 @@ using Gamebase.Miscellaneous;
 using Doozy.Engine.Soundy;
 namespace Flatout
 {
-    [CreateAssetMenu(fileName = "CarVFXManage", menuName = "Flatout/Static/CarVFXManage")]
+    [CreateAssetMenu(fileName = "CarVFXSettings", menuName = "Flatout/Static/CarVFXSettings")]
 
-    public class CarVFXManager : StaticScriptableObject<CarVFXManager>
+    public class CarVFXSettings : StaticScriptableObject<CarVFXSettings>
     {
         public AudioClip music;
         public AudioClip CarRunSound;

@@ -10,10 +10,13 @@ namespace Flatout
     /// </summary>
     public class BotCar : CarBase
     {
-        //TODO: вынести реализацию инициализации отдельно в каждый из классов (убрать донастройку в старте)
-        private void Start()
+        public override void Init(CarTier carTier, GameObject gameObj)
         {
-            var hardnessLevel = PlayerAvatar.Instance.hardnessLevel;
+            base.Init(carTier, gameObj);
+            SetHardnessValues(PlayerAvatar.Instance.HardnessLevel);
+        }
+        void SetHardnessValues(HardnessLevel hardnessLevel)
+        {
             Health = (int)(Health * hardnessLevel.BotHealthModifier);
             MaxHealth = Health;
             collisionDamage = (int)(collisionDamage * hardnessLevel.BotDamageModifier);

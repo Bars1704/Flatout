@@ -180,8 +180,7 @@ namespace Flatout
         void CalculateRotation()
         {
             var rotateVector = (target.transform.position - transform.position).normalized;
-            RaycastHit hit;
-            var isAvoidingObstacle = Physics.Raycast(transform.position, rotateVector, out hit, aiConfig.ObstacleDetectingDistance, 1 << 11);
+            var isAvoidingObstacle = Physics.Raycast(transform.position, rotateVector, out RaycastHit hit, aiConfig.ObstacleDetectingDistance, 1 << 11);
             rotateVector = isAvoidingObstacle ? CalculateAvoidRotate(hit.distance) : rotateVector;
             Rotate(rotateVector);
 
@@ -193,7 +192,7 @@ namespace Flatout
             Vector3 CalculateAvoidRotate(float distanceToObstacle)
             {
                 int rotateTries = 0;
-                Vector3 currentTarget = Vector3.zero;
+                Vector3 currentTarget;
                 do
                 {
                     var rotateAngle = Mathf.Lerp(aiConfig.ObstacleAvoidingAngle, 0, distanceToObstacle / aiConfig.ObstacleDetectingDistance);
@@ -232,11 +231,13 @@ namespace Flatout
         void SetNewTarget()
         {
             //TODO: вынести выбор цели в отдельный метод, в управлении оставить только преследование точки
-            Dictionary<Action, float> probabilities = new Dictionary<Action, float>();
-            probabilities.Add(FollowCarInRange, aiConfig.RandomCarInRangeTargetChance);
-            probabilities.Add(() => MoveToRandomPoint(aiConfig.RandomPointTargetMaxDistance), aiConfig.RandomPointTargetChance);
-            probabilities.Add(FollowTheNearestCar, aiConfig.NearestCarTargetChance);
-            probabilities.Add(FollowRandomCar, aiConfig.RandomCarTargetChance);
+            Dictionary<Action, float> probabilities = new Dictionary<Action, float>
+            {
+                { FollowCarInRange, aiConfig.RandomCarInRangeTargetChance },
+                { () => MoveToRandomPoint(aiConfig.RandomPointTargetMaxDistance), aiConfig.RandomPointTargetChance },
+                { FollowTheNearestCar, aiConfig.NearestCarTargetChance },
+                { FollowRandomCar, aiConfig.RandomCarTargetChance }
+            };
 
             probabilities.GetRandomWithProbabilities().Invoke();
 
@@ -302,7 +303,7 @@ namespace Flatout
             /// </summary>
             float CalculateSpeedModifier()
             {
-                var hardnessLevelMultiplier = PlayerAvatar.Instance.hardnessLevel.BotSpeedModifier;
+                var hardnessLevelMultiplier = PlayerAvatar.Instance.HardnessLevel.BotSpeedModifier;
                 var closenessToTargetMultiplier = Mathf.InverseLerp(0, aiConfig.SlowDistanceEnable, DistanceToPoint(target));
                 closenessToTargetMultiplier = Mathf.Max(closenessToTargetMultiplier, aiConfig.MinSpeed);
                 return hardnessLevelMultiplier * closenessToTargetMultiplier;

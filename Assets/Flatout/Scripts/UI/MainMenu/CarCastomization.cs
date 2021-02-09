@@ -33,7 +33,7 @@ namespace Flatout
             actualCar = PlayerAvatar.Instance.ActualCar;
             SpawnCar(actualCar.CarMenuViewPrefab);
             SetCarDefaultColor();
-            SoundyManager.Play(CarVFXManager.Instance.music, null, Vector3.zero, 0.5f, 1, true, 0);
+            SoundyManager.Play(CarVFXSettings.Instance.music, null, Vector3.zero, 0.5f, 1, true, 0);
         }
         /// <summary>
         /// Устанавливает превью-машинке цвет по умолчанию

@@ -65,7 +65,6 @@ namespace Flatout
             playerCar.OnDeath += x => carController.enabled = false;
             SpawnFloatingNickName(playerCar);
             SpawnHealthBar(playerCar);
-            FindObjectOfType<BoosterButton>().carControl = carController;
             var BoosterBar = FindObjectOfType<BoosterBar>();
             playerCar.OnBoosterChanged += BoosterBar.ShowBooster;
         }
@@ -75,7 +74,7 @@ namespace Flatout
         void WinMatch()
         {
             DebriefingPanel.Instance.Show();
-            playerCar.AddXP(PlayerAvatar.Instance.hardnessLevel.XPForWin);
+            playerCar.AddXP(PlayerAvatar.Instance.HardnessLevel.XPForWin);
             Debug.Log("Win");
         }
         /// <summary>
@@ -131,7 +130,7 @@ namespace Flatout
             foreach (var spawnpoint in spawnPoints)
             {
                 int playerLevel = PlayerAvatar.Instance.Level;
-                var botLevelBase = PlayerAvatar.Instance.hardnessLevel.GetBotCar(playerLevel);
+                var botLevelBase = PlayerAvatar.Instance.HardnessLevel.GetBotCar(playerLevel);
                 var botGameObject = Instantiate(botLevelBase.CarPrefab, spawnpoint);
                 var botBaseComponennt = botGameObject.AddComponent<BotCar>();
                 var botAIComponent = botGameObject.AddComponent<CarAIControl>();

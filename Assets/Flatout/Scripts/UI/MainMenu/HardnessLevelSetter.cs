@@ -25,8 +25,8 @@ namespace Flatout
 
             hardnessLevels = GlobalSettings.Instance.hardnessLevels;
             SetDefaultHardnessLevel();
-            NameText.text = PlayerAvatar.Instance.hardnessLevel.LevelName;
-            DescriptionText.text = PlayerAvatar.Instance.hardnessLevel.Deskription;
+            NameText.text = PlayerAvatar.Instance.HardnessLevel.LevelName;
+            DescriptionText.text = PlayerAvatar.Instance.HardnessLevel.Deskription;
         }
         void SetDefaultHardnessLevel()
         {
@@ -35,23 +35,23 @@ namespace Flatout
                 var hardnessLevelName = PlayerPrefs.GetString("HardnessLevel");
                 var hardnessLevel = hardnessLevels.FirstOrDefault(x => x.LevelName == hardnessLevelName);
                 if (hardnessLevel == null) hardnessLevel = hardnessLevels.First();
-                PlayerAvatar.Instance.hardnessLevel = hardnessLevel;
+                PlayerAvatar.Instance.HardnessLevel = hardnessLevel;
             }
             else
             {
                 var defaultLevelName = hardnessLevels.First();
-                PlayerAvatar.Instance.hardnessLevel = defaultLevelName;
+                PlayerAvatar.Instance.HardnessLevel = defaultLevelName;
                 PlayerPrefs.SetString("HardnessLevel", defaultLevelName.LevelName);
             }
         }
         void ChangeHardnessLevel()
         {
-            var currentHardnessLevels = PlayerAvatar.Instance.hardnessLevel;
+            var currentHardnessLevels = PlayerAvatar.Instance.HardnessLevel;
             var nextLevelIndex = hardnessLevels.IndexOf(currentHardnessLevels) + 1;
             if (nextLevelIndex >= hardnessLevels.Count)
                 nextLevelIndex -= hardnessLevels.Count;
             var newHardnessLevel = hardnessLevels[nextLevelIndex];
-            PlayerAvatar.Instance.hardnessLevel = newHardnessLevel;
+            PlayerAvatar.Instance.HardnessLevel = newHardnessLevel;
             NameText.text = newHardnessLevel.LevelName;
             DescriptionText.text = newHardnessLevel.Deskription;
             PlayerPrefs.SetString("HardnessLevel", newHardnessLevel.LevelName);

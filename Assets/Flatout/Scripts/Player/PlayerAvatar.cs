@@ -12,7 +12,6 @@ namespace Flatout
     public class PlayerAvatar
     {
         public static PlayerAvatar Instance;
-        //TODO: сделать синглтон отдельным классом, от которого можно будет унаследоваться
         static PlayerAvatar()
         {
             Instance = new PlayerAvatar();
@@ -38,7 +37,7 @@ namespace Flatout
         /// <summary>
         /// Текущий уровень сложности, выбранный игроком
         /// </summary>
-        public HardnessLevel hardnessLevel { get; set; }
+        public HardnessLevel HardnessLevel { get; set; }
         /// <summary>
         /// Установка никнейма
         /// </summary>
@@ -103,7 +102,7 @@ namespace Flatout
 
             var hardnessLevelName = PlayerPrefs.GetString("HardnessLevel", string.Empty);
 
-            hardnessLevel = hardnessLevelName == string.Empty ?
+            HardnessLevel = hardnessLevelName == string.Empty ?
                 GlobalSettings.Instance.hardnessLevels.First() :
                 GlobalSettings.Instance.hardnessLevels.FirstOrDefault(x => x.LevelName == hardnessLevelName);
         }

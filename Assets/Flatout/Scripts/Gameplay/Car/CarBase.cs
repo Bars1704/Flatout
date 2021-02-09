@@ -94,7 +94,7 @@ namespace Flatout
             PlayerAvatar.Instance.AddXP(xp);
             XP += xp;
             }
-        public void Init(CarTier carTier, GameObject gameObj)
+        public virtual void Init(CarTier carTier, GameObject gameObj)
         {
             MaxHealth = carTier.MaxHealth;
             Health = MaxHealth;
@@ -120,7 +120,7 @@ namespace Flatout
         /// <param name="otherCar">Управляющий компонент машинки</param>
         void DamageOtherCar(CarBase otherCar)
         {
-            otherCar?.TakeDamage(collisionDamage, GameObj);
+            otherCar.TakeDamage(collisionDamage, GameObj);
         }
         /// <summary>
         /// Получение урона
@@ -168,8 +168,7 @@ namespace Flatout
             GetComponentsInChildren<Collider>().ToList().ForEach(x => x.gameObject.layer = 9);
             var rb = GetComponent<Rigidbody>();
             rb.angularVelocity = Vector3.zero;
-            CarBase CarKiller;
-            if (killer.TryGetComponent<CarBase>(out CarKiller))
+            if (killer.TryGetComponent(out CarBase CarKiller))
             {
                 CarKiller.CarCrashed();
             }
@@ -180,13 +179,13 @@ namespace Flatout
         {
             CarsCrashed++;
             OnCarCrashed?.Invoke();
-            AddXP(PlayerAvatar.Instance.hardnessLevel.XPForCarCrash);
+            AddXP(PlayerAvatar.Instance.HardnessLevel.XPForCarCrash);
         }
         public void BoxCrashed()
         {
             BoxesCrashed++;
             OnBoxCrashed?.Invoke();
-            AddXP(PlayerAvatar.Instance.hardnessLevel.XPForBoxCrash);
+            AddXP(PlayerAvatar.Instance.HardnessLevel.XPForBoxCrash);
         }
 
         /// <summary>
